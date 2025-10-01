@@ -2,43 +2,54 @@ using System;
 using DG.Tweening;
 using UnityEngine;
 
-public class InGameCinema : MonoBehaviour
+namespace _00.Work.Yeonwoo._01.Scripts
 {
-    [SerializeField] private GameObject _test;
-    [SerializeField] private float _distance = 3f;
-    [SerializeField] private float _duration;
-    private Material material;
+    public class InGameCinema : MonoBehaviour
+    {
+        [SerializeField] private AppearancePlayerVisual _visualChange;
+        [SerializeField] private AppearancePlayer _player;
+        [SerializeField] private float _distance = 3f;
+        [SerializeField] private float _duration;
+        private Material material;
     
-    public event Action ApparanceComplete;
+        public event Action AppearanceComplete;
 
-    private void Awake()
-    {
-        SpriteRenderer spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        material = spriteRenderer.material;
-        _test.transform.position = transform.position;
-    }
+        private void Awake()
+        {
+            SpriteRenderer spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+            material = spriteRenderer.material;
+            _player.transform.position = transform.position;
+        }
 
-    private void Start()
-    {
-        PortalAnim();
-    }
-
-    public void PortalAnim()
-    {
-        Vector3 targetPos = _test.transform.position + Vector3.down * _distance;
+        private void OnEnable()
+        {
+            _visualChange.PlayerScaleChanged += PortalAnim;
+        }
         
-        _test.transform.DOMove(targetPos, _duration)
-            .SetEase(Ease.InOutQuint)
-            .OnComplete(() =>
-            {
-                material.DOFloat(0f, "_SourceGlowDissolveFade", 1f)
-                    .SetEase(Ease.OutSine)
-                    .OnComplete(() =>
+        private void PortalAnim()
+        {
+            Vector3 targetPos = _player.transform.position + Vector3.down * _distance;
+        
+            _player.transform.DOMove(targetPos, _duration)
+                .SetEase(Ease.InOutQuint)
+                .OnComplete(() =>
+                {
+                    AppearanceComplete?.Invoke();
+                    DOVirtual.DelayedCall(3f, () =>
                     {
-                        Destroy(gameObject);
+                        material.DOFloat(0f, "_FullGlowDissolveFade", 2f)
+                            .SetEase(Ease.OutSine)
+                            .OnComplete(() =>
+                            {
+                                Destroy(gameObject);
+                            });
                     });
-                
-                ApparanceComplete?.Invoke();
-            });
+                });
+        }
+
+        private void OnDisable()
+        {
+            _visualChange.PlayerScaleChanged -= PortalAnim;
+        }
     }
 }
