@@ -12,6 +12,7 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
+  - _ENABLEFULLALPHADISSOLVE_ON
   - _ENABLEINNEROUTLINE_ON
   - _ENABLERAINBOW_ON
   - _SHADERFADING_NONE
@@ -195,7 +196,7 @@ Material:
     - _EnableExternalAlpha: 0
     - _EnableFlame: 0
     - _EnableFrozen: 0
-    - _EnableFullAlphaDissolve: 0
+    - _EnableFullAlphaDissolve: 1
     - _EnableFullDistortion: 0
     - _EnableFullGlowDissolve: 0
     - _EnableGaussianBlur: 0
@@ -267,7 +268,7 @@ Material:
     - _FrozenHighlightDensity: 1
     - _FrozenSnowContrast: 1
     - _FrozenSnowDensity: 0.25
-    - _FullAlphaDissolveFade: 0.5
+    - _FullAlphaDissolveFade: 0.73
     - _FullAlphaDissolveWidth: 0.5
     - _FullDistortionFade: 1
     - _FullGlowDissolveFade: 0.5
@@ -436,7 +437,7 @@ Material:
     - _TimeFrequency: 2
     - _TimeRange: 0.5
     - _TimeSpeed: 1
-    - _TimeValue: 0
+    - _TimeValue: 1
     - _ToggleCustomTime: 0
     - _ToggleTimeFPS: 0
     - _ToggleTimeFrequency: 0

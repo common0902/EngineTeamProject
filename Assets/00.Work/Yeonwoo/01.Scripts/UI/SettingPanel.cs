@@ -29,6 +29,24 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
                 return _instance;
             }
         }
+        
+        private void Awake()
+        {
+            Time.timeScale = 1f;
+            if (_instance != null && _instance != this)
+            {
+                Debug.Log(
+                    $"Another Instance ({_instance.gameObject.name}) already exists, Destroy This Instance({gameObject.name}).");
+                Destroy(gameObject);
+            }
+            else
+            {
+                _instance = this;
+            }
+            _masterSlider.onValueChanged.AddListener(SetMasterVolume);
+            _vfxSlider.onValueChanged.AddListener(SetSFXVolume);
+            _sfxSlider.onValueChanged.AddListener(SetVFXVolume);
+        }
 
         private void SetMasterVolume(float volume)
         {
@@ -48,30 +66,14 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
         public void GoTitle()
         {
             SceneManager.LoadScene(0);
+            Time.timeScale = 1;
         }
 
         public void Exit()
         {
             Application.Quit();
         }
-
-        private void Awake()
-        {
-            if (_instance != null && _instance != this)
-            {
-                Debug.Log(
-                    $"Another Instance ({_instance.gameObject.name}) already exists, Destroy This Instance({gameObject.name}).");
-                Destroy(gameObject);
-            }
-            else
-            {
-                _instance = this;
-            }
-            _masterSlider.onValueChanged.AddListener(SetMasterVolume);
-            _vfxSlider.onValueChanged.AddListener(SetSFXVolume);
-            _sfxSlider.onValueChanged.AddListener(SetVFXVolume);
-        }
-
+        
         public void SettingPanelOpen()
         {
             gameObject.SetActive(true);
