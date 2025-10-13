@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0f9d22fa85eb43e8af60b22fb69c43c, type: 3}
   m_Name: SYWDungeonStartPortalProfile
   m_EditorClassIdentifier: 
-  type: 30
+  type: 0
   invert: 0
   timeMultiplier: 1
   colorMode: 0
-  color: {r: 0, g: 0, b: 0, a: 1}
+  color: {r: 0.69182384, g: 0, b: 0, a: 1}
   gradient:
     serializedVersion: 2
     key0: {r: 0.408805, g: 0.11700033, b: 0.114413954, a: 1}
@@ -49,12 +49,12 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   gradientMode: 10
   shapeTexture: {fileID: 2800000, guid: 2873235459d4547b58d76a16bc824b5a, type: 3}
-  duration: 1.2
-  noiseIntensity: 0.62
+  duration: 1.5
+  noiseIntensity: 0.812
   vignetteIntensity: 1
-  toonGradientIntensity: 64
-  toonDotIntensity: 0.5
-  toonDotRadius: 0.333
+  toonGradientIntensity: 117
+  toonDotIntensity: 0.559
+  toonDotRadius: 0.439
   toonDotCount: 32
   rotationMultiplier: 0
   rotation: 0
@@ -67,7 +67,7 @@ MonoBehaviour:
   texture: {fileID: 0}
   cellDivisions: 32
   spread: 64
-  noiseScale: {x: 3.58, y: 5.1}
+  noiseScale: {x: 4.89, y: 5.1}
   noiseTexture: {fileID: 2800000, guid: 8a547588e5fea481a97e1deb94c9612c, type: 3}
   contrast: 1
   splashTexture: {fileID: 2800000, guid: 9cbb07cca3115403a9ee5ee3e734e27c, type: 3}

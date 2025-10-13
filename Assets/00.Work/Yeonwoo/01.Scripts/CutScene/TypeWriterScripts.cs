@@ -52,7 +52,7 @@ public class TypeWriterScripts : MonoBehaviour
 
     private void OnDialogueEnd()
     {
-        Debug.Log("대사 재생 완료");
+        Debug.Log("끝");
         SceneManager.LoadScene(2);
     }
 }
