@@ -5,6 +5,6 @@ public class PrologSkip : MonoBehaviour
 {
    public void Skip()
    {
-      SceneManager.LoadScene(2);
+      SceneManager.LoadScene("Develop");
    }
 }
