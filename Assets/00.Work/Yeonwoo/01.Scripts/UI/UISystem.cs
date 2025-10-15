@@ -1,53 +1,81 @@
-   using UnityEngine;
+using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
+using _00.Work.Yeonwoo._01.Scripts.UI;
 
 namespace _00.Work.Yeonwoo._01.Scripts.UI
 {
-   public class UISystem : MonoBehaviour
-   {
-      private SettingPanel _settingPanel;
-      public bool isActive;
-      
-      private void Awake()
-      {
-         if (_settingPanel == null) 
+    public class UISystem : MonoBehaviour
+    {
+        protected SettingPanel _settingPanel;
+        protected List<IMenuPanel> _subPanels = new();
+
+        protected bool IsActive;
+
+        private void Awake()
+        {
             _settingPanel = UI.SettingPanel.Instance;
-         
-         if (_settingPanel == null) 
-            Debug.Log("3or1fj1f");
-         
-         if (_settingPanel != null) 
             _settingPanel.gameObject.SetActive(false);
-      }
+            
+            TryRegisterPanel(SoundSettingPanel.Instance);
+            TryRegisterPanel(VideoSettingPanel.Instance);
+        }
 
-      public void GameStart()
-      {
-         SceneManager.LoadScene("PrologScene");
-         Time.timeScale = 1f;
-      }
+        private void TryRegisterPanel(IMenuPanel panel)
+        {
+            if (panel != null && !_subPanels.Contains(panel))
+                _subPanels.Add(panel);
+        }
 
-      public void Exit()
-      {
-         Application.Quit();
-      }
-      
-      protected virtual void TogglePanel()
-      {
-         isActive = _settingPanel.gameObject.activeSelf; 
-         _settingPanel.gameObject.SetActive(!isActive);
-      }
+        public void GameStart()
+        {
+            SceneManager.LoadScene("PrologScene");
+            Time.timeScale = 1f;
+        }
+
+        public void Exit()
+        {
+            Application.Quit();
+        }
+        
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                HandleEsc();
+            }
+        }
+
+        protected virtual void HandleEsc()
+        {
+            foreach (var panel in _subPanels)
+            {
+                if (panel.IsOpen)
+                {
+                    panel.Close();
+                    return;
+                }
+            }
+            
+            if (_settingPanel.gameObject.activeSelf)
+            {
+                _settingPanel.SettingPanelClose();
+                return;
+            }
+            
+            _settingPanel.SettingPanelOpen();
+        }
+
+        public void SettingPanel()
+        {
+            _settingPanel.SettingPanelOpen();
+        }
+    }
     
-      private void Update()
-      {
-         if (Input.GetKeyDown(KeyCode.Escape))
-         {
-            TogglePanel();
-         }
-      }
-
-      public void SettingPanel()
-      {
-         _settingPanel.SettingPanelOpen();
-      }
-   }
+    public interface IMenuPanel
+    {
+        bool IsOpen { get; }
+        void Open();
+        void Close();
+    }
 }

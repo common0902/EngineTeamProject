@@ -2,7 +2,7 @@ using System;
 using DG.Tweening;
 using UnityEngine;
 
-namespace _00.Work.Yeonwoo._01.Scripts
+namespace _00.Work.Yeonwoo._01.Scripts.Direction
 {
     public class InGameCinema : MonoBehaviour
     {

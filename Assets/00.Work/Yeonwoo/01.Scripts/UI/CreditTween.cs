@@ -1,14 +1,16 @@
-using System;
 using DG.Tweening;
 using UnityEngine;
 
-public class CreditTween : MonoBehaviour
+namespace _00.Work.Yeonwoo._01.Scripts.UI
 {
-    private void Start()
+    public class CreditTween : MonoBehaviour
     {
-        transform
-            .DOLocalRotate(new Vector3(0, 0, 10f), 0.65f)
-            .SetLoops(-1, LoopType.Yoyo)
-            .SetEase(Ease.InOutSine);
+        private void Start()
+        {
+            transform
+                .DOLocalRotate(new Vector3(0, 0, 10f), 0.65f)
+                .SetLoops(-1, LoopType.Yoyo)
+                .SetEase(Ease.InOutSine);
+        }
     }
 }
