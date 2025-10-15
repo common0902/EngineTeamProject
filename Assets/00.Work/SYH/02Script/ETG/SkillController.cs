@@ -25,7 +25,7 @@ public class SkillController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            UseSkill(0);
+            UseSkill(2);
         }
         if (Input.GetMouseButtonDown(1))
         {
@@ -33,7 +33,7 @@ public class SkillController : MonoBehaviour
         }
         if (Input.GetMouseButtonDown(2))
         {
-            UseSkill(2);
+            UseSkill(0);
         }
 
         if (Input.GetKeyDown(KeyCode.F))
@@ -52,11 +52,11 @@ public class SkillController : MonoBehaviour
 
         if (eliments == null || eliments.Length == 0 || eliments[skillNum] == null)
         {
-            //print("스킬 없음");
+            print("스킬 없음");
             return;
         }
         eliments[skillNum].Active();
-        //print("스킬 사용");
+        print("스킬 사용");
     }
 
     public void ChangeSkill(Skill skill)

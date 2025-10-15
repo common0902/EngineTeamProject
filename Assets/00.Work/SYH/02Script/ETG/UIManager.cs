@@ -6,6 +6,7 @@ public class UIManager : MonoSingleton<UIManager>
 {
     [field:SerializeField] public TextMeshProUGUI[] SkillUI { get; private set; }
     [field:SerializeField] public SkillController SkillControllerCompo { get; private set; }
+    [field:SerializeField]public PasiveSkillText pasiveSkillTextCompo { get; private set; }
 
     private void Start()
     {
