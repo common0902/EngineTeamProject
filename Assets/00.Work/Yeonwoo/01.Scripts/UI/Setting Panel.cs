@@ -32,11 +32,13 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
         public void SettingPanelOpen()
         {
             gameObject.SetActive(true);
+            Time.timeScale = 0f;
         }
 
         public void SettingPanelClose()
         {
             gameObject.SetActive(false);
+            Time.timeScale = 1f;
         }
     }
 }

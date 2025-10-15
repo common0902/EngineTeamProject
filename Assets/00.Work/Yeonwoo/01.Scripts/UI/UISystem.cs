@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
@@ -13,14 +14,16 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
         protected bool IsActive;
 
         private void Awake()
-        {
+        { 
+            VideoSettingPanel.ApplySavedSettings();
+            
             _settingPanel = UI.SettingPanel.Instance;
             _settingPanel.gameObject.SetActive(false);
             
             TryRegisterPanel(SoundSettingPanel.Instance);
             TryRegisterPanel(VideoSettingPanel.Instance);
         }
-
+        
         private void TryRegisterPanel(IMenuPanel panel)
         {
             if (panel != null && !_subPanels.Contains(panel))
