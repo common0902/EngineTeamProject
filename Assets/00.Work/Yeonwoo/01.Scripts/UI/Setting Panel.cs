@@ -3,10 +3,12 @@ using UnityEngine.SceneManagement;
 
 namespace _00.Work.Yeonwoo._01.Scripts.UI
 {
-    public class SettingPanel : MonoSingleton<SettingPanel>
+    public class SettingPanel : Data.MonoSingletonUI<SettingPanel>
     {
         [SerializeField] private SoundSettingPanel  _soundSettingPanel;
         [SerializeField] private VideoSettingPanel _videoSettingPanel;
+        [SerializeField] private SelectTitlePanel _selectTitlePanel;
+        [SerializeField] private SelectExitPanel _selectExitPanel;
 
         public void SoundPanelOpen()
         {
@@ -20,13 +22,12 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
     
         public void GoTitle()
         {
-            SceneManager.LoadScene(0);
-            Time.timeScale = 1;
+            _selectTitlePanel.gameObject.SetActive(true);
         }
 
         public void Exit()
         {
-            Application.Quit();
+            _selectExitPanel.gameObject.SetActive(true);
         }
     
         public void SettingPanelOpen()

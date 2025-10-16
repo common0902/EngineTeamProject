@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace _00.Work.Yeonwoo._01.Scripts.UI
 {
-    public class InGameUiSystem : UISystem
+    public class InGameSettingSystem : SettingSystem
     {
         protected override void HandleEsc()
         {

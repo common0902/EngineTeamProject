@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace _00.Work.Yeonwoo._01.Scripts.UI
 {
-    public class SoundSettingPanel : MonoSingleton<SoundSettingPanel>, IMenuPanel
+    public class SoundSettingPanel : Data.MonoSingletonUI<SoundSettingPanel>, IMenuPanel
     {
         [SerializeField] private AudioMixer _audioMixer;
         [SerializeField] private Slider _masterSlider;
@@ -19,8 +19,6 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
 
         protected override void Awake()
         {
-            Time.timeScale = 1f;
-            
             _masterSlider.onValueChanged.AddListener(SetMasterVolume);
             _sfxSlider.onValueChanged.AddListener(SetSfxVolume);
             _vfxSlider.onValueChanged.AddListener(SetVfxVolume);
@@ -59,7 +57,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
             PlayerPrefs.SetFloat(VFXKey, value);
         }
         
-        private void LoadVolumeSettings()
+        public void LoadVolumeSettings()
         {
             float master = PlayerPrefs.GetFloat(MasterKey, 1f);
             float sfx = PlayerPrefs.GetFloat(SfxKey, 1f);

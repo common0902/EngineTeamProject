@@ -7,7 +7,7 @@ using _00.Work.Yeonwoo._01.Scripts.UI;
 
 namespace _00.Work.Yeonwoo._01.Scripts.UI
 {
-    public class VideoSettingPanel : MonoSingleton<VideoSettingPanel>, IMenuPanel
+    public class VideoSettingPanel : Data.MonoSingletonUI<VideoSettingPanel>, IMenuPanel
 {
     [SerializeField] private TMP_Dropdown _resolutionDropdown;
     [SerializeField] private Toggle _fullscreenToggle;
@@ -75,7 +75,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
         _resolutionDropdown.RefreshShownValue();
     }
 
-    private IEnumerator LoadVideoSettingsDelayed()
+    public IEnumerator LoadVideoSettingsDelayed()
     {
         yield return null;
 
