@@ -24,6 +24,9 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
             _vfxSlider.onValueChanged.AddListener(SetVfxVolume);
             
             LoadVolumeSettings();
+            ApplyVolume(_masterSlider.value, "Master");
+            ApplyVolume(_sfxSlider.value, "SFX");
+            ApplyVolume(_vfxSlider.value, "VFX");
         }
 
         private void Start()
@@ -57,7 +60,15 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
             PlayerPrefs.SetFloat(VFXKey, value);
         }
         
-        public void LoadVolumeSettings()
+        public void ApplySavedVolumeSettings()
+        {
+            LoadVolumeSettings();
+            ApplyVolume(_masterSlider.value, "Master");
+            ApplyVolume(_sfxSlider.value, "SFX");
+            ApplyVolume(_vfxSlider.value, "VFX");
+        }
+
+        private void LoadVolumeSettings()
         {
             float master = PlayerPrefs.GetFloat(MasterKey, 1f);
             float sfx = PlayerPrefs.GetFloat(SfxKey, 1f);

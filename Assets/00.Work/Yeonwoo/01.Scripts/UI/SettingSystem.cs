@@ -17,11 +17,12 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
         {
             try
             {
+                Debug.Log("Try to setting panel's construction, SettingPanelClose()");
                 _settingPanel.SettingPanelClose();
             }
             catch (NullReferenceException e)
             {
-                Debug.Log("try to catch. " + e);
+                Debug.Log("try-catch.");
                 Debug.Log("Setting panel Instance doesn't exist, Spawn setting panel Instance to.");
                 _settingPanel = UI.SettingPanel.Instance;
             }
@@ -48,7 +49,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
 
         public void GameStart()
         {
-            SceneManager.LoadScene("PrologScene");
+            SceneManager.LoadScene(1);
             Time.timeScale = 1f;
         }
 
