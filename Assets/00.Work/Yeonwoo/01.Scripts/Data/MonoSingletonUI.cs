@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace _00.Work.Yeonwoo._01.Scripts.UI
+namespace _00.Work.Yeonwoo._01.Scripts.Data
 {
-    public class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
+    public class MonoSingletonUI<T> : MonoBehaviour where T : MonoBehaviour
     {
         private static T _instance;
 
