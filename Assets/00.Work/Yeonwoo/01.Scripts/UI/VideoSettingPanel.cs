@@ -81,18 +81,12 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
         private IEnumerator LoadVideoSettingsDelayed()
         {
             yield return null;
-    
-            int resolutionIndex;
+
             bool isFullscreen;
     
-            if (PlayerPrefs.HasKey(ResolutionIndexKey))
-            {
-                resolutionIndex = Mathf.Clamp(PlayerPrefs.GetInt(ResolutionIndexKey, _resolutions.Length - 1), 0, _resolutions.Length - 1);
-            }
-            else
-            {
-                resolutionIndex = FindClosestResolutionIndex(Screen.currentResolution.width, Screen.currentResolution.height);
-            }
+            var resolutionIndex = PlayerPrefs.HasKey(ResolutionIndexKey) 
+                ? Mathf.Clamp(PlayerPrefs.GetInt(ResolutionIndexKey, _resolutions.Length - 1), 0, _resolutions.Length - 1) 
+                : FindClosestResolutionIndex(Screen.currentResolution.width, Screen.currentResolution.height);
     
             if (PlayerPrefs.HasKey(FullscreenKey))
             {

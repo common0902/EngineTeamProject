@@ -18,7 +18,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
             {
                 VideoSettingPanel.ApplySavedSettings();
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 VideoSettingPanel videoSettingPanel =  FindAnyObjectByType<VideoSettingPanel>(FindObjectsInactive.Include);
                 if (videoSettingPanel != null)
@@ -43,7 +43,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
             }
             else
             {
-                Debug.LogWarning("SoundSettingPanel Instance doesn't not exist. Check to SoundSettingPanel object is exist.");
+                Debug.LogWarning("SoundSettingPanel Instance doesn't exist. Check to SoundSettingPanel object is exist.");
             }
         }
 

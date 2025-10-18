@@ -20,7 +20,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
                 Debug.Log("Try to setting panel's construction, SettingPanelClose()");
                 _settingPanel.SettingPanelClose();
             }
-            catch (NullReferenceException e)
+            catch (NullReferenceException)
             {
                 Debug.Log("try-catch.");
                 Debug.Log("Setting panel Instance doesn't exist, Spawn setting panel Instance to.");
