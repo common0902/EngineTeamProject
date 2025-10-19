@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class FireBallPrefab : SkillPrefab
 {
-    float _waitTime;
     Vector2 _moveDir;
     Rigidbody2D _rb;
     private void Awake()
@@ -11,23 +10,20 @@ public class FireBallPrefab : SkillPrefab
     }
     private void Start()
     {
-        _moveDir = _targetPos - Player.Instance.transform.position;
+        _moveDir = SkillAimming.AimWeapon(transform);
+        //_moveDir = _targetPos - Player.Instance.transform.position;
 
-        float radian = Mathf.Atan2(_moveDir.y, _moveDir.x);
-        float degree = radian * Mathf.Rad2Deg;
+        //float radian = Mathf.Atan2(_moveDir.y, _moveDir.x);
+        //float degree = radian * Mathf.Rad2Deg;
 
-        transform.eulerAngles = new Vector3(0, 0, degree);
-        if (degree > 90 || degree < -90) transform.localScale = new Vector3(1, -1, 1);
+        //transform.eulerAngles = new Vector3(0, 0, degree);
+        //if (degree > 90 || degree < -90) transform.localScale = new Vector3(1, -1, 1);
         _rb.linearVelocity = _moveDir.normalized * _shotSpeed;
     }
-    private void Update()
-    {
-        if (_waitTime >= _duration)
-        {
-            Destroy(gameObject);
-        }
-        _waitTime += Time.deltaTime;
-    }
+    //protected override void Update()
+    //{
+    //    base.Update();
+    //}
     private void OnTriggerEnter2D(Collider2D collision)
     {
 

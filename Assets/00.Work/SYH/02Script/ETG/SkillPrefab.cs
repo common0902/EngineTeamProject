@@ -7,4 +7,13 @@ public abstract class SkillPrefab : MonoBehaviour
     public float _shotSpeed;
     public float _damage;
     public float _duration;
+    float _waitTime;
+    protected virtual void Update()
+    {
+        if (_waitTime >= _duration)
+        {
+            Destroy(gameObject);
+        }
+        _waitTime += Time.deltaTime;
+    }
 }
