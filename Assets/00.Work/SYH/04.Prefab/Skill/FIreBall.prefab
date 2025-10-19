@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1435461787358533855}
   - component: {fileID: 8318486499514290055}
+  - component: {fileID: -5797207982012949927}
+  - component: {fileID: -51562618309801482}
   - component: {fileID: 2706644381451090743}
   - component: {fileID: 261777771882917947}
   - component: {fileID: 5842402510037378693}
@@ -80,7 +82,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2303791976798327226, guid: 9f5846a9d5750be44b8e4e5c80c67907, type: 3}
+  m_Sprite: {fileID: 1939413697994787360, guid: 9f5846a9d5750be44b8e4e5c80c67907, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -91,6 +93,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-5797207982012949927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3060115442278459066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c29cff538c195c249b69c6f2236de67b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Library: []
+  m_SpriteLibraryAsset: {fileID: 7108339969198208228, guid: 6770f730a5315af46a234313548b6cce, type: 3}
+--- !u!114 &-51562618309801482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3060115442278459066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_CategoryHash: 0
+  m_labelHash: 0
+  m_SpriteKey: 0
+  m_SpriteHash: 226582645
 --- !u!95 &2706644381451090743
 Animator:
   serializedVersion: 7
@@ -101,7 +133,7 @@ Animator:
   m_GameObject: {fileID: 3060115442278459066}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f2d1a4528ddb8f34eb526df37e89c068, type: 2}
+  m_Controller: {fileID: 9100000, guid: d31efcde85ef32740abc9a32d6605fa3, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -127,9 +159,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 0}
   _targetPos: {x: 0, y: 0, z: 0}
-  _shotSpeed: 0
+  _shotSpeed: 6
   _damage: 0
-  _duration: 0
+  _duration: 5
 --- !u!58 &5842402510037378693
 CircleCollider2D:
   m_ObjectHideFlags: 0

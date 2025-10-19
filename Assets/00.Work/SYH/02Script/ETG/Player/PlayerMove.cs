@@ -5,11 +5,10 @@ namespace Code.PokerShooter
 {
     public class PlayerMove : MonoBehaviour
     {
-        [SerializeField] float _speed = 5;
         private Vector2 _moveDir;
         private void Update()
         {
-            transform.position += (Vector3)_moveDir * _speed * Time.deltaTime;
+            transform.position += (Vector3)_moveDir * Player.Instance.PlayerStatusCompo. _speed * Time.deltaTime;
         }
         public void OnMove(InputValue value)
         {
