@@ -3,56 +3,59 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class TypeWriterScripts : MonoBehaviour
+namespace _00.Work.Yeonwoo._01.Scripts.CutScene
 {
-    [Header("텍스트 컴포")]
-    [SerializeField] private TextMeshProUGUI _textUI;
-
-    [Header("텍스트 설정")]
-    [SerializeField, TextArea(2, 5)] private string[] _dialogues;
-    [SerializeField] private float _typingSpeed = 0.05f;
-    [SerializeField] private float _delayBetweenLines = 1.0f;
-
-    [Header("자동 시작 여부")]
-    [SerializeField] private bool _playOnStart = true;
-
-    private int _currentIndex = 0;
-
-    private void Start()
+    public class TypeWriterScripts : MonoBehaviour
     {
-        if (_playOnStart)
-            StartCoroutine(PlayDialogues());
-    }
+        [Header("텍스트 컴포")]
+        [SerializeField] private TextMeshProUGUI _textUI;
 
-    public IEnumerator PlayDialogues()
-    {
-        _textUI.text = "";
+        [Header("텍스트 설정")]
+        [SerializeField, TextArea(2, 5)] private string[] _dialogues;
+        [SerializeField] private float _typingSpeed = 0.05f;
+        [SerializeField] private float _delayBetweenLines = 1.0f;
 
-        while (_currentIndex < _dialogues.Length)
+        [Header("자동 시작 여부")]
+        [SerializeField] private bool _playOnStart = true;
+
+        private int _currentIndex = 0;
+
+        private void Start()
         {
-            yield return StartCoroutine(TypeText(_dialogues[_currentIndex]));
-            _currentIndex++;
-
-            yield return new WaitForSeconds(_delayBetweenLines);
+            if (_playOnStart)
+                StartCoroutine(PlayDialogues());
         }
 
-        OnDialogueEnd();
-    }
-
-    private IEnumerator TypeText(string line)
-    {
-        _textUI.text = "";
-
-        foreach (char c in line)
+        public IEnumerator PlayDialogues()
         {
-            _textUI.text += c;
-            yield return new WaitForSeconds(_typingSpeed);
-        }
-    }
+            _textUI.text = "";
 
-    private void OnDialogueEnd()
-    {
-        Debug.Log("대사 재생 완료");
-        SceneManager.LoadScene(2);
+            while (_currentIndex < _dialogues.Length)
+            {
+                yield return StartCoroutine(TypeText(_dialogues[_currentIndex]));
+                _currentIndex++;
+
+                yield return new WaitForSeconds(_delayBetweenLines);
+            }
+
+            OnDialogueEnd();
+        }
+
+        private IEnumerator TypeText(string line)
+        {
+            _textUI.text = "";
+
+            foreach (char c in line)
+            {
+                _textUI.text += c;
+                yield return new WaitForSeconds(_typingSpeed);
+            }
+        }
+
+        private void OnDialogueEnd()
+        {
+            Debug.Log("끝");
+            SceneManager.LoadScene(2);
+        }
     }
 }
