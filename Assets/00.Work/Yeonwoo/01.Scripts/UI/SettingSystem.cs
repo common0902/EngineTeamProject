@@ -9,7 +9,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
     public class SettingSystem : MonoBehaviour
     {
         protected SettingPanel _settingPanel;
-        protected List<IMenuPanel> _subPanels = new();
+        protected List<ISettingPanel> _subPanels = new();
 
         protected bool IsActive;
 
@@ -41,7 +41,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
             TryRegisterPanel(SelectExitPanel.Instance);
         }
         
-        private void TryRegisterPanel(IMenuPanel panel)
+        private void TryRegisterPanel(ISettingPanel panel)
         {
             if (panel != null && !_subPanels.Contains(panel))
                 _subPanels.Add(panel);
@@ -90,12 +90,5 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
         {
             _settingPanel.SettingPanelOpen();
         }
-    }
-    
-    public interface IMenuPanel
-    {
-        bool IsOpen { get; }
-        void Open();
-        void Close();
     }
 }

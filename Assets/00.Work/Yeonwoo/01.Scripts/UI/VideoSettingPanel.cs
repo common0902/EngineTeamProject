@@ -7,7 +7,7 @@ using _00.Work.Yeonwoo._01.Scripts.UI;
 
 namespace _00.Work.Yeonwoo._01.Scripts.UI
 {
-    public class VideoSettingPanel : Data.MonoSingletonUI<VideoSettingPanel>, IMenuPanel
+    public class VideoSettingPanel : Data.MonoSingletonUI<VideoSettingPanel>, ISettingPanel
     {
         [SerializeField] private TMP_Dropdown _resolutionDropdown;
         [SerializeField] private Toggle _fullscreenToggle;

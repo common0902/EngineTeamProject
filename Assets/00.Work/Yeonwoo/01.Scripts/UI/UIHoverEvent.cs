@@ -1,39 +1,41 @@
-using System;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.EventSystems;
 
-public class UIHoverEvent : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+namespace _00.Work.Yeonwoo._01.Scripts.UI
 {
-    [SerializeField] private AudioMixerGroup _audioMixerGroup;
-    [SerializeField] private AudioClip _audioClip;
-    
-    private AudioSource _audioSource;
-    
-    private void Awake()
+    public class UIHoverEvent : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
-        _audioSource = GetComponent<AudioSource>();
-        if (_audioSource == null)
-            _audioSource = gameObject.AddComponent<AudioSource>();
-        
-        if (_audioMixerGroup != null)
-            _audioSource.outputAudioMixerGroup = _audioMixerGroup;
-        
-        _audioSource.playOnAwake = false;
-    }
+        [SerializeField] private AudioMixerGroup _audioMixerGroup;
+        [SerializeField] private AudioClip _audioClip;
     
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        _audioSource.PlayOneShot(_audioClip);
-        
-        transform.DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.2f)
-            .SetUpdate(true);
-    }
+        private AudioSource _audioSource;
     
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        transform.DOScale(new Vector3(1.0f, 1.0f, 1.0f), 0.2f)
-            .SetUpdate(true);
+        private void Awake()
+        {
+            _audioSource = GetComponent<AudioSource>();
+            if (_audioSource == null)
+                _audioSource = gameObject.AddComponent<AudioSource>();
+        
+            if (_audioMixerGroup != null)
+                _audioSource.outputAudioMixerGroup = _audioMixerGroup;
+        
+            _audioSource.playOnAwake = false;
+        }
+    
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            _audioSource.PlayOneShot(_audioClip);
+        
+            transform.DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.2f)
+                .SetUpdate(true);
+        }
+    
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            transform.DOScale(new Vector3(1.0f, 1.0f, 1.0f), 0.2f)
+                .SetUpdate(true);
+        }
     }
 }

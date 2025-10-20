@@ -14,19 +14,15 @@ namespace _00.Work.Yeonwoo._01.Scripts.CutScene
         [SerializeField, TextArea(2, 5)] private string[] _dialogues;
         [SerializeField] private float _typingSpeed = 0.05f;
         [SerializeField] private float _delayBetweenLines = 1.0f;
-
-        [Header("자동 시작 여부")]
-        [SerializeField] private bool _playOnStart = true;
-
+        
         private int _currentIndex = 0;
 
         private void Start()
         {
-            if (_playOnStart)
                 StartCoroutine(PlayDialogues());
         }
 
-        public IEnumerator PlayDialogues()
+        private IEnumerator PlayDialogues()
         {
             _textUI.text = "";
 

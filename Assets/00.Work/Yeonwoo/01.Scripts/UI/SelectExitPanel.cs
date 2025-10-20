@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 namespace _00.Work.Yeonwoo._01.Scripts.UI
 {
-    public class SelectExitPanel : MonoSingletonUI<SelectExitPanel>, IMenuPanel
+    public class SelectExitPanel : MonoSingletonUI<SelectExitPanel>, ISettingPanel
     {
         public bool IsOpen => gameObject.activeSelf;
 

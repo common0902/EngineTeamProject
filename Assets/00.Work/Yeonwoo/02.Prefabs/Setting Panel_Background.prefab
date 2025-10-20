@@ -97,6 +97,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: _00.Work.Yeonwoo._01.Scripts.UI.SoundSystem, Assembly-CSharp
+        m_MethodName: ButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 1
 --- !u!1 &353976443166676658
 GameObject:
@@ -554,8 +566,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 685401579928390919, guid: d5821d4598ab95c4189df8814a068a74, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1034,6 +1046,18 @@ MonoBehaviour:
           Assembly-CSharp
         m_MethodName: SetVfxMute
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: _00.Work.Yeonwoo._01.Scripts.UI.SoundSystem, Assembly-CSharp
+        m_MethodName: ButtonClick
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2553,6 +2577,18 @@ MonoBehaviour:
           Assembly-CSharp
         m_MethodName: SetSfxMute
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: _00.Work.Yeonwoo._01.Scripts.UI.SoundSystem, Assembly-CSharp
+        m_MethodName: ButtonClick
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4163,6 +4199,62 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6613749996410978331, guid: b23f164a841390f40878bb335fd8625e, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6613749996410978331, guid: b23f164a841390f40878bb335fd8625e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 685401579928390919, guid: d5821d4598ab95c4189df8814a068a74, type: 3}
+    - target: {fileID: 7606229011442652792, guid: b23f164a841390f40878bb335fd8625e, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7606229011442652792, guid: b23f164a841390f40878bb335fd8625e, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7606229011442652792, guid: b23f164a841390f40878bb335fd8625e, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7606229011442652792, guid: b23f164a841390f40878bb335fd8625e, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ButtonClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 7606229011442652792, guid: b23f164a841390f40878bb335fd8625e, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: _00.Work.Yeonwoo._01.Scripts.UI.SoundSystem, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7606229011442652792, guid: b23f164a841390f40878bb335fd8625e, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8025571599111912693, guid: b23f164a841390f40878bb335fd8625e, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8025571599111912693, guid: b23f164a841390f40878bb335fd8625e, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8025571599111912693, guid: b23f164a841390f40878bb335fd8625e, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8025571599111912693, guid: b23f164a841390f40878bb335fd8625e, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ButtonClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 8025571599111912693, guid: b23f164a841390f40878bb335fd8625e, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: _00.Work.Yeonwoo._01.Scripts.UI.SoundSystem, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8025571599111912693, guid: b23f164a841390f40878bb335fd8625e, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8384732006430479554, guid: b23f164a841390f40878bb335fd8625e, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 534
@@ -4285,6 +4377,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2116557610374028704, guid: 33582b49b54c5cc428867e5d786e0211, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2116557610374028704, guid: 33582b49b54c5cc428867e5d786e0211, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 685401579928390919, guid: d5821d4598ab95c4189df8814a068a74, type: 3}
     - target: {fileID: 2785311815494316897, guid: 33582b49b54c5cc428867e5d786e0211, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -4506,6 +4606,14 @@ PrefabInstance:
       propertyPath: m_text
       value: "\uC8FC\uC758\n"
       objectReference: {fileID: 0}
+    - target: {fileID: 6613749996410978331, guid: b23f164a841390f40878bb335fd8625e, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6613749996410978331, guid: b23f164a841390f40878bb335fd8625e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 685401579928390919, guid: d5821d4598ab95c4189df8814a068a74, type: 3}
     m_RemovedComponents:
     - {fileID: 5161633940701300830, guid: b23f164a841390f40878bb335fd8625e, type: 3}
     m_RemovedGameObjects:
@@ -4649,6 +4757,14 @@ PrefabInstance:
       propertyPath: m_text
       value: "\uC548\uB0B4\n"
       objectReference: {fileID: 0}
+    - target: {fileID: 6613749996410978331, guid: b23f164a841390f40878bb335fd8625e, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6613749996410978331, guid: b23f164a841390f40878bb335fd8625e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 685401579928390919, guid: d5821d4598ab95c4189df8814a068a74, type: 3}
     m_RemovedComponents:
     - {fileID: 5161633940701300830, guid: b23f164a841390f40878bb335fd8625e, type: 3}
     m_RemovedGameObjects:
