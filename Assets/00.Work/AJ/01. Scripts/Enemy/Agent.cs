@@ -7,7 +7,7 @@
     {
         private Dictionary<Type, IComponent> _componentDict = new Dictionary<Type, IComponent>();
 
-        public LayerMask WallisWall;
+        public LayerMask WhatisWall;
         
         protected virtual void Awake()
         {

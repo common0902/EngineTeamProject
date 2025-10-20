@@ -20,7 +20,7 @@ namespace _00.Work.AJ._08._Data.BT.Conditions
             Vector2 targetPosition = Target.Value.transform.position;
             Vector2 direction = targetPosition - origin;
             RaycastHit2D hitinfo =
-                Physics2D.Raycast(origin, direction.normalized, direction.magnitude, Self.Value.WallisWall);
+                Physics2D.Raycast(origin, direction.normalized, direction.magnitude, Self.Value.WhatisWall);
             
             return hitinfo.collider == null;
         }

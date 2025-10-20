@@ -2,18 +2,20 @@ using UnityEngine;
 
 public class EnemyAttackState : EnemyState
 {
+    private EnemyAttack _enemyAttack;
     public EnemyAttackState(Enemy enemy, string animName, EnemyStateMachine stateMachine) : base(enemy, animName, stateMachine)
     {
-
+        _enemyAttack = enemy.GetComponent<EnemyAttack>();
     }
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("Enter Attack State");
+        _enemyAttack.isAnimationEnd = false;
     }
     public override void Update()
     {
-        if (_enemy.CheckChaseRange())
+        base.Update();
+        if (_enemyAttack.isAnimationEnd)
         {
             _stateMachine.ChangeState(EnemyStateType.Chase);
         }

@@ -4460,7 +4460,7 @@ Transform:
   m_GameObject: {fileID: 1147370510}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.5, y: 4.52, z: 0}
+  m_LocalPosition: {x: -7.42, y: 4.44, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4612,7 +4612,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.46, y: 1.46, z: 1.46}
+  m_LocalScale: {x: 0.9747836, y: 0.9747836, z: 0.9747836}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1413678724}
@@ -4661,8 +4661,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 81f694176e5c48a49b97aaf2298ae1c7, type: 3}
-  m_Color: {r: 0.14971161, g: 0, b: 1, a: 1}
+  m_Sprite: {fileID: -486309668871112138, guid: de183585fbb72d54eafbd101ebd2fed2, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -4735,7 +4735,7 @@ Transform:
   m_GameObject: {fileID: 1413678723}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.44, y: -0.48, z: 0}
+  m_LocalPosition: {x: 8.27, y: 0.67, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -4795,8 +4795,8 @@ MonoBehaviour:
   WallisWall:
     serializedVersion: 2
     m_Bits: 2147483648
-  _visualTrm: {fileID: 1226131000}
   target: {fileID: 1147370512}
+  <AgentCompo>k__BackingField: {fileID: 0}
   _chaseRange: 6.36
   _attackRange: 2.23
   _playerMask:
@@ -5341,7 +5341,7 @@ MonoBehaviour:
   groundMap: {fileID: 397732852}
   obstacleMap: {fileID: 1436130082}
   bakedData: {fileID: 11400000, guid: fca5f5fe46fb7ee43974c963ce90654e, type: 2}
-  isDrawGizmo: 1
+  isDrawGizmo: 0
   isCornerCheck: 1
   nodeColor: {r: 0.118592024, g: 0.118592024, b: 0.6132076, a: 1}
   edgeColor: {r: 1, g: 0.8286116, b: 0, a: 0.3764706}
