@@ -49,7 +49,7 @@ public class PathMovement : MonoBehaviour, IComponent
         IsArrived = false;
         IsPathFailed = false;
         IsPathPending = true;
-        _beforePosition = transform.position; //　맨 처음 위치 이전 좌표로 저장.
+        _beforePosition = _owner.transform.position; //　맨 처음 위치 이전 좌표로 저장.
         
         _pathCount = pathAgent.GetPath(startCell, endCell, _path);
 
@@ -59,7 +59,7 @@ public class PathMovement : MonoBehaviour, IComponent
         }
         else
         {
-            _currentPathIndex = 0;
+            _currentPathIndex = 1; // 첫번째 경로는 시작점이므로 2번째 경로부터 시작
         }
 
         IsPathPending = false;
@@ -68,9 +68,10 @@ public class PathMovement : MonoBehaviour, IComponent
     {
         if (IsStop) return;
         if (_currentPathIndex >= _pathCount) return; // 경로가 끝남.
+        
         if (CheckArrived() == false)
         {
-            Vector2 direction = _path[_currentPathIndex] - transform.position;
+            Vector2 direction = _path[_currentPathIndex] - _owner.transform.position;
             _mover.SetMovementInput(direction);
         }
         else
@@ -82,12 +83,12 @@ public class PathMovement : MonoBehaviour, IComponent
     private bool CheckArrived()
     {
         Vector2 destination = _path[_currentPathIndex];
-        Vector2 currentPosition = transform.position;
-        Vector2 beforePosition = (destination - currentPosition).normalized;
+        Vector2 currentPosition = _owner.transform.position;
+        Vector2 beforeDirection = (destination - _beforePosition).normalized;
         Vector2 currentDirection = (destination - currentPosition).normalized;
         _beforePosition = currentPosition;
 
-        if (Vector2.Dot(beforePosition, currentDirection) <= 0 
+        if (Vector2.Dot(beforeDirection, currentDirection) <= 0 
             || Vector2.Distance(destination, currentPosition) < 0.01f)
         {
             _currentPathIndex++;
@@ -101,10 +102,7 @@ public class PathMovement : MonoBehaviour, IComponent
 
     private void OnDrawGizmos()
     {
-        if (_pathCount <= 0)
-        {
-            return;
-        };
+        if (_pathCount <= 0) return;
 
         for (int i = 0; i < _pathCount - 1; i++)
         {

@@ -9,6 +9,11 @@ public class AgentMovement : MonoBehaviour, IComponent
     
     private Vector2 _movementInput;
 
+
+    public void Initialize(Agent agent)
+    {
+        _owner = agent;
+    }
     public void StopImmediately()
     {
         _movementInput = Vector2.zero;
@@ -25,10 +30,5 @@ public class AgentMovement : MonoBehaviour, IComponent
         rigidbody.linearVelocity = _movementInput * 3;
         
         OnSpeedChange?.Invoke(rigidbody.linearVelocity);
-    }
-
-    public void Initialize(Agent agent)
-    {
-        _owner = agent;
     }
 }

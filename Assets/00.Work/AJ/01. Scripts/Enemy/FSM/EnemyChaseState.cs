@@ -18,7 +18,7 @@ public class EnemyChaseState : EnemyState
     }
     public override void Update()
     {
-        base.Update();
+        //_enemy.AgentCompo.SetDestination(_enemy.target.position);
         if (!_enemy.CheckChaseRange())
         {
             _stateMachine.ChangeState(EnemyStateType.Idle);

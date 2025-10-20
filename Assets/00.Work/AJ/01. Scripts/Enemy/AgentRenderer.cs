@@ -34,7 +34,8 @@ namespace _00.Work.AJ._01._Scripts.Enemy
         
         private void HandleSpeedChange(Vector2 speed)
         {
-            if(IsFacingRight && speed.x < 0 || !IsFacingRight && speed.x > 0)
+            if(IsFacingRight && speed.x < 0 ||
+               !IsFacingRight && speed.x > 0)
                 Filp();
         }
     }
