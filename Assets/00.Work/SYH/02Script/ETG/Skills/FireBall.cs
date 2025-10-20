@@ -6,6 +6,6 @@ public class FireBall : Skill
     {
         base.Active();
         FireBallPrefab fireBall = Instantiate(SkillPrefab, transform.position, Quaternion.identity).GetComponent<FireBallPrefab>();
-        fireBall.transform.position = Player.Instance.transform.position;
+        fireBall.transform.position = Player.Instance.FirePos.position;
     }
 }

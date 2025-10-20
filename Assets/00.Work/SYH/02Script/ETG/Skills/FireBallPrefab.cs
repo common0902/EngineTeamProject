@@ -10,7 +10,7 @@ public class FireBallPrefab : SkillPrefab
     }
     private void Start()
     {
-        _moveDir = SkillAimming.AimWeapon(transform);
+        _moveDir = SkillUtility.AimWeapon(transform);
         //_moveDir = _targetPos - Player.Instance.transform.position;
 
         //float radian = Mathf.Atan2(_moveDir.y, _moveDir.x);

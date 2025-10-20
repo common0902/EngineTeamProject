@@ -1,18 +1,18 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Code.PokerShooter
+
+public class PlayerMove : MonoBehaviour
 {
-    public class PlayerMove : MonoBehaviour
+    public bool _canMove = true;
+    private Vector2 _moveDir;
+    private void Update()
     {
-        private Vector2 _moveDir;
-        private void Update()
-        {
-            transform.position += (Vector3)_moveDir * Player.Instance.PlayerStatusCompo. _speed * Time.deltaTime;
-        }
-        public void OnMove(InputValue value)
-        {
-            _moveDir = value.Get<Vector2>();
-        }
+        if(_canMove) transform.position += (Vector3)_moveDir * Player.Instance.PlayerStatusCompo._speed * Time.deltaTime;
+    }
+    public void OnMove(InputValue value)
+    {
+        _moveDir = value.Get<Vector2>();
     }
 }
+
