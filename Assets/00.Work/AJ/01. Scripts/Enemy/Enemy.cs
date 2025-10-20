@@ -1,16 +1,14 @@
 using UnityEngine;
 using Unity.Behavior;
 using UnityEngine.AI;
-//using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Enemy : Agent, IComponent
 {
     public Animator AnimCompo { get; private set; } 
-    public Transform _visualTrm;
 
     public Transform target;
-    public PathMovement MovementCompo { get; private set; }
-    //[field: SerializeField] public NavMeshAgent AgentCompo { get; private set; }
+    public EnemyRenderer VisualCompo { get; private set; }
+    [field: SerializeField] public NavMeshAgent AgentCompo { get; private set; }
     public BehaviorGraphAgent BtAgent { get; private set; }
     [SerializeField] private float _chaseRange;
     [SerializeField] private float _attackRange;
@@ -22,9 +20,9 @@ public class Enemy : Agent, IComponent
         base.InitializeComponents();
         BtAgent = GetComponent<BehaviorGraphAgent>();
         AnimCompo = GetComponentInChildren<Animator>();
-        /*AgentCompo = GetComponent<NavMeshAgent>();
-        MovementCompo = GetComponentInChildren<PathMovement>();*/
-        _visualTrm = transform.Find("Visual");
+        AgentCompo = GetComponent<NavMeshAgent>();
+        //MovementCompo = GetComponentInChildren<PathMovement>();
+        VisualCompo = GetComponentInChildren<EnemyRenderer>();
     }
     public bool CheckChaseRange()
     {
@@ -44,17 +42,22 @@ public class Enemy : Agent, IComponent
 
         return hit.collider == null;
     }
-/*#if UNITY_EDITOR
+    private void LateUpdate()
+    {
+        if(VisualCompo != null)
+            VisualCompo.Filp(target.position - transform.position);
+    }
+
+#if UNITY_EDITOR
     private void OnDrawGizmos()
     {
-
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, _chaseRange);
 
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, _attackRange);
     }
-#endif*/
+#endif
     public void Initialize(Agent agent)
     {
         
