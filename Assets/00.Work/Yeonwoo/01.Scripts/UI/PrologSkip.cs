@@ -1,10 +1,13 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PrologSkip : MonoBehaviour
+namespace _00.Work.Yeonwoo._01.Scripts.UI
 {
-   public void Skip()
+   public class PrologSkip : MonoBehaviour
    {
-      SceneManager.LoadScene(2);
+      public void Skip()
+      {
+         SceneManager.LoadScene("Develop");
+      }
    }
 }

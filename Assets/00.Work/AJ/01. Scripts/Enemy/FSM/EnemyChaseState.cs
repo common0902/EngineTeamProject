@@ -15,10 +15,12 @@ public class EnemyChaseState : EnemyState
     {
         base.Enter();
         Debug.Log("Enter Chase State");
+        _enemy.AgentCompo.updateRotation = false;
+        _enemy.AgentCompo.updateUpAxis = false;
     }
     public override void Update()
     {
-        base.Update();
+        _enemy.AgentCompo.SetDestination(_enemy.target.position);
         if (!_enemy.CheckChaseRange())
         {
             _stateMachine.ChangeState(EnemyStateType.Idle);
