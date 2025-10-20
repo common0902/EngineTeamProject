@@ -6,7 +6,7 @@ public class SkillController : MonoBehaviour
 {
     public event Action OnUseSkill;
     public event Action OnChangeSkill;
-
+    public bool _canUseSkill = true;
     public Queue<Skill> Skills { get; private set; }
     [SerializeField] LayerMask _skillLayer;
     [SerializeField] float _skillChangeRange = 1.5f;
@@ -47,6 +47,7 @@ public class SkillController : MonoBehaviour
     }
     public void UseSkill(int skillNum)
     {
+        if (!_canUseSkill) return;
         OnUseSkill?.Invoke();
         Skill[] eliments = Skills.ToArray();
 

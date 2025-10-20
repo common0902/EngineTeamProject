@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 namespace _00.Work.Yeonwoo._01.Scripts.UI
 {
-    public class SelectTitlePanel : MonoSingletonUI<SelectTitlePanel>, IMenuPanel
+    public class SelectTitlePanel : MonoSingletonUI<SelectTitlePanel>, ISettingPanel
     {
         public bool IsOpen => gameObject.activeSelf;
 

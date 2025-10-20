@@ -512,7 +512,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _GradientTex:
-        m_Texture: {fileID: 816385336}
+        m_Texture: {fileID: 1047952721}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -1079,7 +1079,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _audioMixerGroup: {fileID: -3218826344659899031, guid: b22c88b87da55dc4b8ff5d2c61b215d9, type: 2}
   _audioClip: {fileID: 8300000, guid: c10a3ca46a91f4226be7cf14a0961bbc, type: 3}
---- !u!28 &816385336
+--- !u!28 &1047952721
 Texture2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1904,6 +1904,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 7219923569291125744}
+    - target: {fileID: 2868148693970669691, guid: edc42b1c0fa318343ae7d09a4f42dfbd, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 7219923569291125744}
     - target: {fileID: 4651287103218403463, guid: edc42b1c0fa318343ae7d09a4f42dfbd, type: 3}
       propertyPath: _canvasScaler
       value: 
@@ -1920,8 +1924,24 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 7219923569291125744}
+    - target: {fileID: 6811374552495893892, guid: edc42b1c0fa318343ae7d09a4f42dfbd, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 7219923569291125744}
     - target: {fileID: 7232604023851906411, guid: edc42b1c0fa318343ae7d09a4f42dfbd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 7219923569291125744}
+    - target: {fileID: 7515927904533806124, guid: edc42b1c0fa318343ae7d09a4f42dfbd, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7219923569291125744}
+    - target: {fileID: 7876978330072135554, guid: edc42b1c0fa318343ae7d09a4f42dfbd, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 7219923569291125744}
+    - target: {fileID: 7972425489516517025, guid: edc42b1c0fa318343ae7d09a4f42dfbd, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 7219923569291125744}
     - target: {fileID: 8804530573699588395, guid: edc42b1c0fa318343ae7d09a4f42dfbd, type: 3}

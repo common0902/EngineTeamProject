@@ -4,6 +4,7 @@ using UnityEngine;
 public abstract class Skill : MonoBehaviour
 {
     [field: SerializeField] public int Cost { get; private set; }
+    [field: SerializeField] public float PastDelay { get; private set; }
     [field: SerializeField] public string Name { get; private set; }
     [field: SerializeField] public Skill ThisSkill { get; private set; }
     [field: SerializeField] public Sprite SkillSprite { get; private set; }
@@ -18,5 +19,10 @@ public abstract class Skill : MonoBehaviour
     virtual public void Passive()
     {
         
+    }
+
+    virtual public void EndPastDelay()
+    {
+
     }
 }

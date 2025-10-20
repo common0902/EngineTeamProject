@@ -5,10 +5,19 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
 {
     public class SettingPanel : Data.MonoSingletonUI<SettingPanel>
     {
-        [SerializeField] private SoundSettingPanel  _soundSettingPanel;
-        [SerializeField] private VideoSettingPanel _videoSettingPanel;
-        [SerializeField] private SelectTitlePanel _selectTitlePanel;
-        [SerializeField] private SelectExitPanel _selectExitPanel;
+        private SoundSettingPanel  _soundSettingPanel;
+        private VideoSettingPanel _videoSettingPanel;
+        private SelectTitlePanel _selectTitlePanel;
+        private SelectExitPanel _selectExitPanel;
+
+        protected override void Awake()
+        {
+            base.Awake();
+            _soundSettingPanel = SoundSettingPanel.Instance;
+            _videoSettingPanel = VideoSettingPanel.Instance;
+            _selectTitlePanel = SelectTitlePanel.Instance;
+            _selectExitPanel = SelectExitPanel.Instance;
+        }
 
         public void SoundPanelOpen()
         {
