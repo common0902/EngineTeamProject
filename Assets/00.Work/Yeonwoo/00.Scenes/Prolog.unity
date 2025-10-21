@@ -758,7 +758,6 @@ MonoBehaviour:
     \uAD6C\uD574\uC8FC\uC138\uC694."
   _typingSpeed: 0.08
   _delayBetweenLines: 1.5
-  _playOnStart: 1
 --- !u!1 &2112961930
 GameObject:
   m_ObjectHideFlags: 0
@@ -911,7 +910,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _audioMixerGroup: {fileID: -3218826344659899031, guid: b22c88b87da55dc4b8ff5d2c61b215d9, type: 2}
-  _audioClip: {fileID: 8300000, guid: c10a3ca46a91f4226be7cf14a0961bbc, type: 3}
+  _audioClip: {fileID: 8300000, guid: d7cfd9f6afac6a24794f9a95c6aebcbb, type: 3}
 --- !u!1 &2126168311
 GameObject:
   m_ObjectHideFlags: 0
@@ -998,18 +997,6 @@ MonoBehaviour:
       - m_Target: {fileID: 1721507618}
         m_TargetAssemblyTypeName: PrologSkip, Assembly-CSharp
         m_MethodName: Skip
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: _00.Work.Yeonwoo._01.Scripts.UI.SoundSystem, Assembly-CSharp
-        m_MethodName: ButtonClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
