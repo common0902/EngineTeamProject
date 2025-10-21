@@ -17,9 +17,7 @@ MonoBehaviour:
     m_Value1: 10511758120189801833
   m_Variables:
   - rid: 282577843873906948
-  - rid: 282578246501925029
-  - rid: 282578246501925072
-  m_VersionTimestamp: 638965749307473877
+  m_VersionTimestamp: 638950459546422630
   m_CommandBuffer:
     m_Commands: []
   m_RuntimeBlackboardAsset: {fileID: 1684805206515025124}
@@ -33,26 +31,6 @@ MonoBehaviour:
           m_Value0: 1
           m_Value1: 0
         Name: Self
-        IsExposed: 1
-        m_IsShared: 0
-        m_Value: {fileID: 0}
-    - rid: 282578246501925029
-      type: {class: 'TypedVariableModel`1[[UnityEngine.Vector3, UnityEngine.CoreModule]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
-      data:
-        ID:
-          m_Value0: 12815508531239619861
-          m_Value1: 11016603863371805832
-        Name: NextPosition
-        IsExposed: 1
-        m_IsShared: 0
-        m_Value: {x: 0, y: 0, z: 0}
-    - rid: 282578246501925072
-      type: {class: 'TypedVariableModel`1[[_00.Work.Yeonwoo._01.Scripts.Agents.WayPoints, Assembly-CSharp]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
-      data:
-        ID:
-          m_Value0: 2804377952116291971
-          m_Value1: 10779823684533719908
-        Name: WayPoints
         IsExposed: 1
         m_IsShared: 0
         m_Value: {fileID: 0}
@@ -72,8 +50,7 @@ MonoBehaviour:
   m_Description: 
   m_Nodes:
   - rid: 282577843873906946
-  - rid: 282578246501925015
-  m_VersionTimestamp: 638965749504403436
+  m_VersionTimestamp: 638950459664541804
   m_DebugInfo: {fileID: 8155244522259889548}
   m_RuntimeGraph: {fileID: 2657141434113358339}
   AssetID:
@@ -91,59 +68,6 @@ MonoBehaviour:
       m_Value1: 11549843281177505721
     Variables: []
     NamedChildren: []
-  - Name: Get next wayPoint
-    Story: 'get [NextPathPoint] from [WayPoints]'
-    RuntimeTypeID:
-      m_Value0: 7627313134935861559
-      m_Value1: 15676421525850461965
-    Variables:
-    - Name: NextPathPoint
-      Type:
-        m_SerializableType: UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0,
-          Culture=neutral, PublicKeyToken=null
-      Tooltip: 
-    - Name: WayPoints
-      Type:
-        m_SerializableType: WayPoints, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
-      Tooltip: 
-    NamedChildren: []
-  - Name: Log Message
-    Story: Log [message] to the console
-    RuntimeTypeID:
-      m_Value0: 14362779694071371193
-      m_Value1: 7851297057022692581
-    Variables:
-    - Name: Message
-      Type:
-        m_SerializableType: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
-          PublicKeyToken=b77a5c561934e089
-      Tooltip: 
-    - Name: LogLevel
-      Type:
-        m_SerializableType: Unity.Behavior.LogMessageToConsoleAction+LogType, Unity.Behavior,
-          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      Tooltip: 
-    NamedChildren: []
-  - Name: Wait (Seconds)
-    Story: Wait for [SecondsToWait] seconds
-    RuntimeTypeID:
-      m_Value0: 7729581452106168333
-      m_Value1: 8820302366443624372
-    Variables:
-    - Name: SecondsToWait
-      Type:
-        m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
-          PublicKeyToken=b77a5c561934e089
-      Tooltip: 
-    NamedChildren: []
-  - Name: Sequence
-    Story: 
-    RuntimeTypeID:
-      m_Value0: 10181448252506100447
-      m_Value1: 8737116843063128493
-    Variables: []
-    NamedChildren: []
   m_Blackboards: []
   m_MainBlackboardAuthoringAsset: {fileID: -561047795556792986}
   m_CommandBuffer:
@@ -155,7 +79,7 @@ MonoBehaviour:
     - rid: 282577843873906946
       type: {class: StartNodeModel, ns: Unity.Behavior, asm: Unity.Behavior.Authoring}
       data:
-        Position: {x: -108.26659, y: -27.643314}
+        Position: {x: -108.26659, y: -28.266653}
         ID:
           m_Value0: 5260135473239816898
           m_Value1: 17752486943126259384
@@ -169,7 +93,7 @@ MonoBehaviour:
           m_Value0: 3335272451348827663
           m_Value1: 11549843281177505721
         m_FieldValues: []
-        Repeat: 0
+        Repeat: 1
         AllowMultipleRepeatsPerTick: 0
     - rid: 282577843873906947
       type: {class: PortModel, ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
@@ -179,105 +103,7 @@ MonoBehaviour:
         m_IsFloating: 0
         m_NodeModel:
           rid: 282577843873906946
-        m_Connections:
-        - rid: 282578246501925016
-    - rid: 282578246501925015
-      type: {class: ActionNodeModel, ns: Unity.Behavior, asm: Unity.Behavior.Authoring}
-      data:
-        Position: {x: -255.34981, y: 162.12071}
-        ID:
-          m_Value0: 7788768301113551707
-          m_Value1: 3878196497942332164
-        Parents: []
-        PortModels:
-        - rid: 282578246501925016
-        - rid: 282578246501925017
-        NodeType:
-          m_SerializableType: _00.Work.Yeonwoo._01.Scripts.Bosses.BT.Action.GetNextWayPointAction,
-            Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        NodeTypeID:
-          m_Value0: 7627313134935861559
-          m_Value1: 15676421525850461965
-        m_FieldValues:
-        - rid: 282578246501925018
-        - rid: 282578246501925019
-    - rid: 282578246501925016
-      type: {class: PortModel, ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
-      data:
-        m_Name: InputPort
-        m_PortDataFlowType: 0
-        m_IsFloating: 0
-        m_NodeModel:
-          rid: 282578246501925015
-        m_Connections:
-        - rid: 282577843873906947
-    - rid: 282578246501925017
-      type: {class: PortModel, ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
-      data:
-        m_Name: OutputPort
-        m_PortDataFlowType: 1
-        m_IsFloating: 0
-        m_NodeModel:
-          rid: 282578246501925015
         m_Connections: []
-    - rid: 282578246501925018
-      type: {class: BehaviorGraphNodeModel/FieldModel, ns: Unity.Behavior, asm: Unity.Behavior.Authoring}
-      data:
-        FieldName: NextPathPoint
-        Type:
-          m_SerializableType: UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-        LocalValue:
-          rid: 282578246501925020
-        LinkedVariable:
-          rid: 282578246501925063
-    - rid: 282578246501925019
-      type: {class: BehaviorGraphNodeModel/FieldModel, ns: Unity.Behavior, asm: Unity.Behavior.Authoring}
-      data:
-        FieldName: WayPoints
-        Type:
-          m_SerializableType: WayPoints, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-            PublicKeyToken=null
-        LocalValue:
-          rid: 282578246501925021
-        LinkedVariable:
-          rid: 282578246501925092
-    - rid: 282578246501925020
-      type: {class: 'BlackboardVariable`1[[UnityEngine.Vector3, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 0
-          m_Value1: 0
-        Name: 
-        m_Value: {x: 0, y: 0, z: 0}
-    - rid: 282578246501925021
-      type: {class: 'BlackboardVariable`1[[WayPoints, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 0
-          m_Value1: 0
-        Name: 
-        m_Value: {fileID: 0}
-    - rid: 282578246501925063
-      type: {class: 'TypedVariableModel`1[[UnityEngine.Vector3, UnityEngine.CoreModule]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
-      data:
-        ID:
-          m_Value0: 12815508531239619861
-          m_Value1: 11016603863371805832
-        Name: NextPosition
-        IsExposed: 1
-        m_IsShared: 0
-        m_Value: {x: 0, y: 0, z: 0}
-    - rid: 282578246501925092
-      type: {class: 'TypedVariableModel`1[[_00.Work.Yeonwoo._01.Scripts.Agents.WayPoints, Assembly-CSharp]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
-      data:
-        ID:
-          m_Value0: 2804377952116291971
-          m_Value1: 10779823684533719908
-        Name: WayPoints
-        IsExposed: 1
-        m_IsShared: 0
-        m_Value: {fileID: 0}
 --- !u!114 &1684805206515025124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -290,15 +116,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c02bb70996b49eba31d0c206e28da24, type: 3}
   m_Name: BossBT Blackboard
   m_EditorClassIdentifier: 
-  VersionTimestamp: 638965749307473877
+  VersionTimestamp: 638950459546422630
   AssetID:
-    m_Value0: 7218812879410064278
-    m_Value1: 10511758120189801833
+    m_Value0: 0
+    m_Value1: 0
   m_Blackboard:
     m_Variables:
     - rid: 282577843873906949
-    - rid: 282578246501925030
-    - rid: 282578246501925073
   m_SharedBlackboardVariableGuids: []
   references:
     version: 2
@@ -310,22 +134,6 @@ MonoBehaviour:
           m_Value0: 1
           m_Value1: 0
         Name: Self
-        m_Value: {fileID: 0}
-    - rid: 282578246501925030
-      type: {class: 'BlackboardVariable`1[[UnityEngine.Vector3, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 12815508531239619861
-          m_Value1: 11016603863371805832
-        Name: NextPosition
-        m_Value: {x: 0, y: 0, z: 0}
-    - rid: 282578246501925073
-      type: {class: 'BlackboardVariable`1[[_00.Work.Yeonwoo._01.Scripts.Agents.WayPoints, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 2804377952116291971
-          m_Value1: 10779823684533719908
-        Name: WayPoints
         m_Value: {fileID: 0}
 --- !u!114 &2657141434113358339
 MonoBehaviour:
@@ -340,16 +148,16 @@ MonoBehaviour:
   m_Name: BossBT
   m_EditorClassIdentifier: 
   Graphs:
-  - rid: 282578246501925102
+  - rid: 282577843873906950
   RootGraph:
-    rid: 282578246501925102
+    rid: 282577843873906950
   m_DebugInfo: {fileID: 8155244522259889548}
   references:
     version: 2
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
-    - rid: 282578246501925102
+    - rid: 282577843873906950
       type: {class: BehaviorGraphModule, ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         AuthoringAssetID:
@@ -357,65 +165,49 @@ MonoBehaviour:
           m_Value1: 10511758120189801833
         m_DebugInfo: {fileID: 8155244522259889548}
         BlackboardReference:
-          rid: 282578246501925103
+          rid: 282577843873906951
         BlackboardGroupReferences: []
         Root:
-          rid: 282578246501925104
+          rid: 282577843873906952
         m_ActiveNodes: []
         m_NodesToTick: []
         m_NodesToEnd:
-          rid: 282578246501925105
+          rid: 282577843873906953
         m_EndedNodes:
-          rid: 282578246501925106
-        m_VersionTimestamp: 638965749504403436
-    - rid: 282578246501925103
+          rid: 282577843873906954
+        m_VersionTimestamp: 638950459664541804
+    - rid: 282577843873906951
       type: {class: BlackboardReference, ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         m_Blackboard:
-          rid: 282578246501925107
+          rid: 282577843873906955
         m_Source: {fileID: 1684805206515025124}
-    - rid: 282578246501925104
+    - rid: 282577843873906952
       type: {class: Start, ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         ID:
           m_Value0: 5260135473239816898
           m_Value1: 17752486943126259384
         Graph:
-          rid: 282578246501925102
+          rid: 282577843873906950
         m_Parent:
           rid: -2
         m_Child:
-          rid: 282578246501925108
-        Repeat: 0
+          rid: -2
+        Repeat: 1
         AllowMultipleRepeatsPerTick: 0
-    - rid: 282578246501925105
+    - rid: 282577843873906953
       type: {class: 'Stack`1[[Unity.Behavior.Node, Unity.Behavior]]', ns: System.Collections.Generic, asm: mscorlib}
       data: 
-    - rid: 282578246501925106
+    - rid: 282577843873906954
       type: {class: 'HashSet`1[[Unity.Behavior.Node, Unity.Behavior]]', ns: System.Collections.Generic, asm: System.Core}
       data: 
-    - rid: 282578246501925107
+    - rid: 282577843873906955
       type: {class: Blackboard, ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         m_Variables:
-        - rid: 282578246501925109
-        - rid: 282578246501925110
-        - rid: 282578246501925111
-    - rid: 282578246501925108
-      type: {class: GetNextWayPointAction, ns: _00.Work.Yeonwoo._01.Scripts.Bosses.BT.Action, asm: Assembly-CSharp}
-      data:
-        ID:
-          m_Value0: 7788768301113551707
-          m_Value1: 3878196497942332164
-        Graph:
-          rid: 282578246501925102
-        m_Parent:
-          rid: 282578246501925104
-        NextPathPoint:
-          rid: 282578246501925110
-        WayPoints:
-          rid: 282578246501925112
-    - rid: 282578246501925109
+        - rid: 282577843873906956
+    - rid: 282577843873906956
       type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
@@ -423,32 +215,6 @@ MonoBehaviour:
           m_Value1: 0
         Name: Self
         m_Value: {fileID: 0}
-    - rid: 282578246501925110
-      type: {class: 'BlackboardVariable`1[[UnityEngine.Vector3, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 12815508531239619861
-          m_Value1: 11016603863371805832
-        Name: NextPosition
-        m_Value: {x: 0, y: 0, z: 0}
-    - rid: 282578246501925111
-      type: {class: 'BlackboardVariable`1[[_00.Work.Yeonwoo._01.Scripts.Agents.WayPoints, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 2804377952116291971
-          m_Value1: 10779823684533719908
-        Name: WayPoints
-        m_Value: {fileID: 0}
-    - rid: 282578246501925112
-      type: {class: 'ComponentToComponentBlackboardVariable`2[[_00.Work.Yeonwoo._01.Scripts.Agents.WayPoints, Assembly-CSharp],[WayPoints, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 0
-          m_Value1: 0
-        Name: 
-        m_Value: {fileID: 0}
-        m_LinkedVariable:
-          rid: 282578246501925111
 --- !u!114 &8155244522259889548
 MonoBehaviour:
   m_ObjectHideFlags: 0
