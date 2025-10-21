@@ -6,6 +6,7 @@ public class Laser : Skill
     private void Awake()
     {
         _prefab = Instantiate(SkillPrefab, Player.Instance.FirePos.position, Quaternion.identity);
+        _prefab.SetActive(false);
     }
     public override void Active()
     {
@@ -20,6 +21,6 @@ public class Laser : Skill
     protected override void UseSkill()
     {
         base.UseSkill();
-        
+        _prefab.GetComponent<LaserPrefab>().Attack();
     }
 }
