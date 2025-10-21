@@ -14,6 +14,9 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
     
         private void Awake()
         {
+            if (!_audioClip) 
+                Debug.Log("호버 오디오 안 넣음");
+            
             _audioSource = GetComponent<AudioSource>();
             if (_audioSource == null)
                 _audioSource = gameObject.AddComponent<AudioSource>();
