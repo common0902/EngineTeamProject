@@ -49,7 +49,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
 
         public void GameStart()
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene("Develop");
             Time.timeScale = 1f;
         }
 
