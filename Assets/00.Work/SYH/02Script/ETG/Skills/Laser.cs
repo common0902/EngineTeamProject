@@ -21,6 +21,6 @@ public class Laser : Skill
     protected override void UseSkill()
     {
         base.UseSkill();
-        _prefab.GetComponent<LaserPrefab>().Attack();
+        _prefab.GetComponent<LaserParentPrefab>().Attack();
     }
 }
