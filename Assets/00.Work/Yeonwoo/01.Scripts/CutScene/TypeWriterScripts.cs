@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem.Controls;
 using UnityEngine.SceneManagement;
 
 namespace _00.Work.Yeonwoo._01.Scripts.CutScene
@@ -35,6 +37,19 @@ namespace _00.Work.Yeonwoo._01.Scripts.CutScene
             }
 
             OnDialogueEnd();
+        }
+
+        private void Update()
+        {
+            SkipKey();
+        }
+
+        private void SkipKey()
+        {
+            if (Input.anyKeyDown)
+            {
+                SceneManager.LoadScene("Title");
+            }
         }
 
         private IEnumerator TypeText(string line)
