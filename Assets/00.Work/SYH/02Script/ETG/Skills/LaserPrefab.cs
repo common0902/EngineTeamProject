@@ -4,8 +4,6 @@ using UnityEngine;
 public class LaserPrefab : SkillPrefab
 {
     LaserParentPrefab _parent;
-    [SerializeField] int _num;
-    [SerializeField] bool _isHead;
     private void Awake()
     {
         _parent = gameObject.GetComponentInParent<LaserParentPrefab>();
