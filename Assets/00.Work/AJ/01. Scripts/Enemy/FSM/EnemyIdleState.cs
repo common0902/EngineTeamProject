@@ -13,6 +13,9 @@ public class EnemyIdleState : EnemyState
     {
         base.Enter();
         Debug.Log("Enter Idle State");
+        _enemy.AgentCompo.updateRotation = false;
+        _enemy.AgentCompo.updateUpAxis = false;
+        _enemy.AgentCompo.isStopped = true;
         _lastCheckTime = Time.time;
     }
     public override void Update()

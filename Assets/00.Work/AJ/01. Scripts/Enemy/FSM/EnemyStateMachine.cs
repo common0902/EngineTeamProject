@@ -6,6 +6,8 @@ public enum EnemyStateType
     Idle,
     Chase,
     Attack,
+    Hit,
+    Dead,
 }
 
 public class EnemyStateMachine : MonoBehaviour

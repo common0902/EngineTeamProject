@@ -9,30 +9,30 @@ public class Enemy : Agent, IComponent
     public Transform target;
     public EnemyRenderer VisualCompo { get; private set; }
     [field: SerializeField] public NavMeshAgent AgentCompo { get; private set; }
-    public BehaviorGraphAgent BtAgent { get; private set; }
+    //public BehaviorGraphAgent BtAgent { get; private set; }
     [SerializeField] private float _chaseRange;
     [SerializeField] private float _attackRange;
     [SerializeField] private LayerMask _playerMask;
     [SerializeField] private LayerMask _whatIsWall;
-    [field: SerializeField] public EnemySO enemySO { get; private set; }
+    [field:SerializeField] public EnemySO enemySO { get; private set; }
     protected override void InitializeComponents()
     {
         base.InitializeComponents();
-        BtAgent = GetComponent<BehaviorGraphAgent>();
+        //BtAgent = GetComponent<BehaviorGraphAgent>();
         AnimCompo = GetComponentInChildren<Animator>();
         AgentCompo = GetComponent<NavMeshAgent>();
-        //MovementCompo = GetComponentInChildren<PathMovement>();
         VisualCompo = GetComponentInChildren<EnemyRenderer>();
     }
     public bool CheckChaseRange()
     {
-        return Physics2D.OverlapCircle(transform.position, _chaseRange, _playerMask);
+        return Physics2D.OverlapCircle(transform.position, _chaseRange, _playerMask) && IsPlayerInSight();
     }
     public bool CheckAttackRange()
     {
         return Physics2D.OverlapCircle(transform.position, _attackRange, _playerMask);
     }
-    public bool IsPlayerInLineOfSight()
+    // 플레이어가 시야 안에 있는지
+    public bool IsPlayerInSight()
     {
         if (target == null) return false;
 
@@ -44,7 +44,7 @@ public class Enemy : Agent, IComponent
     }
     private void LateUpdate()
     {
-        if(VisualCompo != null)
+        if(VisualCompo != null && IsPlayerInSight())
             VisualCompo.Filp(target.position - transform.position);
     }
 

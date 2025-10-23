@@ -15,8 +15,7 @@ public class EnemyChaseState : EnemyState
     {
         base.Enter();
         Debug.Log("Enter Chase State");
-        _enemy.AgentCompo.updateRotation = false;
-        _enemy.AgentCompo.updateUpAxis = false;
+        _enemy.AgentCompo.isStopped = false;
     }
     public override void Update()
     {

@@ -15,6 +15,7 @@ public class EnemyBrain : MonoBehaviour
         _stateMachine.AddState(EnemyStateType.Idle, new EnemyIdleState(_enemy, "Idle", _stateMachine));
         _stateMachine.AddState(EnemyStateType.Chase, new EnemyChaseState(_enemy, "Chase", _stateMachine));
         _stateMachine.AddState(EnemyStateType.Attack, new EnemyAttackState(_enemy, "Attack", _stateMachine));
+        _stateMachine.AddState(EnemyStateType.Hit, new EnemyHitState(_enemy, "Hit", _stateMachine));
     }
     private void Start()
     {
