@@ -8,6 +8,10 @@ public class Laser : Skill
         _prefab = Instantiate(SkillPrefab, Player.Instance.FirePos.position, Quaternion.identity);
         _prefab.SetActive(false);
     }
+    private void Start()
+    {
+        Player.Instance.SkillControllerCompo.OnChangeSkill += DisActive;
+    }
     public override void Active()
     {
         base.Active();
