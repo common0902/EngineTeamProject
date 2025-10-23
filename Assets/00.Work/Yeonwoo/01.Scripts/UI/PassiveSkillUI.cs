@@ -26,14 +26,17 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
 
         public void OnPointerEnter(PointerEventData eventData)
         {
-            //_nameText = passiveData.Name; + setActive
-            //_descriptionText = passiveData.Description; + setActive
+            _nameText.gameObject.SetActive(true);
+            _descriptionText.gameObject.SetActive(true);
+            _nameText.text = passiveData.Name;
+            _descriptionText.text = passiveData.Description;
             // 이거는 내일~~
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
-            
+            _nameText.gameObject.SetActive(false);
+            _descriptionText.gameObject.SetActive(false);
         }
     }
 }

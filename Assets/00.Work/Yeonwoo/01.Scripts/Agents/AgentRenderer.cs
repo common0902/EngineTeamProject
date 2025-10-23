@@ -7,14 +7,14 @@ namespace _00.Work.Yeonwoo._01.Scripts.Agents
     {
         public bool IsFacingRight { get; private set; } = true;
         
-        private SpriteRenderer _sR;
+        private SpriteRenderer _sr;
         private Agent _owner;
         private AgentMover _mover;
         
         public void Initialize(Agent agent)
         {
             _owner = agent;
-            _sR = GetComponent<SpriteRenderer>();
+            _sr = GetComponent<SpriteRenderer>();
             _mover = _owner.Get<AgentMover>();
 
             _mover.OnSpeedChange += HandleSpeedChange;

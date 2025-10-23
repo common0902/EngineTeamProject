@@ -4,7 +4,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.Agents
 {
     public class WayPoints : MonoBehaviour
     {
-        [SerializeField] private WayPoint[]  wayPoints;
+        [SerializeField] private WayPoint[] wayPoints;
 
         private int _currentIndex;
 
