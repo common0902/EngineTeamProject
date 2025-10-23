@@ -6,10 +6,10 @@ namespace _00.Work.Yeonwoo._01.Scripts.Direction
 {
     public class InGameCinema : MonoBehaviour
     {
-        [SerializeField] private AppearancePlayerVisual _visualChange;
-        [SerializeField] private AppearancePlayer _player;
-        [SerializeField] private float _distance = 3f;
-        [SerializeField] private float _duration;
+        [SerializeField] private AppearancePlayerVisual visualChange;
+        [SerializeField] private AppearancePlayer player;
+        [SerializeField] private float distance = 3f;
+        [SerializeField] private float duration;
         private Material material;
     
         public event Action AppearanceComplete;
@@ -18,26 +18,26 @@ namespace _00.Work.Yeonwoo._01.Scripts.Direction
         {
             SpriteRenderer spriteRenderer = GetComponentInChildren<SpriteRenderer>();
             material = spriteRenderer.material;
-            _player.transform.position = transform.position;
+            player.transform.position = transform.position;
         }
 
         private void OnEnable()
         {
-            _visualChange.PlayerScaleChanged += PortalAnim;
+            visualChange.PlayerScaleChanged += PortalAnim;
         }
         
         private void PortalAnim()
         {
-            Vector3 targetPos = _player.transform.position + Vector3.down * _distance;
+            Vector3 targetPos = player.transform.position + Vector3.down * distance;
         
-            _player.transform.DOMove(targetPos, _duration)
+            player.transform.DOMove(targetPos, duration)
                 .SetEase(Ease.InOutQuint)
                 .OnComplete(() =>
                 {
                     AppearanceComplete?.Invoke();
-                    DOVirtual.DelayedCall(3f, () =>
+                    DOVirtual.DelayedCall(1.5f, () =>
                     {
-                        material.DOFloat(0f, "_FullGlowDissolveFade", 2f)
+                        material.DOFloat(0f, "_FullGlowDissolveFade", 1f)
                             .SetEase(Ease.OutSine)
                             .OnComplete(() =>
                             {
@@ -49,7 +49,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.Direction
 
         private void OnDisable()
         {
-            _visualChange.PlayerScaleChanged -= PortalAnim;
+            visualChange.PlayerScaleChanged -= PortalAnim;
         }
     }
 }

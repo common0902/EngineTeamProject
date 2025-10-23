@@ -10,12 +10,12 @@ namespace _00.Work.Yeonwoo._01.Scripts.CutScene
     public class TypeWriterScripts : MonoBehaviour
     {
         [Header("텍스트 컴포")]
-        [SerializeField] private TextMeshProUGUI _textUI;
+        [SerializeField] private TextMeshProUGUI textUI;
 
         [Header("텍스트 설정")]
-        [SerializeField, TextArea(2, 5)] private string[] _dialogues;
-        [SerializeField] private float _typingSpeed = 0.05f;
-        [SerializeField] private float _delayBetweenLines = 1.0f;
+        [SerializeField, TextArea(2, 5)] private string[] dialogues;
+        [SerializeField] private float typingSpeed = 0.05f;
+        [SerializeField] private float delayBetweenLines = 1.0f;
         
         private int _currentIndex = 0;
 
@@ -26,14 +26,14 @@ namespace _00.Work.Yeonwoo._01.Scripts.CutScene
 
         private IEnumerator PlayDialogues()
         {
-            _textUI.text = "";
+            textUI.text = "";
 
-            while (_currentIndex < _dialogues.Length)
+            while (_currentIndex < dialogues.Length)
             {
-                yield return StartCoroutine(TypeText(_dialogues[_currentIndex]));
+                yield return StartCoroutine(TypeText(dialogues[_currentIndex]));
                 _currentIndex++;
 
-                yield return new WaitForSeconds(_delayBetweenLines);
+                yield return new WaitForSeconds(delayBetweenLines);
             }
 
             OnDialogueEnd();
@@ -54,19 +54,19 @@ namespace _00.Work.Yeonwoo._01.Scripts.CutScene
 
         private IEnumerator TypeText(string line)
         {
-            _textUI.text = "";
+            textUI.text = "";
 
             foreach (char c in line)
             {
-                _textUI.text += c;
-                yield return new WaitForSeconds(_typingSpeed);
+                textUI.text += c;
+                yield return new WaitForSeconds(typingSpeed);
             }
         }
 
         private void OnDialogueEnd()
         {
             Debug.Log("끝");
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene("Title");
         }
     }
 }
