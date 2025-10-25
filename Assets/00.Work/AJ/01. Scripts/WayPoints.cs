@@ -11,4 +11,10 @@ public class WayPoints : MonoBehaviour
         _currentIdx = (_currentIdx + 1) % wayPoints.Length;
         return wayPoints[_currentIdx].Position;
     }
+    public Vector3 GetRandomWayPoint()
+    {
+        if (wayPoints.Length == 0) return transform.position;
+        int idx = Random.Range(0, wayPoints.Length);
+        return wayPoints[idx].Position;
+    }
 }

@@ -2,64 +2,98 @@ using UnityEngine;
 using Unity.Behavior;
 using UnityEngine.AI;
 
-public class Enemy : Agent, IComponent
+public class Enemy : Agent, IPoolable
 {
-    public Animator AnimCompo { get; private set; } 
-
-    public Transform target;
+    //public BehaviorGraphAgent BtAgent { get; private set; }
+    public string ItemName => enemySO.enemyName;
+    public GameObject GameObject => gameObject;
+    public Transform target { get; private set; }
+    [field:SerializeField] public EnemySO enemySO { get; private set; }
+    [SerializeField] private LayerMask playerMask;
+    [SerializeField] private LayerMask whatIsWall;
+    private bool canFlip = true;
+    private bool isDead = false;
+    #region Components
+    public Animator AnimCompo { get; private set; }
     public EnemyRenderer VisualCompo { get; private set; }
-    [field: SerializeField] public NavMeshAgent AgentCompo { get; private set; }
-    public BehaviorGraphAgent BtAgent { get; private set; }
-    [SerializeField] private float _chaseRange;
-    [SerializeField] private float _attackRange;
-    [SerializeField] private LayerMask _playerMask;
-    [SerializeField] private LayerMask _whatIsWall;
-    [field: SerializeField] public EnemySO enemySO { get; private set; }
+    public NavMeshAgent AgentCompo { get; private set; }
+    public Rigidbody2D RbCompo { get; private set; }
+    [field:SerializeField]public WayPoints wayPoints { get; private set; }
+    #endregion
     protected override void InitializeComponents()
     {
         base.InitializeComponents();
-        BtAgent = GetComponent<BehaviorGraphAgent>();
         AnimCompo = GetComponentInChildren<Animator>();
         AgentCompo = GetComponent<NavMeshAgent>();
-        //MovementCompo = GetComponentInChildren<PathMovement>();
         VisualCompo = GetComponentInChildren<EnemyRenderer>();
+        RbCompo = GetComponent<Rigidbody2D>();
+        target = GameObject.FindGameObjectWithTag("Player").transform;
+        wayPoints = GameObject.FindGameObjectWithTag("WayPoints").GetComponent<WayPoints>();
+        //BtAgent = GetComponent<BehaviorGraphAgent>();
+        AgentCompo.updateRotation = false;
+        AgentCompo.updateUpAxis = false;
+        if (wayPoints != null) // 삭제
+        {
+            Vector3 spawnPos = wayPoints.GetRandomWayPoint();
+            transform.position = spawnPos;
+        }
     }
     public bool CheckChaseRange()
     {
-        return Physics2D.OverlapCircle(transform.position, _chaseRange, _playerMask);
+        return Physics2D.OverlapCircle(transform.position, enemySO.chaseRange, playerMask) && IsPlayerInSight();
     }
     public bool CheckAttackRange()
     {
-        return Physics2D.OverlapCircle(transform.position, _attackRange, _playerMask);
+        return Physics2D.OverlapCircle(transform.position, enemySO.attackRange, playerMask);
     }
-    public bool IsPlayerInLineOfSight()
+    // 플레이어가 시야 안에 있는지
+    public bool IsPlayerInSight()
     {
         if (target == null) return false;
 
         Vector2 dir = (target.transform.position - transform.position).normalized;
         float dist = Vector2.Distance(transform.position, target.transform.position);
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, dist, _whatIsWall);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, dist, whatIsWall);
 
         return hit.collider == null;
     }
+
+    public bool IsOutScreen()
+    {
+        Vector2 screenPoint = Camera.main.WorldToScreenPoint(transform.position);
+        bool isOutScreen = screenPoint.x <= 0 || screenPoint.x >= Screen.width || screenPoint.y <= 0 || screenPoint.y >= Screen.height;
+        return isOutScreen;
+    }
+    
     private void LateUpdate()
     {
-        if(VisualCompo != null)
-            VisualCompo.Filp(target.position - transform.position);
+        if(VisualCompo != null && CheckChaseRange() && canFlip)
+            VisualCompo.Flip(target.position - transform.position);
     }
 
+    public void ChangeFlip(bool value)
+    {
+        canFlip = value;
+    }
+
+    public void ResetItem()
+    {
+        isDead = false;
+        canFlip = true;
+        if (wayPoints != null)
+        {
+            Vector3 spawnPos = wayPoints.GetRandomWayPoint();
+            transform.position = spawnPos;
+        }
+    }
 #if UNITY_EDITOR
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, _chaseRange);
+        Gizmos.DrawWireSphere(transform.position, enemySO.chaseRange);
 
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, _attackRange);
+        Gizmos.DrawWireSphere(transform.position, enemySO.attackRange);
     }
 #endif
-    public void Initialize(Agent agent)
-    {
-        
-    }
 }
