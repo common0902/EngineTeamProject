@@ -10,7 +10,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
 
         public void GoTitle()
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene("Title");
             Time.timeScale = 1;
         }
         

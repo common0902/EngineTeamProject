@@ -25,15 +25,27 @@ public class SkillController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            UseSkill(2);
+            UseSkill(2, true);
+        }
+        else if (Input.GetMouseButtonUp(0))
+        {
+            UseSkill(2, false);
         }
         if (Input.GetMouseButtonDown(1))
         {
-            UseSkill(1);
+            UseSkill(1, true);
+        }
+        else if (Input.GetMouseButtonUp(1))
+        {
+            UseSkill(1, false);
         }
         if (Input.GetMouseButtonDown(2))
         {
-            UseSkill(0);
+            UseSkill(0, true);
+        }
+        else if (Input.GetMouseButtonUp(2))
+        {
+            UseSkill(0, false);
         }
 
         if (Input.GetKeyDown(KeyCode.F))
@@ -45,7 +57,7 @@ public class SkillController : MonoBehaviour
             }
         }
     }
-    public void UseSkill(int skillNum)
+    public void UseSkill(int skillNum, bool onOff)
     {
         if (!_canUseSkill) return;
         OnUseSkill?.Invoke();
@@ -56,7 +68,9 @@ public class SkillController : MonoBehaviour
             print("스킬 없음");
             return;
         }
-        eliments[skillNum].Active();
+
+        if(onOff) eliments[skillNum].Active();
+        else eliments[skillNum].DisActive();
         print("스킬 사용");
     }
 
@@ -64,11 +78,12 @@ public class SkillController : MonoBehaviour
     {
         print(skill);
         Skills.Enqueue(skill);
-        skill.gameObject.SetActive(false);
+        //skill.gameObject.SetActive(false);
+        skill.transform.position = new Vector3(9999, 9999, 0);
         Skill value = Skills.Dequeue();
         if (value != null)
         {
-            value.gameObject.SetActive(true);
+            //value.gameObject.SetActive(true);
             value.gameObject.transform.position = transform.position;
         }
         //print("스킬 변환");

@@ -7,7 +7,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
    {
       public void Skip()
       {
-         SceneManager.LoadScene("Develop");
+         SceneManager.LoadScene("Title");
       }
    }
 }

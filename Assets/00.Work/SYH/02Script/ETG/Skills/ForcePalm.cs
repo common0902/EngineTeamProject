@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class ForcePalm : Skill
 {
-    public override void Active()
+    protected override void UseSkill()
     {
-        base.Active();
+        base.UseSkill();
         UtilityCorutineManager.Instance.StartPastDelay(this, PastDelay);
     }
     public override void EndPastDelay()

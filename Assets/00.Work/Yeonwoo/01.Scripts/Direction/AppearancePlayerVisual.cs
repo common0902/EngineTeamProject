@@ -7,10 +7,13 @@ namespace _00.Work.Yeonwoo._01.Scripts.Direction
     public class AppearancePlayerVisual : MonoBehaviour
     {
         [SerializeField] private Vector3 _playerScale = new Vector3(0.65f, 0.65f, 0);
+        private PlayerStateStopper _playerStateStopper;
         
         public event Action PlayerScaleChanged;
+        
         private void Awake()
         {
+            _playerStateStopper = GetComponentInParent<PlayerStateStopper>();
             transform.localScale = new Vector3(0.01f, 0.01f, 0);
         }
 
@@ -21,7 +24,8 @@ namespace _00.Work.Yeonwoo._01.Scripts.Direction
 
         private void AppearancePlayer()
         {
-            transform.DOScale(_playerScale, 2.3f)
+            _playerStateStopper.DisableControls();
+            transform.DOScale(_playerScale, 0.8f)
                 .OnComplete(() =>
                 {
                     DOVirtual.DelayedCall(1f, () => PlayerScaleChanged?.Invoke());

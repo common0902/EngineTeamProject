@@ -6,8 +6,8 @@ namespace _00.Work.Yeonwoo._01.Scripts.Agents
 {
     public class AgentMover : MonoBehaviour, IComponent
     {
-        [SerializeField] private float _moveSpeed = 3f;
-        [SerializeField] private new Rigidbody2D _rb;
+        [SerializeField] private float moveSpeed = 3f;
+        [SerializeField] private new Rigidbody2D rb;
         private Agent _owner;
         private Vector2 _movementInput;
 
@@ -21,7 +21,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.Agents
         public void StopImmediately()
         {
             _movementInput = Vector2.zero;
-            _rb.linearVelocity = Vector2.zero;
+            rb.linearVelocity = Vector2.zero;
         }
 
         public void SetMovementInput(Vector2 input)
@@ -31,9 +31,9 @@ namespace _00.Work.Yeonwoo._01.Scripts.Agents
 
         private void FixedUpdate()
         {
-            _rb.linearVelocity = _movementInput * _moveSpeed;
+            rb.linearVelocity = _movementInput * moveSpeed;
             
-            OnSpeedChange?.Invoke(_rb.linearVelocity);
+            OnSpeedChange?.Invoke(rb.linearVelocity);
         }
     }
 }

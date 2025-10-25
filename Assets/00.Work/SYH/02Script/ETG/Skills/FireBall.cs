@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class FireBall : Skill
 {
-    public override void Active()
+    protected override void UseSkill()
     {
-        base.Active();
+        base.UseSkill();
         FireBallPrefab fireBall = Instantiate(SkillPrefab, transform.position, Quaternion.identity).GetComponent<FireBallPrefab>();
         fireBall.transform.position = Player.Instance.FirePos.position;
     }

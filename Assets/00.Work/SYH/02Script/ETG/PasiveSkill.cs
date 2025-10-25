@@ -16,6 +16,7 @@ public abstract class PasiveSkill : MonoBehaviour
 
     [field: SerializeField] public Status StatusType { get; private set; }
     [field: SerializeField] public float StatusValue { get; private set; }
+    [field: SerializeField] public Sprite SkillSprite { get; private set; }
     [field:SerializeField]public string Name { get; private set; }
     virtual public void Take()
     {

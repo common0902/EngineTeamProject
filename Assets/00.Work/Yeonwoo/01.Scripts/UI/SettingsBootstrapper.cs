@@ -21,7 +21,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
         {
             VideoSettingPanel.ApplySavedSettings();
             
-            var soundPanel = Object.FindAnyObjectByType<SoundSettingPanel>(FindObjectsInactive.Include);
+            SoundSettingPanel soundPanel = Object.FindAnyObjectByType<SoundSettingPanel>(FindObjectsInactive.Include);
             if (soundPanel != null)
             {
                 soundPanel.ApplySavedVolumeSettings();
