@@ -4,7 +4,7 @@ using UnityEngine;
 public class EnemyRenderer : MonoBehaviour, IComponent
 {
     private Agent _owner;
-    public void Filp(Vector2 value)
+    public void Flip(Vector2 value)
     {
         if(value.x > 0)
             _owner.transform.rotation = Quaternion.Euler(_owner.transform.rotation.x, 0, 0);

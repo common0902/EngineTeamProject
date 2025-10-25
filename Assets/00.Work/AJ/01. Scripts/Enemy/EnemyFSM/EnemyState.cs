@@ -18,7 +18,7 @@ public abstract class EnemyState
     }
     public virtual void Update()
     {
-        
+        // hit
     }
     public virtual void Exit()
     {

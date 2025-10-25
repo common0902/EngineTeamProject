@@ -14,7 +14,10 @@ public class EnemyChaseState : EnemyState
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("Enter Chase State");
+        //Debug.Log("Enter Chase State");
+        _enemy.ChangeFlip(true);
+        _enemy.AgentCompo.speed = _enemy.enemySO.speed;
+        _enemy.AgentCompo.stoppingDistance = _enemy.enemySO.attackRange;
         _enemy.AgentCompo.isStopped = false;
     }
     public override void Update()
