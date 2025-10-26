@@ -24,9 +24,9 @@ public class FireBallPrefab : SkillPrefab
     //{
     //    base.Update();
     //}
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected override void OnTriggerEnter2D(Collider2D collision)
     {
-
+        base.OnTriggerEnter2D(collision);
         Destroy(gameObject);
     }
 }

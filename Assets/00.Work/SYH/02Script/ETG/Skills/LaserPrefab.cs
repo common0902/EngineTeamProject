@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LaserPrefab : SkillPrefab
@@ -14,23 +13,20 @@ public class LaserPrefab : SkillPrefab
     }
     public void Attack()
     {
-        foreach (GameObject i in _parent._hitEnemys)
-        {
-            print(i + "¸ÂÀ½");
-        }
+
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy") && !_parent._hitEnemys.Contains(collision.gameObject))
+        if (collision.gameObject.CompareTag("Enemy") && !_parent._hitEnemys.Contains(collision.gameObject.GetComponent<HealthSystem>()))
         {
-            _parent._hitEnemys.Add(collision.gameObject);
+            _parent._hitEnemys.Add(collision.gameObject.GetComponent<HealthSystem>());
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy") && _parent._hitEnemys.Contains(collision.gameObject))
+        if (collision.gameObject.CompareTag("Enemy") && _parent._hitEnemys.Contains(collision.gameObject.GetComponent<HealthSystem>()))
         {
-            _parent._hitEnemys.Remove(collision.gameObject);
+            _parent._hitEnemys.Remove(collision.gameObject.GetComponent<HealthSystem>());
         }
     }
 }
