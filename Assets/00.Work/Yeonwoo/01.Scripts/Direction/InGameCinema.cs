@@ -37,7 +37,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.Direction
                     AppearanceComplete?.Invoke();
                     DOVirtual.DelayedCall(1.5f, () =>
                     {
-                        material.DOFloat(0f, "_FullGlowDissolveFade", 1f)
+                        material.DOFloat(0f, "_FullGlowDissolveFade", 2f)
                             .SetEase(Ease.OutSine)
                             .OnComplete(() =>
                             {
