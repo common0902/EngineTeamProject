@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,6 +7,9 @@ public class PlayerMove : MonoBehaviour
 {
     public bool _canMove = true;
     private Vector2 _moveDir;
+    public event Action<float> OnMoved;
+    public event Action OnDisMoved;
+
     private void Update()
     {
         Vector2 aaa = Vector2.zero;
@@ -32,10 +36,14 @@ public class PlayerMove : MonoBehaviour
     {
         _moveDir = value.Get<Vector2>();
         print(111);
+        if (_moveDir == Vector2.zero) OnDisMoved?.Invoke();
+        else OnMoved?.Invoke(_moveDir.x);
     }
     public void OnMove(Vector2 value)
     {
         _moveDir = value; 
+        if (_moveDir == Vector2.zero) OnDisMoved?.Invoke();
+        else OnMoved?.Invoke(_moveDir.x);
     }
 }
 

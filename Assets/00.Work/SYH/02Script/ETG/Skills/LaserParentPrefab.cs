@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class LaserParentPrefab : SkillPrefab
 {
-    public List<GameObject> _hitEnemys = new List<GameObject>();
+    public List<HealthSystem> _hitEnemys = new List<HealthSystem>();
     [SerializeField] LayerMask _layer;
     Transform _tail;
     private void Awake()
@@ -12,8 +12,23 @@ public class LaserParentPrefab : SkillPrefab
     }
     public void Attack()
     {
-        transform.GetChild(0).GetComponent<LaserPrefab>().Attack();
-        _tail.GetComponent<LaserPrefab>().Attack();
+        //if (_hitEnemys.Count == 0) return;
+        try
+        {
+            foreach (HealthSystem i in _hitEnemys)
+            {
+                i.Damage(SkillUtility.CalcurateDamage(_damage));
+                if (i.gameObject == null)
+                {
+                    _hitEnemys.Remove(i);
+                }
+            }
+        }
+        catch
+        {
+            Attack();
+        }        //transform.GetChild(0).GetComponent<LaserPrefab>().Attack();
+        //_tail.GetComponent<LaserPrefab>().Attack();
     }
     protected override void Update()
     {
@@ -31,8 +46,5 @@ public class LaserParentPrefab : SkillPrefab
         float distance = Vector3.Distance(transform.position + new Vector3(0.5f, 0, 0), endPos);
         _tail.localPosition = new Vector3(distance / 2 + 0.5f, _tail.localPosition.y, 0);
         _tail.localScale = new Vector3(distance, 1, 1);
-
-
-
     }
 }
