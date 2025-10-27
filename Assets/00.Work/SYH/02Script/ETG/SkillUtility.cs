@@ -31,4 +31,8 @@ public class SkillUtility
         Player.Instance.SkillControllerCompo._canUseSkill = true;
         OnEndPastDelay?.Invoke();
     }
+    public static float CalcurateDamage(float dmg)
+    {
+        return dmg * Player.Instance.PlayerStatusCompo._damage/100;
+    }
 }

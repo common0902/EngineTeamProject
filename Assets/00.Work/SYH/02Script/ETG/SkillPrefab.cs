@@ -16,4 +16,11 @@ public abstract class SkillPrefab : MonoBehaviour
         }
         _waitTime += Time.deltaTime;
     }
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.TryGetComponent(out HealthSystem hp))
+        {
+            hp.Damage(SkillUtility.CalcurateDamage(_damage));
+        }
+    }
 }
