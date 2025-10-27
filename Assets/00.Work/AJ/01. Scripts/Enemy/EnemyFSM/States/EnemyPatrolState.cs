@@ -15,9 +15,7 @@ public class EnemyPatrolState : EnemyState
         //Debug.Log("Enter Patrol State");
         _enemy.ChangeFlip(false);
         
-        _enemy.AgentCompo.updateRotation = false;
-        _enemy.AgentCompo.updateUpAxis = false;
-        _enemy.AgentCompo.stoppingDistance = 0.01f;
+        _enemy.AgentCompo.stoppingDistance = 0f;
         _enemy.AgentCompo.isStopped = false;
         _enemy.AgentCompo.enabled = true;
         

@@ -35,7 +35,7 @@ public class PoolManager : MonoSingleton<PoolManager>
     {
         if (_pools.ContainsKey(itemName))
         {
-            IPoolable item = _pools[itemName].Pop(); // 해당 이름의 풀에서 꺼내서 넣어주고
+            IPoolable item = _pools[itemName].Pop(); 
             item.ResetItem(); // 리셋해서
             return item;
         }

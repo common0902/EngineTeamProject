@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Unity.Behavior;
 using UnityEngine.AI;
@@ -32,12 +33,17 @@ public class Enemy : Agent, IPoolable
         //BtAgent = GetComponent<BehaviorGraphAgent>();
         AgentCompo.updateRotation = false;
         AgentCompo.updateUpAxis = false;
+    }
+
+    private void Start()
+    {
         if (wayPoints != null) // 삭제
         {
             Vector3 spawnPos = wayPoints.GetRandomWayPoint();
             transform.position = spawnPos;
         }
     }
+
     public bool CheckChaseRange()
     {
         return Physics2D.OverlapCircle(transform.position, enemySO.chaseRange, playerMask) && IsPlayerInSight();

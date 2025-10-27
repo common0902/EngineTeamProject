@@ -13,7 +13,7 @@ namespace _00.Work.AJ._08._Data.BT.Action
         [SerializeReference] public BlackboardVariable<Vector3> NextPosition;
         [SerializeReference] public BlackboardVariable<bool> IsUpdate = new  BlackboardVariable<bool>(true);
 
-        private PathMovement _pathMovement;
+        //private PathMovement _pathMovement;
         protected override Status OnStart()
         {
             if (Self.Value == null)
@@ -21,23 +21,23 @@ namespace _00.Work.AJ._08._Data.BT.Action
                 Debug.LogError("Self is null");
                 return Status.Failure;
             }
-            _pathMovement = Self.Value.GetCompo<PathMovement>();
+            /*_pathMovement = Self.Value.GetCompo<PathMovement>();
             if (_pathMovement == null)
             {
                 Debug.LogError("PathMovement is null");
                 return Status.Failure;
             }
-            _pathMovement.SetDestination(NextPosition.Value);;
+            _pathMovement.SetDestination(NextPosition.Value);;*/
             
             return IsUpdate == true ? Status.Running : Status.Success;
         }
 
         protected override Status OnUpdate()
         {
-            if (_pathMovement.IsArrived)
+            /*if (_pathMovement.IsArrived)
             {
                 return Status.Success;
-            }
+            }*/
             return Status.Running;
         }
 

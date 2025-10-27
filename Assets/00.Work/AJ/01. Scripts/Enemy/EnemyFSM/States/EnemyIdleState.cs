@@ -18,7 +18,6 @@ public class EnemyIdleState : EnemyState
         //Debug.Log("Enter Idle State");
         _enemy.ChangeFlip(false);
         
-        
         _enemy.AgentCompo.isStopped = true;
         _enemy.AgentCompo.enabled = false;
         
@@ -28,15 +27,10 @@ public class EnemyIdleState : EnemyState
     }
     public override void Update()
     {
-        
-        if (_lastCheckTime + _checkTimer < Time.time)
-        { 
-            if (_enemy.CheckChaseRange())
-            {
-                _stateMachine.ChangeState(EnemyStateType.Chase); 
-                return;
-            }
-            _lastCheckTime = Time.time;
+        if (_enemy.CheckChaseRange())
+        {
+            _stateMachine.ChangeState(EnemyStateType.Chase); 
+            return;
         }
 
         if (_enemy.enemySO.canPatrol)
@@ -50,7 +44,7 @@ public class EnemyIdleState : EnemyState
     }
     public override void Exit()
     {
-        base.Exit();
         _enemy.AgentCompo.enabled = true;
+        base.Exit();
     }
 }

@@ -226,7 +226,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!114 &391882699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1515,10 +1515,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wayPoints:
-  - {fileID: 1378514152}
   - {fileID: 1374012559}
-  - {fileID: 143226476}
   - {fileID: 1531907453}
+  - {fileID: 143226476}
+  - {fileID: 1378514152}
 --- !u!1001 &7003210715439144216
 PrefabInstance:
   m_ObjectHideFlags: 0

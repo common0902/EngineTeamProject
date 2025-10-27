@@ -19,14 +19,14 @@ namespace _00.Work.AJ._08._Data.BT.Action
                 Debug.LogError("Self is not set in StopPathMoveAction");
                 return Status.Failure;
             } 
-            PathMovement movement = Self.Value.GetCompo<PathMovement>();
-            if (movement == null)
+            //PathMovement movement = Self.Value.GetCompo<PathMovement>();
+            /*if (movement == null)
             {
                 Debug.LogError("PathMovement component not found on Self in StopPathMoveAction.");
                 return Status.Failure;
             }
 
-            movement.IsStop = NewValue.Value;
+            movement.IsStop = NewValue.Value;*/
             
             return Status.Running;
         }

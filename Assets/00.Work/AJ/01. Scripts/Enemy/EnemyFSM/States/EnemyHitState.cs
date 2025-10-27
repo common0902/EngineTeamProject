@@ -41,7 +41,7 @@ public class EnemyHitState : EnemyState
 
     public override void Exit()
     {
-        base.Exit();
         _enemy.AgentCompo.isStopped = false;
+        base.Exit();
     }
 }

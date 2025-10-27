@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Unity.Cinemachine;
 using UnityEngine;
 
 public class Pool
@@ -18,8 +19,9 @@ public class Pool
         for (int i = 0; i < initCount; i++)
         {
             GameObject item = Object.Instantiate(_prefab, _parent);
-            item.name = _poolable.ItemName; 
-            IPoolable poolableItem = item.GetComponent<IPoolable>(); // 아이템 이름을 초기화 시켜준다.
+            item.name = _poolable.ItemName; // 아이템 이름을 초기화 시켜준다.
+            item.SetActive(false);
+            IPoolable poolableItem = item.GetComponent<IPoolable>(); 
             _pool.Push(poolableItem);
         }
     }
