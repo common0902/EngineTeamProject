@@ -12,7 +12,8 @@ public abstract class SkillPrefab : MonoBehaviour
     {
         if (_waitTime >= _duration)
         {
-            Destroy(gameObject);
+            PoolManager.Instance.Push(GetComponent<IPoolable>());
+            gameObject.SetActive(false);
         }
         _waitTime += Time.deltaTime;
     }
