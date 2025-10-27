@@ -652,7 +652,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2f37fd5bfaa0d00448937a845566a19c, type: 3}
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1889,7 +1889,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fabfc2f55634e33a85a39c013f80bfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  passiveData: {fileID: 11400000, guid: a699ec5970dc60a43b5b09a611a676b0, type: 2}
   _nameText: {fileID: 8115693593087804430}
   _descriptionText: {fileID: 2862987048082985033}
 --- !u!1 &2951475581354030100
@@ -6126,7 +6125,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3204939867007551572, guid: b23f164a841390f40878bb335fd8625e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3627353854955873787, guid: b23f164a841390f40878bb335fd8625e, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -6243,7 +6242,7 @@ PrefabInstance:
     - target: {fileID: 6613749996410978331, guid: b23f164a841390f40878bb335fd8625e, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: b0ee00ae73b8b494d94e9d3e17f8488b, type: 3}
+      objectReference: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 6613749996410978331, guid: b23f164a841390f40878bb335fd8625e, type: 3}
       propertyPath: m_Material
       value: 
@@ -6631,7 +6630,7 @@ PrefabInstance:
     - target: {fileID: 2116557610374028704, guid: 33582b49b54c5cc428867e5d786e0211, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 6ebbe3a38a83e6247b3c6ffd790fa28e, type: 3}
+      objectReference: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 2116557610374028704, guid: 33582b49b54c5cc428867e5d786e0211, type: 3}
       propertyPath: m_Material
       value: 
@@ -7138,7 +7137,7 @@ PrefabInstance:
     - target: {fileID: 6613749996410978331, guid: b23f164a841390f40878bb335fd8625e, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: b90153f929b9b3a4784a361bbcdbe519, type: 3}
+      objectReference: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 6613749996410978331, guid: b23f164a841390f40878bb335fd8625e, type: 3}
       propertyPath: m_Material
       value: 
@@ -7346,7 +7345,7 @@ PrefabInstance:
     - target: {fileID: 6613749996410978331, guid: b23f164a841390f40878bb335fd8625e, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: b0ee00ae73b8b494d94e9d3e17f8488b, type: 3}
+      objectReference: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 6613749996410978331, guid: b23f164a841390f40878bb335fd8625e, type: 3}
       propertyPath: m_Material
       value: 

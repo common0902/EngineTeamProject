@@ -8,27 +8,27 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
     public class SkillUI : MonoBehaviour
     {
         [SerializeField] private SkillData skillData;
-        [SerializeField] private TextMeshProUGUI _nameText;
-        [SerializeField] private TextMeshProUGUI _descriptionText;
+        [field:SerializeField] public TextMeshProUGUI NameText { get; set; }
+        [field:SerializeField] public TextMeshProUGUI DescriptionText { get; set; }
         private Sprite _sprite;
         
         private void Start()
         {
             _sprite = skillData.Icon;
-            _nameText.text = skillData.Name;
-            _descriptionText.text = skillData.Description;
+            NameText.text = skillData.Name;
+            DescriptionText.text = skillData.Description;
         }
 
         public void OnPointerEnter(PointerEventData eventData)
         {
-            _nameText.gameObject.SetActive(true);
-            _descriptionText.gameObject.SetActive(true);
+            NameText.gameObject.SetActive(true);
+            DescriptionText.gameObject.SetActive(true);
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
-            _nameText.gameObject.SetActive(false);
-            _descriptionText.gameObject.SetActive(false);
+            NameText.gameObject.SetActive(false);
+            DescriptionText.gameObject.SetActive(false);
         }
     }
 }
