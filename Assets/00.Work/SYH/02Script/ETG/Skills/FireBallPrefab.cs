@@ -1,9 +1,15 @@
 using UnityEngine;
 
-public class FireBallPrefab : SkillPrefab
+public class FireBallPrefab : SkillPrefab, IPoolable
 {
     Vector2 _moveDir;
     Rigidbody2D _rb;
+
+    public string ItemName => _itemName;
+    [SerializeField] string _itemName;
+
+    public GameObject GameObject => gameObject;
+
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
@@ -18,7 +24,7 @@ public class FireBallPrefab : SkillPrefab
 
         //transform.eulerAngles = new Vector3(0, 0, degree);
         //if (degree > 90 || degree < -90) transform.localScale = new Vector3(1, -1, 1);
-        _rb.linearVelocity = _moveDir.normalized * _shotSpeed;
+        _rb.linearVelocity = _moveDir * _shotSpeed;
     }
     //protected override void Update()
     //{
@@ -28,5 +34,10 @@ public class FireBallPrefab : SkillPrefab
     {
         base.OnTriggerEnter2D(collision);
         Destroy(gameObject);
+    }
+
+    public void ResetItem()
+    {
+
     }
 }

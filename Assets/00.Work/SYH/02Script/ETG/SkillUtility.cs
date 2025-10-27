@@ -35,4 +35,14 @@ public class SkillUtility
     {
         return dmg * Player.Instance.PlayerStatusCompo._damage/100;
     }
+    public static void CalculateAngle(Transform pos, float angle)
+    {
+        float spreadAngle = 0f;
+        
+        spreadAngle = UnityEngine.Random.Range(-angle, angle);
+        
+        Quaternion bulletSpreadAngle = Quaternion.Euler(0, 0, spreadAngle);
+
+        pos.rotation *= bulletSpreadAngle;
+    }
 }
