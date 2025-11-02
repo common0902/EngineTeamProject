@@ -1,4 +1,5 @@
 using _00.Work.Yeonwoo._01.Scripts.Data;
+using _00.Work.Yeonwoo._01.Scripts.Interfaces;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 

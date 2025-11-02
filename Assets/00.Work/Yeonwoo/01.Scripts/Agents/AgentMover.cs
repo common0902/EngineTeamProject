@@ -7,7 +7,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.Agents
     public class AgentMover : MonoBehaviour, IComponent
     {
         [SerializeField] private float moveSpeed = 3f;
-        [SerializeField] private new Rigidbody2D rb;
+        [SerializeField] private Rigidbody2D rb;
         private Agent _owner;
         private Vector2 _movementInput;
 

@@ -1,10 +1,11 @@
+using _00.Work.Yeonwoo._01.Scripts.Interfaces;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
 namespace _00.Work.Yeonwoo._01.Scripts.UI
 {
-    public class SoundSettingPanel : Data.MonoSingletonUI<SoundSettingPanel>, ISettingPanel
+    public class SoundSettingPanel : MonoSingletonUI<SoundSettingPanel>, ISettingPanel
     {
         [Header("음향 시스템")]
         [SerializeField] private AudioMixer _audioMixer;

@@ -9,7 +9,6 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
     {
         [SerializeField] private AudioMixerGroup _audioMixerGroup;
         [SerializeField] private AudioClip _audioClip;
-    
         private AudioSource _audioSource;
     
         private void Awake()
@@ -26,7 +25,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
         
             _audioSource.playOnAwake = false;
         }
-    
+        
         public void OnPointerEnter(PointerEventData eventData)
         {
             _audioSource.PlayOneShot(_audioClip);

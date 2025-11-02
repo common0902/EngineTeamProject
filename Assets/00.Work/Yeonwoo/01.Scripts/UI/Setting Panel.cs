@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 namespace _00.Work.Yeonwoo._01.Scripts.UI
 {
-    public class SettingPanel : Data.MonoSingletonUI<SettingPanel>
+    public class SettingPanel : MonoSingletonUI<SettingPanel>
     {
         private SoundSettingPanel  _soundSettingPanel;
         private VideoSettingPanel _videoSettingPanel;

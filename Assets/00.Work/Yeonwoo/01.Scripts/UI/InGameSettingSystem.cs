@@ -11,7 +11,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
                 if (panel.IsOpen)
                 {
                     panel.Close();
-                    Time.timeScale = 0f;
+                    Time.timeScale = 1f;
                     return;
                 }
             }
