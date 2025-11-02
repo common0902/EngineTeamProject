@@ -3,14 +3,11 @@ using UnityEngine;
 public class Laser : Skill
 {
     GameObject _prefab;
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         _prefab = Instantiate(SkillPrefab, Player.Instance.FirePos.position, Quaternion.identity);
         _prefab.SetActive(false);
-    }
-    private void Start()
-    {
-        Player.Instance.SkillControllerCompo.OnChangeSkill += DisActive;
     }
     public override void Active()
     {
@@ -25,6 +22,6 @@ public class Laser : Skill
     protected override void UseSkill()
     {
         base.UseSkill();
-        _prefab.GetComponent<LaserParentPrefab>().Attack();
+        if(_prefab.TryGetComponent(out LaserParentPrefab prefab)) prefab.Attack();
     }
 }

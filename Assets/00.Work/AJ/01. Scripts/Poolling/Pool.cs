@@ -21,6 +21,7 @@ public class Pool
             item.name = _poolable.ItemName; 
             IPoolable poolableItem = item.GetComponent<IPoolable>(); // 아이템 이름을 초기화 시켜준다.
             _pool.Push(poolableItem);
+            item.SetActive(false);
         }
     }
 

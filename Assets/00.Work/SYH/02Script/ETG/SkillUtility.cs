@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Unity.Cinemachine;
 using UnityEngine;
 
 public class SkillUtility
@@ -20,6 +21,10 @@ public class SkillUtility
         //{
         //    pos.gameObject.GetComponentInChildren<SpriteRenderer>().sortingOrder = 1;
         //}
+    }
+    public static Vector2 AimWeapon(Vector2 pos)
+    {
+        return (MouseInput.Instance.MousePosition - pos).normalized;
     }
     public static IEnumerator PastDelay(Skill type, float value)
     {
@@ -44,5 +49,33 @@ public class SkillUtility
         Quaternion bulletSpreadAngle = Quaternion.Euler(0, 0, spreadAngle);
 
         pos.rotation *= bulletSpreadAngle;
+    }
+    public static IEnumerator ShakeX(Transform target, float force, float time)
+    {
+        Vector3 origin = target.position;
+        float waitTime = 0;
+        int lr = 1;
+        while (waitTime < time)
+        {
+            waitTime += Time.deltaTime + 0.04f;
+            target.position = origin + new Vector3(force * lr, 0, 0);
+            lr *= -1;
+            yield return new WaitForSeconds(0.04f);
+        }
+        target.position = origin;
+    }
+    public static IEnumerator ShakeX(CinemachineCamera target, float force, float time)
+    {
+        Vector3 origin = target.GetComponent<CinemachineFollow>().FollowOffset;
+        float waitTime = 0;
+        int lr = 1;
+        while (waitTime < time)
+        {
+            waitTime += Time.deltaTime + 0.04f;
+            target.GetComponent<CinemachineFollow>().FollowOffset = origin + new Vector3(force * lr, 0, 0);
+            lr *= -1;
+            yield return new WaitForSeconds(0.04f);
+        }
+        target.GetComponent<CinemachineFollow>().FollowOffset = origin;
     }
 }

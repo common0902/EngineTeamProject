@@ -3,8 +3,14 @@ using UnityEngine;
 public class PlayerAnimation : MonoBehaviour
 {
     [SerializeField] Sprite _idleImg;
+    [SerializeField] Sprite _deadImg;
+    [SerializeField] Sprite _concentrateImg;
     Animator _ani;
     SpriteRenderer _renderer;
+    readonly int _deadHash = Animator.StringToHash("Dead");
+    readonly int _concentrateHash = Animator.StringToHash("Concentrate");
+    readonly int _disConcentrateHash = Animator.StringToHash("DisConcentrate");
+    public bool _isConcentrate;
     private void Awake()
     {
         _ani = GetComponent<Animator>();
@@ -16,15 +22,53 @@ public class PlayerAnimation : MonoBehaviour
         Player.Instance.PlayerMoveCompo.OnMoved += Move;
         Player.Instance.PlayerMoveCompo.OnDisMoved += Idle;
     }
-
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            ConcentrateStart();
+        }
+        else if (Input.GetKeyDown(KeyCode.P))
+        {
+            ConcentrateEnd();
+        }
+    }
+    public void ConcentrateStart()
+    {
+        _ani.enabled = true;
+        _ani.SetTrigger(_concentrateHash);
+        _isConcentrate = true;
+    }
+    public void Concentrate()
+    {
+        _renderer.sprite = _concentrateImg;
+        _ani.enabled = false;
+    }
+    public void ConcentrateEnd()
+    {
+        _ani.enabled = true;
+        _ani.SetTrigger(_disConcentrateHash);
+        Idle();
+        _isConcentrate = false;
+    }
     public void Idle()
     {
-        _renderer.sprite = _idleImg;
-        _ani.enabled = false;
+        if (!_isConcentrate)
+        {
+            _renderer.sprite = _idleImg;
+            _ani.enabled = false;
+        }
     }
     public void Move(float value)
     {
         _ani.enabled = true;
-        transform.localScale = value > 0 ? new Vector3(1, 1, 1) : new Vector3(-1, 1, 1); 
+        //transform.localScale = value > 0 ? new Vector3(1, 1, 1) : new Vector3(-1, 1, 1); 
+        if (value > 0) transform.localScale = new Vector3(1, 1, 1);
+        else if( value < 0) transform.localScale = new Vector3(-1, 1, 1);
+    }
+    public void Dead()
+    {
+        _ani.enabled = true;
+        _ani.SetTrigger(_deadHash);
     }
 }
