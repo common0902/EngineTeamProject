@@ -6,6 +6,7 @@ public class Player : MonoSingleton<Player>
     [field: SerializeField] public PasiveSkillController PasiveSkillControllerCompo { get; private set; }
     [field: SerializeField] public PlayerStatus PlayerStatusCompo { get; private set; }
     [field: SerializeField] public PlayerMove PlayerMoveCompo { get; private set; }
+    [field: SerializeField] public PlayerAnimation PlayerAnimationCompo { get; private set; }
     [field:SerializeField]public Transform FirePos { get; private set; }
     [field:SerializeField]public HealthSystem PlayerHealthSystemCompo { get; private set; }
 }

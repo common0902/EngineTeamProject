@@ -15,11 +15,10 @@ public class HealthSystem : MonoBehaviour
 
     public void Damage(float damage)
     {
-        print(damage);
         Health -= damage;
         Mathf.Clamp(Health, 0, _maxHearth);
         OnDamage?.Invoke();
-        if (Health < 0)
+        if (Health <= 0)
         {
             Dead();
         }

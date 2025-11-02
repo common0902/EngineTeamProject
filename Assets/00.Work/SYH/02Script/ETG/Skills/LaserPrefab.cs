@@ -7,14 +7,6 @@ public class LaserPrefab : SkillPrefab
     {
         _parent = gameObject.GetComponentInParent<LaserParentPrefab>();
     }
-    protected override void Update()
-    {
-        
-    }
-    public void Attack()
-    {
-
-    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy") && !_parent._hitEnemys.Contains(collision.gameObject.GetComponent<HealthSystem>()))
