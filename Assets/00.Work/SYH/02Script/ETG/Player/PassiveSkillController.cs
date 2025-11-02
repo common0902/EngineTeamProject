@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PasiveSkillController : MonoBehaviour
+public class PassiveSkillController : MonoBehaviour
 {
     public List<PasiveSkill> PasiveSkills { get; private set; }
     [SerializeField] LayerMask _skillLayer;

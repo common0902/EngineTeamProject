@@ -10,7 +10,7 @@ public class PassiveSkillText : MonoBehaviour
     }
     void Start()
     {
-        Player.Instance.PasiveSkillControllerCompo.OnTakePasiveSkill += ChangeText;
+        Player.Instance.PassiveSkillControllerCompo.OnTakePasiveSkill += ChangeText;
     }
 
     private void ChangeText(PasiveSkill skill)

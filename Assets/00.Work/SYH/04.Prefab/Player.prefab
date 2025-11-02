@@ -171,6 +171,7 @@ MonoBehaviour:
   _idleImg: {fileID: -4737088523694719448, guid: 416f6c37e4e5c724b9f8dbc304a64ff2, type: 3}
   _deadImg: {fileID: -283305704184531190, guid: 416f6c37e4e5c724b9f8dbc304a64ff2, type: 3}
   _concentrateImg: {fileID: 3016652798880744293, guid: 416f6c37e4e5c724b9f8dbc304a64ff2, type: 3}
+  _isConcentrate: 0
 --- !u!1 &4781893648028472082
 GameObject:
   m_ObjectHideFlags: 0
@@ -257,6 +258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _canUseSkill: 1
+  <Skills>k__BackingField: []
   _skillLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -360,7 +362,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <SkillControllerCompo>k__BackingField: {fileID: 7081561312850541444}
-  <PasiveSkillControllerCompo>k__BackingField: {fileID: 6839599402493226269}
+  <PassiveSkillControllerCompo>k__BackingField: {fileID: 6839599402493226269}
   <PlayerStatusCompo>k__BackingField: {fileID: 6301530087439240855}
   <PlayerMoveCompo>k__BackingField: {fileID: 3908922201087372522}
   <PlayerAnimationCompo>k__BackingField: {fileID: 3031503935125608750}
@@ -375,7 +377,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8434492114031902754}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3eafdc7f9ef93464ba02d5837ca8992d, type: 3}
+  m_Script: {fileID: 11500000, guid: 10019ecf03b92a241b8375d2ff02a221, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _skillLayer:
@@ -396,6 +398,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 100
   _mana: 200
+  _fullMana: 0
   _manaRecovry: 1
   _hp: 100
   _fullHp: 100
