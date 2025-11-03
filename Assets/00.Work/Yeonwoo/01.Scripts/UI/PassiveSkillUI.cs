@@ -14,6 +14,8 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
         
         private PassiveData _data;
         
+        public bool HasData => _data != null;
+        
         public void SetPassiveData(PassiveData data)
         {
             _data = data;
@@ -39,6 +41,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
         
         public void OnPointerEnter(PointerEventData eventData)
         {
+            if (HasData == false) return;
             NameText.gameObject.SetActive(true);
             DescriptionText.gameObject.SetActive(true);
         }

@@ -1,3 +1,4 @@
+using _00.Work.Yeonwoo._01.Scripts.Data;
 using UnityEngine;
 
 public abstract class PasiveSkill : MonoBehaviour
@@ -13,6 +14,8 @@ public abstract class PasiveSkill : MonoBehaviour
         Speed,
         SkillCoolDown
     }
+    [Header("Passive Info")]
+    [field: SerializeField] public PassiveData Data { get; private set; }
 
     [field: SerializeField] public Status StatusType { get; private set; }
     [field: SerializeField] public float StatusValue { get; private set; }

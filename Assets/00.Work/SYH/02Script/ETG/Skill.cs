@@ -1,9 +1,11 @@
 using System;
+using _00.Work.Yeonwoo._01.Scripts.Data;
 using UnityEngine;
 
 public abstract class Skill : MonoBehaviour
 {
     [SerializeField]protected float _waitTime;
+    [field:SerializeField] public SkillData Data { get; private set; }
     [field: SerializeField] public int Cost { get; protected set; }
     [field: SerializeField] public float PastDelay { get; protected set; }
     [field: SerializeField] public float CoolTime { get; protected set; }

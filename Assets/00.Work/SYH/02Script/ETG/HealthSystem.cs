@@ -21,18 +21,11 @@ public class HealthSystem : MonoBehaviour, IHealth
 
     public void Damage(float damage)
     {
-<<<<<<< Updated upstream
-        Health -= damage;
-        Mathf.Clamp(Health, 0, _maxHearth);
-        OnDamage?.Invoke();
-=======
         if (damage <= 0) return;
             
         Health = Mathf.Clamp(Health - damage, 0, maxHealth);
         OnHealthChanged?.Invoke(Health, maxHealth);
-        Debug.Log($"{damage}만큼의 피해 입음.");
 
->>>>>>> Stashed changes
         if (Health <= 0)
         {
             Dead();
