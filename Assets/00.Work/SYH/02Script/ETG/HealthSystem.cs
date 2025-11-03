@@ -1,48 +1,41 @@
 using System;
+using _00.Work.Yeonwoo._01.Scripts.Interfaces;
+using _00.Work.Yeonwoo._01.Scripts.UI;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-public class HealthSystem : MonoBehaviour
+public class HealthSystem : MonoBehaviour, IHealth
 {
     [field: SerializeField] public float Health { get; private set; }
-    [SerializeField] private float _maxHealth;
-    public float MaxHealth
-    {
-        get
-        {
-            return _maxHealth;
-        }
-        private set
-        {
-               
-        }
-    }
+    [SerializeField] private float maxHealth;
+        
+    public float MaxHealth => maxHealth;
 
-    public event Action OnDamage;
+    public event Action<float, float> OnHealthChanged;
     public event Action OnDead;
 
     private void Awake()
     {
-        Health = _maxHealth;
+        Health = maxHealth;
+        OnHealthChanged?.Invoke(Health, maxHealth);
     }
-    [ContextMenu("Damage")]
-    public void isDamage()
-    {
-        Damage(1);
-    }
+
     public void Damage(float damage)
     {
-        print(damage);
-        Health -= damage;
-        Mathf.Clamp(Health, 0, _maxHealth);
-        OnDamage?.Invoke();
-        if (Health < 0)
+        if (damage <= 0) return;
+            
+        Health = Mathf.Clamp(Health - damage, 0, maxHealth);
+        OnHealthChanged?.Invoke(Health, maxHealth);
+
+        if (Health <= 0)
         {
             Dead();
         }
     }
-    public void Dead()
+
+    private void Dead()
     {
         OnDead?.Invoke();
+        Debug.Log("사망");
+        //Destroy(gameObject);
     }
 }

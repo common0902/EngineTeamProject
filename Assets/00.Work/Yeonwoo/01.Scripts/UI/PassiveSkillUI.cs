@@ -1,5 +1,4 @@
-﻿using System;
-using _00.Work.Yeonwoo._01.Scripts.Data;
+﻿using _00.Work.Yeonwoo._01.Scripts.Data;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -7,47 +6,50 @@ using UnityEngine.UI;
 
 namespace _00.Work.Yeonwoo._01.Scripts.UI
 {
-    public class PassiveSkillUI : MonoBehaviour
+    public class PassiveSkillUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler // SkillUI랑 똑같음
     {
-        private PassiveData passiveData;
-        [SerializeField] private TextMeshProUGUI _nameText;
-        [SerializeField] private TextMeshProUGUI _descriptionText;
-        private Image _image;
-
-        private void Awake()
+        [field: SerializeField] public TextMeshProUGUI NameText { get; private set; }
+        [field: SerializeField] public TextMeshProUGUI DescriptionText { get; private set; }
+        [field: SerializeField] public Image IconImage { get; private set; }
+        
+        private PassiveData _data;
+        
+        public bool HasData => _data != null;
+        
+        public void SetPassiveData(PassiveData data)
         {
-            passiveData = FindFirstObjectByType<PassiveData>();
-            _image = GetComponent<Image>();
-            if (!_image)
-                Debug.LogError("스없");
+            _data = data;
+
+            if (_data == null)
+            {
+                IconImage.sprite = null;
+                NameText.text = "Dataerr0r";
+                DescriptionText.text = "";
+                return;
+            }
+            
+            IconImage.sprite = _data.Icon;
+            NameText.text = _data.Name;
+            DescriptionText.text = _data.Description;
         }
 
         private void Start()
         {
-            _nameText.gameObject.SetActive(false);
-            _descriptionText.gameObject.SetActive(false);
-            _image.sprite = passiveData.Icon;
-            _nameText.text = passiveData.Name;
-            _descriptionText.text = passiveData.Description;
-            Player.Instance.PasiveSkillControllerCompo.OnTakePasiveSkill += ChangeText;
-        }
-
-        private void ChangeText(PasiveSkill skill)
-        {
-            _nameText.text += passiveData.Name;
-            _descriptionText.text = passiveData.Description;
+            NameText.gameObject.SetActive(false);
+            DescriptionText.gameObject.SetActive(false);
         }
         
         public void OnPointerEnter(PointerEventData eventData)
         {
-            _nameText.gameObject.SetActive(true);
-            _descriptionText.gameObject.SetActive(true);
+            if (HasData == false) return;
+            NameText.gameObject.SetActive(true);
+            DescriptionText.gameObject.SetActive(true);
         }
-
+        
         public void OnPointerExit(PointerEventData eventData)
         {
-            _nameText.gameObject.SetActive(false);
-            _descriptionText.gameObject.SetActive(false);
+            NameText.gameObject.SetActive(false);
+            DescriptionText.gameObject.SetActive(false);
         }
     }
 }

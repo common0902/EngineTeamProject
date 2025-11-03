@@ -1,19 +1,29 @@
 using System;
+using _00.Work.Yeonwoo._01.Scripts.Data;
 using UnityEngine;
 
 public abstract class Skill : MonoBehaviour
 {
-    [SerializeField]float _waitTime;
-    [field: SerializeField] public int Cost { get; private set; }
-    [field: SerializeField] public float PastDelay { get; private set; }
-    [field: SerializeField] public float CoolTime { get; private set; }
-    [field: SerializeField] public string Name { get; private set; }
-    [field: SerializeField] public bool IsActive { get; private set; }
-    [field: SerializeField] public Skill ThisSkill { get; private set; }
-    [field: SerializeField] public Sprite SkillSprite { get; private set; }
-    [field: SerializeField] public GameObject SkillPrefab { get; private set; }
+    [SerializeField]protected float _waitTime;
+    [field:SerializeField] public SkillData Data { get; private set; }
+    [field: SerializeField] public int Cost { get; protected set; }
+    [field: SerializeField] public float PastDelay { get; protected set; }
+    [field: SerializeField] public float CoolTime { get; protected set; }
+    [field: SerializeField] public string Name { get; protected set; }
+    [field: SerializeField] public bool IsActive { get; protected set; }
+    [field: SerializeField] public Skill ThisSkill { get; protected set; }
+    [field: SerializeField] public Sprite SkillSprite { get; protected set; }
+    [field: SerializeField] public GameObject SkillPrefab { get; protected set; }
 
     public event Action OnUseSkill;
+    protected virtual void Awake()
+    {
+        _waitTime = CoolTime;
+    }
+    protected virtual void Start()
+    {
+        Player.Instance.SkillControllerCompo.OnChangeSkill += DisActive;
+    }
     virtual public void Active()
     {
         IsActive = true;
@@ -42,6 +52,10 @@ public abstract class Skill : MonoBehaviour
     virtual public void Passive()
     {
         
+    }
+    virtual public void DisPassive()
+    {
+
     }
 
     virtual public void EndPastDelay()

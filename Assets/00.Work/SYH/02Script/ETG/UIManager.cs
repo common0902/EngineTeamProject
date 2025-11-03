@@ -6,7 +6,7 @@ public class UIManager : MonoSingleton<UIManager>
 {
     [field:SerializeField] public TextMeshProUGUI[] SkillUI { get; private set; }
     [field:SerializeField] public SkillController SkillControllerCompo { get; private set; }
-    [field:SerializeField]public PasiveSkillText pasiveSkillTextCompo { get; private set; }
+    [field:SerializeField]public PassiveSkillText PassiveSkillTextCompo { get; private set; }
 
     private void Start()
     {
@@ -15,18 +15,14 @@ public class UIManager : MonoSingleton<UIManager>
 
     private void ChangeSkillUI()
     {
-        Skill[] eliments = SkillControllerCompo.Skills.ToArray();
-        int j = 0;
-        for (int i = 2; i >= 0; i--)
+        for (int i = 0; i < Player.Instance.SkillControllerCompo.Skills.Count; i++)
         {
-            if (eliments[i] == null)
+            if (Player.Instance.SkillControllerCompo.Skills[i] == null)
             {
-                SkillUI[i].text = $"Skill{j}: Null";
-                j++;
+                SkillUI[i].text = $"Skill{i}: Null";
                 continue;
             }
-            SkillUI[i].text = $"Skill{j}: {eliments[i].Name}";
-            j++;
+            SkillUI[i].text = $"Skill{i}: {Player.Instance.SkillControllerCompo.Skills[i].Name}";
         }
     }
 }

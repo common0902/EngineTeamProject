@@ -23,6 +23,7 @@ public class Pool
             item.SetActive(false);
             IPoolable poolableItem = item.GetComponent<IPoolable>(); 
             _pool.Push(poolableItem);
+            item.SetActive(false);
         }
     }
 

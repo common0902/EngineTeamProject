@@ -12,6 +12,7 @@ public class PlayerMove : MonoBehaviour
 
     private void Update()
     {
+        if (!_canMove || Player.Instance.PlayerAnimationCompo._isConcentrate) return;
         Vector2 aaa = Vector2.zero;
         if (Input.GetKey(KeyCode.W))
         {
@@ -30,12 +31,11 @@ public class PlayerMove : MonoBehaviour
             aaa += Vector2.right;
         }
         OnMove(aaa.normalized);
-        if (_canMove) transform.position += (Vector3)_moveDir * Player.Instance.PlayerStatusCompo._speed * Time.deltaTime;
+        transform.position += (Vector3)_moveDir * Player.Instance.PlayerStatusCompo.Speed * Time.deltaTime;
     }
     public void OnMove(InputValue value)
     {
         _moveDir = value.Get<Vector2>();
-        print(111);
         if (_moveDir == Vector2.zero) OnDisMoved?.Invoke();
         else OnMoved?.Invoke(_moveDir.x);
     }

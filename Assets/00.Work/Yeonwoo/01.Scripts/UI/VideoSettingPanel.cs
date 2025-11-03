@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using _00.Work.Yeonwoo._01.Scripts.Interfaces;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,7 +8,7 @@ using _00.Work.Yeonwoo._01.Scripts.UI;
 
 namespace _00.Work.Yeonwoo._01.Scripts.UI
 {
-    public class VideoSettingPanel : Data.MonoSingletonUI<VideoSettingPanel>, ISettingPanel
+    public class VideoSettingPanel : MonoSingletonUI<VideoSettingPanel>, ISettingPanel
     {
         [SerializeField] private TMP_Dropdown _resolutionDropdown;
         [SerializeField] private Toggle _fullscreenToggle;
