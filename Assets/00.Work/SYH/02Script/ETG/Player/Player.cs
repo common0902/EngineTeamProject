@@ -1,3 +1,4 @@
+using _00.Work.SYH._02Script.ETG;
 using UnityEngine;
 
 public class Player : MonoSingleton<Player>

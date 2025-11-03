@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using _00.Work.SYH._02Script.ETG;
 
 public class BeamPrefab : SkillPrefab
 {
