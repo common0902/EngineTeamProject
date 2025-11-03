@@ -4,14 +4,20 @@ using UnityEngine;
 public class EnemyAnimator : MonoBehaviour
 {
     public Action OnAttackTrigger;
-    public Action OnEndTrigger;
+    public Action OnAttackEndTrigger;
+    public Action OnHitEndTrigger;
 
     public void AttackStart()
     {
         OnAttackTrigger?.Invoke();
     }
-    public void AniamtionEnd()
+    public void AttackAniamtionEnd()
     {
-        OnEndTrigger?.Invoke();
+        OnAttackEndTrigger?.Invoke();
+    }
+
+    public void HitAnimationEnd()
+    {
+        OnHitEndTrigger?.Invoke();
     }
 }

@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using DG.Tweening;
+using Unity.VisualScripting.FullSerializer;
+using UnityEngine;
 
 public class EnemyHitState : EnemyState
 {
@@ -15,26 +17,27 @@ public class EnemyHitState : EnemyState
         base.Enter();
         //Debug.Log("Enter Hit State");
         _enemy.ChangeFlip(false);
-        
+
         _enemy.AgentCompo.isStopped = true;
-        _enemyHit.isAnimationEnd = false;
-        
         _knockbackDir = (_enemy.transform.position - _enemy.target.position).normalized;
-        _enemy.RbCompo.AddForce(_knockbackDir * _enemy.enemySO.knockbackForce, ForceMode2D.Impulse);
+        //_enemy.RbCompo.AddForce(_knockbackDir * _enemy.enemySO.knockbackForce, ForceMode2D.Impulse);
+        _enemy.transform
+            .DOMove((Vector2)_enemy.transform.position + (_knockbackDir * _enemy.enemySO.knockbackForce), 0.3f);
         _timer = 0;
     }
     public override void Update()
     {
-        base.Update();
         _timer += Time.deltaTime;
         if (_timer >= _enemy.enemySO.knockBackTime)
         {
+            _timer = 0f; 
             _enemy.RbCompo.linearVelocity = Vector2.zero;
 
             if (_enemyHit.isAnimationEnd)
             {
+                _enemy.isHit = false;
+                _enemyHit.isAnimationEnd = false;
                 _stateMachine.ChangeState(EnemyStateType.Chase);
-                return;
             }
         }
     }

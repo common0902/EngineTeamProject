@@ -2,5 +2,9 @@
 {
     Melee,
     Ranged,
+    Dash,
+    Summoner,
+    Assassin,
+    SuisideAttacker,
     
 }

@@ -17,11 +17,12 @@ public class EnemyChaseState : EnemyState
         //Debug.Log("Enter Chase State");
         _enemy.ChangeFlip(true);
         _enemy.AgentCompo.speed = _enemy.enemySO.speed;
-        _enemy.AgentCompo.stoppingDistance = _enemy.enemySO.attackRange;
+        _enemy.AgentCompo.stoppingDistance = _enemy.attackRange;
         _enemy.AgentCompo.isStopped = false;
     }
     public override void Update()
     {
+        base.Update();
         _enemy.AgentCompo.SetDestination(_enemy.target.position);
         if (!_enemy.CheckChaseRange())
         {

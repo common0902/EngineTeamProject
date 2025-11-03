@@ -10,15 +10,22 @@ public class Enemy : Agent, IPoolable
     public GameObject GameObject => gameObject;
     public Transform target { get; private set; }
     [field:SerializeField] public EnemySO enemySO { get; private set; }
-    [SerializeField] private LayerMask playerMask;
-    [SerializeField] private LayerMask whatIsWall;
+    [SerializeField] public LayerMask playerMask;
+    [SerializeField] public LayerMask whatIsWall;
+    public float chaseRange;
+    public float attackRange;
     private bool canFlip = true;
     private bool isDead = false;
+    public bool isHit { get; set; } = false;
+    public ParticleSystem particle;
+    
     #region Components
     public Animator AnimCompo { get; private set; }
     public EnemyRenderer VisualCompo { get; private set; }
     public NavMeshAgent AgentCompo { get; private set; }
     public Rigidbody2D RbCompo { get; private set; }
+    public Collider2D ColliderCompo { get; private set; }
+    public HealthSystem HealthCompo { get; private set; }
     [field:SerializeField]public WayPoints wayPoints { get; private set; }
     #endregion
     protected override void InitializeComponents()
@@ -28,29 +35,37 @@ public class Enemy : Agent, IPoolable
         AgentCompo = GetComponent<NavMeshAgent>();
         VisualCompo = GetComponentInChildren<EnemyRenderer>();
         RbCompo = GetComponent<Rigidbody2D>();
+        ColliderCompo = GetComponent<Collider2D>();
+        HealthCompo = GetComponent<HealthSystem>();
         target = GameObject.FindGameObjectWithTag("Player").transform;
         wayPoints = GameObject.FindGameObjectWithTag("WayPoints").GetComponent<WayPoints>();
         //BtAgent = GetComponent<BehaviorGraphAgent>();
         AgentCompo.updateRotation = false;
         AgentCompo.updateUpAxis = false;
+        chaseRange = enemySO.chaseRange;
+        attackRange = enemySO.attackRange;
+        /*if(enemySO.enemyType == EnemyType.Assassin)
+        {
+            particle = Instantiate(enemySO.assassinData.particleSystem, transform.position, Quaternion.identity, transform);
+        }*/
     }
 
     private void Start()
     {
-        if (wayPoints != null) // 삭제
+        /*if (wayPoints != null) // 삭제
         {
             Vector3 spawnPos = wayPoints.GetRandomWayPoint();
             transform.position = spawnPos;
-        }
+        }*/
     }
 
     public bool CheckChaseRange()
     {
-        return Physics2D.OverlapCircle(transform.position, enemySO.chaseRange, playerMask) && IsPlayerInSight();
+        return Physics2D.OverlapCircle(transform.position, chaseRange, playerMask) && IsPlayerInSight();
     }
     public bool CheckAttackRange()
     {
-        return Physics2D.OverlapCircle(transform.position, enemySO.attackRange, playerMask);
+        return Physics2D.OverlapCircle(transform.position, attackRange, playerMask);
     }
     // 플레이어가 시야 안에 있는지
     public bool IsPlayerInSight()
@@ -70,7 +85,9 @@ public class Enemy : Agent, IPoolable
         bool isOutScreen = screenPoint.x <= 0 || screenPoint.x >= Screen.width || screenPoint.y <= 0 || screenPoint.y >= Screen.height;
         return isOutScreen;
     }
+
     
+
     private void LateUpdate()
     {
         if(VisualCompo != null && CheckChaseRange() && canFlip)
@@ -86,11 +103,11 @@ public class Enemy : Agent, IPoolable
     {
         isDead = false;
         canFlip = true;
-        if (wayPoints != null)
+        /*if (wayPoints != null)
         {
             Vector3 spawnPos = wayPoints.GetRandomWayPoint();
             transform.position = spawnPos;
-        }
+        }*/
     }
 #if UNITY_EDITOR
     private void OnDrawGizmos()

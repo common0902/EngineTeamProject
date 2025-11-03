@@ -1,4 +1,6 @@
 ﻿using System.Collections;
+using DG.Tweening;
+using UnityEditor.Rendering;
 using UnityEngine;
 
 public abstract class EnemyState
@@ -6,6 +8,8 @@ public abstract class EnemyState
     protected Enemy _enemy;
     protected EnemyStateMachine _stateMachine;
     protected int _animHash;
+    private EnemyHit _enemyHit;
+    private Vector2 _knockbackDir;
     public EnemyState(Enemy enemy, string animName, EnemyStateMachine stateMachine)
     {
         _enemy = enemy;
@@ -18,7 +22,11 @@ public abstract class EnemyState
     }
     public virtual void Update()
     {
-        // hit
+        if (_enemy.isHit)
+        {
+            
+            _stateMachine.ChangeState(EnemyStateType.Hit);
+        }
     }
     public virtual void Exit()
     {

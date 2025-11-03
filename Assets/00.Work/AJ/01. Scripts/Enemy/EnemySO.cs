@@ -1,15 +1,15 @@
 using System;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-[CreateAssetMenu(fileName = "Enemy", menuName = "SO/Enemy")]
+[CreateAssetMenu(fileName = "Enemy", menuName = "SO/Enemy/EnemyData")]
 public class EnemySO : ScriptableObject
 {
     [Header("Default Setting")]
     public EnemyType enemyType; // 공격 타입(원거리인가 근거리인가)
     public string enemyName; // 에너미 이름
     public Sprite enemySprite; // 에너미 기본 스프라이트
-    public float health; // 체력
     public float speed; // 속도
     
     [Header("Patrol Setting")]
@@ -18,19 +18,78 @@ public class EnemySO : ScriptableObject
     
     [Header("Attack Setting")] // 공격 설정 
     public float damage; // 공격력
-    public float attackDelay; // 공격 딜레이
+    public float attackDelay; // 공격 딜레이 - 
 
     [Header("Hit Setting")] 
-    [Range(0f, 5f)] public float knockbackForce = 3f; // 넉백
+    [Range(0f, 10f)] public float knockbackForce = 3f; // 넉백
     public float knockBackTime = 0.2f; // 넉백 몇초동안 받을건지
     
     [Header("Range")]
     public float chaseRange; // Chase범위
     public float attackRange; // Attack범위
-    
-    [Header("RangedAttackSetting")] // 원거리 설정
-    public GameObject projectilePrefab; // 발사체
+
+    [Header("Types Setting")]
+    public EnemyRangedData rangedData;
+    public EnemyDashData dashData;
+    public EnemySummonerData summonerData;
+    public EnemyAssassinData assassinData;
+    public EnemySuicideAttackerData suicideAttackerData;
     
     [Header("Sound")] 
     public AudioClip attackSound; // 공격 소리(임시)
+
+    public float ChaseSave { get; private set; }
+    public float AttackSave { get; private set; }
+    private void OnValidate()
+    {
+        chaseRange = Mathf.Max(chaseRange, attackRange);
+    }
+}
+
+[Serializable]
+public class EnemyRangedData
+{
+    [Header("RangedAttackSetting")] // 원거리 설정
+    public BulletData bulletData; // 불렛 데이터
+}
+
+[Serializable]
+public class EnemyDashData
+{
+    [Header("DashAttackSetting")] // 데쉬 설정
+    public float dashForce = 5f; // 데시 할때 얼마만큼의 힘으로 쏠건지
+    public float dashAttackTime = 0.5f; // 데쉬 공격 지속 시간
+}
+
+[Serializable]
+public class EnemySummonerData
+{
+    [Header("SummonerSetting")]
+    public GameObject[] summonPrefab; // 스폰할 객체
+    public int maxSummonCount = 3; // 몇마리 스폰할건지
+    public float summonRange = 3f; // 스폰 범위
+    public float waitforNextSummon = 10f; // 꽉차면 다음 스폰까지 몇초나 기다릴건지
+    public bool isLifeTimeInChildren = false; // Clone이 죽는 시간이 있을것인지
+    public float summonLifeTime = 10f; // Clone이 죽는 시간
+    public bool isFade = true; // Fade등장할건지
+}
+
+[Serializable]
+public class EnemyAssassinData
+{
+    [Header("AssassinSetting")] 
+    public ParticleSystem vanishVfx;
+    public float hideDuration = 0.6f;      // 사라져 있는 시간
+    public float appearBehindDistance = 0.8f; // 플레이어 뒤 얼마나 떨어져서 나타날지
+    public bool randomHideDuration = false;
+    public float minHideDuration = 0.4f; 
+}
+
+[Serializable]
+public class EnemySuicideAttackerData
+{
+    [Header("SuicideAttackerSetting")] 
+    public ParticleSystem particleSystem;
+    public float explosionRadius = 1.5f;
+    public float explosionDelay = 0.3f;
 }
