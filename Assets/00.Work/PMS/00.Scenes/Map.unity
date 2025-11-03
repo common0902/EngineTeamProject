@@ -369,13 +369,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab6a3fa7d3ebe994d9e2c36028364f31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomPrefab: {fileID: 2006649140709060410, guid: a13ba424edd222241ba20030a914fee3, type: 3}
-  maxRooms: 15
-  minRooms: 15
-  roomWidth: 20
-  roomHeight: 12
+  startRoomPrefab: {fileID: 2006649140709060410, guid: a1fdb7fa6edb8534dbeab05255b13aa1, type: 3}
+  bossRoomPrefab:
+  - {fileID: 2006649140709060410, guid: f1bcd4353568f4343bbb94bf30644875, type: 3}
+  eventRoomPrefab:
+  - {fileID: 2006649140709060410, guid: df21062c3bec79149a8f349175496ceb, type: 3}
+  goldRoomPrefab:
+  - {fileID: 2006649140709060410, guid: 74a5aeae59e9af14ea08b461f3aaebe1, type: 3}
+  roomPrefab:
+  - {fileID: 2006649140709060410, guid: a13ba424edd222241ba20030a914fee3, type: 3}
+  shopRoomPrefab:
+  - {fileID: 2006649140709060410, guid: 7b9831caf2909d34ea6c9d362af103df, type: 3}
+  maxRooms: 10
+  minRooms: 10
+  roomWidth: 26
+  roomHeight: 18
   gridSizeX: 10
   gridSizeY: 10
+  bossRoomGeneration: 0
+  eventRoomIndex: 0
+  goldRoomIndex: 0
+  shopRoomIndex: 0
 --- !u!4 &1840950129
 Transform:
   m_ObjectHideFlags: 0
