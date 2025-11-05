@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using Unity.Behavior;
 using UnityEngine.AI;
+using _00.Work.SYH._02Script.ETG;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Enemy : Agent, IPoolable

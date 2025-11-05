@@ -1,9 +1,8 @@
-using System;
 using DG.Tweening;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.AI;
 using Random = UnityEngine.Random;
+using _00.Work.SYH._02Script.ETG;
 
 public class EnemyAttack : MonoBehaviour
 {    

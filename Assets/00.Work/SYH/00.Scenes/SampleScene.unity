@@ -591,6 +591,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _waitTime: 0
+  <Data>k__BackingField: {fileID: 0}
   <Cost>k__BackingField: 0
   <PastDelay>k__BackingField: 0
   <CoolTime>k__BackingField: 0.25
@@ -817,6 +818,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _waitTime: 0
+  <Data>k__BackingField: {fileID: 0}
   <Cost>k__BackingField: 0
   <PastDelay>k__BackingField: 0
   <CoolTime>k__BackingField: 0.5
@@ -1315,7 +1317,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Health>k__BackingField: 0
-  _maxHearth: 30
+  maxHealth: 0
 --- !u!114 &447061238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1378,6 +1380,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _waitTime: 0
+  <Data>k__BackingField: {fileID: 0}
   <Cost>k__BackingField: 1
   <PastDelay>k__BackingField: 0
   <CoolTime>k__BackingField: 0.5
@@ -1826,6 +1829,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _waitTime: 0
+  <Data>k__BackingField: {fileID: 0}
   <Cost>k__BackingField: 1
   <PastDelay>k__BackingField: 0
   <CoolTime>k__BackingField: 0.25
@@ -2868,6 +2872,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d79db7c703e18b49b6388e20ae9914a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Data>k__BackingField: {fileID: 0}
   <StatusType>k__BackingField: 0
   <StatusValue>k__BackingField: 0
   <SkillSprite>k__BackingField: {fileID: 0}
@@ -4053,7 +4058,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Health>k__BackingField: 0
-  _maxHearth: 30
+  maxHealth: 0
 --- !u!58 &1642276663
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -4359,6 +4364,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _waitTime: 0
+  <Data>k__BackingField: {fileID: 0}
   <Cost>k__BackingField: 0
   <PastDelay>k__BackingField: 0.35
   <CoolTime>k__BackingField: 1
@@ -4949,6 +4955,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _waitTime: 0
+  <Data>k__BackingField: {fileID: 0}
   <Cost>k__BackingField: 0
   <PastDelay>k__BackingField: 0
   <CoolTime>k__BackingField: 0.5
@@ -5026,7 +5033,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Health>k__BackingField: 0
-  _maxHearth: 30
+  maxHealth: 0
 --- !u!58 &1931841798
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -5244,6 +5251,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _waitTime: 0
+  <Data>k__BackingField: {fileID: 0}
   <Cost>k__BackingField: 8
   <PastDelay>k__BackingField: 0
   <CoolTime>k__BackingField: 1.75
@@ -5345,6 +5353,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _waitTime: 0
+  <Data>k__BackingField: {fileID: 0}
   <Cost>k__BackingField: 0
   <PastDelay>k__BackingField: 0
   <CoolTime>k__BackingField: 120

@@ -1,3 +1,4 @@
+using _00.Work.SYH._02Script.ETG;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;

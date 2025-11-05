@@ -1,3 +1,4 @@
+using _00.Work.SYH._02Script.ETG;
 using UnityEngine;
 
 public class EnemyDeathState : EnemyState
@@ -10,6 +11,7 @@ public class EnemyDeathState : EnemyState
     public override void Enter()
     {
         base.Enter();
+        _enemy.ColliderCompo.enabled = false;
         _enemy.AgentCompo.isStopped = true;
     }
     public override void Update()
