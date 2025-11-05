@@ -1,6 +1,9 @@
+using System;
 using DG.Tweening;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 public class EnemyAttack : MonoBehaviour
 {    
@@ -10,34 +13,36 @@ public class EnemyAttack : MonoBehaviour
     private SpriteRenderer _renderer;
     private HealthSystem _targetHealth;
     private int currentCount = 0;
-    private float chaseRange;
-    private float attackRange;
     private bool canAttack = true;
+    private WaitForSeconds _attackDelay;
     private Coroutine _assassinRoutine;
+    private float lastAttackTime = 0f;
     private void Awake()
     {
         _enemyAnimator = GetComponentInChildren<EnemyAnimator>();
         _enemy = GetComponent<Enemy>();
         _renderer = _enemy.GetComponentInChildren<SpriteRenderer>();
+
+        _attackDelay = new WaitForSeconds(_enemy.enemySO.attackDelay);
     }
     private void Start()
     {
         _targetHealth = _enemy.target.GetComponent<HealthSystem>();
 
-        chaseRange = _enemy.enemySO.ChaseSave;
-        attackRange = _enemy.enemySO.AttackSave;
-
         _enemyAnimator.OnAttackTrigger += Attack;
-        _enemyAnimator.OnAttackEndTrigger += () => isAnimationEnd = true;
+        _enemyAnimator.OnAttackEndTrigger += OnAttackEnd;
     }
+
+    private void OnAttackEnd() => isAnimationEnd = true;
 
     public void Attack()
     {
+        lastAttackTime = Time.time;
+
         Vector2 dir = (_enemy.target.position - _enemy.transform.position).normalized;
         if (_enemy.enemySO.enemyType == EnemyType.Assassin && _assassinRoutine != null)
             return;
         if (!canAttack) return;
-        
         switch (_enemy.enemySO.enemyType)
         {
             case EnemyType.Melee:
@@ -53,44 +58,36 @@ public class EnemyAttack : MonoBehaviour
                 StartCoroutine(SummonAttack(dir));
                 break;
             case EnemyType.Assassin:
-                ParticleSystem vfx = null;
-                if (_enemy.enemySO.assassinData != null && _enemy.enemySO.assassinData.vanishVfx != null)
-                {
-                    vfx = Instantiate(
-                        _enemy.enemySO.assassinData.vanishVfx,
-                        _enemy.transform.position,
-                        Quaternion.identity,
-                        _enemy.transform
-                    );
-                }
-                _assassinRoutine = StartCoroutine(AssassinAttack(dir, vfx));
+                _assassinRoutine = StartCoroutine(AssassinAttack(dir, _enemy.vfx));
                 break;
-            case EnemyType.SuisideAttacker :
+            case EnemyType.SuisideAttacker:
                 StartCoroutine(SuisideAttack(dir));
                 break;
         }
     }
-
+    public bool CanAttack()
+    {
+        return Time.time >= lastAttackTime + _enemy.enemySO.attackDelay;
+    }
     private IEnumerator MeleeAttack()
     {
         if (_enemy.CheckAttackRange())
         {
-            yield return new WaitForSeconds(_enemy.enemySO.attackDelay);
+            yield return _attackDelay;
             _targetHealth.Damage(_enemy.enemySO.damage);
         }
     }
     private IEnumerator RangedAttack(Vector2 dir)
     {
-        yield return new WaitForSeconds(_enemy.enemySO.attackDelay);
-        
-        GameObject obj = Instantiate(_enemy.enemySO.rangedData.bulletData.projectilePrefab, transform.position, Quaternion.identity);
+        yield return null;
+        GameObject obj = Instantiate(_enemy.enemySO.rangedData.bulletData.projectilePrefab, _enemy._firePos.position, Quaternion.identity);
         Bullet bullet = obj.GetComponent<Bullet>();
 
         bullet.SetUp(dir, _enemy.enemySO);
     }
     private IEnumerator DashAttack(Vector2 dir)
     {
-        _enemy.AgentCompo.enabled = false;
+        _enemy.AgentCompo.isStopped = true;
         _enemy.ColliderCompo.isTrigger = true;
         
         _enemy.RbCompo.linearVelocity = dir * _enemy.enemySO.dashData.dashForce;
@@ -100,29 +97,33 @@ public class EnemyAttack : MonoBehaviour
             _targetHealth.Damage(_enemy.enemySO.damage);
 
         _enemy.RbCompo.linearVelocity = Vector2.zero;
-        yield return new WaitForSeconds(_enemy.enemySO.attackDelay);
+        yield return _attackDelay;
 
         _enemy.ColliderCompo.isTrigger = false;
-        _enemy.AgentCompo.enabled = true;
+        _enemy.AgentCompo.isStopped = false;
     }
     private IEnumerator SummonAttack(Vector2 dir)
     {
         if (_enemy.enemySO.summonerData.maxSummonCount > currentCount)
         {
-            yield return new WaitForSeconds(_enemy.enemySO.attackDelay);
+            yield return _attackDelay;
 
             Vector2 summonPos = Vector2.zero;
             bool found = false;
-
-            // 뭔가 비효율이긴 한데 이거밖에 생각이 안남.
-            for (int i = 0; i < 100; i++) // 100번 돌려서 wall이 있는지 확인해주는데 없으면 찾았다 하고 넘어가고, 못찾으면 다시 돌기 100 번 다 못하면 아쉬운걸로
+            
+            for (int i = 0; i < 10; i++) 
             {
-                summonPos = (Vector2)_enemy.transform.position + Random.insideUnitCircle * _enemy.enemySO.summonerData.summonRange; 
+                Vector2 randomDir = Random.insideUnitCircle.normalized;
+                float distance = Random.Range(0f, _enemy.enemySO.summonerData.summonRange);
+                summonPos = (Vector2)_enemy.transform.position + randomDir * distance;
 
-                if (Physics2D.OverlapCircle(summonPos, _enemy.enemySO.summonerData.summonRange, _enemy.whatIsWall) == null) 
+                RaycastHit2D pathCheck = Physics2D.Raycast(_enemy.transform.position, randomDir, distance, _enemy.whatIsWall);
+                bool posCheck = Physics2D.OverlapCircle(summonPos, 0.5f, _enemy.whatIsWall) == null;
+    
+                if (pathCheck.collider == null && posCheck)
                 {
                     found = true;
-                    break; 
+                    break;
                 }
             }
 
@@ -157,12 +158,12 @@ public class EnemyAttack : MonoBehaviour
         }
         else
         {
-            _enemy.attackRange = 0.0f;
-            _enemy.chaseRange = 0.0f;
+            _enemy.ChangeAttackRange(0.0f);
+            _enemy.ChangeChaseRange(0.0f);
             yield return new WaitForSeconds(_enemy.enemySO.summonerData.waitforNextSummon);
             currentCount = 0;
-            _enemy.chaseRange = _enemy.enemySO.chaseRange;
-            _enemy.attackRange = _enemy.enemySO.attackRange;
+            _enemy.ChangeChaseRange(_enemy.enemySO.chaseRange);
+            _enemy.ChangeAttackRange(_enemy.enemySO.attackRange);
         }
     }
     private IEnumerator AssassinAttack(Vector2 dir, ParticleSystem vfx)
@@ -171,11 +172,9 @@ public class EnemyAttack : MonoBehaviour
 
         _enemy.HealthCompo.enabled = false;
         _enemy.ColliderCompo.isTrigger = true;
-
         vfx.Play();
-        
         if (_renderer != null)
-            _renderer.DOFade(0, 01f); 
+            _renderer.color = new Color(1, 1, 1, 0);
 
         float hideTime = _enemy.enemySO.assassinData.hideDuration;
         if (_enemy.enemySO.assassinData.randomHideDuration)
@@ -201,7 +200,7 @@ public class EnemyAttack : MonoBehaviour
         _enemy.VisualCompo.Flip(playerPos - _enemy.transform.position);
 
         if (_renderer != null)
-            _renderer.DOFade(1, 1f); 
+            _renderer.color = new Color(1, 1, 1, 1);
 
         if (_enemy.CheckAttackRange())
         {
@@ -213,10 +212,7 @@ public class EnemyAttack : MonoBehaviour
         _enemy.HealthCompo.enabled = true;
         _enemy.ColliderCompo.isTrigger = false;
 
-        if (vfx != null)
-            Destroy(vfx.gameObject);
-
-        yield return new WaitForSeconds(_enemy.enemySO.attackDelay);
+        yield return _attackDelay;
 
         canAttack = true;
         _assassinRoutine = null;
@@ -251,14 +247,12 @@ public class EnemyAttack : MonoBehaviour
         }
 
         Destroy(transform.gameObject);        
-
-        yield break;
     }
 
     private void OnDestroy()
     {
         _enemyAnimator.OnAttackTrigger -= Attack;
-        _enemyAnimator.OnAttackEndTrigger -= () => isAnimationEnd = true;
+        _enemyAnimator.OnAttackEndTrigger -= OnAttackEnd;
     }
 
 }

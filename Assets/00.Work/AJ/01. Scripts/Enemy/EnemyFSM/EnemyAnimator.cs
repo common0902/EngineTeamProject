@@ -1,11 +1,13 @@
 ﻿using System;
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
 public class EnemyAnimator : MonoBehaviour
 {
     public Action OnAttackTrigger;
     public Action OnAttackEndTrigger;
     public Action OnHitEndTrigger;
+    public Action OnDeathEndTrigger;
 
     public void AttackStart()
     {
@@ -19,5 +21,9 @@ public class EnemyAnimator : MonoBehaviour
     public void HitAnimationEnd()
     {
         OnHitEndTrigger?.Invoke();
+    }
+    public void DeathAnimationEnd()
+    {
+        OnDeathEndTrigger?.Invoke();
     }
 }

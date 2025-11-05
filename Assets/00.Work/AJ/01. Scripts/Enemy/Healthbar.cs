@@ -10,7 +10,7 @@ public class Healthbar : MonoBehaviour
     public void Init(HealthSystem enemyhealth)
     {
         _enemyHealth = enemyhealth;
-        _enemyHealth.OnDamage += OnDamage;
+        _enemyHealth.OnHealthChanged += OnDamage;
         _enemyHealth.OnDead += OnDead;
         
         _targetFill = 1f;
@@ -28,10 +28,10 @@ public class Healthbar : MonoBehaviour
         if (_enemyHealth == null) return;
         hpbar.fillAmount = Mathf.Lerp(hpbar.fillAmount, _targetFill, Time.deltaTime);
     }
-    
-    private void OnDamage()
+
+    private void OnDamage(float health, float maxHealth)
     {
-        _targetFill = Mathf.Clamp01(_enemyHealth.Health / _enemyHealth.MaxHealth);
+        _targetFill = Mathf.Clamp01(health / maxHealth);
     }
     
     private void OnDead()
@@ -43,7 +43,7 @@ public class Healthbar : MonoBehaviour
     {
         if (_enemyHealth != null)
         {
-            _enemyHealth.OnDamage -= OnDamage;
+            _enemyHealth.OnHealthChanged -= OnDamage;
             _enemyHealth.OnDead -= OnDead;
         }
     }

@@ -1,13 +1,20 @@
 using Unity.VisualScripting.FullSerializer;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class EnemyAttackState : EnemyState
 {
     private EnemyAttack _enemyAttack;
     private bool isAttack;
+
+    private float delay = 0;//
+    private float timer = 0;//
     public EnemyAttackState(Enemy enemy, string animName, EnemyStateMachine stateMachine) : base(enemy, animName, stateMachine)
     {
         _enemyAttack = enemy.GetComponent<EnemyAttack>();
+
+        delay = enemy.enemySO.attackDelay;//
     }
     public override void Enter()
     {
@@ -21,6 +28,7 @@ public class EnemyAttackState : EnemyState
                 sr.color = new Color(1, 1, 1, 0); 
             _enemy.HealthCompo.enabled = false;
             _enemy.ColliderCompo.isTrigger = true;
+            _enemy.vfx.Play();
         }
     }
     public override void Update()
@@ -28,7 +36,7 @@ public class EnemyAttackState : EnemyState
         base.Update();
         if (_enemy.CheckAttackRange())
         {
-            CalculateTargetRotation();
+            //CalculateTargetRotation();
         }
         if (_enemy.CheckAttackRange() && !isAttack)
         {
@@ -40,15 +48,24 @@ public class EnemyAttackState : EnemyState
         {
             if (_enemy.enemySO.enemyType == EnemyType.Assassin)
             {
-                _stateMachine.ChangeState(EnemyStateType.Idle);
+
             }
             else if (_enemy.enemySO.enemyType == EnemyType.SuisideAttacker)
             {
-                
+
+            }
+            else if (_enemy.enemySO.enemyType == EnemyType.Ranged)
+            {
+                timer += Time.deltaTime;
+                if (timer >= delay)
+                {
+                    _stateMachine.ChangeState(EnemyStateType.Idle);
+                    timer = 0;
+                }
             }
             else
             {
-                _stateMachine.ChangeState(EnemyStateType.Chase);
+                _stateMachine.ChangeState(EnemyStateType.Idle);
             }
         }
     }
@@ -63,5 +80,10 @@ public class EnemyAttackState : EnemyState
         Quaternion targetRotation = Quaternion.Euler(0, 0, angle);
         _enemy.transform.rotation = targetRotation;
         _enemy.VisualCompo.Flip(direction);
+    }
+
+    public override void Exit()
+    {
+        base.Exit();
     }
 }

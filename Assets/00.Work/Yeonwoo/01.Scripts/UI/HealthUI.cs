@@ -22,7 +22,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
             
             healthSystem = GameObject.Find("Player").GetComponent<HealthSystem>();
             if (!healthSystem)
-                Debug.LogError("healthSystem is null");
+                Debug.LogError("_healthSystem is null");
             
             healthText = GetComponentInChildren<TextMeshProUGUI>();
             if (!healthText)

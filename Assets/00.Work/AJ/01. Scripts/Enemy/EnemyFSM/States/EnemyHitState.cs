@@ -37,7 +37,7 @@ public class EnemyHitState : EnemyState
             {
                 _enemy.isHit = false;
                 _enemyHit.isAnimationEnd = false;
-                _stateMachine.ChangeState(EnemyStateType.Chase);
+                _stateMachine.ChangeState(EnemyStateType.Idle);
             }
         }
     }

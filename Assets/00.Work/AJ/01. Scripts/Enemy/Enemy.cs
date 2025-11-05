@@ -3,22 +3,25 @@ using UnityEngine;
 using Unity.Behavior;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class Enemy : Agent, IPoolable
 {
     //public BehaviorGraphAgent BtAgent { get; private set; }
     public string ItemName => enemySO.enemyName;
     public GameObject GameObject => gameObject;
     public Transform target { get; private set; }
+    [field:SerializeField]public Transform _firePos { get; private set; }
     [field:SerializeField] public EnemySO enemySO { get; private set; }
     [SerializeField] public LayerMask playerMask;
     [SerializeField] public LayerMask whatIsWall;
-    public float chaseRange;
-    public float attackRange;
+    public float ChaseRange { get; private set; }    
+    public float AttackRange { get; private set; }
+    public float DeathRange { get; private set; }
     private bool canFlip = true;
-    private bool isDead = false;
+    public bool isDead { get; set; } = false;
     public bool isHit { get; set; } = false;
-    public ParticleSystem particle;
-    
+    public ParticleSystem vfx = null;
+
     #region Components
     public Animator AnimCompo { get; private set; }
     public EnemyRenderer VisualCompo { get; private set; }
@@ -28,6 +31,7 @@ public class Enemy : Agent, IPoolable
     public HealthSystem HealthCompo { get; private set; }
     [field:SerializeField]public WayPoints wayPoints { get; private set; }
     #endregion
+    
     protected override void InitializeComponents()
     {
         base.InitializeComponents();
@@ -37,17 +41,29 @@ public class Enemy : Agent, IPoolable
         RbCompo = GetComponent<Rigidbody2D>();
         ColliderCompo = GetComponent<Collider2D>();
         HealthCompo = GetComponent<HealthSystem>();
-        target = GameObject.FindGameObjectWithTag("Player").transform;
-        wayPoints = GameObject.FindGameObjectWithTag("WayPoints").GetComponent<WayPoints>();
+        target = FindAnyObjectByType<Player>().transform;
+        wayPoints = FindAnyObjectByType<WayPoints>().GetComponent<WayPoints>();
         //BtAgent = GetComponent<BehaviorGraphAgent>();
+
         AgentCompo.updateRotation = false;
         AgentCompo.updateUpAxis = false;
-        chaseRange = enemySO.chaseRange;
-        attackRange = enemySO.attackRange;
-        /*if(enemySO.enemyType == EnemyType.Assassin)
+        
+        ChaseRange = enemySO.chaseRange;
+        AttackRange = enemySO.attackRange;
+
+        if (_firePos == null && enemySO.enemyType == EnemyType.Ranged)
         {
-            particle = Instantiate(enemySO.assassinData.particleSystem, transform.position, Quaternion.identity, transform);
-        }*/
+            Debug.LogError("Error");
+        }
+        if (enemySO.assassinData != null && enemySO.assassinData.vanishVfx != null)
+        {
+            vfx = Instantiate(
+                enemySO.assassinData.vanishVfx,
+                transform.position,
+                Quaternion.identity,
+                transform
+            );
+        }
     }
 
     private void Start()
@@ -58,14 +74,19 @@ public class Enemy : Agent, IPoolable
             transform.position = spawnPos;
         }*/
     }
-
+    public void ChangeChaseRange(float value) => ChaseRange = value;
+    public void ChangeAttackRange(float value) => AttackRange = value;
     public bool CheckChaseRange()
     {
-        return Physics2D.OverlapCircle(transform.position, chaseRange, playerMask) && IsPlayerInSight();
+        return Physics2D.OverlapCircle(transform.position, ChaseRange, playerMask) && IsPlayerInSight();
     }
     public bool CheckAttackRange()
     {
-        return Physics2D.OverlapCircle(transform.position, attackRange, playerMask);
+        return Physics2D.OverlapCircle(transform.position, AttackRange, playerMask);
+    }
+    public bool CheckDeathRange()
+    {
+        return Physics2D.OverlapCircle(transform.position, DeathRange, playerMask);
     }
     // 플레이어가 시야 안에 있는지
     public bool IsPlayerInSight()
@@ -117,6 +138,9 @@ public class Enemy : Agent, IPoolable
 
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, enemySO.attackRange);
+
+        Gizmos.color = Color.gray;
+        Gizmos.DrawWireSphere(transform.position, enemySO.deathRange);
     }
 #endif
 }

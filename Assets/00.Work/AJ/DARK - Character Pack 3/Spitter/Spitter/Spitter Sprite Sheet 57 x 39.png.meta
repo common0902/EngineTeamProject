@@ -181,7 +181,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -195,7 +195,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -247,10 +247,10 @@ TextureImporter:
       name: Spitter Sprite Sheet 57 x 39_0
       rect:
         serializedVersion: 2
-        x: 29
+        x: 0
         y: 156
-        width: 19
-        height: 27
+        width: 57
+        height: 39
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -269,10 +269,10 @@ TextureImporter:
       name: Spitter Sprite Sheet 57 x 39_1
       rect:
         serializedVersion: 2
-        x: 86
+        x: 57
         y: 156
-        width: 19
-        height: 28
+        width: 57
+        height: 39
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -291,10 +291,10 @@ TextureImporter:
       name: Spitter Sprite Sheet 57 x 39_2
       rect:
         serializedVersion: 2
-        x: 143
+        x: 114
         y: 156
-        width: 19
-        height: 29
+        width: 57
+        height: 39
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -313,10 +313,10 @@ TextureImporter:
       name: Spitter Sprite Sheet 57 x 39_3
       rect:
         serializedVersion: 2
-        x: 200
+        x: 171
         y: 156
-        width: 19
-        height: 29
+        width: 57
+        height: 39
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -335,10 +335,10 @@ TextureImporter:
       name: Spitter Sprite Sheet 57 x 39_4
       rect:
         serializedVersion: 2
-        x: 256
+        x: 228
         y: 156
-        width: 20
-        height: 29
+        width: 57
+        height: 39
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -357,10 +357,10 @@ TextureImporter:
       name: Spitter Sprite Sheet 57 x 39_5
       rect:
         serializedVersion: 2
-        x: 313
+        x: 285
         y: 156
-        width: 20
-        height: 28
+        width: 57
+        height: 39
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -379,10 +379,10 @@ TextureImporter:
       name: Spitter Sprite Sheet 57 x 39_6
       rect:
         serializedVersion: 2
-        x: 29
+        x: 0
         y: 117
-        width: 19
-        height: 28
+        width: 57
+        height: 39
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -401,10 +401,10 @@ TextureImporter:
       name: Spitter Sprite Sheet 57 x 39_7
       rect:
         serializedVersion: 2
-        x: 86
+        x: 57
         y: 117
-        width: 19
-        height: 27
+        width: 57
+        height: 39
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -423,10 +423,10 @@ TextureImporter:
       name: Spitter Sprite Sheet 57 x 39_8
       rect:
         serializedVersion: 2
-        x: 142
+        x: 114
         y: 117
-        width: 20
-        height: 28
+        width: 57
+        height: 39
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -445,10 +445,10 @@ TextureImporter:
       name: Spitter Sprite Sheet 57 x 39_9
       rect:
         serializedVersion: 2
-        x: 196
-        y: 78
-        width: 31
-        height: 38
+        x: 171
+        y: 117
+        width: 57
+        height: 39
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -467,10 +467,10 @@ TextureImporter:
       name: Spitter Sprite Sheet 57 x 39_10
       rect:
         serializedVersion: 2
-        x: 198
+        x: 228
         y: 117
-        width: 21
-        height: 28
+        width: 57
+        height: 39
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -489,10 +489,10 @@ TextureImporter:
       name: Spitter Sprite Sheet 57 x 39_11
       rect:
         serializedVersion: 2
-        x: 256
+        x: 285
         y: 117
-        width: 20
-        height: 27
+        width: 57
+        height: 39
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -511,10 +511,10 @@ TextureImporter:
       name: Spitter Sprite Sheet 57 x 39_12
       rect:
         serializedVersion: 2
-        x: 269
-        y: 109
-        width: 7
-        height: 8
+        x: 342
+        y: 117
+        width: 57
+        height: 39
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -533,10 +533,10 @@ TextureImporter:
       name: Spitter Sprite Sheet 57 x 39_13
       rect:
         serializedVersion: 2
-        x: 314
-        y: 117
-        width: 19
-        height: 27
+        x: 0
+        y: 78
+        width: 57
+        height: 39
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -555,10 +555,10 @@ TextureImporter:
       name: Spitter Sprite Sheet 57 x 39_14
       rect:
         serializedVersion: 2
-        x: 328
-        y: 112
-        width: 6
-        height: 6
+        x: 57
+        y: 78
+        width: 57
+        height: 39
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -577,10 +577,10 @@ TextureImporter:
       name: Spitter Sprite Sheet 57 x 39_15
       rect:
         serializedVersion: 2
-        x: 371
-        y: 112
-        width: 19
-        height: 34
+        x: 114
+        y: 78
+        width: 57
+        height: 39
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -599,10 +599,10 @@ TextureImporter:
       name: Spitter Sprite Sheet 57 x 39_16
       rect:
         serializedVersion: 2
-        x: 28
+        x: 171
         y: 78
-        width: 20
-        height: 28
+        width: 57
+        height: 39
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -621,10 +621,10 @@ TextureImporter:
       name: Spitter Sprite Sheet 57 x 39_17
       rect:
         serializedVersion: 2
-        x: 85
+        x: 228
         y: 78
-        width: 20
-        height: 27
+        width: 57
+        height: 39
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -643,10 +643,10 @@ TextureImporter:
       name: Spitter Sprite Sheet 57 x 39_18
       rect:
         serializedVersion: 2
-        x: 254
+        x: 285
         y: 78
-        width: 22
-        height: 32
+        width: 57
+        height: 39
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -665,10 +665,10 @@ TextureImporter:
       name: Spitter Sprite Sheet 57 x 39_19
       rect:
         serializedVersion: 2
-        x: 276
-        y: 103
-        width: 8
-        height: 7
+        x: 342
+        y: 78
+        width: 57
+        height: 39
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -687,10 +687,10 @@ TextureImporter:
       name: Spitter Sprite Sheet 57 x 39_20
       rect:
         serializedVersion: 2
-        x: 311
+        x: 399
         y: 78
-        width: 23
-        height: 33
+        width: 57
+        height: 39
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -709,10 +709,10 @@ TextureImporter:
       name: Spitter Sprite Sheet 57 x 39_21
       rect:
         serializedVersion: 2
-        x: 336
-        y: 104
-        width: 6
-        height: 6
+        x: 0
+        y: 39
+        width: 57
+        height: 39
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -731,19 +731,19 @@ TextureImporter:
       name: Spitter Sprite Sheet 57 x 39_22
       rect:
         serializedVersion: 2
-        x: 369
-        y: 78
-        width: 31
-        height: 33
+        x: 57
+        y: 39
+        width: 57
+        height: 39
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 00e837bc1b6f36440800000000000000
+      spriteID: cc81580307b562646a4ff63e22a199df
       internalID: 4928053660756446720
       vertices: []
       indices: 
@@ -753,19 +753,19 @@ TextureImporter:
       name: Spitter Sprite Sheet 57 x 39_23
       rect:
         serializedVersion: 2
-        x: 427
-        y: 78
-        width: 19
-        height: 27
+        x: 114
+        y: 39
+        width: 57
+        height: 39
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 64b1172127b8d7b40800000000000000
+      spriteID: a268132402fda94499a71eda647583e2
       internalID: 5439657246985362246
       vertices: []
       indices: 
@@ -775,19 +775,19 @@ TextureImporter:
       name: Spitter Sprite Sheet 57 x 39_24
       rect:
         serializedVersion: 2
-        x: 142
-        y: 78
-        width: 19
-        height: 25
+        x: 0
+        y: 0
+        width: 57
+        height: 39
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 1bab5d12685ed3e70800000000000000
+      spriteID: 807474176055980418dc59874ea3b499
       internalID: 9096679186614303409
       vertices: []
       indices: 
@@ -797,19 +797,19 @@ TextureImporter:
       name: Spitter Sprite Sheet 57 x 39_25
       rect:
         serializedVersion: 2
-        x: 277
-        y: 93
-        width: 9
-        height: 6
+        x: 57
+        y: 0
+        width: 57
+        height: 39
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 2992122489e742030800000000000000
+      spriteID: 96cab63856432f841853fb493c555b14
       internalID: 3469036805391722898
       vertices: []
       indices: 
@@ -819,19 +819,19 @@ TextureImporter:
       name: Spitter Sprite Sheet 57 x 39_26
       rect:
         serializedVersion: 2
-        x: 337
-        y: 92
-        width: 6
-        height: 6
+        x: 114
+        y: 0
+        width: 57
+        height: 39
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 9e5f9b024afe1dc00800000000000000
+      spriteID: 97f6e7e7b06dcbd4da05e4f077c66b18
       internalID: 923782886790395369
       vertices: []
       indices: 
@@ -841,19 +841,19 @@ TextureImporter:
       name: Spitter Sprite Sheet 57 x 39_27
       rect:
         serializedVersion: 2
-        x: 24
-        y: 38
-        width: 21
-        height: 26
+        x: 171
+        y: 0
+        width: 57
+        height: 39
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: eabc3ae3b21711290800000000000000
+      spriteID: efc11a4354662594fb09fd7536399ce9
       internalID: -7921425839019537490
       vertices: []
       indices: 
@@ -863,19 +863,19 @@ TextureImporter:
       name: Spitter Sprite Sheet 57 x 39_28
       rect:
         serializedVersion: 2
-        x: 83
-        y: 39
-        width: 19
-        height: 24
+        x: 228
+        y: 0
+        width: 57
+        height: 39
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: cdeb48fb562521ad0800000000000000
+      spriteID: f81e6cad4f8392e459dcd8f2cf1c03da
       internalID: -2733031426902147364
       vertices: []
       indices: 
@@ -885,19 +885,19 @@ TextureImporter:
       name: Spitter Sprite Sheet 57 x 39_29
       rect:
         serializedVersion: 2
-        x: 141
-        y: 39
-        width: 18
-        height: 24
+        x: 285
+        y: 0
+        width: 57
+        height: 39
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 0fbc6bb37e95e0870800000000000000
+      spriteID: 67eddc04b113c3e419add0091a2f2b6f
       internalID: 8650950783899454448
       vertices: []
       indices: 
@@ -907,19 +907,19 @@ TextureImporter:
       name: Spitter Sprite Sheet 57 x 39_30
       rect:
         serializedVersion: 2
-        x: 24
+        x: 342
         y: 0
-        width: 21
-        height: 25
+        width: 57
+        height: 39
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 626bcf1155012ffe0800000000000000
+      spriteID: 5187d2626b04111468bb88fb97ee4ba2
       internalID: -1156844196720757210
       vertices: []
       indices: 
@@ -929,394 +929,20 @@ TextureImporter:
       name: Spitter Sprite Sheet 57 x 39_31
       rect:
         serializedVersion: 2
-        x: 63
-        y: 1
-        width: 35
-        height: 24
+        x: 399
+        y: 0
+        width: 57
+        height: 39
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: c31904d507747ffe0800000000000000
+      spriteID: 85c4279cbd3b34244ba55e3b482e3aa2
       internalID: -1155376231470821060
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spitter Sprite Sheet 57 x 39_32
-      rect:
-        serializedVersion: 2
-        x: 118
-        y: 1
-        width: 32
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 40be92633ee929450800000000000000
-      internalID: 6094107944489184004
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spitter Sprite Sheet 57 x 39_33
-      rect:
-        serializedVersion: 2
-        x: 174
-        y: 10
-        width: 8
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7df89a6c2a3b89970800000000000000
-      internalID: 8761950586748374999
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spitter Sprite Sheet 57 x 39_34
-      rect:
-        serializedVersion: 2
-        x: 176
-        y: 18
-        width: 10
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ff157e05773f9a890800000000000000
-      internalID: -7446152815096409601
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spitter Sprite Sheet 57 x 39_35
-      rect:
-        serializedVersion: 2
-        x: 181
-        y: 0
-        width: 18
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7508a10753a4662b0800000000000000
-      internalID: -5591700293959385001
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spitter Sprite Sheet 57 x 39_36
-      rect:
-        serializedVersion: 2
-        x: 187
-        y: 14
-        width: 10
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4ece103441ea964c0800000000000000
-      internalID: -4293709367674278684
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spitter Sprite Sheet 57 x 39_37
-      rect:
-        serializedVersion: 2
-        x: 194
-        y: 10
-        width: 6
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f4be40d656c9ea5c0800000000000000
-      internalID: -4202249442855425201
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spitter Sprite Sheet 57 x 39_38
-      rect:
-        serializedVersion: 2
-        x: 198
-        y: 5
-        width: 6
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5dec7ed0eb2a36a90800000000000000
-      internalID: -7321829632013513003
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spitter Sprite Sheet 57 x 39_39
-      rect:
-        serializedVersion: 2
-        x: 230
-        y: 12
-        width: 6
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 480223e8717e28ae0800000000000000
-      internalID: -1548421233506115452
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spitter Sprite Sheet 57 x 39_40
-      rect:
-        serializedVersion: 2
-        x: 231
-        y: 12
-        width: 17
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0a3d77b834be37700800000000000000
-      internalID: 537031455922443168
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spitter Sprite Sheet 57 x 39_41
-      rect:
-        serializedVersion: 2
-        x: 237
-        y: 3
-        width: 6
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 84666c5db3603c4d0800000000000000
-      internalID: -3115639663150864824
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spitter Sprite Sheet 57 x 39_42
-      rect:
-        serializedVersion: 2
-        x: 242
-        y: 0
-        width: 11
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 75851ac0aaada43e0800000000000000
-      internalID: -2068600654932125609
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spitter Sprite Sheet 57 x 39_43
-      rect:
-        serializedVersion: 2
-        x: 249
-        y: 11
-        width: 6
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a5d3a0331db8a9b00800000000000000
-      internalID: 836134411451383130
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spitter Sprite Sheet 57 x 39_44
-      rect:
-        serializedVersion: 2
-        x: 253
-        y: 5
-        width: 6
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 258c873959df1ab00800000000000000
-      internalID: 838229824533743698
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spitter Sprite Sheet 57 x 39_45
-      rect:
-        serializedVersion: 2
-        x: 285
-        y: 12
-        width: 7
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d1dcb182fbfa1bae0800000000000000
-      internalID: -1535252762410103523
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spitter Sprite Sheet 57 x 39_46
-      rect:
-        serializedVersion: 2
-        x: 293
-        y: 2
-        width: 6
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 087c2f9677e9cce00800000000000000
-      internalID: 1066401447495780224
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spitter Sprite Sheet 57 x 39_47
-      rect:
-        serializedVersion: 2
-        x: 305
-        y: 6
-        width: 10
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 43f110ae977ade5e0800000000000000
-      internalID: -1878661327484805324
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spitter Sprite Sheet 57 x 39_48
-      rect:
-        serializedVersion: 2
-        x: 342
-        y: 2
-        width: 68
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a4dd0f2f3116eed40800000000000000
-      internalID: 5615532523685731658
       vertices: []
       indices: 
       edges: []
@@ -1325,7 +951,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: a4331aed34e2fde4e8f86692fcfa7402
     internalID: 0
     vertices: []
     indices: 
@@ -1361,24 +987,7 @@ TextureImporter:
       Spitter Sprite Sheet 57 x 39_3: 5858185571920219082
       Spitter Sprite Sheet 57 x 39_30: -1156844196720757210
       Spitter Sprite Sheet 57 x 39_31: -1155376231470821060
-      Spitter Sprite Sheet 57 x 39_32: 6094107944489184004
-      Spitter Sprite Sheet 57 x 39_33: 8761950586748374999
-      Spitter Sprite Sheet 57 x 39_34: -7446152815096409601
-      Spitter Sprite Sheet 57 x 39_35: -5591700293959385001
-      Spitter Sprite Sheet 57 x 39_36: -4293709367674278684
-      Spitter Sprite Sheet 57 x 39_37: -4202249442855425201
-      Spitter Sprite Sheet 57 x 39_38: -7321829632013513003
-      Spitter Sprite Sheet 57 x 39_39: -1548421233506115452
       Spitter Sprite Sheet 57 x 39_4: 2073978952830181280
-      Spitter Sprite Sheet 57 x 39_40: 537031455922443168
-      Spitter Sprite Sheet 57 x 39_41: -3115639663150864824
-      Spitter Sprite Sheet 57 x 39_42: -2068600654932125609
-      Spitter Sprite Sheet 57 x 39_43: 836134411451383130
-      Spitter Sprite Sheet 57 x 39_44: 838229824533743698
-      Spitter Sprite Sheet 57 x 39_45: -1535252762410103523
-      Spitter Sprite Sheet 57 x 39_46: 1066401447495780224
-      Spitter Sprite Sheet 57 x 39_47: -1878661327484805324
-      Spitter Sprite Sheet 57 x 39_48: 5615532523685731658
       Spitter Sprite Sheet 57 x 39_5: 1717738223275016143
       Spitter Sprite Sheet 57 x 39_6: -6832219005845653229
       Spitter Sprite Sheet 57 x 39_7: 7455475079388896978

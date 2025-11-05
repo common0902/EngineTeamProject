@@ -11,6 +11,7 @@ public class EnemySO : ScriptableObject
     public string enemyName; // 에너미 이름
     public Sprite enemySprite; // 에너미 기본 스프라이트
     public float speed; // 속도
+    public float health;
     
     [Header("Patrol Setting")]
     public bool canPatrol = true; // 순찰 할건지
@@ -27,6 +28,9 @@ public class EnemySO : ScriptableObject
     [Header("Range")]
     public float chaseRange; // Chase범위
     public float attackRange; // Attack범위
+    public float deathRange; // 죽는 범위 (폭발하는 적만)
+
+    public float deathDamage; // 죽었을때 얼마만큼의 피해를 줄건지
 
     [Header("Types Setting")]
     public EnemyRangedData rangedData;
@@ -38,8 +42,6 @@ public class EnemySO : ScriptableObject
     [Header("Sound")] 
     public AudioClip attackSound; // 공격 소리(임시)
 
-    public float ChaseSave { get; private set; }
-    public float AttackSave { get; private set; }
     private void OnValidate()
     {
         chaseRange = Mathf.Max(chaseRange, attackRange);

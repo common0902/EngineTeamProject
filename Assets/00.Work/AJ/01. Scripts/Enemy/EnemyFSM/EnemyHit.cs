@@ -13,7 +13,8 @@ public class EnemyHit : MonoBehaviour
     private void Start()
     {
         _enemyAnimator.OnHitEndTrigger += () => isAnimationEnd = true;
-        _enemy.HealthCompo.OnDamage += () => _enemy.isHit = true;
-        _enemy.HealthCompo.OnDead += () => Destroy(gameObject);
+        _enemy.HealthCompo.OnHealthChanged += (float health, float maxHealth) => _enemy.isHit = true;
+        _enemy.HealthCompo.OnDead += () => _enemy.isDead = true;
+        _enemyAnimator.OnDeathEndTrigger += () => Destroy(_enemy.gameObject);
     }
 }

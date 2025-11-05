@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using DG.Tweening;
-using UnityEditor.Rendering;
 using UnityEngine;
 
 public abstract class EnemyState
@@ -22,9 +21,13 @@ public abstract class EnemyState
     }
     public virtual void Update()
     {
+        if (_enemy.isDead)
+        {
+            _stateMachine.ChangeState(EnemyStateType.Dead);
+            return;
+        }
         if (_enemy.isHit)
         {
-            
             _stateMachine.ChangeState(EnemyStateType.Hit);
         }
     }

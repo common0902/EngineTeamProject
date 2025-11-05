@@ -59,7 +59,10 @@ public class EnemyIdleState : EnemyState
             _waitTimer += Time.deltaTime;
             if (_waitTimer >= _waitDuration)
             {
-                _stateMachine.ChangeState(EnemyStateType.Patrol);
+                if (_enemy.wayPoints == null)
+                    Debug.LogError("WayPoints is null!");
+                else
+                    _stateMachine.ChangeState(EnemyStateType.Patrol);
             }
         }
     }
