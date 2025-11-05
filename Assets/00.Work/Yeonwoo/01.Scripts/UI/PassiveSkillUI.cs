@@ -24,7 +24,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
             {
                 IconImage.sprite = null;
                 NameText.text = "Dataerr0r";
-                DescriptionText.text = "";
+                DescriptionText.text = "Doesn't exist";
                 return;
             }
             

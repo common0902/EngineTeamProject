@@ -7,8 +7,9 @@ namespace _00.Work.Yeonwoo._01.Scripts.Data
     [CreateAssetMenu(fileName = "SkillData", menuName = "Player/SkillData")]
     public class SkillData : ScriptableObject
     {
-        [Header("References")]
-        [field:SerializeField] public Skill Skill { get; private set; }
+        //[Header("References")]
+        //[field:SerializeField] public Skill Skill { get; private set; }
+        // 아직은 필요 없어서 주석처리, 나중에 봉인 해제를 할 수도?
         
         [Header("Information")]
         [field:SerializeField] public string Name { get; private set; }

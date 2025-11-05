@@ -7,8 +7,9 @@ namespace _00.Work.Yeonwoo._01.Scripts.Data
     [CreateAssetMenu(fileName = "PassiveData", menuName = "Player/PassiveData")]
     public class PassiveData : ScriptableObject
     {
-        [Header("References")]
-        [field:SerializeField] public PasiveSkill Passive { get; private set; }
+        //[Header("References")]
+        //[field:SerializeField] public PasiveSkill Passive { get; private set; }
+        // 얘도
         
         [Header("Information")]
         [field:SerializeField] public string Name { get; private set; }

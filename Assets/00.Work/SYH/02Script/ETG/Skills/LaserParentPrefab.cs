@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using _00.Work.SYH._02Script.ETG;
 using UnityEngine;
 
 public class LaserParentPrefab : SkillPrefab

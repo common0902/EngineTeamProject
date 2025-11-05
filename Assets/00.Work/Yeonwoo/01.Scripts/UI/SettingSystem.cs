@@ -67,13 +67,14 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
             }
         }
 
-        protected virtual void HandleEsc()
+        protected virtual void HandleEsc() // 문제 발생 지점 코드
         {
             foreach (var panel in _subPanels)
             {
                 if (panel.IsOpen)
                 {
                     panel.Close();
+                    PanelActiveHelper();
                     return;
                 }
             }
@@ -81,12 +82,31 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
             if (_settingPanel.gameObject.activeSelf)
             {
                 _settingPanel.SettingPanelClose();
+                PanelActiveHelper();
                 return;
             }
             
             _settingPanel.SettingPanelOpen();
+            PanelActiveHelper();
         }
 
+        private void PanelActiveHelper() // 얘를 추가해도 달라진건 없으으ㅡㅡ으믐
+        {
+            bool anyPanelOpen = _settingPanel.gameObject.activeSelf;
+            anyPanelOpen = false;
+            
+            foreach (var panel in _subPanels)
+            {
+                if (panel.IsOpen)
+                {
+                    anyPanelOpen = true;
+                    break;
+                }
+            }
+
+            Time.timeScale = anyPanelOpen ? 0f : 1f;
+        }
+        
         public void SettingPanel()
         {
             _settingPanel.SettingPanelOpen();
