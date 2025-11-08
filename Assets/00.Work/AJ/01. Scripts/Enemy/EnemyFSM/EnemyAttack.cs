@@ -64,10 +64,6 @@ public class EnemyAttack : MonoBehaviour
                 break;
         }
     }
-    public bool CanAttack()
-    {
-        return Time.time >= lastAttackTime + _enemy.enemySO.attackDelay;
-    }
     private IEnumerator MeleeAttack()
     {
         if (_enemy.CheckAttackRange())
@@ -79,7 +75,7 @@ public class EnemyAttack : MonoBehaviour
     private IEnumerator RangedAttack(Vector2 dir)
     {
         yield return null;
-        GameObject obj = Instantiate(_enemy.enemySO.rangedData.bulletData.projectilePrefab, _enemy._firePos.position, Quaternion.identity);
+        GameObject obj = Instantiate(_enemy.enemySO.rangedData.bulletData.projectilePrefab, _enemy.FirePos.position, Quaternion.identity);
         Bullet bullet = obj.GetComponent<Bullet>();
 
         bullet.SetUp(dir, _enemy.enemySO);
@@ -110,7 +106,7 @@ public class EnemyAttack : MonoBehaviour
             Vector2 summonPos = Vector2.zero;
             bool found = false;
             
-            for (int i = 0; i < 10; i++) 
+            for (int i = 0; i < 30; i++) 
             {
                 Vector2 randomDir = Random.insideUnitCircle.normalized;
                 float distance = Random.Range(0f, _enemy.enemySO.summonerData.summonRange);
@@ -118,7 +114,6 @@ public class EnemyAttack : MonoBehaviour
 
                 RaycastHit2D pathCheck = Physics2D.Raycast(_enemy.transform.position, randomDir, distance, _enemy.whatIsWall);
                 bool posCheck = Physics2D.OverlapCircle(summonPos, 0.5f, _enemy.whatIsWall) == null;
-    
                 if (pathCheck.collider == null && posCheck)
                 {
                     found = true;
@@ -132,20 +127,20 @@ public class EnemyAttack : MonoBehaviour
                 GameObject summon = Instantiate(_enemy.enemySO.summonerData.summonPrefab[i], summonPos, Quaternion.identity);
                 currentCount++;
                 
+                Enemy summonEnemy = summon.GetComponent<Enemy>();
                 if (_enemy.enemySO.summonerData.isFade)
                 {
                     SpriteRenderer enemyRenderer = summon.GetComponentInChildren<SpriteRenderer>();
                     enemyRenderer.color = new Color(1, 1, 1, 0);
-                    enemyRenderer.DOColor(new Color(1, 1, 1, 1), 1);    
+                    enemyRenderer.DOFade(1, 1);
                 }
 
-                HealthSystem summonHealth = summon.GetComponent<HealthSystem>();
+                HealthSystem summonHealth = summonEnemy.HealthCompo;
                 if (summonHealth != null)
                 {
                     summonHealth.OnDead += () => currentCount--; // 죽으면 다시 소환
                 }
                 
-                Enemy summonEnemy = summon.GetComponent<Enemy>();
                 if (summonEnemy != null)
                 {
                     HealthBarManager.Instance.RegisterEnemy(summonEnemy);

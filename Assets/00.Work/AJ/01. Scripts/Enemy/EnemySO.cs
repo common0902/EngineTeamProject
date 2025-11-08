@@ -21,6 +21,9 @@ public class EnemySO : ScriptableObject
     public float damage; // 공격력
     public float attackDelay; // 공격 딜레이 - 
 
+    public bool useBoxRange;
+    public Vector2 boxRange;
+
     [Header("Hit Setting")] 
     [Range(0f, 10f)] public float knockbackForce = 3f; // 넉백
     public float knockBackTime = 0.2f; // 넉백 몇초동안 받을건지

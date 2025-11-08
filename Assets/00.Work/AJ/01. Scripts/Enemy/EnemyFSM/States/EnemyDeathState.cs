@@ -1,4 +1,5 @@
 using _00.Work.SYH._02Script.ETG;
+using Unity.AppUI.UI;
 using UnityEngine;
 
 public class EnemyDeathState : EnemyState
@@ -18,6 +19,15 @@ public class EnemyDeathState : EnemyState
     {
         if (_enemy.CheckDeathRange())
         {
+            Collider2D[] hits = Physics2D.OverlapCircleAll(_enemy.transform.position, _enemy.enemySO.deathRange);
+            foreach (var hit in hits)
+            {
+                var playerHealth = hit.GetComponent<HealthSystem>();
+                if (playerHealth != null)
+                {
+                    playerHealth.Damage(_enemy.enemySO.damage);
+                }
+            }
             _enemy.target.GetComponent<HealthSystem>().Damage(_enemy.enemySO.deathDamage);
         }
     }

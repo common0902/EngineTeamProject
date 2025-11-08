@@ -21,6 +21,8 @@ MonoBehaviour:
   patrolDist: 0.3
   damage: 5
   attackDelay: 0
+  useBoxRange: 0
+  boxRange: {x: 0, y: 0}
   knockbackForce: 0.5
   knockBackTime: 0.1
   chaseRange: 5
@@ -34,10 +36,12 @@ MonoBehaviour:
     dashAttackTime: 0.5
   summonerData:
     summonPrefab:
-    - {fileID: 486401526572816636, guid: 24c48378b25654a439c6fff7fe370b85, type: 3}
+    - {fileID: 486401526572816636, guid: aa80006c23a401f49be0537a34ff5c79, type: 3}
     - {fileID: 2505009877867903796, guid: 518e4c148964b5241a7e9acc3c63fa60, type: 3}
+    - {fileID: 8338307515876266603, guid: 987f0ba83a2d338468c69c4395cc42c0, type: 3}
+    - {fileID: 6704316854911615356, guid: 5c964c377ffa71a49a26b2fcfb048a5b, type: 3}
     maxSummonCount: 3
-    summonRange: 3
+    summonRange: 4.74
     waitforNextSummon: 10
     isLifeTimeInChildren: 0
     summonLifeTime: 10

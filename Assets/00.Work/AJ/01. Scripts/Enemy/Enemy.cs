@@ -11,12 +11,13 @@ public class Enemy : Agent, IPoolable
     public string ItemName => enemySO.enemyName;
     public GameObject GameObject => gameObject;
     public Transform target { get; private set; }
-    [field:SerializeField]public Transform _firePos { get; private set; }
+    [field:SerializeField]public Transform FirePos { get; private set; }
     [field:SerializeField] public EnemySO enemySO { get; private set; }
     [SerializeField] public LayerMask playerMask;
     [SerializeField] public LayerMask whatIsWall;
     public float ChaseRange { get; private set; }    
     public float AttackRange { get; private set; }
+    public Vector2 AttackBoxRange { get; private set; }
     public float DeathRange { get; private set; }
     private bool canFlip = true;
     public bool isDead { get; set; } = false;
@@ -51,8 +52,10 @@ public class Enemy : Agent, IPoolable
         
         ChaseRange = enemySO.chaseRange;
         AttackRange = enemySO.attackRange;
+        if(enemySO.useBoxRange)
+            AttackBoxRange = enemySO.boxRange;
 
-        if (_firePos == null && enemySO.enemyType == EnemyType.Ranged)
+        if (FirePos == null && enemySO.enemyType == EnemyType.Ranged)
         {
             Debug.LogError("Error");
         }
@@ -77,6 +80,7 @@ public class Enemy : Agent, IPoolable
     }
     public void ChangeChaseRange(float value) => ChaseRange = value;
     public void ChangeAttackRange(float value) => AttackRange = value;
+    public void ChangeAttackBoxRange(Vector2 value) => AttackBoxRange = value;
     public bool CheckChaseRange()
     {
         return Physics2D.OverlapCircle(transform.position, ChaseRange, playerMask) && IsPlayerInSight();
@@ -85,9 +89,13 @@ public class Enemy : Agent, IPoolable
     {
         return Physics2D.OverlapCircle(transform.position, AttackRange, playerMask);
     }
+    public bool CheckAttackRangeBox()
+    {
+        return Physics2D.OverlapBox(transform.position, AttackBoxRange, playerMask);
+    }
     public bool CheckDeathRange()
     {
-        return Physics2D.OverlapCircle(transform.position, DeathRange, playerMask);
+        return Physics2D.OverlapCircle(transform.position, DeathRange);
     }
     // 플레이어가 시야 안에 있는지
     public bool IsPlayerInSight()
@@ -107,8 +115,6 @@ public class Enemy : Agent, IPoolable
         bool isOutScreen = screenPoint.x <= 0 || screenPoint.x >= Screen.width || screenPoint.y <= 0 || screenPoint.y >= Screen.height;
         return isOutScreen;
     }
-
-    
 
     private void LateUpdate()
     {
@@ -138,10 +144,18 @@ public class Enemy : Agent, IPoolable
         Gizmos.DrawWireSphere(transform.position, enemySO.chaseRange);
 
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, enemySO.attackRange);
-
+        if (!enemySO.useBoxRange)
+            Gizmos.DrawWireSphere(transform.position, enemySO.attackRange);
+        else
+            Gizmos.DrawWireCube(transform.position, enemySO.boxRange);
         Gizmos.color = Color.gray;
         Gizmos.DrawWireSphere(transform.position, enemySO.deathRange);
+
+        if (enemySO.enemyType == EnemyType.Summoner)
+        {
+            Gizmos.color = Color.magenta;
+            Gizmos.DrawWireSphere(transform.position, enemySO.summonerData.summonRange);
+        }
     }
 #endif
 }

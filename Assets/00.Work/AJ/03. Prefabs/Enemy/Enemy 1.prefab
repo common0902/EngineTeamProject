@@ -131,16 +131,15 @@ MonoBehaviour:
   WhatisWall:
     serializedVersion: 2
     m_Bits: 2147483648
-  <enemySO>k__BackingField: {fileID: 11400000, guid: 5d7681c858f9d7b48abbee5998dce568, type: 2}
+  <FirePos>k__BackingField: {fileID: 0}
+  <enemySO>k__BackingField: {fileID: 11400000, guid: 321fa623260bb434298455f1220e22c3, type: 2}
   playerMask:
     serializedVersion: 2
     m_Bits: 64
   whatIsWall:
     serializedVersion: 2
     m_Bits: 2147483648
-  chaseRange: 0
-  attackRange: 0
-  particle: {fileID: 0}
+  vfx: {fileID: 0}
   <wayPoints>k__BackingField: {fileID: 0}
 --- !u!114 &3592595520242275394
 MonoBehaviour:
@@ -181,7 +180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Health>k__BackingField: 0
-  _maxHealth: 50
+  maxHealth: 30
 --- !u!195 &3470477851575176756
 NavMeshAgent:
   m_ObjectHideFlags: 0

@@ -38,10 +38,18 @@ public class EnemyAttackState : EnemyState
         {
             //CalculateTargetRotation();
         }
-        if (_enemy.CheckAttackRange() && !isAttack)
+        if (_enemy.enemySO.useBoxRange)
+        {
+            if (_enemy.CheckAttackRangeBox() && !isAttack) 
+            {
+                isAttack = true;
+                _enemyAttack.Attack();
+            }
+        }
+        else if (_enemy.CheckAttackRange() && !isAttack)
         {
             isAttack = true;
-            _enemyAttack.Attack();
+           _enemyAttack.Attack();
         }
 
         if (_enemyAttack.isAnimationEnd)

@@ -29,13 +29,15 @@ public class EnemyChaseState : EnemyState
             _stateMachine.ChangeState(EnemyStateType.Attack);
         }
         _enemy.AgentCompo.SetDestination(_enemy.target.position);
-        
+
         if (!_enemy.CheckChaseRange())
         {
             _stateMachine.ChangeState(EnemyStateType.Idle);
         }
         else if (_enemy.CheckAttackRange())
         {
+            _enemy.AgentCompo.isStopped = true;
+            _enemy.AgentCompo.autoBraking = false;
             _stateMachine.ChangeState(EnemyStateType.Attack);
         }
     }
