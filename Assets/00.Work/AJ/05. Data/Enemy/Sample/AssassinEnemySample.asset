@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f90eb0497789b9148b6c947804544be3, type: 3}
+  m_Name: AssassinEnemySample
+  m_EditorClassIdentifier: 
+  enemyType: 4
+  enemyName: Ghoul
+  enemySprite: {fileID: 2605309709859226732, guid: 29b895f7d109b8d419901ad02059d40c, type: 3}
+  speed: 2
+  health: 50
+  canPatrol: 1
+  patrolDist: 0.3
+  damage: 5
+  attackDelay: 1
+  useBoxRange: 0
+  boxRange: {x: 0, y: 0}
+  knockbackForce: 0.5
+  knockBackTime: 0.1
+  chaseRange: 5
+  attackRange: 1
+  deathRange: 0
+  deathDamage: 0
+  rangedData:
+    bulletData: {fileID: 0}
+  dashData:
+    dashForce: 5
+    dashAttackTime: 0.5
+  summonerData:
+    summonPrefab:
+    - {fileID: 0}
+    maxSummonCount: 3
+    summonRange: 3
+    waitforNextSummon: 10
+    isLifeTimeInChildren: 0
+    summonLifeTime: 10
+    isFade: 1
+  assassinData:
+    vanishVfx: {fileID: 540740158752867676, guid: a167dd4fa6c252a4c817fd722e723040, type: 3}
+    hideDuration: 3
+    appearBehindDistance: 0.8
+    randomHideDuration: 1
+    minHideDuration: 2
+  suicideAttackerData:
+    particleSystem: {fileID: 0}
+    explosionRadius: 1.5
+    explosionDelay: 0.3
+  attackSound: {fileID: 0}

@@ -50,6 +50,7 @@ public class Enemy : Agent, IPoolable
         AgentCompo.updateRotation = false;
         AgentCompo.updateUpAxis = false;
         
+        
         ChaseRange = enemySO.chaseRange;
         AttackRange = enemySO.attackRange;
         if(enemySO.useBoxRange)
@@ -138,7 +139,13 @@ public class Enemy : Agent, IPoolable
         }*/
     }
 #if UNITY_EDITOR
-    private void OnDrawGizmos()
+    private void OnValidate()
+    {
+        if(GetComponent<HealthSystem>() != null && enemySO != null)
+            transform.GetComponent<HealthSystem>().SetMaxHealth(enemySO.health);
+    }
+
+    private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, enemySO.chaseRange);

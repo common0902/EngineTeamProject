@@ -21,14 +21,18 @@ namespace _00.Work.SYH._02Script.ETG
         private void Awake()
         {
             _isLowHealth = false;
-            Health = maxHealth;
             OnHealthChanged?.Invoke(Health, maxHealth);
+        }
+
+        private void Start()
+        {
+            Health = maxHealth;
         }
 
         public void Damage(float damage)
         {
             if (damage <= 0) return;
-            
+            Debug.Log("Damage");
             Health = Mathf.Clamp(Health - damage, 0, maxHealth);
             CheckHealthState();
         }
@@ -74,7 +78,11 @@ namespace _00.Work.SYH._02Script.ETG
             OnLowHealth?.Invoke();
             Debug.Log("체력부족");
         }
-
+        
+        public void SetMaxHealth(float health)
+        {
+            maxHealth = health;
+        }
         private void Dead()
         {
             OnDead?.Invoke();
