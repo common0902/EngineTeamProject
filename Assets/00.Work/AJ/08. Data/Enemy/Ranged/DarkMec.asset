@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f90eb0497789b9148b6c947804544be3, type: 3}
+  m_Name: DarkMec
+  m_EditorClassIdentifier: 
+  enemyType: 1
+  enemyName: DarkMec
+  enemySprite: {fileID: -9097264861527766680, guid: 61403559076f3a245a95b0112b8cca27, type: 3}
+  speed: 3
+  health: 0
+  canPatrol: 1
+  patrolDist: 0.3
+  damage: 10
+  attackDelay: 1.5
+  useBoxRange: 0
+  boxRange: {x: 10.76, y: 4.27}
+  knockbackForce: 0.1
+  knockBackTime: 0.2
+  chaseRange: 7
+  attackRange: 5.5
+  deathRange: 0
+  deathDamage: 0
+  rangedData:
+    bulletData: {fileID: 11400000, guid: 5e60ca346c25420459c5ec79c4f2dda4, type: 2}
+  dashData:
+    dashForce: 5
+    dashAttackTime: 0.5
+  summonerData:
+    summonPrefab: []
+    maxSummonCount: 3
+    summonRange: 3
+    waitforNextSummon: 10
+    isLifeTimeInChildren: 0
+    summonLifeTime: 10
+    isFade: 1
+  assassinData:
+    vanishVfx: {fileID: 0}
+    hideDuration: 0.6
+    appearBehindDistance: 0.8
+    randomHideDuration: 0
+    minHideDuration: 0.4
+  suicideAttackerData:
+    particleSystem: {fileID: 0}
+    explosionRadius: 1.5
+    explosionDelay: 0.3
+  attackSound: {fileID: 0}

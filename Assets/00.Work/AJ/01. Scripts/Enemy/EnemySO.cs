@@ -25,7 +25,7 @@ public class EnemySO : ScriptableObject
     public Vector2 boxRange;
 
     [Header("Hit Setting")] 
-    [Range(0f, 10f)] public float knockbackForce = 3f; // 넉백
+    [Range(0f, 10f)] public float knockbackForce = 0.1f; // 넉백
     public float knockBackTime = 0.2f; // 넉백 몇초동안 받을건지
     
     [Header("Range")]

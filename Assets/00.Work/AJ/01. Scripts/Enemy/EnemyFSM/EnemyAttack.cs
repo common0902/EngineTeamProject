@@ -74,11 +74,16 @@ public class EnemyAttack : MonoBehaviour
     }
     private IEnumerator RangedAttack(Vector2 dir)
     {
-        yield return null;
-        GameObject obj = Instantiate(_enemy.enemySO.rangedData.bulletData.projectilePrefab, _enemy.FirePos.position, Quaternion.identity);
-        Bullet bullet = obj.GetComponent<Bullet>();
+        if (_enemy.CheckAttackRange())
+        {
+            GameObject obj = Instantiate(_enemy.enemySO.rangedData.bulletData.projectilePrefab, _enemy.FirePos.position, Quaternion.identity);
+            Bullet bullet = obj.GetComponent<Bullet>();
 
-        bullet.SetUp(dir, _enemy.enemySO);
+            bullet.SetUp(dir, _enemy.enemySO, _enemy.enemySO.rangedData.bulletData.bulletSpeed);
+
+            yield return new WaitForSeconds(0.1f);            
+            canAttack = true;
+        }
     }
     private IEnumerator DashAttack(Vector2 dir)
     {

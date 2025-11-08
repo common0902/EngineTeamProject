@@ -14,16 +14,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyType: 2
   enemyName: Ghoul
-  enemySprite: {fileID: 21300000, guid: 81f694176e5c48a49b97aaf2298ae1c7, type: 3}
+  enemySprite: {fileID: 1446657577502163369, guid: 0aa4a912fb89f8d4d90db69120ba8ba4, type: 3}
   speed: 2
+  health: 0
   canPatrol: 1
   patrolDist: 0.3
   damage: 5
   attackDelay: 0
+  useBoxRange: 0
+  boxRange: {x: 0, y: 0}
   knockbackForce: 0.5
   knockBackTime: 0.1
   chaseRange: 5
   attackRange: 2
+  deathRange: 0
+  deathDamage: 0
   rangedData:
     bulletData: {fileID: 0}
   dashData:

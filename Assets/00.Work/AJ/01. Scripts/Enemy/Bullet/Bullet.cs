@@ -6,17 +6,16 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     private Rigidbody2D _rb;
-    [SerializeField] private float _speed;
     [SerializeField] private EnemySO enemy;
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();        
     }
 
-    public void SetUp(Vector2 dir, EnemySO enemySo)
+    public void SetUp(Vector2 dir, EnemySO enemySo, float speed)
     {
         enemy = enemySo;
-        _rb.linearVelocity = dir * _speed;
+        _rb.linearVelocity = dir * speed;
         StartCoroutine(LifeTimeCoroutine(enemySo.rangedData.bulletData.lifeTime));
     }
     private IEnumerator LifeTimeCoroutine(float lifeTime)

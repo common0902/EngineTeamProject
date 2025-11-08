@@ -5,5 +5,5 @@ public class BulletData : ScriptableObject
 {
     public GameObject projectilePrefab; // 발사체
     public float lifeTime;
-    
+    public float bulletSpeed = 5;
 }
