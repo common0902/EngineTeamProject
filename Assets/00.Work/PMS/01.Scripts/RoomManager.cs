@@ -31,8 +31,10 @@ public class RoomManager : MonoBehaviour
     private int roomCount;
 
     private bool generationComplete = false;
+    [Header("boss room")]
     [SerializeField] private bool bossRoomGeneration = false;
 
+    [Header("room index")]
     public int eventRoomIndex = 0;
     public int goldRoomIndex = 0;
     public int shopRoomIndex = 0;
@@ -240,7 +242,7 @@ public class RoomManager : MonoBehaviour
         StartRoomGenerationFromRoom(initialRoomIndex);
     }
 
-    private void OpenDoors(GameObject room, int x, int y) // void // 문을 생성해주는 함수
+    private void OpenDoors(GameObject room, int x, int y)// void // 문을 생성해주는 함수
     {
         Room newRoomScript = room.GetComponent<Room>();
 
@@ -250,25 +252,69 @@ public class RoomManager : MonoBehaviour
         Room topRoomScript = GetRoomScriptAt(new Vector2Int(x, y + 1));
         Room bottomRoomScript = GetRoomScriptAt(new Vector2Int(x, y - 1));
 
+        // 왼쪽 방과 연결
         if (x > 0 && roomGrid[x - 1, y] != 0)
         {
-            newRoomScript.OpenDoor(Vector2Int.right);
-            leftRoomScript.OpenDoor(Vector2Int.left);
+            Door newDoor = newRoomScript.OpenDoor(Vector2Int.right);
+            Door leftDoor = leftRoomScript.OpenDoor(Vector2Int.left);
+
+            // 두 문을 서로 연결
+            if (newDoor != null && leftDoor != null)
+            {
+                newDoor.connectedDoor = leftDoor;
+                leftDoor.connectedDoor = newDoor;
+
+                newDoor.targetRoomIndex = leftRoomScript.RoomIndex;
+                leftDoor.targetRoomIndex = newRoomScript.RoomIndex;
+            }
         }
+
+        // 오른쪽 방과 연결
         if (x < gridSizeX - 1 && roomGrid[x + 1, y] != 0)
         {
-            newRoomScript.OpenDoor(Vector2Int.left);
-            rightRoomScript.OpenDoor(Vector2Int.right);
+            Door newDoor = newRoomScript.OpenDoor(Vector2Int.left);
+            Door rightDoor = rightRoomScript.OpenDoor(Vector2Int.right);
+
+            if (newDoor != null && rightDoor != null)
+            {
+                newDoor.connectedDoor = rightDoor;
+                rightDoor.connectedDoor = newDoor;
+
+                newDoor.targetRoomIndex = rightRoomScript.RoomIndex;
+                rightDoor.targetRoomIndex = newRoomScript.RoomIndex;
+            }
         }
+
+        // 아래쪽 방과 연결
         if (y > 0 && roomGrid[x, y - 1] != 0)
         {
-            newRoomScript.OpenDoor(Vector2Int.down);
-            bottomRoomScript.OpenDoor(Vector2Int.up);
+            Door newDoor = newRoomScript.OpenDoor(Vector2Int.down);
+            Door bottomDoor = bottomRoomScript.OpenDoor(Vector2Int.up);
+
+            if (newDoor != null && bottomDoor != null)
+            {
+                newDoor.connectedDoor = bottomDoor;
+                bottomDoor.connectedDoor = newDoor;
+
+                newDoor.targetRoomIndex = bottomRoomScript.RoomIndex;
+                bottomDoor.targetRoomIndex = newRoomScript.RoomIndex;
+            }
         }
+
+        // 위쪽 방과 연결
         if (y < gridSizeY - 1 && roomGrid[x, y + 1] != 0)
         {
-            newRoomScript.OpenDoor(Vector2Int.up);
-            topRoomScript.OpenDoor(Vector2Int.down);
+            Door newDoor = newRoomScript.OpenDoor(Vector2Int.up);
+            Door topDoor = topRoomScript.OpenDoor(Vector2Int.down);
+
+            if (newDoor != null && topDoor != null)
+            {
+                newDoor.connectedDoor = topDoor;
+                topDoor.connectedDoor = newDoor;
+
+                newDoor.targetRoomIndex = topRoomScript.RoomIndex;
+                topDoor.targetRoomIndex = newRoomScript.RoomIndex;
+            }
         }
     }
 
