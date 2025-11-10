@@ -157,12 +157,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97c564629229f834aa55feba99f56cc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _target: {fileID: 0}
-  _targetPos: {x: 0, y: 0, z: 0}
   _shotSpeed: 6
-  _damage: 1
+  _damage: 2
   _duration: 5
   _itemName: FireBall
+  _isPiercing: 0
 --- !u!58 &5842402510037378693
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -8,7 +8,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.Data
     public class PassiveData : ScriptableObject
     {
         [Header("References")]
-        [field:SerializeField] public PasiveSkill Passive { get; private set; }
+        [field:SerializeField] public PassiveSkill Passive { get; private set; }
         
         [Header("Information")]
         [field:SerializeField] public string Name { get; private set; }

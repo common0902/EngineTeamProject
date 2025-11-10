@@ -10,7 +10,6 @@ public class PlayerAnimation : MonoBehaviour
     readonly int _deadHash = Animator.StringToHash("Dead");
     readonly int _concentrateHash = Animator.StringToHash("Concentrate");
     readonly int _disConcentrateHash = Animator.StringToHash("DisConcentrate");
-    public bool _isConcentrate;
     private void Awake()
     {
         _ani = GetComponent<Animator>();
@@ -26,34 +25,34 @@ public class PlayerAnimation : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.K))
         {
-            ConcentrateStart();
+            CastingStart();
         }
         else if (Input.GetKeyDown(KeyCode.P))
         {
-            ConcentrateEnd();
+            CastingEnd();
         }
     }
-    public void ConcentrateStart()
+    public void CastingStart()
     {
         _ani.enabled = true;
         _ani.SetTrigger(_concentrateHash);
-        _isConcentrate = true;
+        Player.Instance.PlayerMoveCompo._isCasting = true;
     }
-    public void Concentrate()
+    public void Casting()
     {
         _renderer.sprite = _concentrateImg;
         _ani.enabled = false;
     }
-    public void ConcentrateEnd()
+    public void CastingEnd()
     {
         _ani.enabled = true;
         _ani.SetTrigger(_disConcentrateHash);
         Idle();
-        _isConcentrate = false;
+        Player.Instance.PlayerMoveCompo._isCasting = false;
     }
     public void Idle()
     {
-        if (!_isConcentrate)
+        if (!Player.Instance.PlayerMoveCompo._isCasting)
         {
             _renderer.sprite = _idleImg;
             _ani.enabled = false;
@@ -70,5 +69,9 @@ public class PlayerAnimation : MonoBehaviour
     {
         _ani.enabled = true;
         _ani.SetTrigger(_deadHash);
+    }
+    public void CounterAttack()
+    {
+
     }
 }

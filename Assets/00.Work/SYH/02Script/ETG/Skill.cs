@@ -1,5 +1,11 @@
 using System;
 using UnityEngine;
+public enum SkillType
+{
+    Skill,
+    AutoAttack,
+    UltimateSkill
+}
 
 public abstract class Skill : MonoBehaviour
 {
@@ -9,11 +15,11 @@ public abstract class Skill : MonoBehaviour
     [field: SerializeField] public float CoolTime { get; protected set; }
     [field: SerializeField] public string Name { get; protected set; }
     [field: SerializeField] public bool IsActive { get; protected set; }
+    [field: SerializeField] public SkillType SkillType { get; protected set; }
     [field: SerializeField] public Skill ThisSkill { get; protected set; }
     [field: SerializeField] public Sprite SkillSprite { get; protected set; }
     [field: SerializeField] public GameObject SkillPrefab { get; protected set; }
 
-    public event Action OnUseSkill;
     protected virtual void Awake()
     {
         _waitTime = CoolTime;
@@ -45,7 +51,7 @@ public abstract class Skill : MonoBehaviour
     }
     virtual protected void UseSkill()
     {
-        OnUseSkill?.Invoke();
+        if (!SkillUtility.CanUseSkill(Cost)) return;
     }
     virtual public void Passive()
     {

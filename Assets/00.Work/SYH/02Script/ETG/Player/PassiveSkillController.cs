@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class PassiveSkillController : MonoBehaviour
 {
-    public List<PasiveSkill> PasiveSkills { get; private set; }
+    public List<PassiveSkill> PasiveSkills { get; private set; }
     [SerializeField] LayerMask _skillLayer;
     [SerializeField] float _skillChangeRange = 1.5f;
-    public event Action<PasiveSkill> OnTakePasiveSkill;
+    public event Action<PassiveSkill> OnTakePasiveSkill;
     private void Awake()
     {
-        PasiveSkills = new List<PasiveSkill>();
+        PasiveSkills = new List<PassiveSkill>();
     }
 
     private void Update()
@@ -20,14 +20,14 @@ public class PassiveSkillController : MonoBehaviour
             Collider2D collider = Physics2D.OverlapCircle(transform.position, _skillChangeRange, _skillLayer);
             if (collider)
             {
-                PasiveSkill skill = collider.gameObject.GetComponent<PasiveSkill>();
+                PassiveSkill skill = collider.gameObject.GetComponent<PassiveSkill>();
                 TakeSkill(skill);
                 skill.Take();
             }
         }
     }
 
-    private void TakeSkill(PasiveSkill skill)
+    private void TakeSkill(PassiveSkill skill)
     {
         PasiveSkills.Add(skill);
         OnTakePasiveSkill?.Invoke(skill);
