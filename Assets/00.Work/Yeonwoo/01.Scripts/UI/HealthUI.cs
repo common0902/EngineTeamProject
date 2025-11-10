@@ -94,13 +94,13 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
             // 원래 위치로 복귀
             healthBarTransform.DOAnchorPos(_originPosition, 0.2f)
                 .SetEase(Ease.OutSine);
-            // 체력이 적은 상태에서 정상으로 돌아왔을 때 연출 돌리는 코드
+            // 체력이 적은 상태에서 정상으로 돌아왔을 때 연출을 넣는 코드
         }
         
         private void DeadMotion()
         {
             // 체력이 0이 됐을 때 체력바 연출을 여기다가 넣을 수 있음.
-            // gameObject.SetActive(false);
+            Destroy(gameObject); // 임시
         }
         
         private void Update()

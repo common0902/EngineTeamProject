@@ -1,9 +1,12 @@
+using _00.Work.Yeonwoo._01.Scripts.Data;
 using UnityEngine;
 
 public class PassiveSkill : MonoBehaviour, IPoolable
 {
+    [field:SerializeField] public PassiveData Data { get; private set; }
+    
     [SerializeField] PassiveSkillListSO _skillListSO;
-    [SerializeField] float _deviation; //ÆíÂ÷
+    [SerializeField] float _deviation; //ï¿½ï¿½ï¿½ï¿½
     [SerializeField] string _itemName;
     int _status;
     int _statusValue;
