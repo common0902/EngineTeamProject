@@ -9,27 +9,42 @@ public class Room : MonoBehaviour
 
     public Vector2Int RoomIndex {  get; set; }
 
-    public void OpenDoor(Vector2Int direction)
+    public Door OpenDoor(Vector2Int direction)
     {
+        GameObject doorObject = null;
+
         if (direction == Vector2Int.up)
         {
             topDoor.SetActive(true);
+            doorObject = topDoor;
         }
-
-        if (direction == Vector2Int.down)
+        else if (direction == Vector2Int.down)
         {
             bottomDoor.SetActive(true);
+            doorObject = bottomDoor;
         }
-
-        if (direction == Vector2Int.right)
+        else if (direction == Vector2Int.right)
         {
             rightDoor.SetActive(true);
+            doorObject = rightDoor;
         }
-
-        if (direction == Vector2Int.left)
+        else if (direction == Vector2Int.left)
         {
             leftDoor.SetActive(true);
+            doorObject = leftDoor;
         }
-            
+
+        if (doorObject != null)
+        {
+            Door doorScript = doorObject.GetComponent<Door>();
+            if (doorScript != null)
+            {
+                doorScript.doorDirection = direction;
+                doorScript.targetRoomIndex = RoomIndex;
+            }
+            return doorScript;
+        }
+
+        return null;
     }
 }
