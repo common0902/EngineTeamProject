@@ -13,7 +13,7 @@ public class EnemyDeathState : EnemyState
     {
         base.Enter();
         _enemy.ColliderCompo.enabled = false;
-        _enemy.AgentCompo.isStopped = true;
+        _enemy.AgentCompo.enabled = false;
     }
     public override void Update()
     {

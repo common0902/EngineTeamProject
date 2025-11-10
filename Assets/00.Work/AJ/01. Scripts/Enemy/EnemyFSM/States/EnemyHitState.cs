@@ -16,7 +16,7 @@ public class EnemyHitState : EnemyState
     {
         base.Enter();
         //Debug.Log("Enter Hit State");
-        _enemy.ChangeFlip(true);
+        _enemy.ChangeFlip(false);
 
         _enemy.AgentCompo.isStopped = true;
         _knockbackDir = (_enemy.transform.position - _enemy.target.position).normalized;
@@ -44,7 +44,6 @@ public class EnemyHitState : EnemyState
 
     public override void Exit()
     {
-        _enemy.AgentCompo.isStopped = false;
         base.Exit();
     }
 }

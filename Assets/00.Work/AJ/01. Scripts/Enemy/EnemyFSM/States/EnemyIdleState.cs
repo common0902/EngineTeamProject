@@ -18,7 +18,8 @@ public class EnemyIdleState : EnemyState
         base.Enter();
         //Debug.Log("Enter Idle State");
         _enemy.ChangeFlip(false);
-        
+
+        _enemy.AgentCompo.enabled = true;
         _enemy.AgentCompo.isStopped = true;
         
         var sr = _enemy.GetComponentInChildren<SpriteRenderer>();

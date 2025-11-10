@@ -10,44 +10,45 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f90eb0497789b9148b6c947804544be3, type: 3}
-  m_Name: Harvester
+  m_Name: Summoner 1
   m_EditorClassIdentifier: 
-  enemyType: 0
-  enemyName: Harvester
-  enemySprite: {fileID: 4586413965468972383, guid: 753c2cc57d6137c40b37540508aa4ca1, type: 3}
-  speed: 3
-  health: 100
+  enemyType: 3
+  enemyName: Summoner
+  enemySprite: {fileID: 5374604837666599638, guid: 307c5e35851bece47b3b6091959a386e, type: 3}
+  speed: 2
+  health: 75
   canPatrol: 1
   patrolDist: 0.3
   damage: 5
   attackDelay: 0
   useBoxRange: 0
-  boxRange: {x: 5, y: 1}
+  boxRange: {x: 0, y: 0}
   knockbackForce: 0.5
   knockBackTime: 0.1
-  chaseRange: 6.5
-  attackRange: 2
-  deathRange: 1.88
-  deathDamage: 2.69
+  chaseRange: 5
+  attackRange: 4.5
+  deathRange: 0
+  deathDamage: 0
   rangedData:
     bulletData: {fileID: 0}
   dashData:
     dashForce: 5
     dashAttackTime: 0.5
   summonerData:
-    summonPrefab: []
-    maxSummonCount: 3
-    summonRange: 3
+    summonPrefab:
+    - {fileID: 3031526597556667181, guid: c6921587d64bead47aba303a90b4629b, type: 3}
+    maxSummonCount: 10
+    summonRange: 4.74
     waitforNextSummon: 10
     isLifeTimeInChildren: 0
     summonLifeTime: 10
     isFade: 1
   assassinData:
     vanishVfx: {fileID: 0}
-    hideDuration: 0.6
+    hideDuration: 3
     appearBehindDistance: 0.8
     randomHideDuration: 0
-    minHideDuration: 0.4
+    minHideDuration: 0.3
   suicideAttackerData:
     particleSystem: {fileID: 0}
     explosionRadius: 1.5

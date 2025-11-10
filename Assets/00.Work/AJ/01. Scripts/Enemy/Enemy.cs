@@ -21,6 +21,7 @@ public class Enemy : Agent, IPoolable
     public float DeathRange { get; private set; }
     private bool canFlip = true;
     public bool isDead { get; set; } = false;
+    public bool isRevival { get; set; } = false;
     public bool isHit { get; set; } = false;
     public ParticleSystem vfx = null;
 
@@ -81,18 +82,16 @@ public class Enemy : Agent, IPoolable
     }
     public void ChangeChaseRange(float value) => ChaseRange = value;
     public void ChangeAttackRange(float value) => AttackRange = value;
-    public void ChangeAttackBoxRange(Vector2 value) => AttackBoxRange = value;
     public bool CheckChaseRange()
     {
-        return Physics2D.OverlapCircle(transform.position, ChaseRange, playerMask) && IsPlayerInSight();
+        return Physics2D.OverlapCircle(transform.position, ChaseRange, playerMask) ;
     }
     public bool CheckAttackRange()
     {
-        return Physics2D.OverlapCircle(transform.position, AttackRange, playerMask);
-    }
-    public bool CheckAttackRangeBox()
-    {
-        return Physics2D.OverlapBox(transform.position, AttackBoxRange, playerMask);
+        if (enemySO.useBoxRange)
+            return Physics2D.OverlapBox(transform.position, AttackBoxRange, 0f, playerMask);
+        else
+            return Physics2D.OverlapCircle(transform.position, AttackRange, playerMask);
     }
     public bool CheckDeathRange()
     {
@@ -119,8 +118,17 @@ public class Enemy : Agent, IPoolable
 
     private void LateUpdate()
     {
-        if(VisualCompo != null && CheckChaseRange() && canFlip)
-            VisualCompo.Flip(target.position - transform.position);
+        if(VisualCompo != null && canFlip && AgentCompo != null)
+        {
+            if (AgentCompo.velocity.sqrMagnitude > 0.01f)
+            {
+                VisualCompo.Flip(AgentCompo.velocity); 
+            }
+            else if (CheckChaseRange() && target != null)
+            {
+                VisualCompo.Flip(target.position - transform.position);
+            }
+        }
     }
 
     public void ChangeFlip(bool value)
@@ -145,8 +153,16 @@ public class Enemy : Agent, IPoolable
             transform.GetComponent<HealthSystem>().SetMaxHealth(enemySO.health);
     }
 
-    private void OnDrawGizmosSelected()
+    private void OnDrawGizmos()
     {
+        if (enemySO.useBoxRange)
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireSphere(transform.position, enemySO.boxRange.y);
+            Gizmos.color = Color.cyan;
+            Gizmos.DrawWireSphere(transform.position, transform.GetComponent<NavMeshAgent>().stoppingDistance);
+        }
+        
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, enemySO.chaseRange);
 

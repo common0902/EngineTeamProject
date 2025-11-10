@@ -1,0 +1,83 @@
+using UnityEngine;
+
+public class EnemyAttack : MonoBehaviour
+{    
+    private EnemyAnimator _enemyAnimator;
+    private Enemy _enemy;
+    private IEnemyAttackBehavior _attackBehavior;
+    private float _lastAttackTime = 0f;
+
+    public bool isAnimationEnd 
+    { 
+        get => _attackBehavior?.IsAttackAnimationEnd ?? false;
+        set 
+        {
+            if (_attackBehavior != null)
+                _attackBehavior.IsAttackAnimationEnd = value;
+        }
+    }
+
+    private void Awake()
+    {
+        _enemyAnimator = GetComponentInChildren<EnemyAnimator>();
+        _enemy = GetComponent<Enemy>();
+
+    }
+
+    private void Start()
+    {
+        InitializeAttackBehavior();
+        
+        _enemyAnimator.OnAttackTrigger += Attack;
+        _enemyAnimator.OnAttackEndTrigger += OnAttackEnd;
+    }
+
+    private void InitializeAttackBehavior()
+    {
+        switch (_enemy.enemySO.enemyType)
+        {
+            case EnemyType.Melee:
+                _attackBehavior = new MeleeAttackBehavior();
+                break;
+            case EnemyType.Ranged:
+                _attackBehavior = new RangedAttackBehavior();
+                break;
+            case EnemyType.Dash:
+                _attackBehavior = new DashAttackBehavior();
+                break;
+            case EnemyType.Summoner:
+                _attackBehavior = new SummonerAttackBehavior();
+                break;
+            case EnemyType.Assassin:
+                _attackBehavior = new AssassinAttackBehavior();
+                break;
+            case EnemyType.SuisideAttacker:
+                _attackBehavior = new SuicideAttackBehavior();
+                break;
+            default:
+                Debug.LogError($"Unknown enemy type: {_enemy.enemySO.enemyType}");
+                break;
+        }
+
+        _attackBehavior.Initialize(_enemy);
+    }
+
+    private void OnAttackEnd()
+    {
+        _attackBehavior.OnAttackAnimationEnd();
+    }
+
+    public void Attack()
+    {
+        _lastAttackTime = Time.time;
+
+        Vector2 dir = (_enemy.target.position - _enemy.transform.position).normalized;
+        StartCoroutine(_attackBehavior.ExecuteAttack(dir));
+    }
+
+    private void OnDestroy()
+    {
+        _enemyAnimator.OnAttackTrigger -= Attack;
+        _enemyAnimator.OnAttackEndTrigger -= OnAttackEnd;
+    }
+}

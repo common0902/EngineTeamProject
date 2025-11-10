@@ -1,3 +1,5 @@
+using System;
+using UnityEditor.Searcher;
 using UnityEngine;
 
 public class EnemyHit : MonoBehaviour
@@ -16,5 +18,12 @@ public class EnemyHit : MonoBehaviour
         _enemy.HealthCompo.OnHealthChanged += (float health, float maxHealth) => _enemy.isHit = true;
         _enemy.HealthCompo.OnDead += () => _enemy.isDead = true;
         _enemyAnimator.OnDeathEndTrigger += () => Destroy(_enemy.gameObject);
+        _enemyAnimator.OnDeathTrigger += Death;
+    }
+
+    private void Death()
+    {
+        _enemy.HealthCompo.Heal(_enemy.enemySO.health);
+        _enemy.isRevival = true;
     }
 }

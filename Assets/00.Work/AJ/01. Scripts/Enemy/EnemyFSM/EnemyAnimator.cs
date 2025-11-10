@@ -8,6 +8,7 @@ public class EnemyAnimator : MonoBehaviour
     public Action OnAttackEndTrigger;
     public Action OnHitEndTrigger;
     public Action OnDeathEndTrigger;
+    public Action OnDeathTrigger;
 
     public void AttackStart()
     {
@@ -25,5 +26,10 @@ public class EnemyAnimator : MonoBehaviour
     public void DeathAnimationEnd()
     {
         OnDeathEndTrigger?.Invoke();
+    }
+
+    public void Death()
+    {
+        OnDeathTrigger?.Invoke();
     }
 }

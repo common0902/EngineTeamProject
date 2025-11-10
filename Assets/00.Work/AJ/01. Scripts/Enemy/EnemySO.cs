@@ -34,7 +34,7 @@ public class EnemySO : ScriptableObject
     public float deathRange; // 죽는 범위 (폭발하는 적만)
 
     public float deathDamage; // 죽었을때 얼마만큼의 피해를 줄건지
-
+    
     [Header("Types Setting")]
     public EnemyRangedData rangedData;
     public EnemyDashData dashData;

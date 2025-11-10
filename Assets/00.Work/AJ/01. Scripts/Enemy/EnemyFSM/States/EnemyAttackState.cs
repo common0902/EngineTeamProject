@@ -21,6 +21,7 @@ public class EnemyAttackState : EnemyState
         base.Enter();
         _enemyAttack.isAnimationEnd = false;
         _enemy.ChangeFlip(false);
+        _enemy.VisualCompo.Flip(_enemy.target.position - _enemy.transform.position);
         if (_enemy.enemySO.enemyType == EnemyType.Assassin)
         {
             var sr = _enemy.GetComponentInChildren<SpriteRenderer>();
@@ -30,13 +31,14 @@ public class EnemyAttackState : EnemyState
             _enemy.ColliderCompo.isTrigger = true;
             _enemy.vfx.Play();
         }
+        
     }
     public override void Update()
     {
         base.Update();
         if (_enemy.CheckAttackRange())
         {
-            //CalculateTargetRotation();
+            CalculateTargetRotation();
         }
         /*if (_enemy.enemySO.useBoxRange)
         {
