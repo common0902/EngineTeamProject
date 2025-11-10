@@ -6,8 +6,8 @@ namespace _00.Work.Yeonwoo._01.Scripts.Direction
 {
     public class InGameCinema : MonoBehaviour
     {
-        private AppearancePlayerVisual visualChange;
-        private AppearancePlayer player;
+        [SerializeField] private AppearancePlayerVisual visualChange;
+        [SerializeField] private AppearancePlayer player;
         [SerializeField] private float distance = 3f;
         [SerializeField] private float duration;
         private Material material;
@@ -16,8 +16,6 @@ namespace _00.Work.Yeonwoo._01.Scripts.Direction
 
         private void Awake()
         {
-            visualChange = GameObject.Find("Player").GetComponentInChildren<AppearancePlayerVisual>();
-            player = GameObject.Find("Player").GetComponent<AppearancePlayer>();
             SpriteRenderer spriteRenderer = GetComponentInChildren<SpriteRenderer>();
             material = spriteRenderer.material;
             player.transform.position = transform.position;

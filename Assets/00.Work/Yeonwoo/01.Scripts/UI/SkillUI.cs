@@ -24,8 +24,8 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
             {
                 // 스킬이 비어 있을 경우 초기화
                 IconImage.sprite = null;
-                NameText.text = "";
-                DescriptionText.text = "";
+                NameText.text = "Dataerr0r";
+                DescriptionText.text = "Doesn't exist";
                 return;
             }
 

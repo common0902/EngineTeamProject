@@ -7,7 +7,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.Direction
 {
     public class InPortalManager : MonoBehaviour
     {
-        [SerializeField] private TextMeshProUGUI _interactionText;
+        private TextMeshProUGUI _interactionText;
         private readonly float _range = 2f;
         private Transform _playerPos;
         
@@ -15,6 +15,8 @@ namespace _00.Work.Yeonwoo._01.Scripts.Direction
 
         private void Awake()
         {
+            _interactionText = GetComponentInChildren<TextMeshProUGUI>();
+            
             if (_interactionText) 
                 _interactionText.gameObject.SetActive(false);
             GameObject player = GameObject.Find("Player"); // 에디터 이름으로 찾는거라 이름은 Player로 계속 유지

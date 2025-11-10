@@ -35,7 +35,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
         }
         
         // 위랑 똑같은 패시브 UI 갱신
-        private void UpdatePassiveSkillUI(PassiveSkill newSkill)
+        private void UpdatePassiveSkillUI(PasiveSkill newSkill)
         {
             for (int i = 0; i < PassiveSkillUI.Length; i++)
             {

@@ -67,7 +67,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
             }
         }
 
-        protected virtual void HandleEsc() // 문제 발생 지점 코드였지만... 고쳤다!!
+        protected virtual void HandleEsc() // 문제 발생 지점 코드
         {
             foreach (var panel in _subPanels)
             {
@@ -90,21 +90,20 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
             PanelActiveHelper();
         }
 
-        private void PanelActiveHelper() // 얘를 추가해도 달라진건 없었지만... 달라졌다!!
+        private void PanelActiveHelper() // 얘를 추가해도 달라진건 없으으ㅡㅡ으믐
         {
-            bool isSettingPanelOpen = _settingPanel.gameObject.activeSelf;
-            bool isAnySubPanelOpen = false;
-    
+            bool anyPanelOpen = _settingPanel.gameObject.activeSelf;
+            anyPanelOpen = false;
+            
             foreach (var panel in _subPanels)
             {
                 if (panel.IsOpen)
                 {
-                    isAnySubPanelOpen = true;
+                    anyPanelOpen = true;
                     break;
                 }
             }
 
-            bool anyPanelOpen = isSettingPanelOpen || isAnySubPanelOpen;
             Time.timeScale = anyPanelOpen ? 0f : 1f;
         }
         
