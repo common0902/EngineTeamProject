@@ -28,7 +28,7 @@ public class SummonerAttackBehavior : IEnemyAttackBehavior
 
             for (int i = 0; i < 30; i++)
             {
-                Vector2 randomDir = Random.insideUnitCircle.normalized;
+                Vector2 randomDir = Random.insideUnitCircle;
                 float distance = Random.Range(0f, _enemy.enemySO.summonerData.summonRange);
                 summonPos = (Vector2)_enemy.transform.position + randomDir * distance;
 

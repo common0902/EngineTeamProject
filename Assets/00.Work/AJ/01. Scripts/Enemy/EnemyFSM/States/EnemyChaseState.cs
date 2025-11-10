@@ -15,10 +15,6 @@ public class EnemyChaseState : EnemyState
         _enemyAttack = enemy.GetComponent<EnemyAttack>();
     }
     
-    // Enemy가 IsPlayerInSight 만약에 Enemy의 오른쪽에 벽이 있고 플레이어는 그 벽 뒤에 있다! 그러면 플레이어의 오른쪽으로 이동
-    // Enemy의 IsPlayerInSight 만약에 Enemy의 왼쪽에 벽이 있고 플레이어는 그 벽 뒤에 있다! 그러면 플레이어의 왼쪽을 타겟으로 잡아서 이동
-    // 
-    
     public override void Enter()
     {
         base.Enter();
@@ -50,7 +46,6 @@ public class EnemyChaseState : EnemyState
             _stateMachine.ChangeState(EnemyStateType.Idle);
             return;
         }
-
         
         _enemy.AgentCompo.SetDestination(_enemy.target.position);
         

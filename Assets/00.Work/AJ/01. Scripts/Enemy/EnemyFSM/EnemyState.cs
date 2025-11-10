@@ -21,10 +21,6 @@ public abstract class EnemyState
     }
     public virtual void Update()
     {
-        if (_enemy.isRevival)
-        {
-            _stateMachine.ChangeState(EnemyStateType.Idle);
-        }
         if (_enemy.isDead)
         {
             _stateMachine.ChangeState(EnemyStateType.Dead);

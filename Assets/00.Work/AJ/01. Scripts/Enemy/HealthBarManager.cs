@@ -41,7 +41,7 @@ public class HealthBarManager : MonoSingleton<HealthBarManager>
             if (enemies[i] == null || healthbars[i] == null)
                 continue;
 
-            Vector3 worldPos = enemies[i].transform.position + new Vector3(0, -1.1f, 0); 
+            Vector3 worldPos = enemies[i].transform.position + new Vector3(0, -1.3f, 0); 
             Vector3 screenPos = Camera.main.WorldToScreenPoint(worldPos);
 
             healthbars[i].transform.position = screenPos;

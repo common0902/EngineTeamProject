@@ -24,6 +24,5 @@ public class EnemyHit : MonoBehaviour
     private void Death()
     {
         _enemy.HealthCompo.Heal(_enemy.enemySO.health);
-        _enemy.isRevival = true;
     }
 }

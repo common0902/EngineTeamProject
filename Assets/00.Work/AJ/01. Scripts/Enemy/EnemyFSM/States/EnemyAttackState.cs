@@ -38,7 +38,7 @@ public class EnemyAttackState : EnemyState
         base.Update();
         if (_enemy.CheckAttackRange())
         {
-            CalculateTargetRotation();
+            //CalculateTargetRotation();
         }
         /*if (_enemy.enemySO.useBoxRange)
         {

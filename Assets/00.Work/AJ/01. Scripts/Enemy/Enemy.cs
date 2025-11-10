@@ -21,7 +21,6 @@ public class Enemy : Agent, IPoolable
     public float DeathRange { get; private set; }
     private bool canFlip = true;
     public bool isDead { get; set; } = false;
-    public bool isRevival { get; set; } = false;
     public bool isHit { get; set; } = false;
     public ParticleSystem vfx = null;
 
