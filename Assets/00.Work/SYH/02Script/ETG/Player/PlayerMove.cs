@@ -18,6 +18,8 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] float _waitTime;
     [SerializeField] float _dashCooltime;
     [SerializeField] float _dashPower;
+    [SerializeField] int _dashLayer;
+    [SerializeField] int _originLayer;
     TrailRenderer _trail;
 
     Rigidbody2D _rb;
@@ -78,7 +80,7 @@ public class PlayerMove : MonoBehaviour
     {
         _isDash = true;
         _trail.time = 0.1f;
-        _collider.enabled = false;
+        gameObject.layer = _dashLayer;
         if (dir == Vector2.zero)
         {
             dir = transform.GetChild(0).localScale.x > 0 ? Vector2.right : Vector2.left;
@@ -95,7 +97,7 @@ public class PlayerMove : MonoBehaviour
         _trail.time = 0;
         _isDash = false;
         yield return new WaitForSeconds(0.15f);
-        _collider.enabled = true;
+        gameObject.layer = _originLayer;
     }
 
     public void OnMove(InputValue value)
