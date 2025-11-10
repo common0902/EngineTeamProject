@@ -57,6 +57,7 @@ GameObject:
   - component: {fileID: 8631571245709130996}
   - component: {fileID: 1922911948108908984}
   - component: {fileID: 3031503935125608750}
+  - component: {fileID: 2543211135972431690}
   m_Layer: 0
   m_Name: Visual
   m_TagString: Untagged
@@ -120,8 +121,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -816317443
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: -4737088523694719448, guid: 416f6c37e4e5c724b9f8dbc304a64ff2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -171,7 +172,122 @@ MonoBehaviour:
   _idleImg: {fileID: -4737088523694719448, guid: 416f6c37e4e5c724b9f8dbc304a64ff2, type: 3}
   _deadImg: {fileID: -283305704184531190, guid: 416f6c37e4e5c724b9f8dbc304a64ff2, type: 3}
   _concentrateImg: {fileID: 3016652798880744293, guid: 416f6c37e4e5c724b9f8dbc304a64ff2, type: 3}
-  _isConcentrate: 0
+--- !u!96 &2543211135972431690
+TrailRenderer:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3060876874431918615}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 0
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: b6bab837155f2924294c738402b79b36, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Time: 0.1
+  m_PreviewTimeScale: 1
+  m_Parameters:
+    serializedVersion: 3
+    widthMultiplier: 1
+    widthCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.49650013
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    colorGradient:
+      serializedVersion: 2
+      key0: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 1}
+      key2: {r: 0, g: 0, b: 0, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0}
+      key4: {r: 0, g: 0, b: 0, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 0
+      ctime1: 65535
+      ctime2: 0
+      ctime3: 0
+      ctime4: 0
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_ColorSpace: -1
+      m_NumColorKeys: 2
+      m_NumAlphaKeys: 2
+    numCornerVertices: 0
+    numCapVertices: 0
+    alignment: 0
+    textureMode: 0
+    textureScale: {x: 1, y: 1}
+    shadowBias: 0.5
+    generateLightingData: 0
+  m_MinVertexDistance: 0.1
+  m_MaskInteraction: 0
+  m_Autodestruct: 0
+  m_Emitting: 1
+  m_ApplyActiveColorSpace: 1
 --- !u!1 &4781893648028472082
 GameObject:
   m_ObjectHideFlags: 0
@@ -257,12 +373,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e0f80468d520a443990206bbc6dba26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _canUseSkill: 1
   <Skills>k__BackingField: []
+  <CurrentAutoAttackNum>k__BackingField: 0
   _skillLayer:
     serializedVersion: 2
     m_Bits: 8
   _skillChangeRange: 1.5
+  AutoAttackList: {fileID: 11400000, guid: 694f27678e3428248a54b5006e0fefa3, type: 2}
+  <AutoAttacks>k__BackingField: []
 --- !u!114 &3908922201087372522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -275,7 +393,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32493ed47f1d45743ac98577c78836dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _canMove: 1
+  _cannotMove: 1
+  _isCasting: 0
+  _waitTime: 0
+  _dashCooltime: 1.25
+  _dashPower: 24
 --- !u!61 &5112159421654928489
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -396,14 +518,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b2751f3af2f28440a6c6c5c16e6cdb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sniper: 0
   _damage: 100
-  _mana: 200
-  _fullMana: 0
-  _manaRecovry: 1
-  _hp: 100
+  _mana: 0
+  _fullMana: 150
+  _manaRecovry: 4
+  _hp: 0
   _fullHp: 100
-  _speed: 5
   _skillCoolDownSpeed: 100
+  _speed: 5
 --- !u!114 &4915412839961996721
 MonoBehaviour:
   m_ObjectHideFlags: 0

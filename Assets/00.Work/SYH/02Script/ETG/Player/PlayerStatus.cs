@@ -2,13 +2,31 @@ using UnityEngine;
 
 public class PlayerStatus : MonoBehaviour
 {
+    public float _sniper;
+    
+
     public float _damage;
+    public float Damage
+    {
+        get
+        {
+            if (_damage < 1)
+            {
+                return 1;
+            }
+            else
+            {
+                return _damage * _sniper;
+            }
+        }
+    }
     public float _mana;
     public float _fullMana;
     public float _manaRecovry;
     public float _hp;
     public float _fullHp;
-    [SerializeField] private float _speed;
+    public float _skillCoolDownSpeed;
+    public float _speed;
      public float Speed 
      { 
         get
@@ -22,7 +40,11 @@ public class PlayerStatus : MonoBehaviour
                 return _speed;
             }
         }
-        set { _speed = value; }
+        private set { _speed = value; }
      }
-    public float _skillCoolDownSpeed;
+    private void Awake()
+    {
+        _hp = _fullHp;
+        _mana = _fullMana;
+    }
 }

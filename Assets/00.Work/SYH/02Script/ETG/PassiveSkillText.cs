@@ -13,9 +13,9 @@ public class PassiveSkillText : MonoBehaviour
         Player.Instance.PassiveSkillControllerCompo.OnTakePasiveSkill += ChangeText;
     }
 
-    private void ChangeText(PasiveSkill skill)
+    private void ChangeText(PassiveSkill skill)
     {
-        _skillText.text += ' ' + skill.Name;
+        _skillText.text += ' ' + skill.SkillSO.Name;
     }
 
     // Update is called once per frame
