@@ -41,23 +41,35 @@ TagManager:
   - 
   - Wall
   m_SortingLayers:
+  - name: BG
+    uniqueID: 3626430795
+    locked: 0
+  - name: Ground
+    uniqueID: 3228735745
+    locked: 0
+  - name: Wall
+    uniqueID: 2178794005
+    locked: 0
+  - name: Decoration
+    uniqueID: 1635731811
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Player
-    uniqueID: 3478649853
-    locked: 0
   - name: Portal
     uniqueID: 3895624851
-    locked: 0
-  - name: UI
-    uniqueID: 401888545
     locked: 0
   - name: SkillEffect
     uniqueID: 2894501951
     locked: 0
   - name: Boom
     uniqueID: 3806469173
+    locked: 0
+  - name: Player
+    uniqueID: 3478649853
+    locked: 0
+  - name: UI
+    uniqueID: 401888545
     locked: 0
   m_RenderingLayers:
   - Default

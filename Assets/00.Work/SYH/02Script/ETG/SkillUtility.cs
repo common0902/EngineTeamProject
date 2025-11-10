@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using Unity.Cinemachine;
 using UnityEngine;
 
@@ -26,19 +27,19 @@ public class SkillUtility
     {
         return (MouseInput.Instance.MousePosition - pos).normalized;
     }
-    public static IEnumerator PastDelay(Skill type, float value)
+    public static IEnumerator PastDelay(Skill type, float value) // ¾È ¾¸
     {
         OnEndPastDelay += type.EndPastDelay;
-        Player.Instance.PlayerMoveCompo._canMove = false;
-        Player.Instance.SkillControllerCompo._canUseSkill = false;
+        Player.Instance.PlayerMoveCompo._cannotMove = false;
+        //Player.Instance.SkillControllerCompo._canUseSkill = false;
         yield return new WaitForSeconds(value);
-        Player.Instance.PlayerMoveCompo._canMove = true;
-        Player.Instance.SkillControllerCompo._canUseSkill = true;
+        Player.Instance.PlayerMoveCompo._cannotMove = true;
+        //Player.Instance.SkillControllerCompo._canUseSkill = true;
         OnEndPastDelay?.Invoke();
     }
     public static float CalcurateDamage(float dmg)
     {
-        return dmg * Player.Instance.PlayerStatusCompo._damage/100;
+        return dmg * Player.Instance.PlayerStatusCompo.Damage/100;
     }
     public static void CalculateAngle(Transform pos, float angle)
     {
@@ -50,6 +51,16 @@ public class SkillUtility
 
         pos.rotation *= bulletSpreadAngle;
     }
+    public static bool CanUseSkill(int cost)
+    {
+        if (Player.Instance.PlayerStatusCompo._mana >= cost)
+        {
+            Player.Instance.PlayerStatusCompo._mana -= cost;
+            return true;
+        }
+        return false;
+    }
+
     public static IEnumerator ShakeX(Transform target, float force, float time)
     {
         Vector3 origin = target.position;
@@ -77,5 +88,28 @@ public class SkillUtility
             yield return new WaitForSeconds(0.04f);
         }
         target.GetComponent<CinemachineFollow>().FollowOffset = origin;
+    }
+
+    public static void Shuffle<T>(List<T> list)
+    {
+        System.Random rand = new System.Random();
+        for (int i = 0; i < list.Count; i++)
+        {
+            int randNum = rand.Next(list.Count);
+            T tmp = list[randNum];
+            list[randNum] = list[i];
+            list[i] = tmp;
+        }
+    }
+    public static void Shuffle<T>(T[] array)
+    {
+        System.Random rand = new System.Random();
+        for (int i = 0; i < array.Length; i++)
+        {
+            int randNum = rand.Next(array.Length);
+            T tmp = array[randNum];
+            array[randNum] = array[i];
+            array[i] = tmp;
+        }
     }
 }

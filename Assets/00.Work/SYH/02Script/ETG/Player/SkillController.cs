@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class SkillController : MonoBehaviour
 {
-    public event Action OnUseSkill;
     public event Action OnChangeSkill;
-    public bool _canUseSkill = true;
+    public event Action OnChangeUltimateSkill;
     //public Queue<Skill> Skills { get; private set; }
-    [field:SerializeField]public List<Skill> Skills { get; private set; }
+    [field:SerializeField] public List<Skill> Skills { get; private set; }
+    [field: SerializeField] public int CurrentAutoAttackNum { get; private set; }
     [SerializeField] LayerMask _skillLayer;
     [SerializeField] float _skillChangeRange = 1.5f;
+    [SerializeField] AutoAttackListSO AutoAttackList;
+
+    [field:SerializeField] public List<Skill> AutoAttacks { get; private set; }
+
+    public Skill UltimateSkill { get; private set; }
     private void Awake()
     {
+
         //Skills = new Queue<Skill>();
         //Skills.Enqueue(null);
         //Skills.Enqueue(null);
@@ -21,27 +27,35 @@ public class SkillController : MonoBehaviour
         Skills = new List<Skill>();
         Skills.Add(null);
         Skills.Add(null);
+        AutoAttacks = new List<Skill>();
+        foreach (Skill i in AutoAttackList.AutoAttacks)
+        {
+            AutoAttacks.Add(Instantiate(i.gameObject, transform).GetComponent<Skill>());
+        }
     }
     private void Update()
     {
-        if (Player.Instance.PlayerAnimationCompo._isConcentrate) return;
-        if (Input.GetMouseButtonDown(0))
+        if (Player.Instance.PlayerMoveCompo._isCasting) return;
+        if (Input.GetMouseButtonDown(1))
         {
             UseSkill(true);
         }
-        else if (Input.GetMouseButtonUp(0))
+        else if (Input.GetMouseButtonUp(1))
         {
             UseSkill(false);
         }
-        //if (Input.GetMouseButtonDown(1))
-        //{
-        //    UseSkill(1, true);
-        //}
-        //else if (Input.GetMouseButtonUp(1))
-        //{
-        //    UseSkill(1, false);
-        //}
-
+        if (Input.GetMouseButtonDown(0))
+        {
+            UseAutoAttack(true);
+        }
+        else if (Input.GetMouseButtonUp(0))
+        {
+            UseAutoAttack(false);
+        }
+        if(Input.GetMouseButton(1) && Input.GetMouseButton(0))
+        {
+            UseAutoAttack(false);
+        }
         if (Input.GetKeyDown(KeyCode.F))
         {
             Collider2D collider = Physics2D.OverlapCircle(transform.position, _skillChangeRange, _skillLayer);
@@ -50,15 +64,37 @@ public class SkillController : MonoBehaviour
                 ChangeSkill(collider.gameObject.GetComponent<Skill>());
             }
         }
+
+        if (Input.mouseScrollDelta != Vector2.zero)
+        {
+            ScrollSkill(Input.mouseScrollDelta.y);
+        }
+
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            UseUltimateSkill();
+        }
+        
     }
-    public void UseSkill(bool onOff)
+
+    private void UseAutoAttack(bool onOff)
     {
-        if (!_canUseSkill) return;
-        OnUseSkill?.Invoke();
+        if (onOff) AutoAttacks[CurrentAutoAttackNum].Active();
+        else AutoAttacks[CurrentAutoAttackNum].DisActive();
+    }
+
+    void UseSkill(bool onOff)
+    {
         if (Skills[0] == null)
         {
             print("½ºÅ³ ¾øÀ½");
             return;
+        }
+        if (!SkillUtility.CanUseSkill(Skills[0].Cost))
+        {
+            Skills[0].DisActive();
+            print("¸¶³ª ºÎÁ·"); 
+            return; 
         }
 
         if (onOff) Skills[0].Active();
@@ -78,9 +114,35 @@ public class SkillController : MonoBehaviour
         //---------------------------------------------------------------------------
         #endregion
     }
+    void UseUltimateSkill()
+    {
+        if (UltimateSkill == null)
+        {
+            print("±Ã±Ø±â ¾øÀ½");
+            return;
+        }
+        UltimateSkill.Active();
+        print("±Ã±Ø±â »ç¿ë");
+    }
 
     public void ChangeSkill(Skill skill)
     {
+        if (skill.SkillType==SkillType.UltimateSkill)
+        {
+            if (UltimateSkill == null)
+            {
+                UltimateSkill = skill;
+                skill.transform.position = new Vector3(9999, 9999, 0);
+                return;
+            }
+            Skill tmp = UltimateSkill;
+            UltimateSkill = skill;
+            skill.transform.position = new Vector3(9999, 9999, 0);
+            tmp.transform.position = transform.position;
+            OnChangeUltimateSkill?.Invoke();
+            return;
+        }
+
         for (int i = 0; i < Skills.Count; i++)
         {
             if (Skills[i] == null)
@@ -95,7 +157,7 @@ public class SkillController : MonoBehaviour
         Skill value = Skills[0];
         Skills[0] = skill;
         skill.transform.position = new Vector3(9999, 9999, 0);
-        value.gameObject.transform.position = transform.position;
+        value.transform.position = transform.position;
         OnChangeSkill?.Invoke();
         #region
         //Skills.Enqueue(skill);
@@ -107,5 +169,13 @@ public class SkillController : MonoBehaviour
         //    value.gameObject.transform.position = transform.position;
         //}
         #endregion
+    }
+
+    public void ScrollSkill(float value)
+    {
+        Skill tmp = Skills[0];
+        Skills[0] = Skills[1];
+        Skills[1] = tmp;
+        OnChangeSkill?.Invoke();
     }
 }

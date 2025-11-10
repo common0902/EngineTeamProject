@@ -11,13 +11,11 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
         protected override void Awake()
         {
             base.Awake();
+            icon.sprite = skillData.Icon;
             nameText.text = skillData.Name;
             descriptionText.text = skillData.Description;
-        }
-        
-        protected override void Interaction()
-        {
-            base.Interaction();
+            statText.text = $"공격력: {skillData.Stat}";
+            consumptionText.text = $"소모값: {skillData.Consumption}";
         }
     }
 }
