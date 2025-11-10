@@ -298,7 +298,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 000000004bf126d8019972c015c2dd8163497f61
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -449,10 +449,10 @@ MonoBehaviour:
   - {fileID: 2006649140709060410, guid: a13ba424edd222241ba20030a914fee3, type: 3}
   shopRoomPrefab:
   - {fileID: 2006649140709060410, guid: fdadc62b663639b46a385ac48020fa82, type: 3}
-  maxRooms: 12
+  maxRooms: 15
   minRooms: 10
-  roomWidth: 26
-  roomHeight: 18
+  roomWidth: 30
+  roomHeight: 22
   gridSizeX: 10
   gridSizeY: 10
   bossRoomGeneration: 0
