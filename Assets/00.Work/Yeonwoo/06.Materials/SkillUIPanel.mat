@@ -13,6 +13,11 @@ Material:
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _ENABLEENCHANTED_ON
+  - _ENABLEINNEROUTLINE_ON
+  - _ENABLEOUTEROUTLINE_ON
+  - _ENABLESHINE_ON
+  - _ENABLESINEMOVE_ON
+  - _ENABLEUVSCALE_ON
   - _SHADERFADING_NONE
   - _SHADERSPACE_UV
   - _TEXTURELAYER1SHEETTOGGLE_ON
@@ -202,10 +207,10 @@ Material:
     - _EnableHologram: 0
     - _EnableHue: 0
     - _EnableInkSpread: 0
-    - _EnableInnerOutline: 0
+    - _EnableInnerOutline: 1
     - _EnableMetal: 0
     - _EnableNegative: 0
-    - _EnableOuterOutline: 0
+    - _EnableOuterOutline: 1
     - _EnablePingPongGlow: 0
     - _EnablePixelOutline: 0
     - _EnablePixelate: 0
@@ -219,9 +224,9 @@ Material:
     - _EnableSharpen: 0
     - _EnableShiftHue: 0
     - _EnableShifting: 0
-    - _EnableShine: 0
+    - _EnableShine: 1
     - _EnableSineGlow: 0
-    - _EnableSineMove: 0
+    - _EnableSineMove: 1
     - _EnableSineRotate: 0
     - _EnableSineScale: 0
     - _EnableSmoke: 0
@@ -236,7 +241,7 @@ Material:
     - _EnableTextureLayer2: 0
     - _EnableUVDistort: 0
     - _EnableUVRotate: 0
-    - _EnableUVScale: 0
+    - _EnableUVScale: 1
     - _EnableUVScroll: 0
     - _EnableVibrate: 0
     - _EnableWiggle: 0
@@ -244,7 +249,7 @@ Material:
     - _EnableWorldTiling: 0
     - _EnchantedBrightness: 1
     - _EnchantedContrast: 0.5
-    - _EnchantedFade: 1
+    - _EnchantedFade: 0.56
     - _EnchantedLerpToggle: 0
     - _EnchantedRainbowDensity: 0.5
     - _EnchantedRainbowSaturation: 0.8
@@ -350,7 +355,7 @@ Material:
     - _ShaderSpace: 0
     - _ShadowFade: 1
     - _SharpenFactor: 4
-    - _SharpenFade: 1
+    - _SharpenFade: 0.04
     - _SharpenOffset: 2
     - _ShiftHueSpeed: 0.5
     - _ShiftingBrightness: 1
@@ -498,10 +503,10 @@ Material:
     - _DirectionalDistortionNoiseScale: {r: 0.4, g: 0.4, b: 0, a: 0}
     - _DirectionalGlowFadeEdgeColor: {r: 11.98431, g: 0.6901961, b: 0.6901961, a: 0}
     - _DirectionalGlowFadeNoiseScale: {r: 0.4, g: 0.4, b: 0, a: 0}
-    - _EnchantedHighColor: {r: 0, g: 0.006011009, b: 1, a: 0}
-    - _EnchantedLowColor: {r: 0.8122524, g: 0, b: 0.026488276, a: 0}
+    - _EnchantedHighColor: {r: 0.3217054, g: 0, b: 0.72327036, a: 0}
+    - _EnchantedLowColor: {r: 1, g: 0.12893075, b: 0.18017806, a: 0}
     - _EnchantedScale: {r: 0.1, g: 0.1, b: 0, a: 0}
-    - _EnchantedSpeed: {r: 0, g: 1, b: 0, a: 0}
+    - _EnchantedSpeed: {r: 0, g: 0.49, b: 0, a: 0}
     - _FadingNoiseScale: {r: 0.2, g: 0.2, b: 0, a: 0}
     - _FadingPosition: {r: 0, g: 0, b: 0, a: 0}
     - _FlameNoiseScale: {r: 1.2, g: 0.8, b: 0, a: 0}
@@ -544,7 +549,7 @@ Material:
     - _MetalNoiseDistortionSpeed: {r: -0.05, g: -0.05, b: 0, a: 0}
     - _MetalNoiseScale: {r: 0.25, g: 0.25, b: 0, a: 0}
     - _MetalNoiseSpeed: {r: 0.05, g: 0.05, b: 0, a: 0}
-    - _OuterOutlineColor: {r: 0, g: 0, b: 0, a: 1}
+    - _OuterOutlineColor: {r: 0, g: 0.59748423, b: 0.00788169, a: 1}
     - _OuterOutlineDistortionIntensity: {r: 0.01, g: 0.01, b: 0, a: 0}
     - _OuterOutlineNoiseScale: {r: 4, g: 4, b: 0, a: 0}
     - _OuterOutlineNoiseSpeed: {r: 0, g: 0.1, b: 0, a: 0}
@@ -574,7 +579,7 @@ Material:
     - _ShadowOffset: {r: 0.05, g: -0.05, b: 0, a: 0}
     - _ShiftingColorA: {r: 1.498039, g: 0, b: 0, a: 0}
     - _ShiftingColorB: {r: 1.498039, g: 0.7490196, b: 0, a: 0}
-    - _ShineColor: {r: 11.98431, g: 11.98431, b: 11.98431, a: 0}
+    - _ShineColor: {r: 0, g: 0.39721856, b: 3.6332963, a: 0}
     - _SineGlowColor: {r: 0, g: 2.007843, b: 2.996078, a: 0}
     - _SineMoveFrequency: {r: 1, g: 1, b: 0, a: 0}
     - _SineMoveOffset: {r: 0, g: 0.5, b: 0, a: 0}

@@ -1,6 +1,8 @@
 using System;
 using _00.Work.Yeonwoo._01.Scripts.Interfaces;
+using _00.Work.Yeonwoo._01.Scripts.UI;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace _00.Work.SYH._02Script.ETG
 {
@@ -31,10 +33,13 @@ namespace _00.Work.SYH._02Script.ETG
 
         public void Damage(float damage)
         {
+            if (PoolManager.Instance == null) 
+                Debug.LogError("PoolManager not initialized yet!");
             print(123);
             if (damage <= 0) return;
             Debug.Log("Damage");
             Health = Mathf.Clamp(Health - damage, 0, maxHealth);
+            CreateDamageText(transform.position + Vector3.up * 1.5f, damage);
             print(222);
             CheckHealthState();
         }
@@ -90,6 +95,15 @@ namespace _00.Work.SYH._02Script.ETG
             OnDead?.Invoke();
             Debug.Log("사망");
             //Destroy(gameObject);
+        }
+        
+        public void CreateDamageText(Vector3 pos, float damage)
+        {
+            IPoolable poolable = PoolManager.Instance.Pop("DamageText");
+            if (poolable is DamageTextUI damageText)
+            {
+                damageText.SetDamage(damage, pos);
+            }
         }
     }
 }

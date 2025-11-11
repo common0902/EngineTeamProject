@@ -14,12 +14,14 @@ namespace _00.Work.Yeonwoo._01.Scripts.CutScene
         private HealthSystem _event;
         private PlayerStateStopper _stopState;
         private DeathCinemaPanel _deathImage;
+        private SpriteRenderer _spriteRenderer;
         [SerializeField] private CinemachineCamera deathCam;
 
         public Action OnCinemaComplete; // 사망 연출 끝나고 UI 띄우기용
         
         private void Awake()
         {
+            _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
             _stopState = GetComponent<PlayerStateStopper>();
             _event = GetComponent<HealthSystem>();
             _deathImage = DeathCinemaPanel.Instance;
@@ -51,7 +53,8 @@ namespace _00.Work.Yeonwoo._01.Scripts.CutScene
             }
             
             deathSequence.AppendInterval(0.3f);
-            
+
+            _spriteRenderer.sortingOrder += 2;
             deathSequence.Append(_deathImage.DeathImage.DOFade(1f, 1.5f));
             
             deathSequence.Append(transform.DOScale(new Vector3(0f, 0f, 0f),2.5f));

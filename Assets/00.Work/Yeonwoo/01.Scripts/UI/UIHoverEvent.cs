@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -10,7 +11,9 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
         [SerializeField] private AudioMixerGroup _audioMixerGroup;
         [SerializeField] private AudioClip _audioClip;
         private AudioSource _audioSource;
-    
+
+        private Vector3 _originScale;
+        
         private void Awake()
         {
             if (!_audioClip) 
@@ -24,6 +27,8 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
                 _audioSource.outputAudioMixerGroup = _audioMixerGroup;
         
             _audioSource.playOnAwake = false;
+
+            _originScale = transform.localScale;
         }
         
         public void OnPointerEnter(PointerEventData eventData)
@@ -38,6 +43,12 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
         {
             transform.DOScale(new Vector3(1.0f, 1.0f, 1.0f), 0.2f)
                 .SetUpdate(true);
+        }
+
+        private void OnDisable()
+        {
+            DOTween.Kill(transform);
+            this.transform.localScale = _originScale;
         }
     }
 }
