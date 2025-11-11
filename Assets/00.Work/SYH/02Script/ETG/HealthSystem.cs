@@ -27,9 +27,11 @@ namespace _00.Work.SYH._02Script.ETG
 
         public void Damage(float damage)
         {
+            print(123);
             if (damage <= 0) return;
-            
+            print(111);
             Health = Mathf.Clamp(Health - damage, 0, maxHealth);
+            print(222);
             CheckHealthState();
         }
     
