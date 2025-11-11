@@ -39,6 +39,7 @@ public class SkillUtility
     }
     public static float CalcurateDamage(float dmg)
     {
+        Debug.Log(dmg * Player.Instance.PlayerStatusCompo.Damage / 100f);
         return dmg * Player.Instance.PlayerStatusCompo.Damage/100;
     }
     public static void CalculateAngle(Transform pos, float angle)
