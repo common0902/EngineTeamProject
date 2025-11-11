@@ -9,7 +9,6 @@ public class AssassinAttackBehavior : IEnemyAttackBehavior
     private SpriteRenderer _renderer;
     private WaitForSeconds _attackDelay;
     private bool _canAttack = true;
-    private Coroutine _assassinRoutine;
 
     public bool IsAttackAnimationEnd { get; set; }
 
@@ -20,35 +19,60 @@ public class AssassinAttackBehavior : IEnemyAttackBehavior
         _renderer = _enemy.GetComponentInChildren<SpriteRenderer>();
         _attackDelay = new WaitForSeconds(_enemy.enemySO.attackDelay);
     }
-
+    
     public IEnumerator ExecuteAttack(Vector2 direction)
     {
-        if (_assassinRoutine != null || !_canAttack)
+        if (!_canAttack || _enemy.target == null)
             yield break;
-
+        _enemy.ColliderCompo.enabled = false;
         _canAttack = false;
 
-        _enemy.HealthCompo.enabled = false;
-        _enemy.ColliderCompo.isTrigger = true;
-        _enemy.vfx.Play();
+        _targetHealth = _enemy.target.GetComponent<HealthSystem>();
+
+        IsAttackAnimationEnd = false;
+        while (!IsAttackAnimationEnd)
+            yield return null;
+
+        IsAttackAnimationEnd = false;
+        _canAttack = true;
+    }
+
+    public void OnAttackAnimationEnd()
+    {
+        IsAttackAnimationEnd = true;
+    }
+
+    private void ResetAssassinState()
+    {
         if (_renderer != null)
-            _renderer.color = new Color(1, 1, 1, 0);
+            _renderer.color = new Color(1, 1, 1, 1f);
 
-        float hideTime = _enemy.enemySO.assassinData.hideDuration;
-        if (_enemy.enemySO.assassinData.randomHideDuration)
-        {
-            hideTime = Random.Range(_enemy.enemySO.assassinData.minHideDuration, _enemy.enemySO.assassinData.hideDuration);
-        }
-        yield return new WaitForSeconds(hideTime);
+        _enemy.HealthCompo.enabled = true;
+        _enemy.ColliderCompo.enabled = true;
+        _canAttack = true;
+        IsAttackAnimationEnd = true;
+    }
+    public void Vanish()
+    {
+        _enemy.vfx.Play();
+        
+        if (_renderer != null)
+            _renderer.color = new Color(1f, 1f, 1f, 0f);
 
-        Transform target = _enemy.target;
-        if (target == null)
-            yield break;
+        _enemy.HealthCompo.enabled = false;
+        _enemy.ColliderCompo.enabled = false;
+    }
 
-        Vector3 playerPos = target.position;
-        Vector3 toPlayer = (playerPos - _enemy.transform.position).normalized;
-        float behindDist = _enemy.enemySO.assassinData.appearBehindDistance;
-        Vector3 appearPos = playerPos - toPlayer * behindDist;
+    public void AppearBehind()
+    {
+        if (_enemy.target == null)
+            return;
+
+        Vector3 playerPos = _enemy.target.position;
+        Vector3 dir = (playerPos - _enemy.transform.position).normalized;
+
+        float dist = _enemy.enemySO.assassinData.appearBehindDistance;
+        Vector3 appearPos = playerPos - dir * dist;
 
         if (_enemy.AgentCompo != null && _enemy.AgentCompo.enabled)
             _enemy.AgentCompo.Warp(appearPos);
@@ -58,26 +82,9 @@ public class AssassinAttackBehavior : IEnemyAttackBehavior
         _enemy.VisualCompo.Flip(playerPos - _enemy.transform.position);
 
         if (_renderer != null)
-            _renderer.color = new Color(1, 1, 1, 1);
-
-        if (_enemy.CheckAttackRange())
-        {
-            _targetHealth = target.GetComponent<HealthSystem>();
-            if (_targetHealth != null)
-                _targetHealth.Damage(_enemy.enemySO.damage);
-        }
+            _renderer.color = new Color(1f, 1f, 1f, 1f);
 
         _enemy.HealthCompo.enabled = true;
-        _enemy.ColliderCompo.isTrigger = false;
-
-        yield return _attackDelay;
-
-        _canAttack = true;
-        _assassinRoutine = null;
-    }
-
-    public void OnAttackAnimationEnd()
-    {
-        IsAttackAnimationEnd = true;
+        _enemy.ColliderCompo.enabled = true;
     }
 }

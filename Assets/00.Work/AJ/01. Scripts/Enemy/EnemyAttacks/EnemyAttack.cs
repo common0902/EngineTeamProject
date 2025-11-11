@@ -30,6 +30,11 @@ public class EnemyAttack : MonoBehaviour
         
         _enemyAnimator.OnAttackTrigger += Attack;
         _enemyAnimator.OnAttackEndTrigger += OnAttackEnd;
+        if (_enemy.enemySO.enemyType == EnemyType.Assassin)
+        {
+            _enemyAnimator.OnAssassinVanish += Vanish;
+            _enemyAnimator.OnAssassinAppearBehind += AppearBehind;
+        }
     }
 
     private void InitializeAttackBehavior()
@@ -74,6 +79,19 @@ public class EnemyAttack : MonoBehaviour
         Vector2 dir = (_enemy.target.position - _enemy.transform.position).normalized;
         StartCoroutine(_attackBehavior.ExecuteAttack(dir));
     }
+
+    public void Vanish()
+    {
+        if (_attackBehavior is AssassinAttackBehavior a)
+            a.Vanish();
+    }
+
+    public void AppearBehind()
+    {
+        if (_attackBehavior is AssassinAttackBehavior a)
+            a.AppearBehind();
+    }
+
 
     private void OnDestroy()
     {

@@ -13,5 +13,10 @@ MonoBehaviour:
   m_Name: DarkMecBullet
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 2800715699890370306, guid: 9d98c1795f435ff4c9dfae770fbacf7a, type: 3}
-  lifeTime: 5
+  lifeTime: 2
   bulletSpeed: 7
+  multibulletShoot: 1
+  bulletCount: 21
+  spreadAngle: 10
+  parabola: 0
+  arcHeight: 2

@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Bullet : MonoBehaviour
 {
@@ -9,10 +10,11 @@ public class Bullet : MonoBehaviour
     [SerializeField] private EnemySO enemySo;
     private bool _isParabola;
     private Vector2 _targetPosition;
-    private float _arcHeight = 2f; // 포물선 높이
+    private float _arcHeight = 2f; 
     private float _travelTime;
     private float _elapsedTime;
     private Vector2 _startPosition;
+    private float _speed;
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();        
@@ -23,6 +25,7 @@ public class Bullet : MonoBehaviour
         enemySo = enemy.enemySO;
         _isParabola = enemySo.rangedData.bulletData.parabola;
         _targetPosition = enemy.target.position;
+        _speed = enemySo.rangedData.bulletData.bulletSpeed;
         if (_isParabola)
         {
             _rb.gravityScale = 0; 
@@ -34,12 +37,10 @@ public class Bullet : MonoBehaviour
             _travelTime = enemySo.rangedData.bulletData.lifeTime;
             _elapsedTime = 0f;
         }
-        else
-        {
-            _rb.linearVelocity = dir * speed;
-        }
+        
         StartCoroutine(LifeTimeCoroutine(enemySo.rangedData.bulletData.lifeTime));
     }
+    
     private void Update()
     {
         if (_isParabola)
@@ -62,7 +63,12 @@ public class Bullet : MonoBehaviour
             }
         }
     }
-    
+
+    private void FixedUpdate()
+    {
+        _rb.linearVelocity = transform.right * _speed;
+    }
+
     private Vector2 CalculateParabolicPosition(float t)
     {
         Vector2 linearPosition = Vector2.Lerp(_startPosition, _targetPosition, t);
@@ -77,7 +83,7 @@ public class Bullet : MonoBehaviour
         yield return new WaitForSeconds(lifeTime);
         Destroy(gameObject);
     }
-
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.TryGetComponent(out HealthSystem hp))
@@ -85,6 +91,8 @@ public class Bullet : MonoBehaviour
             hp.Damage(enemySo.damage);
             Destroy(gameObject);    
         }
+        else
+            Destroy(gameObject);   
     }
 #if UNITY_EDITOR
     private void OnDrawGizmos()

@@ -22,58 +22,39 @@ public class EnemyAttackState : EnemyState
         _enemyAttack.isAnimationEnd = false;
         _enemy.ChangeFlip(false);
         _enemy.VisualCompo.Flip(_enemy.target.position - _enemy.transform.position);
-        if (_enemy.enemySO.enemyType == EnemyType.Assassin)
-        {
-            var sr = _enemy.GetComponentInChildren<SpriteRenderer>();
-            if (sr != null)
-                sr.color = new Color(1, 1, 1, 0); 
-            _enemy.HealthCompo.enabled = false;
-            _enemy.ColliderCompo.isTrigger = true;
-            _enemy.vfx.Play();
-        }
-        
+        Debug.Log("AttackRange");
     }
+
     public override void Update()
     {
         base.Update();
-        if (_enemy.CheckAttackRange())
-        {
-            //CalculateTargetRotation();
-        }
-        /*if (_enemy.enemySO.useBoxRange)
-        {
-            if (_enemy.CheckAttackRangeBox() && !isAttack) 
-            {
-                isAttack = true;
-            }
-        }
-        else if (_enemy.CheckAttackRange() && !isAttack)
-        {
-            isAttack = true;
-        }*/
-
+        Debug.Log("AttackUpdate");
         if (_enemyAttack.isAnimationEnd)
         {
-            if (_enemy.enemySO.enemyType == EnemyType.Assassin)
-            {
+            _enemyAttack.isAnimationEnd = false;
 
-            }
-            else if (_enemy.enemySO.enemyType == EnemyType.SuisideAttacker)
+            switch (_enemy.enemySO.enemyType)
             {
-
-            }
-            else if (_enemy.enemySO.enemyType == EnemyType.Ranged)
-            {
-                timer += Time.deltaTime;
-                if (timer >= delay)
-                {
+                case EnemyType.Assassin:
+                    if (_enemy.CheckChaseRange())
+                        _stateMachine.ChangeState(EnemyStateType.Chase);
+                    else
+                        _stateMachine.ChangeState(EnemyStateType.Idle);
+                    break;
+                case EnemyType.SuisideAttacker:
+                    _stateMachine.ChangeState(EnemyStateType.Dead);
+                    break;
+                case EnemyType.Ranged:
+                    timer += Time.deltaTime;
+                    if (timer >= delay)
+                    {
+                        timer = 0;
+                        _stateMachine.ChangeState(EnemyStateType.Idle);
+                    }
+                    break;
+                default:
                     _stateMachine.ChangeState(EnemyStateType.Idle);
-                    timer = 0;
-                }
-            }
-            else
-            {
-                _stateMachine.ChangeState(EnemyStateType.Idle);
+                    break;
             }
         }
     }
