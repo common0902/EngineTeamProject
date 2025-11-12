@@ -4,7 +4,7 @@ using UnityEngine.Tilemaps;
 [CreateAssetMenu(menuName = "Tiles/OneTime Random Tile")]
 public class CustomRandomTile : TileBase
 {
-    public Sprite[] sprites;
+    [SerializeField] private Sprite[] sprites;
 
     public override void GetTileData(Vector3Int position, ITilemap tilemap, ref TileData tileData)
     {
@@ -12,9 +12,10 @@ public class CustomRandomTile : TileBase
             return;
 
         int seed = position.x * 73856093 ^ position.y * 19349663;
-        Random.InitState(seed);
 
-        int index = Random.Range(0, sprites.Length);
+        System.Random prng = new System.Random(seed);
+
+        int index = prng.Next(0, sprites.Length);
         tileData.sprite = sprites[index];
 
         tileData.color = Color.white;
