@@ -59,6 +59,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.Direction
             }
             else
             {
+                SceneManager.LoadScene("Title");
                 return;
             }
         }

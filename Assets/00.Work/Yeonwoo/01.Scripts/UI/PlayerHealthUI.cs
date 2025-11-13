@@ -1,0 +1,154 @@
+﻿using System;
+using _00.Work.SYH._02Script.ETG;
+using _00.Work.Yeonwoo._01.Scripts.Interfaces;
+using DG.Tweening;
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace _00.Work.Yeonwoo._01.Scripts.UI
+{
+    public class PlayerHealthUI : MonoBehaviour
+    {
+        [SerializeField] private RectTransform healthBarTransform;
+        [Header("Tween Settings")]
+        [SerializeField] private float healthBarTweenDuration = 0.3f;
+        [SerializeField] private Ease healthBarEase = Ease.OutCubic;
+
+        private HealthSystem _healthSystem;
+
+        private IHealth _health;
+        private Slider _slider;
+        
+        private Vector3 _originPosition;
+        private Tween _shakeTween;
+        private Tween _healthBarTween;
+        
+        private TextMeshProUGUI _healthText;
+        
+        private void Awake()
+        {
+            _slider = GetComponent<Slider>();
+            if (!_slider)
+                Debug.LogError("slider is null");
+
+            _healthSystem = GameObject.Find("Player").GetComponent<HealthSystem>();
+            if (!_healthSystem)
+                Debug.LogError("healthSystem is null");
+            
+            _healthText = GetComponentInChildren<TextMeshProUGUI>();
+            if (!_healthText)
+                Debug.LogError("healthText is null");
+            
+            if (_healthSystem is IHealth health)
+            {
+                _health = health;
+                _slider.maxValue = _health.MaxHealth;
+                _slider.value = _health.Health;
+                
+                _healthText.text = $"{_health.Health:F0} / {_health.MaxHealth:F0}";
+                
+                _health.OnHealthChanged += UpdateHealthUI;
+                _health.OnDead += DeadMotion;
+                _health.OnLowHealth += WaringMotion;
+                _health.OnRecoverHealth += RecoverMotion;
+            }
+            else
+            {
+                Debug.LogError("HealthUI: Assign an IHealth implementation to the healthSource.");
+            }
+        }
+
+        private void Start()
+        {
+            UpdateHealthUI(_health.Health, _health.MaxHealth);
+            _originPosition = healthBarTransform.anchoredPosition;
+        }
+
+        private void UpdateHealthUI(float current, float max)
+        {
+            _slider.maxValue = max;
+            
+            _healthBarTween?.Kill();
+            
+            _healthBarTween = DOTween.To(
+                () => _slider.value,
+                x => _slider.value = x,
+                current,
+                healthBarTweenDuration
+            ).SetEase(healthBarEase);
+            
+            float startValue = float.Parse(_healthText.text.Split('/')[0].Trim());
+            DOTween.To(
+                () => startValue,
+                x =>
+                {
+                    startValue = x;
+                    _healthText.text = $"{x:F0} / {max:F0}";
+                },
+                current,
+                healthBarTweenDuration
+            ).SetEase(healthBarEase);
+        }
+
+        private void WaringMotion()
+        {
+            Debug.Log("체력바 연출");
+
+            DOTween.Kill(healthBarTransform);
+            
+            _shakeTween = healthBarTransform.DOShakeAnchorPos(
+                    duration: 0.5f,
+                    strength: new Vector2(5f, 1f),
+                    vibrato: 20,
+                    randomness: 90,
+                    snapping: false,
+                    fadeOut: false)
+                .SetLoops(-1, LoopType.Restart);
+        }
+
+        private void RecoverMotion()
+        {
+            Debug.Log("연출 멈추기");
+            
+            _shakeTween?.Kill();
+
+            healthBarTransform.DOAnchorPos(_originPosition, 0.2f)
+                .SetEase(Ease.OutSine);
+        }
+        
+        private void DeadMotion()
+        {
+            CanvasGroup canvasGroup = GetComponent<CanvasGroup>();
+            if (canvasGroup == null)
+                canvasGroup = gameObject.AddComponent<CanvasGroup>();
+            
+            canvasGroup.DOFade(0f, 0.5f)
+                .SetEase(Ease.OutQuad)
+                .OnComplete(() => Destroy(gameObject));
+        }
+        
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+                _healthSystem.Damage(10f);
+            if (Input.GetKeyDown(KeyCode.Space))
+                _healthSystem.Heal(10f);
+        }
+
+        protected void OnDestroy()
+        {
+            _healthBarTween?.Kill();
+            _shakeTween?.Kill();
+            DOTween.Kill(healthBarTransform);
+            
+            if (_health != null)
+            {
+                _health.OnHealthChanged -= UpdateHealthUI;
+                _health.OnDead -= DeadMotion;
+                _health.OnLowHealth -= WaringMotion;
+                _health.OnRecoverHealth -= RecoverMotion;
+            }
+        }
+    }
+}

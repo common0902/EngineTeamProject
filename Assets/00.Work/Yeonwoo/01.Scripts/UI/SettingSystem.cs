@@ -9,11 +9,9 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
 {
     public class SettingSystem : MonoBehaviour
     {
-        protected SettingPanel _settingPanel;
-        protected List<ISettingPanel> _subPanels = new();
-
-        protected bool IsActive;
-
+        private SettingPanel _settingPanel;
+        private readonly List<ISettingPanel> _subPanels = new();
+        
         private void Awake()
         {
             try
@@ -67,13 +65,14 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
             }
         }
 
-        protected virtual void HandleEsc() // 문제 발생 지점 코드였지만... 고쳤다!!
+        protected void HandleEsc() // 문제 발생 지점 코드였지만... 고쳤다!!
         {
             foreach (var panel in _subPanels)
             {
                 if (panel.IsOpen)
                 {
                     panel.Close();
+                    _settingPanel.gameObject.SetActive(true);
                     PanelActiveHelper();
                     return;
                 }
