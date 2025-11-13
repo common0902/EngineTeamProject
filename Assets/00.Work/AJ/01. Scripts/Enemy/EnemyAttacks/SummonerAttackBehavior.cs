@@ -2,6 +2,7 @@
 using _00.Work.SYH._02Script.ETG;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class SummonerAttackBehavior : IEnemyAttackBehavior
 {
@@ -81,7 +82,6 @@ public class SummonerAttackBehavior : IEnemyAttackBehavior
             _enemy.ChangeAttackRange(_enemy.enemySO.attackRange);
         }
     }
-
     public void OnAttackAnimationEnd()
     {
         IsAttackAnimationEnd = true;

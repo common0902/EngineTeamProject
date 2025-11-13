@@ -6,5 +6,5 @@
     Summoner,
     Assassin,
     SuisideAttacker,
-    
+    Trapper,
 }

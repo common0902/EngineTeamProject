@@ -22,6 +22,7 @@ public class MeleeAttackBehavior : IEnemyAttackBehavior
         if (_enemy.CheckAttackRange())
         {
             yield return _attackDelay;
+            
             _targetHealth.Damage(_enemy.enemySO.damage);
         }
     }

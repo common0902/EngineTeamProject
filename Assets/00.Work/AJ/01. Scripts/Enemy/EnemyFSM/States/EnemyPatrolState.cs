@@ -1,13 +1,17 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
+using Object = UnityEngine.Object;
+using Random = UnityEngine.Random;
 
 public class EnemyPatrolState : EnemyState
 {
     private Vector2 _currentWayPoint;
     private bool _isWaitingForChase;
+    private float _lastTrapTime;
     public EnemyPatrolState(Enemy enemy, string animName, EnemyStateMachine stateMachine) : base(enemy, animName, stateMachine)
     {
-        
+        _lastTrapTime = 0f;
     }
     public override void Enter()
     {
@@ -20,6 +24,7 @@ public class EnemyPatrolState : EnemyState
         _enemy.AgentCompo.enabled = true;
         
         _isWaitingForChase = false;
+        Debug.Log("Patrol State");
         
         MoveToNextWaypoint();
     }
@@ -29,7 +34,7 @@ public class EnemyPatrolState : EnemyState
         
         _enemy.VisualCompo.Flip(_currentWayPoint - (Vector2)_enemy.transform.position);
         _enemy.AgentCompo.SetDestination(_currentWayPoint);
-        
+
         if (_enemy.CheckChaseRange() && !_isWaitingForChase)
         {
             _isWaitingForChase = true;
@@ -42,6 +47,10 @@ public class EnemyPatrolState : EnemyState
             _enemy.AgentCompo.isStopped = true;
             _stateMachine.ChangeState(EnemyStateType.Idle);
         }
+        if (_enemy.enemySO.enemyType == EnemyType.Trapper)
+        {
+            TryPlaceTrapWhilePatrolling();
+        }
     }
     public override void Exit()
     {
@@ -51,14 +60,66 @@ public class EnemyPatrolState : EnemyState
     {
         try
         {
-            _currentWayPoint = _enemy.wayPoints.GetNextWayPoint();
+            _currentWayPoint = _enemy.wayPoints.GetRandomWayPoint();
             _enemy.AgentCompo.SetDestination(_currentWayPoint);
         }
-        catch(UnityException)
+        catch(NullReferenceException)
         {
-            Debug.LogWarning($"{_enemy.name}에 WayPoints가 할당되지 않았습니다.");
+            Debug.LogWarning($"WayPoints is null");
             return;
         }
+    }
+    private void TryPlaceTrapWhilePatrolling()
+    {
+        if (_enemy.enemySO.trapperData == null) return;
+        
+        float currentTime = Time.time;
+        float patrolTrapInterval = _enemy.enemySO.trapperData.trapPlaceInterval * 1.5f; 
+        
+        if (currentTime - _lastTrapTime < patrolTrapInterval)
+            return;
+        
+        float distanceToWaypoint = Vector2.Distance(_enemy.transform.position, _currentWayPoint);
+        if (distanceToWaypoint < 0.5f)
+            return;
+        
+        _lastTrapTime = currentTime;
+        PlaceTrap();
+    }
+    private void PlaceTrap()
+    {
+        EnemyAttack attackComponent = _enemy.GetComponent<EnemyAttack>();
+        if (attackComponent != null)
+        {
+            _enemy.StartCoroutine(PlaceTrapDirectly());
+        }
+    }
+    private IEnumerator PlaceTrapDirectly()
+    {
+        GameObject trapObj = Object.Instantiate(
+            _enemy.enemySO.trapperData.trapPrefab,
+            _enemy.transform.position,
+            Quaternion.identity
+        );
+
+        Trap trap = trapObj.GetComponent<Trap>();
+        if (trap != null)
+        {
+            trap.Initialize(_enemy.enemySO.trapperData);
+        }
+
+        if (_enemy.enemySO.trapperData.placeTrapVFX != null)
+        {
+            ParticleSystem vfx = Object.Instantiate(
+                _enemy.enemySO.trapperData.placeTrapVFX,
+                _enemy.transform.position,
+                Quaternion.identity
+            );
+            vfx.Play();
+            Object.Destroy(vfx.gameObject, 2f);
+        }
+        
+        yield return null;
     }
     private IEnumerator WaitBeforeChase(float delay)
     {

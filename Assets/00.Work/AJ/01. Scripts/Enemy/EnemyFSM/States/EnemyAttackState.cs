@@ -20,15 +20,24 @@ public class EnemyAttackState : EnemyState
     {
         base.Enter();
         _enemyAttack.isAnimationEnd = false;
-        _enemy.ChangeFlip(false);
+        if (_enemy.enemySO.enemyType != EnemyType.Ranged)
+            _enemy.ChangeFlip(false);
+        else
+            _enemy.ChangeFlip(true);
         _enemy.VisualCompo.Flip(_enemy.target.position - _enemy.transform.position);
-        Debug.Log("AttackRange");
     }
 
     public override void Update()
     {
         base.Update();
-        Debug.Log("AttackUpdate");
+        if (_enemy.enemySO.enemyType == EnemyType.SuisideAttacker)
+        {
+            if (_enemyAttack.isAnimationEnd)
+            {
+                _stateMachine.ChangeState(EnemyStateType.Dead);
+            }
+            return; 
+        }
         if (_enemyAttack.isAnimationEnd)
         {
             _enemyAttack.isAnimationEnd = false;
@@ -40,17 +49,6 @@ public class EnemyAttackState : EnemyState
                         _stateMachine.ChangeState(EnemyStateType.Chase);
                     else
                         _stateMachine.ChangeState(EnemyStateType.Idle);
-                    break;
-                case EnemyType.SuisideAttacker:
-                    _stateMachine.ChangeState(EnemyStateType.Dead);
-                    break;
-                case EnemyType.Ranged:
-                    timer += Time.deltaTime;
-                    if (timer >= delay)
-                    {
-                        timer = 0;
-                        _stateMachine.ChangeState(EnemyStateType.Idle);
-                    }
                     break;
                 default:
                     _stateMachine.ChangeState(EnemyStateType.Idle);

@@ -17,7 +17,7 @@ public class EnemyHitState : EnemyState
         base.Enter();
         //Debug.Log("Enter Hit State");
         _enemy.ChangeFlip(false);
-
+        
         _enemy.AgentCompo.isStopped = true;
         _knockbackDir = (_enemy.transform.position - _enemy.target.position).normalized;
         //_enemy.RbCompo.AddForce(_knockbackDir * _enemy.enemySO.knockbackForce, ForceMode2D.Impulse);

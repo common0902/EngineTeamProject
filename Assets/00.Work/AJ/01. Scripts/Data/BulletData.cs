@@ -19,5 +19,9 @@ public class BulletData : ScriptableObject
     
     [Header("Parabola Settings")]
     public bool parabola = false;
-    public float arcHeight = 2f; // 포물선 높이
+    public float arcTime = 1f; // 포물선 높이
+    public float gravityIncreaseRate = 2f; // 중력 증가 속도 (초당)
+    [Range(1f, 10f)]
+    public float maxGravity = 5f; // 최대 중력값
+
 }

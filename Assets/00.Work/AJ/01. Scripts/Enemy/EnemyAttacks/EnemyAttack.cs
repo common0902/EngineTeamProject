@@ -59,6 +59,9 @@ public class EnemyAttack : MonoBehaviour
             case EnemyType.SuisideAttacker:
                 _attackBehavior = new SuicideAttackBehavior();
                 break;
+            case EnemyType.Trapper:
+                _attackBehavior = new TrapperAttackBehavior();
+                break;
             default:
                 Debug.LogError($"Unknown enemy type: {_enemy.enemySO.enemyType}");
                 break;
@@ -84,6 +87,7 @@ public class EnemyAttack : MonoBehaviour
     {
         if (_attackBehavior is AssassinAttackBehavior a)
             a.Vanish();
+        
     }
 
     public void AppearBehind()

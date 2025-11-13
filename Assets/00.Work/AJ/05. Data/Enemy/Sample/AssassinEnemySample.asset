@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AssassinEnemySample
   m_EditorClassIdentifier: 
   enemyType: 4
-  enemyName: Ghoul
+  enemyName: Trapper
   enemySprite: {fileID: 2605309709859226732, guid: 29b895f7d109b8d419901ad02059d40c, type: 3}
   speed: 2
   health: 50
@@ -50,7 +50,17 @@ MonoBehaviour:
     randomHideDuration: 1
     minHideDuration: 2
   suicideAttackerData:
-    particleSystem: {fileID: 0}
+    particleSystem: {fileID: 5923970373030117632, guid: fec786b8461d04143b17cb740fdf0040, type: 3}
     explosionRadius: 1.5
     explosionDelay: 0.3
+  trapperData:
+    trapPrefab: {fileID: 0}
+    maxTraps: 3
+    trapPlaceInterval: 2
+    trapLifetime: 15
+    trapActivationDelay: 0.5
+    trapTriggerRadius: 0.8
+    trapDamage: 10
+    placeTrapVFX: {fileID: 0}
+    trapWarningColor: {r: 1, g: 0, b: 0, a: 1}
   attackSound: {fileID: 0}

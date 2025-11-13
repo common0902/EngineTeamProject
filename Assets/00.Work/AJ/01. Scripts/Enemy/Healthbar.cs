@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class Healthbar : MonoBehaviour
 {
-    public Image hpbar; 
+    public Image hpbar;
+    private Enemy _enemy;
     private HealthSystem _enemyHealth;
     private float _targetFill;
     public void Init(HealthSystem enemyhealth)
@@ -13,11 +14,19 @@ public class Healthbar : MonoBehaviour
         _enemyHealth = enemyhealth;
         _enemyHealth.OnHealthChanged += OnDamage;
         _enemyHealth.OnDead += OnDead;
-        
+        _enemy = enemyhealth.GetComponent<Enemy>();
+        if (_enemy.enemySO.enemyType == EnemyType.Assassin)
+        {
+            _enemy.GetComponentInChildren<EnemyAnimator>().OnAssassinVanish += () => ShowOrHideHealthBar(false);
+            _enemy.GetComponentInChildren<EnemyAnimator>().OnAssassinAppearBehind += () => ShowOrHideHealthBar(true);
+        }
         _targetFill = 1f;
-        hpbar.fillAmount = _targetFill;
     }
 
+    public void ShowOrHideHealthBar(bool isShow)
+    {
+        gameObject.SetActive(isShow);
+    }
 
     private void Update()
     {
@@ -46,6 +55,11 @@ public class Healthbar : MonoBehaviour
         {
             _enemyHealth.OnHealthChanged -= OnDamage;
             _enemyHealth.OnDead -= OnDead;
+        }
+        if (_enemy.enemySO.enemyType == EnemyType.Assassin)
+        {
+            _enemy.GetComponentInChildren<EnemyAnimator>().OnAssassinVanish -= () => ShowOrHideHealthBar(false);
+            _enemy.GetComponentInChildren<EnemyAnimator>().OnAssassinAppearBehind -= () => ShowOrHideHealthBar(true);
         }
     }
 }

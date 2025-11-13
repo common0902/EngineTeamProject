@@ -28,11 +28,11 @@ public class EnemyDeathState : EnemyState
                     playerHealth.Damage(_enemy.enemySO.damage);
                 }
             }
-            _enemy.target.GetComponent<HealthSystem>().Damage(_enemy.enemySO.deathDamage);
         }
     }
     public override void Exit() 
     {
         base.Exit();
+        _enemy.StopAllCoroutines();
     }
 }

@@ -15,7 +15,7 @@ public class RangedAttackBehavior : IEnemyAttackBehavior
 
     public IEnumerator ExecuteAttack(Vector2 direction)
     {
-        if (_enemy.CheckAttackRange() && _canAttack)
+        if (_canAttack)
         {
             for (int i = 0; i < _enemy.enemySO.rangedData.bulletData.GetBulletCount(); i++)
             {

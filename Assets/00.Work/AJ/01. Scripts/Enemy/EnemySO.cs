@@ -41,6 +41,7 @@ public class EnemySO : ScriptableObject
     public EnemySummonerData summonerData;
     public EnemyAssassinData assassinData;
     public EnemySuicideAttackerData suicideAttackerData;
+    public EnemyTrapperData trapperData;
     
     [Header("Sound")] 
     public AudioClip attackSound; // 공격 소리(임시)
@@ -97,4 +98,22 @@ public class EnemySuicideAttackerData
     public ParticleSystem particleSystem;
     public float explosionRadius = 1.5f;
     public float explosionDelay = 0.3f;
+}
+
+[Serializable]
+public class EnemyTrapperData
+{
+    [Header("Trap Settings")]
+    public GameObject trapPrefab;  // 함정 프리팹
+    [Range(1, 10)] public int maxTraps = 3; // 최대 함정 개수
+    public float trapPlaceInterval = 2f; // 함정 설치 간격
+
+    [Header("Trap Behavior")]
+    public float trapLifetime = 15f; // 함정 지속 시간
+    public float trapActivationDelay = 0.5f; // 활성화 딜레이
+    public float trapTriggerRadius = 0.8f; // 감지 반경
+    public float trapDamage = 10f; // 함정 데미지
+    
+    public ParticleSystem placeTrapVFX; // 설치 이펙트
+    public Color trapWarningColor = Color.red; // 경고 색상
 }

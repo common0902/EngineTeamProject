@@ -28,8 +28,8 @@ public class EnemyIdleState : EnemyState
         if (_enemy.enemySO.enemyType == EnemyType.Assassin)
         {
             var rend = _enemy.GetComponentInChildren<SpriteRenderer>();
-            if (rend != null) rend.color = new Color(0, 0,0,0f);
-
+            if (rend != null) rend.color = new Color(1, 1,1,0f);
+            _enemy.GetComponentInChildren<EnemyAnimator>().OnAssassinVanish?.Invoke();
             _enemy.HealthCompo.enabled = false;
             _enemy.ColliderCompo.isTrigger = true;
         }
@@ -41,7 +41,6 @@ public class EnemyIdleState : EnemyState
     public override void Update()
     {
         base.Update();
-        if (_enemy.IsOutScreen()) return;
         
         if (_enemy.enemySO.enemyType == EnemyType.Assassin && _enemy.CheckChaseRange())
         {
@@ -57,6 +56,7 @@ public class EnemyIdleState : EnemyState
 
         if (_enemy.enemySO.canPatrol)
         {
+            Debug.Log("CanPatrol");
             _waitTimer += Time.deltaTime;
             if (_waitTimer >= _waitDuration)
             {

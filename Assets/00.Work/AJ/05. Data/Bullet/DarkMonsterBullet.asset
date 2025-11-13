@@ -13,5 +13,10 @@ MonoBehaviour:
   m_Name: DarkMonsterBullet
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 7243900482331719319, guid: 4d8e7ebbc52ec48469befd67170af84d, type: 3}
-  lifeTime: 1.2
-  bulletSpeed: 3
+  lifeTime: 3
+  bulletSpeed: 5
+  multibulletShoot: 1
+  bulletCount: 3
+  spreadAngle: 45
+  parabola: 0
+  arcHeight: 2

@@ -27,8 +27,8 @@ public class AssassinAttackBehavior : IEnemyAttackBehavior
         _enemy.ColliderCompo.enabled = false;
         _canAttack = false;
 
-        _targetHealth = _enemy.target.GetComponent<HealthSystem>();
-
+        _targetHealth.Damage(_enemy.enemySO.damage);
+        
         IsAttackAnimationEnd = false;
         while (!IsAttackAnimationEnd)
             yield return null;

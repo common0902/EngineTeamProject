@@ -60,6 +60,11 @@ public class Enemy : Agent, IPoolable
         {
             Debug.LogError("Error");
         }
+
+        Debug.Log(enemySO);
+        Debug.Log(enemySO.assassinData);
+        Debug.Log(enemySO.assassinData.vanishVfx);
+        
         if (enemySO.assassinData != null && enemySO.assassinData.vanishVfx != null)
         {
             vfx = Instantiate(
@@ -73,11 +78,11 @@ public class Enemy : Agent, IPoolable
 
     private void Start()
     {
-        /*if (wayPoints != null) // 삭제
+        if (wayPoints != null)
         {
             Vector3 spawnPos = wayPoints.GetRandomWayPoint();
             transform.position = spawnPos;
-        }*/
+        }
     }
     public void ChangeChaseRange(float value) => ChaseRange = value;
     public void ChangeAttackRange(float value) => AttackRange = value;

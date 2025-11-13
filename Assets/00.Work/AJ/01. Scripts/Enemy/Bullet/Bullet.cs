@@ -24,20 +24,21 @@ public class Bullet : MonoBehaviour
     {
         enemySo = enemy.enemySO;
         _isParabola = enemySo.rangedData.bulletData.parabola;
-        _targetPosition = enemy.target.position;
         _speed = enemySo.rangedData.bulletData.bulletSpeed;
         if (_isParabola)
         {
             _rb.gravityScale = 0; 
             _startPosition = transform.position;
             
-            float distance = speed * enemySo.rangedData.bulletData.lifeTime * 0.8f;
-            _targetPosition = (Vector2)transform.position + dir.normalized * distance;
-            
-            _travelTime = enemySo.rangedData.bulletData.lifeTime;
+            _targetPosition = enemy.target.position;
+
+            _travelTime = enemySo.rangedData.bulletData.arcTime;
             _elapsedTime = 0f;
         }
-        
+        else
+        {
+            _rb.linearVelocity = dir * _speed;
+        }
         StartCoroutine(LifeTimeCoroutine(enemySo.rangedData.bulletData.lifeTime));
     }
     
@@ -55,11 +56,8 @@ public class Bullet : MonoBehaviour
                 _rb.MovePosition(newPosition);
                 
                 Vector2 moveDir = newPosition - (Vector2)transform.position;
-                if (moveDir.sqrMagnitude > 0.001f)
-                {
-                    float angle = Mathf.Atan2(moveDir.y, moveDir.x) * Mathf.Rad2Deg;
-                    transform.rotation = Quaternion.Euler(0, 0, angle);
-                }
+                float angle = Mathf.Atan2(moveDir.y, moveDir.x) * Mathf.Rad2Deg;
+                transform.rotation = Quaternion.Euler(0, 0, angle);
             }
         }
     }

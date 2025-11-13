@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: BulletData
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 2800715699890370306, guid: d5e511740df0cfc4ca8c678fede39f4b, type: 3}
-  lifeTime: 1.5
+  lifeTime: 3
   bulletSpeed: 5
+  multibulletShoot: 0
+  bulletCount: 3
+  spreadAngle: 0
   parabola: 1
-  arcHeight: 2
+  arcTime: 1
