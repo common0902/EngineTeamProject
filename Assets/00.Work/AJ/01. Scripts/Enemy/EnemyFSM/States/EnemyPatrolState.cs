@@ -60,7 +60,7 @@ public class EnemyPatrolState : EnemyState
     {
         try
         {
-            _currentWayPoint = _enemy.wayPoints.GetRandomWayPoint();
+            _currentWayPoint = _enemy.WayPoints.GetRandomWayPoint();
             _enemy.AgentCompo.SetDestination(_currentWayPoint);
         }
         catch(NullReferenceException)
@@ -118,7 +118,7 @@ public class EnemyPatrolState : EnemyState
             vfx.Play();
             Object.Destroy(vfx.gameObject, 2f);
         }
-        
+
         yield return null;
     }
     private IEnumerator WaitBeforeChase(float delay)

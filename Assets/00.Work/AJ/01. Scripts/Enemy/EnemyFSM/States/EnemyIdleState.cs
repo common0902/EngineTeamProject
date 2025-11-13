@@ -20,7 +20,8 @@ public class EnemyIdleState : EnemyState
         _enemy.ChangeFlip(false);
 
         _enemy.AgentCompo.enabled = true;
-        _enemy.AgentCompo.isStopped = true;
+        if(_enemy.AgentCompo.enabled)
+            _enemy.AgentCompo.isStopped = true;
         
         var sr = _enemy.GetComponentInChildren<SpriteRenderer>();
         if (sr != null)
@@ -60,7 +61,7 @@ public class EnemyIdleState : EnemyState
             _waitTimer += Time.deltaTime;
             if (_waitTimer >= _waitDuration)
             {
-                if (_enemy.wayPoints == null)
+                if (_enemy.WayPoints == null)
                     Debug.LogError("WayPoints is null!");
                 else
                     _stateMachine.ChangeState(EnemyStateType.Patrol);

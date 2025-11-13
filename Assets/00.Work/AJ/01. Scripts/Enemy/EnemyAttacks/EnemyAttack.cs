@@ -101,5 +101,10 @@ public class EnemyAttack : MonoBehaviour
     {
         _enemyAnimator.OnAttackTrigger -= Attack;
         _enemyAnimator.OnAttackEndTrigger -= OnAttackEnd;
+        if (_enemy.enemySO.enemyType == EnemyType.Assassin)
+        {
+            _enemyAnimator.OnAssassinVanish -= Vanish;
+            _enemyAnimator.OnAssassinAppearBehind -= AppearBehind;
+        }
     }
 }

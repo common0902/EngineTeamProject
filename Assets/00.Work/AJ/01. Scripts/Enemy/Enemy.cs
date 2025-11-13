@@ -1,8 +1,7 @@
 using System;
-using UnityEngine;
-using Unity.Behavior;
-using UnityEngine.AI;
 using _00.Work.SYH._02Script.ETG;
+using UnityEngine;
+using UnityEngine.AI;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Enemy : Agent, IPoolable
@@ -19,10 +18,10 @@ public class Enemy : Agent, IPoolable
     public float AttackRange { get; private set; }
     public Vector2 AttackBoxRange { get; private set; }
     public float DeathRange { get; private set; }
-    private bool canFlip = true;
-    public bool isDead { get; set; } = false;
-    public bool isHit { get; set; } = false;
-    public ParticleSystem vfx = null;
+    private bool _canFlip = true;
+    public bool IsDead { get; set; }
+    public bool IsHit { get; set; } = false;
+    public ParticleSystem AssashinVfx { get; set; }
 
     #region Components
     public Animator AnimCompo { get; private set; }
@@ -31,7 +30,7 @@ public class Enemy : Agent, IPoolable
     public Rigidbody2D RbCompo { get; private set; }
     public Collider2D ColliderCompo { get; private set; }
     public HealthSystem HealthCompo { get; private set; }
-    [field:SerializeField]public WayPoints wayPoints { get; private set; }
+    [field:SerializeField]public WayPoints WayPoints { get; private set; }
     #endregion
     
     protected override void InitializeComponents()
@@ -44,12 +43,11 @@ public class Enemy : Agent, IPoolable
         ColliderCompo = GetComponent<Collider2D>();
         HealthCompo = GetComponent<HealthSystem>();
         target = FindAnyObjectByType<Player>().transform;
-        wayPoints = FindAnyObjectByType<WayPoints>().GetComponent<WayPoints>();
+        WayPoints = FindAnyObjectByType<WayPoints>().GetComponent<WayPoints>();
         //BtAgent = GetComponent<BehaviorGraphAgent>();
 
         AgentCompo.updateRotation = false;
         AgentCompo.updateUpAxis = false;
-        
         
         ChaseRange = enemySO.chaseRange;
         AttackRange = enemySO.attackRange;
@@ -58,16 +56,12 @@ public class Enemy : Agent, IPoolable
 
         if (FirePos == null && enemySO.enemyType == EnemyType.Ranged)
         {
-            Debug.LogError("Error");
+            Debug.LogError("FirePos is null");
         }
-
-        Debug.Log(enemySO);
-        Debug.Log(enemySO.assassinData);
-        Debug.Log(enemySO.assassinData.vanishVfx);
         
         if (enemySO.assassinData != null && enemySO.assassinData.vanishVfx != null)
         {
-            vfx = Instantiate(
+            AssashinVfx = Instantiate(
                 enemySO.assassinData.vanishVfx,
                 transform.position,
                 Quaternion.identity,
@@ -78,12 +72,10 @@ public class Enemy : Agent, IPoolable
 
     private void Start()
     {
-        if (wayPoints != null)
-        {
-            Vector3 spawnPos = wayPoints.GetRandomWayPoint();
-            transform.position = spawnPos;
-        }
+        EnemyManager.Instance.RegisterEnemy(this);
     }
+
+
     public void ChangeChaseRange(float value) => ChaseRange = value;
     public void ChangeAttackRange(float value) => AttackRange = value;
     public bool CheckChaseRange()
@@ -94,8 +86,7 @@ public class Enemy : Agent, IPoolable
     {
         if (enemySO.useBoxRange)
             return Physics2D.OverlapBox(transform.position, AttackBoxRange, 0f, playerMask);
-        else
-            return Physics2D.OverlapCircle(transform.position, AttackRange, playerMask);
+        return Physics2D.OverlapCircle(transform.position, AttackRange, playerMask);
     }
     public bool CheckDeathRange()
     {
@@ -115,14 +106,19 @@ public class Enemy : Agent, IPoolable
 
     public bool IsOutScreen()
     {
-        Vector2 screenPoint = Camera.main.WorldToScreenPoint(transform.position);
-        bool isOutScreen = screenPoint.x <= 0 || screenPoint.x >= Screen.width || screenPoint.y <= 0 || screenPoint.y >= Screen.height;
-        return isOutScreen;
+        if (Camera.main != null)
+        {
+            Vector2 screenPoint = Camera.main.WorldToScreenPoint(transform.position);
+            bool isOutScreen = screenPoint.x <= 0 || screenPoint.x >= Screen.width || screenPoint.y <= 0 || screenPoint.y >= Screen.height;
+            return isOutScreen;
+        }
+
+        return false;
     }
 
     private void LateUpdate()
     {
-        if(VisualCompo != null && canFlip && AgentCompo != null)
+        if(VisualCompo != null && _canFlip && AgentCompo != null)
         {
             if (AgentCompo.velocity.sqrMagnitude > 0.01f)
             {
@@ -137,19 +133,15 @@ public class Enemy : Agent, IPoolable
 
     public void ChangeFlip(bool value)
     {
-        canFlip = value;
+        _canFlip = value;
     }
 
     public void ResetItem()
     {
-        isDead = false;
-        canFlip = true;
-        /*if (wayPoints != null)
-        {
-            Vector3 spawnPos = wayPoints.GetRandomWayPoint();
-            transform.position = spawnPos;
-        }*/
+        IsDead = false;
+        _canFlip = true;
     }
+
 #if UNITY_EDITOR
     private void OnValidate()
     {

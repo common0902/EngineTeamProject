@@ -34,7 +34,7 @@ public class EnemyHitState : EnemyState
 
             if (_enemyHit.isAnimationEnd)
             {
-                _enemy.isHit = false;
+                _enemy.IsHit = false;
                 _enemyHit.isAnimationEnd = false;
                 _stateMachine.ChangeState(EnemyStateType.Idle);
             }

@@ -36,6 +36,8 @@ public class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
     protected virtual void OnDestroy()
     {
         if (_instance == this)
+        {
             _instance = null;
+        }
     }
 }

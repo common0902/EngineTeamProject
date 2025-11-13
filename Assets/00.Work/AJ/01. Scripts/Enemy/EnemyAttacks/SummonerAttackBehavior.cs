@@ -2,7 +2,6 @@
 using _00.Work.SYH._02Script.ETG;
 using DG.Tweening;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class SummonerAttackBehavior : IEnemyAttackBehavior
 {
@@ -63,11 +62,9 @@ public class SummonerAttackBehavior : IEnemyAttackBehavior
                     summonHealth.OnDead += () => _currentCount--;
                 }
 
-                if (summonEnemy != null)
-                {
-                    HealthBarManager.Instance.RegisterEnemy(summonEnemy);
-                }
-
+                if(EnemyManager.Instance != null || HealthBarManager.Instance != null)
+                    EnemyManager.Instance.RegisterEnemy(summonEnemy);
+                
                 if (_enemy.enemySO.summonerData.isLifeTimeInChildren)
                     Object.Destroy(summon, _enemy.enemySO.summonerData.summonLifeTime);
             }

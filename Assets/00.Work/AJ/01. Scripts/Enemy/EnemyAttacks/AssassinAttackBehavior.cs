@@ -54,7 +54,7 @@ public class AssassinAttackBehavior : IEnemyAttackBehavior
     }
     public void Vanish()
     {
-        _enemy.vfx.Play();
+        _enemy.AssashinVfx.Play();
         
         if (_renderer != null)
             _renderer.color = new Color(1f, 1f, 1f, 0f);

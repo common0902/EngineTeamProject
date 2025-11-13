@@ -1,8 +1,6 @@
 ﻿using _00.Work.SYH._02Script.ETG;
-using System;
 using System.Collections;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class Bullet : MonoBehaviour
 {
@@ -25,6 +23,7 @@ public class Bullet : MonoBehaviour
         enemySo = enemy.enemySO;
         _isParabola = enemySo.rangedData.bulletData.parabola;
         _speed = enemySo.rangedData.bulletData.bulletSpeed;
+
         if (_isParabola)
         {
             _rb.gravityScale = 0; 
@@ -64,7 +63,8 @@ public class Bullet : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _rb.linearVelocity = transform.right * _speed;
+        if(enemySo.rangedData.bulletData.multibulletShoot)
+            _rb.linearVelocity = transform.right * _speed;
     }
 
     private Vector2 CalculateParabolicPosition(float t)

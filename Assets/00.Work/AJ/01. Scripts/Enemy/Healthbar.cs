@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Healthbar : MonoBehaviour
 {
-    public Image hpbar;
+    public GameObject hpbar;
     private Enemy _enemy;
     private HealthSystem _enemyHealth;
     private float _targetFill;
@@ -20,6 +20,7 @@ public class Healthbar : MonoBehaviour
             _enemy.GetComponentInChildren<EnemyAnimator>().OnAssassinVanish += () => ShowOrHideHealthBar(false);
             _enemy.GetComponentInChildren<EnemyAnimator>().OnAssassinAppearBehind += () => ShowOrHideHealthBar(true);
         }
+
         _targetFill = 1f;
     }
 
@@ -36,7 +37,8 @@ public class Healthbar : MonoBehaviour
     private void UpdateHealthBar()
     {
         if (_enemyHealth == null) return;
-        hpbar.fillAmount = Mathf.Lerp(hpbar.fillAmount, _targetFill, Time.deltaTime);
+        float scalex = Mathf.Lerp(hpbar.transform.localScale.x, _targetFill, Time.deltaTime * 5);
+        hpbar.transform.localScale = new Vector3(scalex, hpbar.transform.localScale.y, hpbar.transform.localScale.z);
     }
 
     private void OnDamage(float health, float maxHealth)
@@ -56,7 +58,7 @@ public class Healthbar : MonoBehaviour
             _enemyHealth.OnHealthChanged -= OnDamage;
             _enemyHealth.OnDead -= OnDead;
         }
-        if (_enemy.enemySO.enemyType == EnemyType.Assassin)
+        if (_enemy.enemySO != null && _enemy.enemySO.enemyType == EnemyType.Assassin)
         {
             _enemy.GetComponentInChildren<EnemyAnimator>().OnAssassinVanish -= () => ShowOrHideHealthBar(false);
             _enemy.GetComponentInChildren<EnemyAnimator>().OnAssassinAppearBehind -= () => ShowOrHideHealthBar(true);

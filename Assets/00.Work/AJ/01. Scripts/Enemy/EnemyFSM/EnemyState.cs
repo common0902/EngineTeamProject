@@ -21,11 +21,11 @@ public abstract class EnemyState
     }
     public virtual void Update()
     {
-        if (_enemy.isDead)
+        if (_enemy.IsDead)
         {
             _stateMachine.ChangeState(EnemyStateType.Dead);
         }
-        if (_enemy.isHit)
+        if (_enemy.IsHit)
         {
             _stateMachine.ChangeState(EnemyStateType.Hit);
         }

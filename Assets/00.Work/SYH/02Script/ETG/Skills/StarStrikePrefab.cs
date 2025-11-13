@@ -7,7 +7,7 @@ public class StarStrikePrefab : SkillPrefab, IPoolable
     [SerializeField] string _nameString;
 
     public GameObject GameObject => gameObject;
-    float _tarPos;//³«ÇÏÇÒ yÁÂÇ¥
+    float _tarPos;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ yï¿½ï¿½Ç¥
     //private void OnEnable()
     //{
     //    //float rand = (float)Math.Round(UnityEngine.Random.Range(0.75f, 1.5f), 2);
@@ -31,8 +31,8 @@ public class StarStrikePrefab : SkillPrefab, IPoolable
         gameObject.SetActive(true);
         float rand = Random.Range(0.75f, 1.5f);
         transform.localScale = new Vector3(rand, rand, 1);
-        //_tarPos = Random.Range(-80f, 80f) / 10f; 1¾È: ·£´ýÀ¸·Î ÇÏ°í ¶³¾îÁø °÷¿¡ Æø¹ß½ÃÅ°±â
-        _tarPos = -12;//2¾È:È­¸é ³¡±îÁö ¶³±¸±â
+        //_tarPos = Random.Range(-80f, 80f) / 10f; 1ï¿½ï¿½: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ß½ï¿½Å°ï¿½ï¿½
+        _tarPos = -12;//2ï¿½ï¿½:È­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         transform.position = new Vector3(Random.Range(-5f, 25f), Random.Range(9f,12f), 0);
     }
 }

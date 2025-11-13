@@ -35,7 +35,7 @@ public class TrapperAttackBehavior : IEnemyAttackBehavior
             }
         }
 
-
+        _enemy.AgentCompo.isStopped = true;
         GameObject trapObj = Object.Instantiate(_enemy.enemySO.trapperData.trapPrefab, _enemy.transform.position, Quaternion.identity);
         
         Trap trap = trapObj.GetComponent<Trap>();
@@ -59,6 +59,7 @@ public class TrapperAttackBehavior : IEnemyAttackBehavior
         _lastTrapTime = Time.time;
 
         yield return _attackDelay;
+        _enemy.AgentCompo.isStopped = false;
     }
 
     private void CleanupDestroyedTraps()
