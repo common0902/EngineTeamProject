@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class Trap : MonoBehaviour
 {
+    [SerializeField] private GameObject _rangeIndicatorPrefab;
+    
     private EnemyTrapperData _data;
     private SpriteRenderer _spriteRenderer;
     private CircleCollider2D _collider;
     private bool _isActivated = false;
     private bool _isTriggered = false;
     
-    private LineRenderer _rangeIndicator;
-    private int _circleSegments = 50;
+    private SpriteRenderer _rangeIndicator;
     
     private float _blinkInterval = 0.5f;
     private bool _isBlinking = false;
@@ -34,40 +35,24 @@ public class Trap : MonoBehaviour
     }
     private void CreateRangeIndicator()
     {
-        GameObject rangeObj = new GameObject("RangeIndicator");
-        rangeObj.transform.SetParent(transform);
+        if (_rangeIndicatorPrefab == null) return;
+        GameObject rangeObj = Instantiate(_rangeIndicatorPrefab, transform);
         rangeObj.transform.localPosition = Vector3.zero;
         
-        _rangeIndicator = rangeObj.AddComponent<LineRenderer>();
-        _rangeIndicator.positionCount = _circleSegments + 1;
-        _rangeIndicator.useWorldSpace = false;
-        _rangeIndicator.startWidth = 0.05f;
-        _rangeIndicator.endWidth = 0.05f;
-        _rangeIndicator.loop = true;
+        _rangeIndicator = rangeObj.GetComponent<SpriteRenderer>();
         
-        _rangeIndicator.material = new Material(Shader.Find("Sprites/Default"));
-        _rangeIndicator.startColor = new Color(1f, 1f, 0f, 0.3f); // 반투명 노란색
-        _rangeIndicator.endColor = new Color(1f, 1f, 0f, 0.3f);
-        
-        _rangeIndicator.sortingLayerName = "Default";
-        _rangeIndicator.sortingOrder = 5;
+        if (_rangeIndicator != null)
+        {
+            _rangeIndicator.color = new Color(1f, 1f, 0f, 0.3f);
+            _rangeIndicator.sortingOrder = -1; 
+        }
     }
     private void UpdateRangeIndicator()
     {
         if (_rangeIndicator == null || _data == null) return;
         
-        float radius = _data.trapTriggerRadius;
-        float angle = 0f;
-        float angleStep = 360f / _circleSegments;
-        
-        for (int i = 0; i <= _circleSegments; i++)
-        {
-            float x = Mathf.Cos(Mathf.Deg2Rad * angle) * radius;
-            float y = Mathf.Sin(Mathf.Deg2Rad * angle) * radius;
-            
-            _rangeIndicator.SetPosition(i, new Vector3(x, y, 0));
-            angle += angleStep;
-        }
+        float diameter = _data.trapTriggerRadius * 2f;
+        _rangeIndicator.transform.localScale = new Vector3(diameter, diameter, 1f);
     }
     private IEnumerator ActivationSequence()
     {
@@ -86,9 +71,11 @@ public class Trap : MonoBehaviour
             
             _spriteRenderer.color = Color.Lerp(startColor, _data.trapWarningColor, t);
             
-            Color rangeColor = Color.Lerp(new Color(1f, 1f, 0f, 0.3f), new Color(1f, 0f, 0f, 0.8f), t);
-            _rangeIndicator.startColor = rangeColor;
-            _rangeIndicator.endColor = rangeColor;
+            if (_rangeIndicator != null)
+            {
+                Color rangeColor = Color.Lerp(new Color(1f, 1f, 0f, 0.3f), new Color(1f, 0f, 0f, 0.8f), t);
+                _rangeIndicator.color = rangeColor;
+            }
             
             yield return null;
         }
@@ -97,6 +84,7 @@ public class Trap : MonoBehaviour
         _isActivated = true;
         
         StartCoroutine(BlinkEffect());
+
     }
 
     private IEnumerator BlinkEffect()
@@ -107,13 +95,12 @@ public class Trap : MonoBehaviour
         {
             float t = Mathf.PingPong(Time.time * 1.5f, 1f);
             
-            Color rangeColor = Color.Lerp(
-                new Color(1f, 0f, 0f, 0.3f),  // 반투명 빨강
-                new Color(1f, 0f, 0f, 0.7f),  // 진한 빨강
-                t
-            );
-            _rangeIndicator.startColor = rangeColor;
-            _rangeIndicator.endColor = rangeColor;
+            Color rangeColor = Color.Lerp(new Color(1f, 0f, 0f, 0.3f), new Color(1f, 0f, 0f, 0.7f), t);
+            
+            if (_rangeIndicator != null)
+            {
+                _rangeIndicator.color = rangeColor;
+            }
             
             yield return null;
         }
@@ -152,13 +139,17 @@ public class Trap : MonoBehaviour
         for (int i = 0; i < 3; i++)
         {
             _spriteRenderer.color = Color.red;
-            _rangeIndicator.startColor = new Color(1f, 0f, 0f, 1f);
-            _rangeIndicator.endColor = new Color(1f, 0f, 0f, 1f);
+            if (_rangeIndicator != null)
+            {
+                _rangeIndicator.color = new Color(1f, 0f, 0f, 1f);
+            }
             yield return new WaitForSeconds(0.05f);
             
             _spriteRenderer.color = Color.white;
-            _rangeIndicator.startColor = new Color(1f, 1f, 1f, 1f);
-            _rangeIndicator.endColor = new Color(1f, 1f, 1f, 1f);
+            if (_rangeIndicator != null)
+            {
+                _rangeIndicator.color = new Color(1f, 1f, 1f, 1f);
+            }
             yield return new WaitForSeconds(0.05f);
         }
         
