@@ -14,9 +14,8 @@ public class EnemyDeathState : EnemyState
         base.Enter();
         _enemy.ColliderCompo.enabled = false;
         _enemy.AgentCompo.enabled = false;
-    }
-    public override void Update()
-    {
+        
+        if (_enemy.enemySO.enemyType == EnemyType.SuisideAttacker) return;
         if (_enemy.CheckDeathRange())
         {
             Collider2D[] hits = Physics2D.OverlapCircleAll(_enemy.transform.position, _enemy.enemySO.deathRange);
@@ -30,7 +29,7 @@ public class EnemyDeathState : EnemyState
             }
         }
     }
-    public override void Exit() 
+    public override void Exit()
     {
         base.Exit();
         _enemy.StopAllCoroutines();

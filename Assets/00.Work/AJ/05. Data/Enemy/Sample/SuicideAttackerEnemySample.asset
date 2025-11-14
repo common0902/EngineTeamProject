@@ -26,9 +26,9 @@ MonoBehaviour:
   knockbackForce: 0.5
   knockBackTime: 0.1
   chaseRange: 5
-  attackRange: 3
-  deathRange: 2.8
-  deathDamage: 10
+  attackRange: 2.85
+  deathRange: 1.49
+  deathDamage: 0
   rangedData:
     bulletData: {fileID: 0}
   dashData:
@@ -53,11 +53,11 @@ MonoBehaviour:
     particleSystem: {fileID: 5923970373030117632, guid: fec786b8461d04143b17cb740fdf0040, type: 3}
     explosionRadius: 1.5
     explosionDelay: 3
+    rangeIndicator: {fileID: 23753263164737512, guid: 2a3c3bb552abe8e4fa2777655c6c7be6, type: 3}
   trapperData:
     trapPrefab: {fileID: 0}
     maxTraps: 3
     trapPlaceInterval: 2
-    retreatDistance: 3
     trapLifetime: 15
     trapActivationDelay: 0.5
     trapTriggerRadius: 0.8

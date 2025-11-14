@@ -24,8 +24,9 @@ public class HealthBarManager : MonoSingleton<HealthBarManager>
     }
     public void RegisterEnemy(Enemy enemy)
     {
-        if (enemy == null || !EnemyManager.Instance.ActiveEnemies.Contains(enemy))
-            return;
+        if (enemy == null) return;
+        if (dict.ContainsKey(enemy)) return;
+        
         GameObject bar = Instantiate(healthbarPrefab, transform);
         Healthbar hpbar = bar.GetComponent<Healthbar>();
         hpbar.Init(enemy.GetComponent<HealthSystem>());
@@ -35,8 +36,8 @@ public class HealthBarManager : MonoSingleton<HealthBarManager>
 
     public void UnRegisterEnemy(Enemy enemy)
     {
-        if (enemy == null || !EnemyManager.Instance.ActiveEnemies.Contains(enemy))
-            return;
+        if (enemy == null) return;
+        
         if (dict.ContainsKey(enemy))
         {
             Healthbar hpBar = dict[enemy];
@@ -49,7 +50,6 @@ public class HealthBarManager : MonoSingleton<HealthBarManager>
 
             dict.Remove(enemy);
         }
-        EnemyManager.Instance.ActiveEnemies.Remove(enemy);
     }
     private void LateUpdate()
     {

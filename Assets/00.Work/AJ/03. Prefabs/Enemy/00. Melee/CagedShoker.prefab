@@ -70,13 +70,13 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.0072573423, y: 0.06284714}
-  m_Size: {x: 0.74403024, y: 2.5568576}
-  m_Direction: 0
+  m_Offset: {x: 0.023953434, y: -0.04919959}
+  m_Size: {x: 2.001802, y: 1.6901438}
+  m_Direction: 1
 --- !u!50 &1476375636771807784
 Rigidbody2D:
   serializedVersion: 5
@@ -132,15 +132,16 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2147483648
   <FirePos>k__BackingField: {fileID: 0}
-  <enemySO>k__BackingField: {fileID: 11400000, guid: 37521faa79808b444a26c3f371cbf2d1, type: 2}
+  <enemySO>k__BackingField: {fileID: 11400000, guid: 829a7d3e3cfc0b44488171185b759ef2, type: 2}
   playerMask:
     serializedVersion: 2
     m_Bits: 64
   whatIsWall:
     serializedVersion: 2
     m_Bits: 2147483648
-  vfx: {fileID: 0}
-  <wayPoints>k__BackingField: {fileID: 0}
+  autoDespawnWhenOutScreen: 1
+  outScreenDespawnDelay: 10
+  <WayPoints>k__BackingField: {fileID: 0}
 --- !u!114 &6126317622186939627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,7 +180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Health>k__BackingField: 0
-  maxHealth: 80
+  maxHealth: 300
 --- !u!195 &6707764933912573790
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -231,7 +232,7 @@ Transform:
   m_GameObject: {fileID: 4163436071572466164}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.42, y: 0.36, z: 0}
+  m_LocalPosition: {x: 0.04, y: 0.59, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -278,10 +279,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -549116473
+  m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7544549482488288242, guid: 070c90ce046ddec4e99e920eda070923, type: 3}
+  m_Sprite: {fileID: 8881545763379579267, guid: 23f9979a07f93c34bbfde625aa695749, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -302,7 +303,7 @@ Animator:
   m_GameObject: {fileID: 4163436071572466164}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: bfcce5a05c03cf44589e68f64b223ef7, type: 2}
+  m_Controller: {fileID: 9100000, guid: c5ca76311843e4e4ea8f0c1d381360bd, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

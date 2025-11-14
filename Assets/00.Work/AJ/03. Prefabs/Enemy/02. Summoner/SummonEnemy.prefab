@@ -70,7 +70,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -139,8 +139,9 @@ MonoBehaviour:
   whatIsWall:
     serializedVersion: 2
     m_Bits: 2147483648
-  vfx: {fileID: 0}
-  <wayPoints>k__BackingField: {fileID: 0}
+  autoDespawnWhenOutScreen: 1
+  outScreenDespawnDelay: 10
+  <WayPoints>k__BackingField: {fileID: 0}
 --- !u!114 &5545858817177071223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,8 +279,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -549116473
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 5374604837666599638, guid: 307c5e35851bece47b3b6091959a386e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

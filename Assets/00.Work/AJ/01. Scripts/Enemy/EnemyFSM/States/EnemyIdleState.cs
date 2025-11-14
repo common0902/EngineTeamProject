@@ -19,7 +19,6 @@ public class EnemyIdleState : EnemyState
         //Debug.Log("Enter Idle State");
         _enemy.ChangeFlip(false);
 
-        _enemy.AgentCompo.enabled = true;
         if(_enemy.AgentCompo.enabled)
             _enemy.AgentCompo.isStopped = true;
         
@@ -57,7 +56,6 @@ public class EnemyIdleState : EnemyState
 
         if (_enemy.enemySO.canPatrol)
         {
-            Debug.Log("CanPatrol");
             _waitTimer += Time.deltaTime;
             if (_waitTimer >= _waitDuration)
             {

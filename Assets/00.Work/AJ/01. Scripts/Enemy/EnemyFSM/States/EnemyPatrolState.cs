@@ -20,8 +20,8 @@ public class EnemyPatrolState : EnemyState
         _enemy.ChangeFlip(false);
         
         _enemy.AgentCompo.stoppingDistance = 0f;
-        _enemy.AgentCompo.isStopped = false;
-        _enemy.AgentCompo.enabled = true;
+        if(_enemy.AgentCompo.enabled)
+            _enemy.AgentCompo.isStopped = false;
         
         _isWaitingForChase = false;
         Debug.Log("Patrol State");

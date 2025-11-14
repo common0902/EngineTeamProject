@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using _00.Work.SYH._02Script.ETG;
 using UnityEngine;
 using UnityEngine.AI;
@@ -23,6 +24,8 @@ public class Enemy : Agent, IPoolable
     public bool IsHit { get; set; } = false;
     public ParticleSystem AssashinVfx { get; set; }
 
+    private bool _isCheckingDespawn = false;
+
     #region Components
     public Animator AnimCompo { get; private set; }
     public EnemyRenderer VisualCompo { get; private set; }
@@ -46,6 +49,7 @@ public class Enemy : Agent, IPoolable
         WayPoints = FindAnyObjectByType<WayPoints>().GetComponent<WayPoints>();
         //BtAgent = GetComponent<BehaviorGraphAgent>();
 
+        AgentCompo.enabled = true;
         AgentCompo.updateRotation = false;
         AgentCompo.updateUpAxis = false;
         
@@ -69,13 +73,6 @@ public class Enemy : Agent, IPoolable
             );
         }
     }
-
-    private void Start()
-    {
-        EnemyManager.Instance.RegisterEnemy(this);
-    }
-
-
     public void ChangeChaseRange(float value) => ChaseRange = value;
     public void ChangeAttackRange(float value) => AttackRange = value;
     public bool CheckChaseRange()
@@ -108,6 +105,7 @@ public class Enemy : Agent, IPoolable
     {
         if (Camera.main != null)
         {
+            Debug.Log("dfjakf");
             Vector2 screenPoint = Camera.main.WorldToScreenPoint(transform.position);
             bool isOutScreen = screenPoint.x <= 0 || screenPoint.x >= Screen.width || screenPoint.y <= 0 || screenPoint.y >= Screen.height;
             return isOutScreen;
@@ -141,7 +139,6 @@ public class Enemy : Agent, IPoolable
         IsDead = false;
         _canFlip = true;
     }
-
 #if UNITY_EDITOR
     private void OnValidate()
     {

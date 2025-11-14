@@ -48,6 +48,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rangeIndicatorPrefab: {fileID: 23753263164737512, guid: 2a3c3bb552abe8e4fa2777655c6c7be6, type: 3}
+  playerMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!212 &5622396798428443475
 SpriteRenderer:
   m_ObjectHideFlags: 0

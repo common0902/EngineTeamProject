@@ -27,6 +27,10 @@ public abstract class EnemyState
         }
         if (_enemy.IsHit)
         {
+            if (_enemy.enemySO.enemyType == EnemyType.SuisideAttacker)
+            {
+                _enemy.GetComponent<EnemyAttack>().Attack();
+            }
             _stateMachine.ChangeState(EnemyStateType.Hit);
         }
     }

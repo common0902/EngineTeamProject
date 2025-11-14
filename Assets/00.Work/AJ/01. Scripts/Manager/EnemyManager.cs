@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyManager : MonoSingleton<EnemyManager>
@@ -7,32 +9,46 @@ public class EnemyManager : MonoSingleton<EnemyManager>
     [field:SerializeField] public List<Enemy> ActiveEnemies { get; private set; } = new();
     private WayPoints _spawnPoints;
 
-    [ContextMenu("Spawn")]
-    public void SpawnSample()
-    {
-        SpawnEnemy("Ghoul");
-    }
     
     protected override void Awake()
     {
         base.Awake();
         ActiveEnemies = FindObjectsByType<Enemy>(FindObjectsSortMode.None).ToList();
+        foreach (var e in ActiveEnemies)
+        {
+            RegisterEnemy(e);
+        }
     }
 
+    private void Update()
+    {
+        ClearMissingObject();
+    }
+
+    [ContextMenu("Spawn")]
+    public void SpawnSample()
+    {
+        SpawnEnemy("Ghoul");
+    }
+
+    public void RegisterEnemy(Enemy enemy) => InternalRegisterEnemy(enemy);
+    public void UnRegisterEnemy(Enemy enemy) => InternalUnRegisterEnemy(enemy);
     public float TargetEnemyHealth(Enemy enemy)
     {
         return enemy.HealthCompo.Health;
     }
 
-    public void RegisterEnemy(Enemy enemy)
+    public void InternalRegisterEnemy(Enemy enemy)
     {
         if (enemy == null || ActiveEnemies.Contains(enemy)) return;
         ActiveEnemies.Add(enemy);
 
         HealthBarManager.Instance.RegisterEnemy(enemy);
+        
+        enemy.HealthCompo.OnDead += () => OnEnemyDeath(enemy);
     }
 
-    public void UnRegisterEnemy(Enemy enemy)
+    public void InternalUnRegisterEnemy(Enemy enemy)
     {
         if (enemy == null) return;
         if (ActiveEnemies.Remove(enemy))
@@ -44,13 +60,28 @@ public class EnemyManager : MonoSingleton<EnemyManager>
     [ContextMenu("Get Alive Count")]
     public int GetAliveCount()
     {
-        Debug.Log(ActiveEnemies.Count);
-        return ActiveEnemies.Count;
+        var active = FindObjectsByType<Enemy>(FindObjectsSortMode.None).ToList();
+        foreach (var e in active.ToList())
+        {
+            if(!e.IsPlayerInSight())
+                active.Remove(e);
+        }
+        
+        Debug.Log(active.Count);
+        return active.Count;
     }
 
+    [ContextMenu("Get Alive All Count")]
+    public int GetAliveAllCount()
+    {
+        var active = FindObjectsByType<Enemy>(FindObjectsSortMode.None).ToList();
+        Debug.Log(active.Count);
+        return active.Count;
+    }
     private void OnEnemyDeath(Enemy enemy)
     {
-        ActiveEnemies.Remove(enemy);
+        InternalUnRegisterEnemy(enemy);
+        
         PoolManager.Instance.Push(enemy);
     }
 
@@ -73,7 +104,8 @@ public class EnemyManager : MonoSingleton<EnemyManager>
             Vector3 spawnPos = _spawnPoints.GetRandomWayPoint();
             enemy.transform.position = spawnPos;
             
-            enemy.HealthCompo.OnDead += () => OnEnemyDeath(enemy);
+            InternalRegisterEnemy(enemy);
+            
             return enemy;
         }
         
@@ -121,6 +153,8 @@ public class EnemyManager : MonoSingleton<EnemyManager>
             if (enemy == null) continue;
             enemy.HealthCompo.Damage(float.MaxValue);
         }
+
+        ActiveEnemies.Clear();
     }
 
     [ContextMenu("Clear All")]
@@ -133,5 +167,10 @@ public class EnemyManager : MonoSingleton<EnemyManager>
             Destroy(enemy.gameObject);
         }
         ActiveEnemies.Clear();
+    }
+
+    private void ClearMissingObject()
+    {
+        ActiveEnemies.RemoveAll(e => e == null);
     }
 }
