@@ -1,11 +1,13 @@
+using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerStatus : MonoBehaviour
 {
     public float _sniper;
     
-
     public float _damage;
+    
     public float Damage
     {
         get
@@ -20,7 +22,18 @@ public class PlayerStatus : MonoBehaviour
             }
         }
     }
-    public float _mana;
+    
+    public float Mana
+    {
+        get => _mana;
+        set
+        {
+            _mana = Mathf.Clamp(value, 0, _fullMana);
+            CheckManaState();
+        } 
+    }
+    
+    private float _mana;
     public float _fullMana;
     public float _manaRecovry;
     public float _hp;
@@ -42,9 +55,28 @@ public class PlayerStatus : MonoBehaviour
         }
         private set { _speed = value; }
      }
+
+     private bool _isZeroMana = false;
+     public UnityEvent OnZeroMana;
+     public UnityEvent OnRecoverMana;
+     
     private void Awake()
     {
         _hp = _fullHp;
-        _mana = _fullMana;
+        Mana = _fullMana;
+    }
+
+    public void CheckManaState()
+    {
+        if (Mana <= 0 && !_isZeroMana)
+        {
+            _isZeroMana = true;
+            OnZeroMana?.Invoke();
+        }
+        else if (Mana > 0 && _isZeroMana)
+        {
+            _isZeroMana = false;
+            OnRecoverMana?.Invoke();
+        }
     }
 }

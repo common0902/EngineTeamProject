@@ -283,6 +283,7 @@ GameObject:
   - component: {fileID: 6100703956343638508}
   - component: {fileID: 8513787219632887561}
   - component: {fileID: 4844526741035247429}
+  - component: {fileID: 1728476586389949295}
   m_Layer: 5
   m_Name: Interaction Old Passive UI
   m_TagString: Untagged
@@ -353,6 +354,23 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1728476586389949295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1189059448222759418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 157c4810acd94db3a19d84e1c0150697, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 5381250601900234383}
+  nameText: {fileID: 8107875136177845459}
+  descriptionText: {fileID: 7284163597343772579}
+  statText: {fileID: 5662111342623625633}
+  staminaText: {fileID: 2843915051082982868}
 --- !u!1 &2216568085514803936
 GameObject:
   m_ObjectHideFlags: 0
@@ -765,7 +783,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "F\uD0A4\uB97C \uB20C\uB7EC\uC11C \uD68D\uB4DD"
+  m_text: "\uAE30\uC874 \uD328\uC2DC\uBE0C"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 021bef0df164ce745b99aca36a500a25, type: 2}
   m_sharedMaterial: {fileID: 7195204555297139510, guid: 021bef0df164ce745b99aca36a500a25, type: 2}

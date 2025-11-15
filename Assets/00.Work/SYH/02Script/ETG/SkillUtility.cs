@@ -27,7 +27,7 @@ public class SkillUtility
     {
         return (MouseInput.Instance.MousePosition - pos).normalized;
     }
-    public static IEnumerator PastDelay(Skill type, float value) // ¾È ¾¸
+    public static IEnumerator PastDelay(Skill type, float value) // ï¿½ï¿½ ï¿½ï¿½
     {
         OnEndPastDelay += type.EndPastDelay;
         Player.Instance.PlayerMoveCompo._cannotMove = false;
@@ -54,9 +54,10 @@ public class SkillUtility
     }
     public static bool CanUseSkill(int cost)
     {
-        if (Player.Instance.PlayerStatusCompo._mana >= cost)
+        if (Player.Instance.PlayerStatusCompo.Mana >= cost)
         {
-            Player.Instance.PlayerStatusCompo._mana -= cost;
+            Player.Instance.PlayerStatusCompo.Mana -= cost;
+            Player.Instance.PlayerStatusCompo.CheckManaState();
             return true;
         }
         return false;

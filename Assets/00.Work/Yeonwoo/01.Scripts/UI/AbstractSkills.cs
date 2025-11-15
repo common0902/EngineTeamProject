@@ -61,7 +61,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
         
         private void OnDrawGizmosSelected()
         {
-            Gizmos.color = Color.yellow;
+            Gizmos.color = Color.cyan;
             Gizmos.DrawWireSphere(transform.position, range);
         }
     }

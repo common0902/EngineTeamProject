@@ -9,7 +9,7 @@ namespace _00.Work.SYH._02Script.ETG
     public class HealthSystem : MonoBehaviour, IHealth
     {
         [field: SerializeField] public float Health { get; private set; }
-        [SerializeField] private float maxHealth;
+        [SerializeField] private float maxHealth; // 최대체력 늘리기 효과 만들려면 이거 건드리면 됨
 
         private bool _isLowHealth = false;
         
