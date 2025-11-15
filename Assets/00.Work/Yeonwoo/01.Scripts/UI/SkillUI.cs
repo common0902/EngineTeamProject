@@ -15,6 +15,10 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
         // 현재 이 UI가 표시 중인 SkillData 정보 저장
         private SkillData _data;
         
+        public SkillData GetCurrentSkillData() => _data;
+
+        public bool HasData => _data != null;
+        
         // 외부에서 SkillData를 전달받아 UI를 갱신하는 함수
         public void SetSkillData(SkillData data)
         {

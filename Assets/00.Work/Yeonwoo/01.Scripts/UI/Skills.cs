@@ -7,15 +7,33 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
     public class Skills : AbstractSkills
     {
         [SerializeField] private SkillData skillData;
-
+        [SerializeField] private NewInteractionSkillUI newInteractionSkillUI;
+        
         protected override void Awake()
         {
             base.Awake();
-            icon.sprite = skillData.Icon;
-            nameText.text = skillData.Name;
-            descriptionText.text = skillData.Description;
-            statText.text = $"공격력: {skillData.Stat}";
-            consumptionText.text = $"소모값: {skillData.Consumption}";
+            if (newInteractionSkillUI == null)
+                Debug.LogError("No Interaction New Skill UI Found");
+        }
+
+        protected override void OnPlayerEnterRange()
+        {
+            if (newInteractionSkillUI == null || skillData == null) return;
+            
+            if (!newInteractionSkillUI.IsShowing(skillData))
+            {
+                newInteractionSkillUI.Show(skillData);
+            }
+        }
+
+        protected override void OnPlayerExitRange()
+        {
+            if (newInteractionSkillUI == null || skillData == null) return;
+
+            if (newInteractionSkillUI.IsShowing(skillData))
+            {
+                newInteractionSkillUI.Hide();
+            }
         }
     }
 }

@@ -23,12 +23,12 @@ namespace _00.Work.SYH._02Script.ETG
         private void Awake()
         {
             _isLowHealth = false;
-            OnHealthChanged?.Invoke(Health, maxHealth);
         }
 
         private void Start()
         {
             Health = maxHealth;
+            OnHealthChanged?.Invoke(Health, maxHealth);
         }
 
         public void Damage(float damage)

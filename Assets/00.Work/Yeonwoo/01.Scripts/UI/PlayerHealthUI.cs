@@ -39,7 +39,10 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
             _healthText = GetComponentInChildren<TextMeshProUGUI>();
             if (!_healthText)
                 Debug.LogError("healthText is null");
-            
+        }
+        
+        private void Start()
+        {
             if (_healthSystem is IHealth health)
             {
                 _health = health;
@@ -57,11 +60,6 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
             {
                 Debug.LogError("HealthUI: Assign an IHealth implementation to the healthSource.");
             }
-        }
-
-        private void Start()
-        {
-            UpdateHealthUI(_health.Health, _health.MaxHealth);
             _originPosition = healthBarTransform.anchoredPosition;
         }
 

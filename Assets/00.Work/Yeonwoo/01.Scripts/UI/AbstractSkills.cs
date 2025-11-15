@@ -7,20 +7,12 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
 {
     public abstract class AbstractSkills : MonoBehaviour
     {
-        [SerializeField] protected Image icon;
-        [SerializeField] protected TextMeshProUGUI nameText;
-        [SerializeField] protected TextMeshProUGUI descriptionText;
-        [SerializeField] protected TextMeshProUGUI statText;
-        [SerializeField] protected TextMeshProUGUI consumptionText;
-        [SerializeField] private Image panel;
-        
-        private float _range = 2f;
+        [SerializeField] private float range = 2f;
         private Transform _playerPos;
-
+        private bool _isPlayerInRange = false;
+        
         protected virtual void Awake()
         {
-            panel.gameObject.SetActive(false);
-            
             GameObject player = GameObject.Find("Player"); // 에디터 이름으로 찾는거라 이름은 Player로 계속 유지
             if (player != null)
             {
@@ -28,8 +20,17 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
             }
         }
 
+        protected void Start()
+        {
+            if (_playerPos == null)
+            {
+                Debug.LogWarning($"[{nameof(AbstractSkills)}] Player Transform not found. Make sure there is a GameObject named 'Player' or assign player transform some other way.");
+            }
+        }
+
         protected virtual void Update()
         {
+            if (_playerPos == null) return; 
             Interaction();
         }
 
@@ -37,14 +38,31 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
         {
             float distance = Vector3.Distance(transform.position, _playerPos.position);
 
-            if (distance <= _range)
+            if (distance <= range)
             {
-                panel.gameObject.SetActive(true);
+                if (!_isPlayerInRange)
+                {
+                    OnPlayerEnterRange();
+                    _isPlayerInRange = true;
+                }
             }
             else
             {
-                panel.gameObject.SetActive(false);
+                if (_isPlayerInRange)
+                {
+                    OnPlayerExitRange();
+                    _isPlayerInRange = false;
+                }
             }
+        }
+        
+        protected virtual void OnPlayerEnterRange() { }
+        protected virtual void OnPlayerExitRange() { }
+        
+        private void OnDrawGizmosSelected()
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(transform.position, range);
         }
     }
 }
