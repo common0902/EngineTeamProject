@@ -6395,9 +6395,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 326929182308897759}
+  - component: {fileID: 4197580609224653275}
   - component: {fileID: 1363373968226272822}
   - component: {fileID: 6881671537356693001}
-  - component: {fileID: 4197580609224653275}
   m_Layer: 5
   m_Name: Menu Panel
   m_TagString: Untagged
@@ -6427,6 +6427,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1820.0001, y: 980}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &4197580609224653275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6608857555205422137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b011b2155b58aef48bfa7f54ccd71706, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!223 &1363373968226272822
 Canvas:
   m_ObjectHideFlags: 0
@@ -6467,18 +6479,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &4197580609224653275
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6608857555205422137}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b011b2155b58aef48bfa7f54ccd71706, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7009875598853645998
 GameObject:
   m_ObjectHideFlags: 0

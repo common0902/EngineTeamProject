@@ -19,12 +19,14 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
 
         private IHealth _health;
         private Slider _slider;
+        private CanvasGroup _canvasGroup;
         
         private Vector3 _originPosition;
         private Tween _shakeTween;
         private Tween _healthBarTween;
         
         private TextMeshProUGUI _healthText;
+        [SerializeField] private Image warningImage;
         
         private void Awake()
         {
@@ -39,6 +41,10 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
             _healthText = GetComponentInChildren<TextMeshProUGUI>();
             if (!_healthText)
                 Debug.LogError("healthText is null");
+            
+            _canvasGroup = GetComponent<CanvasGroup>();
+            if (!_canvasGroup)
+                Debug.LogError("canvasGroup is null");
         }
         
         private void Start()
@@ -61,6 +67,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
                 Debug.LogError("HealthUI: Assign an IHealth implementation to the healthSource.");
             }
             _originPosition = healthBarTransform.anchoredPosition;
+            warningImage.gameObject.SetActive(false);
         }
 
         private void UpdateHealthUI(float current, float max)
@@ -93,6 +100,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
         {
             Debug.Log("체력바 연출");
 
+            warningImage.gameObject.SetActive(true);
             DOTween.Kill(healthBarTransform);
             
             _shakeTween = healthBarTransform.DOShakeAnchorPos(
@@ -108,7 +116,8 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
         private void RecoverMotion()
         {
             Debug.Log("연출 멈추기");
-            
+         
+            warningImage.gameObject.SetActive(false);
             _shakeTween?.Kill();
 
             healthBarTransform.DOAnchorPos(_originPosition, 0.2f)
@@ -117,11 +126,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
         
         private void DeadMotion()
         {
-            CanvasGroup canvasGroup = GetComponent<CanvasGroup>();
-            if (canvasGroup == null)
-                canvasGroup = gameObject.AddComponent<CanvasGroup>();
-            
-            canvasGroup.DOFade(0f, 0.5f)
+            _canvasGroup.DOFade(0f, 0.5f)
                 .SetEase(Ease.OutQuad)
                 .OnComplete(() => Destroy(gameObject));
         }

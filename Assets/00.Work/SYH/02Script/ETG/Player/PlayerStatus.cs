@@ -22,7 +22,7 @@ public class PlayerStatus : MonoBehaviour
             }
         }
     }
-    
+
     public float Mana
     {
         get => _mana;

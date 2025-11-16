@@ -8,11 +8,10 @@ namespace _00.Work.Yeonwoo._01.Scripts.Direction
         [SerializeField] private InGameCinema portalAnimation;
         private Material _material;
         private PlayerStateStopper _playerStateStopper;
-        private InPortalManager _portalManager;
+        [SerializeField] private InPortalManager _portalManager;
         
         private void Awake()
         {
-            _portalManager = FindAnyObjectByType<InPortalManager>();
             _playerStateStopper = GetComponent<PlayerStateStopper>();
             SpriteRenderer spriteRenderer = GetComponentInChildren<SpriteRenderer>();
             _material = spriteRenderer.material;

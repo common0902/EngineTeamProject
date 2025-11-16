@@ -15,6 +15,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
         private Tween _blinkTween;
         private CanvasGroup _canvasGroup;
         private HealthSystem  _healthSystem;
+        [SerializeField] private Image warningImage;
         private float _displayMana;
         
         private void Awake()
@@ -26,13 +27,14 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
             
             _canvasGroup = GetComponent<CanvasGroup>();
             if (_canvasGroup == null)
-                _canvasGroup = gameObject.AddComponent<CanvasGroup>();
+                Debug.LogError("Canvasgroup is null");
         }
 
         private void Start()
         {
             RefreshUIImmediate();
             _healthSystem.OnDead += DeadUI;
+            warningImage.gameObject.SetActive(false);
         }
 
         private void Update()
@@ -62,7 +64,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
                     _manaText.text = $"{_displayMana:F0} / {_mana._fullMana:F0}";
                 },
                 _mana.Mana,
-                0.25f
+                0.2f
             ).SetEase(Ease.OutQuad);
             
             _manaBar.maxValue = _mana._fullMana;
@@ -71,6 +73,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
 
         public void ManaZeroAnim()
         {
+            warningImage.gameObject.SetActive(true);
             _blinkTween?.Kill();
             
             _blinkTween = _canvasGroup
@@ -82,8 +85,9 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
 
         public void ManaRecoverAnim()
         {
+            warningImage.gameObject.SetActive(false);
             _blinkTween?.Kill();
-            _canvasGroup.DOFade(1f, 0.25f);
+            _canvasGroup.DOFade(1f, 0.2f);
             Debug.Log("마나복구");
         }
 
