@@ -34,7 +34,7 @@ public class PlayerStatus : MonoBehaviour
         } 
     }
     
-    private float _mana;
+    public float _mana;
     public float _fullMana;
     public float _manaRecovry;
     public float _hp;

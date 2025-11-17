@@ -35,7 +35,6 @@ namespace _00.Work.Yeonwoo._01.Scripts.Direction
 
             if (distance <= _range)
             {
-                Debug.Log("상호작용 가능");
                 _interactionText.gameObject.SetActive(true);
                 if (Input.GetKeyDown(KeyCode.F))
                 {

@@ -33,8 +33,14 @@ namespace _00.Work.SYH._02Script.ETG
 
         public void Damage(float damage)
         {
+            if (PoolManager.Instance == null) 
+                Debug.LogError("PoolManager not initialized yet!");
+            print(123);
             if (damage <= 0) return;
+            Debug.Log("Damage");
             Health = Mathf.Clamp(Health - damage, 0, maxHealth);
+            CreateDamageText(transform.position + Vector3.up * 1.5f, damage);
+            print(222);
             CheckHealthState();
         }
     
@@ -90,8 +96,8 @@ namespace _00.Work.SYH._02Script.ETG
             Debug.Log("사망");
             //Destroy(gameObject);
         }
-        
-        public void CreateDamageText(Vector3 pos, float damage)
+
+        private void CreateDamageText(Vector3 pos, float damage)
         {
             IPoolable poolable = PoolManager.Instance.Pop("DamageText");
             if (poolable is DamageTextUI damageText)
