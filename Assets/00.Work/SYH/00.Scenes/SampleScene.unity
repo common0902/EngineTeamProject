@@ -707,6 +707,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Health>k__BackingField: 0
   maxHealth: 30
+  _isCounter: 0
 --- !u!114 &447061238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1381,6 +1382,11 @@ Transform:
   - {fileID: 1892422292}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &711376760 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7852652380805626395, guid: 38ba9a1a333855044b28fccd4b0dd889, type: 3}
+  m_PrefabInstance: {fileID: 1191498048}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &720424853
 GameObject:
   m_ObjectHideFlags: 0
@@ -1570,7 +1576,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1400465345
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -8822763934732185969, guid: 9f5846a9d5750be44b8e4e5c80c67907, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1690,6 +1696,7 @@ Transform:
   - {fileID: 221586049}
   - {fileID: 1969156961}
   - {fileID: 1684623940}
+  - {fileID: 711376760}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1106720708
@@ -1716,8 +1723,12 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1106720707}
     m_Modifications:
+    - target: {fileID: -4622188020612591585, guid: 38ba9a1a333855044b28fccd4b0dd889, type: 3}
+      propertyPath: _transformationTime
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1718860211512986008, guid: 38ba9a1a333855044b28fccd4b0dd889, type: 3}
       propertyPath: m_Name
       value: FireKing
@@ -2107,6 +2118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Health>k__BackingField: 0
   maxHealth: 30
+  _isCounter: 0
 --- !u!58 &1642276663
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2853,6 +2865,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Health>k__BackingField: 0
   maxHealth: 30
+  _isCounter: 0
 --- !u!58 &1931841798
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3991,4 +4004,3 @@ SceneRoots:
   - {fileID: 694040910}
   - {fileID: 1010834130}
   - {fileID: 988967719}
-  - {fileID: 1191498048}

@@ -85,7 +85,7 @@ public class SkillController : MonoBehaviour
 
     void UseSkill(bool onOff)
     {
-        if (UltimateSkill.Name == "Saber")
+        if (UltimateSkill != null && UltimateSkill.Name == "Saber")
         {
             UltimateSkill.GetComponent<Saber>()._skill.Active();
             return;

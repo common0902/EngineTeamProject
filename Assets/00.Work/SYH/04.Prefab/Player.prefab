@@ -122,7 +122,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -816317443
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: -4737088523694719448, guid: 416f6c37e4e5c724b9f8dbc304a64ff2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -396,8 +396,6 @@ MonoBehaviour:
   _waitTime: 0
   _dashCooltime: 1.25
   _dashPower: 24
-  _dashLayer: 10
-  _originLayer: 6
 --- !u!61 &5112159421654928489
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -490,6 +488,8 @@ MonoBehaviour:
   <PlayerAnimationCompo>k__BackingField: {fileID: 3031503935125608750}
   <FirePos>k__BackingField: {fileID: 208107972708545914}
   <PlayerHealthSystemCompo>k__BackingField: {fileID: 1237729694059482141}
+  _mujuckLayer: 10
+  _originLayer: 6
   _isFireKing: 0
 --- !u!114 &6839599402493226269
 MonoBehaviour:
@@ -521,6 +521,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sniper: 1
   _fireKing: 1
+  _isSaber: 0
   _damage: 100
   _mana: 0
   _fullMana: 150
@@ -529,6 +530,12 @@ MonoBehaviour:
   _fullHp: 100
   _skillCoolDownSpeed: 100
   _speed: 5
+  OnZeroMana:
+    m_PersistentCalls:
+      m_Calls: []
+  OnRecoverMana:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &4915412839961996721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -573,3 +580,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Health>k__BackingField: 0
   maxHealth: 0
+  _isCounter: 0

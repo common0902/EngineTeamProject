@@ -1,8 +1,10 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StarStrike : Skill 
 {
+    public Image _image;
     GameObject _prefab;
     [SerializeField] GameObject _bigStar;
     protected override void Awake()
@@ -18,6 +20,7 @@ public class StarStrike : Skill
         CameraHandler.Instance.ShakeCamera(0.03f, 20);
         Player.Instance.PlayerAnimationCompo.CastingStart();
         CameraHandler.Instance.MovedTarget(_prefab.transform);
+        Player.Instance.Mujuck(true);
         StartCoroutine(SummonStar());
     }
     private IEnumerator SummonStar()
@@ -35,13 +38,14 @@ public class StarStrike : Skill
         CameraHandler.Instance.ShakeCamera(0.045f, 17);
         PoolManager.Instance.Pop("BigStar");
         yield return new WaitForSeconds(2);
-        StartCoroutine(IntroManager.Instance.Show(8));
+        StartCoroutine(IntroManager.Instance.Show(8, IntroManager.Instance._image));
         yield return new WaitForSeconds(8);
         CameraHandler.Instance.MovedTarget(Player.Instance.transform);
         yield return new WaitForSeconds(3);
-        StartCoroutine(IntroManager.Instance.Hide(2.5f));
+        StartCoroutine(IntroManager.Instance.Hide(2.5f, IntroManager.Instance._image));
         _prefab.SetActive(false);
         yield return new WaitForSeconds(2.5F);
+        Player.Instance.Mujuck(false);
         Player.Instance.PlayerAnimationCompo.CastingEnd();
     }
 }
