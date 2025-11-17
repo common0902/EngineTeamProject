@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 1419573321773325193}
   - component: {fileID: 5884970469277497677}
   - component: {fileID: 4034091666744285786}
+  - component: {fileID: 2035016818734653003}
   m_Layer: 3
   m_Name: Saber
   m_TagString: Untagged
@@ -172,15 +173,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _waitTime: 0
+  <Data>k__BackingField: {fileID: 0}
   <Cost>k__BackingField: 0
   <PastDelay>k__BackingField: 0
   <CoolTime>k__BackingField: 0
-  <Name>k__BackingField: 
+  <Name>k__BackingField: Saber
   <IsActive>k__BackingField: 0
   <SkillType>k__BackingField: 2
   <ThisSkill>k__BackingField: {fileID: 0}
   <SkillSprite>k__BackingField: {fileID: 0}
   <SkillPrefab>k__BackingField: {fileID: 0}
+  _skill: {fileID: 0}
+--- !u!114 &2035016818734653003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1364442024458381398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78320979175eb8c40a4de913f19ce500, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _waitTime: 8
+  <Data>k__BackingField: {fileID: 0}
+  <Cost>k__BackingField: 0
+  <PastDelay>k__BackingField: 0
+  <CoolTime>k__BackingField: 8
+  <Name>k__BackingField: CounterAttack
+  <IsActive>k__BackingField: 0
+  <SkillType>k__BackingField: 0
+  <ThisSkill>k__BackingField: {fileID: 0}
+  <SkillSprite>k__BackingField: {fileID: 0}
+  <SkillPrefab>k__BackingField: {fileID: 7463496211405912168, guid: 9b49a67e74994694eaa808d7cd0c9abd, type: 3}
+  _counterSucessces: 0
 --- !u!1 &3476770878438506993
 GameObject:
   m_ObjectHideFlags: 0

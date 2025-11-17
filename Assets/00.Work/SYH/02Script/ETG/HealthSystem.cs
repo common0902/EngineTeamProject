@@ -20,6 +20,9 @@ namespace _00.Work.SYH._02Script.ETG
         public event Action OnRecoverHealth;
         public event Action OnDead;
 
+        public bool _isCounter;
+        public event Action OnCounter;
+
         private void Awake()
         {
             _isLowHealth = false;
@@ -27,12 +30,24 @@ namespace _00.Work.SYH._02Script.ETG
 
         private void Start()
         {
+            maxHealth = Player.Instance.PlayerStatusCompo._fullHp;
             Health = maxHealth;
             OnHealthChanged?.Invoke(Health, maxHealth);
         }
-
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                Damage(1);
+            }
+        }
         public void Damage(float damage)
         {
+            if(_isCounter)
+            {
+                OnCounter?.Invoke();
+                return;
+            }
             if (damage <= 0) return;
             Health = Mathf.Clamp(Health - damage, 0, maxHealth);
             CheckHealthState();

@@ -6,6 +6,7 @@ public class PlayerStatus : MonoBehaviour
 {
     public float _sniper;
     public float _fireKing;
+    public bool _isSaber;
 
     public float _damage;
     
@@ -19,6 +20,7 @@ public class PlayerStatus : MonoBehaviour
             }
             else
             {
+                if (_isSaber) return _damage * _skillCoolDownSpeed / 100f;
                 return _damage * _sniper * _fireKing;
             }
         }
@@ -34,7 +36,7 @@ public class PlayerStatus : MonoBehaviour
         } 
     }
     
-    private float _mana;
+    public float _mana;
     public float _fullMana;
     public float _manaRecovry;
     public float _hp;

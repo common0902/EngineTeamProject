@@ -10,10 +10,12 @@ public class Saber : Skill
     public override void Passive()
     {
         Player.Instance.SkillControllerCompo.CurrentAutoAttackNum = 1;
+        Player.Instance.PlayerStatusCompo._isSaber = true;
     }
     public override void DisPassive()
     {
         Player.Instance.SkillControllerCompo.CurrentAutoAttackNum = 0;
+        Player.Instance.PlayerStatusCompo._isSaber = false;
     }
 }
 

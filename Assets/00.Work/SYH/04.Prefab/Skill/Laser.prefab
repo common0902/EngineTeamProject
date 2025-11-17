@@ -124,8 +124,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b69f6c910bd832b48a2ca3c150b77adc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _target: {fileID: 0}
-  _targetPos: {x: 0, y: 0, z: 0}
   _shotSpeed: 0
   _damage: 0
   _duration: 0
@@ -289,8 +287,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b69f6c910bd832b48a2ca3c150b77adc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _target: {fileID: 0}
-  _targetPos: {x: 0, y: 0, z: 0}
   _shotSpeed: 0
   _damage: 0
   _duration: 0
@@ -386,10 +382,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99a2004cab96d2546955c14cf5fcbd78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _target: {fileID: 0}
-  _targetPos: {x: 0, y: 0, z: 0}
   _shotSpeed: 0
-  _damage: 1
+  _damage: 2
   _duration: 0
   _hitEnemys: []
   _layer:

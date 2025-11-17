@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6916235276804352934}
   - component: {fileID: 6883925115337836887}
   - component: {fileID: 8997937916966560570}
+  - component: {fileID: 2786856554869380953}
   m_Layer: 0
   m_Name: Spell 5-Sheet_red_6 (1)
   m_TagString: Untagged
@@ -98,7 +99,7 @@ Animator:
   m_GameObject: {fileID: 1386147907876815479}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7e9f92ec6658cbe4a9ce2e60a9d270aa, type: 2}
+  m_Controller: {fileID: 9100000, guid: 651248177f9a0da4f9fb4626781c111c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -110,6 +111,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2786856554869380953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1386147907876815479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 269095f3ce4c30443b1a2f8d3e963a8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2694563028178745262
 GameObject:
   m_ObjectHideFlags: 0
@@ -121,6 +134,7 @@ GameObject:
   - component: {fileID: 306941664082043981}
   - component: {fileID: 4296068111043371061}
   - component: {fileID: 7927692306297475431}
+  - component: {fileID: 2715975966230074234}
   m_Layer: 0
   m_Name: Spell 5-Sheet_red_6
   m_TagString: Untagged
@@ -208,7 +222,7 @@ Animator:
   m_GameObject: {fileID: 2694563028178745262}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7e9f92ec6658cbe4a9ce2e60a9d270aa, type: 2}
+  m_Controller: {fileID: 9100000, guid: 651248177f9a0da4f9fb4626781c111c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -220,6 +234,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2715975966230074234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2694563028178745262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 269095f3ce4c30443b1a2f8d3e963a8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6089047613396455407
 GameObject:
   m_ObjectHideFlags: 0
@@ -231,6 +257,7 @@ GameObject:
   - component: {fileID: 4350849383271196937}
   - component: {fileID: 643515969545854040}
   - component: {fileID: 5969029063367931964}
+  - component: {fileID: 3989652551104188918}
   m_Layer: 0
   m_Name: Spell 5-Sheet_red_6 (3)
   m_TagString: Untagged
@@ -318,7 +345,7 @@ Animator:
   m_GameObject: {fileID: 6089047613396455407}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7e9f92ec6658cbe4a9ce2e60a9d270aa, type: 2}
+  m_Controller: {fileID: 9100000, guid: 651248177f9a0da4f9fb4626781c111c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -330,6 +357,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3989652551104188918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6089047613396455407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 269095f3ce4c30443b1a2f8d3e963a8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6356793413073843981
 GameObject:
   m_ObjectHideFlags: 0
@@ -341,6 +380,7 @@ GameObject:
   - component: {fileID: 8381981968400425779}
   - component: {fileID: 3027219310909913854}
   - component: {fileID: 4687602869958976464}
+  - component: {fileID: 1024314111838212224}
   m_Layer: 0
   m_Name: Spell 5-Sheet_red_6 (2)
   m_TagString: Untagged
@@ -428,7 +468,7 @@ Animator:
   m_GameObject: {fileID: 6356793413073843981}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7e9f92ec6658cbe4a9ce2e60a9d270aa, type: 2}
+  m_Controller: {fileID: 9100000, guid: 651248177f9a0da4f9fb4626781c111c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -440,6 +480,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1024314111838212224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6356793413073843981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 269095f3ce4c30443b1a2f8d3e963a8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7463496211405912168
 GameObject:
   m_ObjectHideFlags: 0
@@ -449,7 +501,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6514363891631134950}
-  - component: {fileID: 1798483641102108121}
+  - component: {fileID: 2711538707243073881}
   m_Layer: 9
   m_Name: CounterAttack
   m_TagString: Untagged
@@ -476,39 +528,21 @@ Transform:
   - {fileID: 4350849383271196937}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &1798483641102108121
-CircleCollider2D:
+--- !u!114 &2711538707243073881
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7463496211405912168}
   m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e75b2c5571ac3ce4490fddef6752704e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shotSpeed: 0
+  _damage: 12
+  _duration: 0
+  _layer:
     serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 2.75
+    m_Bits: 256
