@@ -169,9 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8b360a65f8889b4fb829781e9caa85e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _idleImg: {fileID: -4737088523694719448, guid: 416f6c37e4e5c724b9f8dbc304a64ff2, type: 3}
-  _deadImg: {fileID: -283305704184531190, guid: 416f6c37e4e5c724b9f8dbc304a64ff2, type: 3}
-  _concentrateImg: {fileID: 3016652798880744293, guid: 416f6c37e4e5c724b9f8dbc304a64ff2, type: 3}
+  _spriteContainer: {fileID: 11400000, guid: 5447b36794fb78c4094f5371fc1eb740, type: 2}
 --- !u!96 &2543211135972431690
 TrailRenderer:
   serializedVersion: 3
@@ -492,6 +490,7 @@ MonoBehaviour:
   <PlayerAnimationCompo>k__BackingField: {fileID: 3031503935125608750}
   <FirePos>k__BackingField: {fileID: 208107972708545914}
   <PlayerHealthSystemCompo>k__BackingField: {fileID: 1237729694059482141}
+  _isFireKing: 0
 --- !u!114 &6839599402493226269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -521,6 +520,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sniper: 1
+  _fireKing: 1
   _damage: 100
   _mana: 0
   _fullMana: 150

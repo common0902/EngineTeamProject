@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerStatus : MonoBehaviour
 {
     public float _sniper;
-    
+    public float _fireKing;
 
     public float _damage;
     public float Damage
@@ -16,7 +16,7 @@ public class PlayerStatus : MonoBehaviour
             }
             else
             {
-                return _damage * _sniper;
+                return _damage * _sniper * _fireKing;
             }
         }
     }

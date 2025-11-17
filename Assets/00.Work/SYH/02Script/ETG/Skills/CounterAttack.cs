@@ -11,8 +11,11 @@ public class CounterAttack : Skill
     }
     protected override void Update()
     {
-        //if()
         base.Update();
     }
-
+    public override void Active()
+    {
+        base.Active();
+        _prefab.SetActive(true);
+    }
 }

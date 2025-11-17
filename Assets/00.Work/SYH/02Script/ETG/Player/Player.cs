@@ -1,4 +1,5 @@
 using _00.Work.SYH._02Script.ETG;
+using UnityEditor.Animations;
 using UnityEngine;
 
 public class Player : MonoSingleton<Player>
@@ -10,4 +11,5 @@ public class Player : MonoSingleton<Player>
     [field: SerializeField] public PlayerAnimation PlayerAnimationCompo { get; private set; }
     [field:SerializeField]public Transform FirePos { get; private set; }
     [field:SerializeField]public HealthSystem PlayerHealthSystemCompo { get; private set; }
+    public bool _isFireKing;
 }

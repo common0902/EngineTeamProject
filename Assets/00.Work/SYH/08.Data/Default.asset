@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0676e2a86d958340bd3704e97a39d2e, type: 3}
+  m_Name: Default
+  m_EditorClassIdentifier: 
+  _name: Default
+  _sprites:
+  - {fileID: -283305704184531190, guid: 416f6c37e4e5c724b9f8dbc304a64ff2, type: 3}
+  - {fileID: 3016652798880744293, guid: 416f6c37e4e5c724b9f8dbc304a64ff2, type: 3}
+  _strings:
+  - Dead
+  - Casting
+  _animator: {fileID: 9100000, guid: 87a1a9dea58cad54da2a9053752ebfb6, type: 2}

@@ -44,6 +44,10 @@ public class PlayerMove : MonoBehaviour
             _waitTime += Time.deltaTime;
         }
 
+        if (_isCasting)
+        {
+            _rb.linearVelocity = Vector2.zero;
+        }
         _cannotMove = _isCasting | _isDash;
         if (_cannotMove) return;
 

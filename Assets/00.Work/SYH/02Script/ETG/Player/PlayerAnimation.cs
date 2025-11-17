@@ -2,22 +2,36 @@ using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour
 {
-    [SerializeField] Sprite _idleImg;
-    [SerializeField] Sprite _deadImg;
-    [SerializeField] Sprite _concentrateImg;
+    string _dead;
+    string _casting;
     Animator _ani;
     SpriteRenderer _renderer;
     readonly int _deadHash = Animator.StringToHash("Dead");
     readonly int _concentrateHash = Animator.StringToHash("Concentrate");
     readonly int _disConcentrateHash = Animator.StringToHash("DisConcentrate");
+    readonly int _isMoveHash = Animator.StringToHash("IsMove");
+
+    [SerializeField] PlayerSpriteContainerListSO _spriteContainer;
+    int _animatorNum = 0;
     private void Awake()
     {
         _ani = GetComponent<Animator>();
         _renderer = GetComponent<SpriteRenderer>();
+        SetAnimatorController(0);
         Idle();
     }
+
+    public void SetAnimatorController(int value)
+    {
+        _animatorNum = value;
+        _ani.runtimeAnimatorController = _spriteContainer.Containers[_animatorNum]._animator;
+        _casting = _spriteContainer.Containers[_animatorNum]._strings[1];
+        _dead = _spriteContainer.Containers[_animatorNum]._strings[0];
+    }
+
     private void Start()
     {
+        //_spriteContainer.Containers[0]
         Player.Instance.PlayerMoveCompo.OnMoved += Move;
         Player.Instance.PlayerMoveCompo.OnDisMoved += Idle;
     }
@@ -40,28 +54,28 @@ public class PlayerAnimation : MonoBehaviour
     }
     public void Casting()
     {
-        _renderer.sprite = _concentrateImg;
+        _renderer.sprite = _spriteContainer.Containers[_animatorNum].Sprites[_casting];
         _ani.enabled = false;
     }
     public void CastingEnd()
     {
         _ani.enabled = true;
         _ani.SetTrigger(_disConcentrateHash);
-        Idle();
         Player.Instance.PlayerMoveCompo._isCasting = false;
+        Idle();
     }
     public void Idle()
     {
+        _ani.enabled = true;
         if (!Player.Instance.PlayerMoveCompo._isCasting)
         {
-            _renderer.sprite = _idleImg;
-            _ani.enabled = false;
+            _ani.SetBool(_isMoveHash, false);
         }
     }
     public void Move(float value)
     {
         _ani.enabled = true;
-        //transform.localScale = value > 0 ? new Vector3(1, 1, 1) : new Vector3(-1, 1, 1); 
+        _ani.SetBool(_isMoveHash, true);
         if (value > 0) transform.localScale = new Vector3(1, 1, 1);
         else if( value < 0) transform.localScale = new Vector3(-1, 1, 1);
     }
