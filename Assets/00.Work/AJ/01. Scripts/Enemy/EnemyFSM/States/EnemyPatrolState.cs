@@ -24,7 +24,6 @@ public class EnemyPatrolState : EnemyState
             _enemy.AgentCompo.isStopped = false;
         
         _isWaitingForChase = false;
-        Debug.Log("Patrol State");
         
         MoveToNextWaypoint();
     }

@@ -7,9 +7,9 @@ public class EnemyAttack : MonoBehaviour
     private IEnemyAttackBehavior _attackBehavior;
     private float _lastAttackTime = 0f;
 
-    public bool isAnimationEnd 
-    { 
-        get => _attackBehavior?.IsAttackAnimationEnd ?? false;
+    public bool isAnimationEnd
+    {
+        get => _attackBehavior.IsAttackAnimationEnd;
         set 
         {
             if (_attackBehavior != null)
@@ -79,7 +79,7 @@ public class EnemyAttack : MonoBehaviour
     {
         _lastAttackTime = Time.time;
 
-        Vector2 dir = (_enemy.target.position - _enemy.transform.position).normalized;
+        Vector2 dir = (_enemy.Target.position - _enemy.transform.position).normalized;
         StartCoroutine(_attackBehavior.ExecuteAttack(dir));
     }
 
