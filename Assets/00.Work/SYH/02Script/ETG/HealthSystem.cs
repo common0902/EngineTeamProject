@@ -33,14 +33,8 @@ namespace _00.Work.SYH._02Script.ETG
 
         public void Damage(float damage)
         {
-            if (PoolManager.Instance == null) 
-                Debug.LogError("PoolManager not initialized yet!");
-            print(123);
             if (damage <= 0) return;
-            Debug.Log("Damage");
             Health = Mathf.Clamp(Health - damage, 0, maxHealth);
-            CreateDamageText(transform.position + Vector3.up * 1.5f, damage);
-            print(222);
             CheckHealthState();
         }
     

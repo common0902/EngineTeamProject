@@ -1,16 +1,12 @@
 using UnityEngine;
 
-public class JangPung : MonoBehaviour
+public class JangPung : Skill
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    protected override void UseSkill()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        base.UseSkill();
+        JangPungPrefab jangpung = PoolManager.Instance.Pop(Name).GameObject.GetComponent<JangPungPrefab>();
+        //FireBallPrefab fireBall = Instantiate(SkillPrefab, transform.position, Quaternion.identity).GetComponent<FireBallPrefab>();
+        jangpung.transform.position = Player.Instance.FirePos.position;
     }
 }
