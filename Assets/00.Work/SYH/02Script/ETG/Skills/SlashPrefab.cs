@@ -1,3 +1,4 @@
+using _00.Work.SYH._02Script.ETG;
 using UnityEngine;
 
 public class SlashPrefab : SkillPrefab
@@ -5,15 +6,26 @@ public class SlashPrefab : SkillPrefab
     public bool _canAttack;
     int _flip = 1;  
     Vector3 _pos;
-    Collider2D _collider;
-    private void Awake()
-    {
-        _collider = GetComponent<BoxCollider2D>();
-    }
+    [SerializeField] AudioClip _failedSound;
     private void OnEnable()
     {
         _pos = 1.5f * (Vector3)SkillUtility.AimWeapon(transform);
-        _collider.enabled = true;
+        Collider2D[] enemys = Physics2D.OverlapBoxAll(new Vector2(transform.position.x + 0.5f, transform.position.y), new Vector2(4, 5),0);
+        print(enemys);
+        if (enemys == null)
+        {
+
+        }
+        else
+        {
+            foreach (Collider2D i in enemys)
+            {
+                if (i.CompareTag("Enemy"))
+                {
+                    i.GetComponent<HealthSystem>().Damage(_damage);
+                }
+            }
+        }
     }
 
     public void Hide()
@@ -23,14 +35,8 @@ public class SlashPrefab : SkillPrefab
         _flip = -_flip;
         gameObject.SetActive(false);
     }
-    public void DisEnableCollider()
-    {
-        _collider.enabled = false;
-    }
     protected override void Update()
     {
-        //transform.position = _pos + (Vector3)SkillUtility.AimWeapon((Vector2)transform.position);
         transform.localPosition = _pos;
     }
-
 }
