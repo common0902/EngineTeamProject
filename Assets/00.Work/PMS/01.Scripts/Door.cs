@@ -3,8 +3,6 @@
 [RequireComponent (typeof(Animator))]
 public class Door : MonoBehaviour
 {
-    
-
     public Door connectedDoor; // 연결된 반대편 문
     public Vector2Int targetRoomIndex;
     public Vector2Int doorDirection;
@@ -12,6 +10,15 @@ public class Door : MonoBehaviour
 
     [SerializeField] private Transform spawnPoint;
     private bool _isLocked = false;
+
+    private readonly int _lockHash = Animator.StringToHash("IsLock");
+
+    private Animator _animator;
+
+    private void Awake()
+    {
+        _animator = GetComponent<Animator>();
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -34,12 +41,12 @@ public class Door : MonoBehaviour
     public void Lock()
     {
         _isLocked = true;
-        // 문 닫는 애니메이션 재생
+        _animator.SetBool(_lockHash, true);
     }
 
     public void Unlock()
     {
         _isLocked = false;
-        // 문 여는 애니메이션 재생
+        _animator.SetBool(_lockHash, false);
     }
 }

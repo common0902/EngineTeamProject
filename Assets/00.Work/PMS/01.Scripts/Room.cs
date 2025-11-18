@@ -36,6 +36,9 @@ public class Room : MonoBehaviour
         }
     }
 
+    [ContextMenu("문 다 열림")] 
+    void OpenDoor() => UnlockAllDoors();
+
     public Door OpenDoor(Vector2Int direction)
     {
         GameObject doorObject = null;
