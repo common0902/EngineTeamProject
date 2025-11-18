@@ -23,6 +23,7 @@ public class Enemy : Agent, IPoolable
     public bool IsDead { get; set; }
     public bool IsHit { get; set; } = false;
     public ParticleSystem AssashinVfx { get; set; }
+    public float _speed;
 
     private bool _isCheckingDespawn = false;
 
