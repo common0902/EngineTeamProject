@@ -17,7 +17,8 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
             }
             
             GameObject selectedItem = items[Random.Range(0, items.Count)];
-            GameObject drop = Instantiate(selectedItem, transform.position, Quaternion.identity);
+            StartCoroutine(Buffer(selectedItem));
+            GameObject drop = Drop;
             
             drop.transform.localScale = Vector3.zero;
             
