@@ -44,16 +44,24 @@ public abstract class Skill : MonoBehaviour
         {
             if (_waitTime >= CoolTime)
             {
+                if (!SkillUtility.CanUseSkill(Cost)) return;
                 UseSkill();
                 _waitTime -= CoolTime;
             }
         }
-        _waitTime += Time.deltaTime * Player.Instance.PlayerStatusCompo._skillCoolDownSpeed / 100;
+        if (SkillType == SkillType.UltimateSkill)
+        {
+            _waitTime += Time.deltaTime;
+        }
+        else
+        {
+            _waitTime += Time.deltaTime * Player.Instance.PlayerStatusCompo._skillCoolDownSpeed / 100;
+        }
         _waitTime = Mathf.Clamp(_waitTime, 0, CoolTime);
     }
     virtual protected void UseSkill()
     {
-        if (!SkillUtility.CanUseSkill(Cost)) return;
+        
     }
     virtual public void Passive()
     {

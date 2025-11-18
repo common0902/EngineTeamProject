@@ -16,7 +16,7 @@ public class StarStrikePrefab2 : SkillPrefab, IPoolable
             Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 50, _skillLayer);
             foreach (Collider2D c in colliders)
             {
-                c.GetComponent<HealthSystem>().Damage(_damage + Player.Instance.PlayerStatusCompo._mana);
+                c.GetComponent<HealthSystem>().Damage(_damage + Player.Instance.PlayerStatusCompo.Mana / 5f);
             }
             PoolManager.Instance.Push(GetComponent<IPoolable>());
             //gameObject.SetActive(false);

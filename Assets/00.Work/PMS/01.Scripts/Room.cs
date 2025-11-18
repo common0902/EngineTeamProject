@@ -7,7 +7,37 @@ public class Room : MonoBehaviour
     [SerializeField] private GameObject leftDoor;
     [SerializeField] private GameObject rightDoor;
 
+    private int enemyCount;
+    private bool hasEnemies;
+    private bool isCleared = false;
     public Vector2Int RoomIndex {  get; set; }
+
+    private void Start()
+    {
+        Enemy[] enemies = GetComponentsInChildren<Enemy>();
+        enemyCount = enemies.Length;
+        hasEnemies = enemyCount > 0;
+    }
+
+    public void OnPlayerEnter()
+    {
+        if (hasEnemies && !isCleared)
+        {
+            LockAllDoors();
+        }
+    }
+    public void OnEnemyDied()
+    {
+        enemyCount--;
+        if (enemyCount <= 0)
+        {
+            isCleared = true;
+            UnlockAllDoors();
+        }
+    }
+
+    [ContextMenu("문 다 열림")] 
+    void OpenDoor() => UnlockAllDoors();
 
     public Door OpenDoor(Vector2Int direction)
     {
@@ -32,7 +62,7 @@ public class Room : MonoBehaviour
         {
             leftDoor.SetActive(true);
             doorObject = leftDoor;
-        }
+        }   
 
         if (doorObject != null)
         {
@@ -41,10 +71,26 @@ public class Room : MonoBehaviour
             {
                 doorScript.doorDirection = direction;
                 doorScript.targetRoomIndex = RoomIndex;
+                doorScript.parentRoom = this;
             }
             return doorScript;
         }
 
         return null;
+    }
+    private void LockAllDoors()
+    {
+        if (topDoor.activeSelf) topDoor.GetComponent<Door>()?.Lock();
+        if (bottomDoor.activeSelf) bottomDoor.GetComponent<Door>()?.Lock();
+        if (leftDoor.activeSelf) leftDoor.GetComponent<Door>()?.Lock();
+        if (rightDoor.activeSelf) rightDoor.GetComponent<Door>()?.Lock();
+    }
+
+    private void UnlockAllDoors()
+    {
+        if (topDoor.activeSelf) topDoor.GetComponent<Door>()?.Unlock();
+        if (bottomDoor.activeSelf) bottomDoor.GetComponent<Door>()?.Unlock();
+        if (leftDoor.activeSelf) leftDoor.GetComponent<Door>()?.Unlock();
+        if (rightDoor.activeSelf) rightDoor.GetComponent<Door>()?.Unlock();
     }
 }

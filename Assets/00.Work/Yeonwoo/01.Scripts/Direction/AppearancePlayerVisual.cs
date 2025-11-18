@@ -6,7 +6,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.Direction
 {
     public class AppearancePlayerVisual : MonoBehaviour
     {
-        [SerializeField] private Vector3 _playerScale = new Vector3(0.65f, 0.65f, 0);
+        private readonly Vector3 _playerScale = new Vector3(1f, 1f, 0);
         private PlayerStateStopper _playerStateStopper;
         
         public event Action PlayerScaleChanged;

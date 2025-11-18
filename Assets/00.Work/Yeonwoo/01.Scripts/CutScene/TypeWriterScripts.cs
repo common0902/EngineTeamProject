@@ -16,6 +16,8 @@ namespace _00.Work.Yeonwoo._01.Scripts.CutScene
         [SerializeField, TextArea(2, 5)] private string[] dialogues;
         [SerializeField] private float typingSpeed = 0.05f;
         [SerializeField] private float delayBetweenLines = 1.0f;
+
+        [SerializeField] private string sceneName;
         
         private int _currentIndex = 0;
 
@@ -48,7 +50,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.CutScene
         {
             if (Input.anyKeyDown)
             {
-                SceneManager.LoadScene("Title");
+                SceneManager.LoadScene(sceneName);
             }
         }
 
@@ -66,7 +68,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.CutScene
         private void OnDialogueEnd()
         {
             Debug.Log("끝");
-            SceneManager.LoadScene("Title");
+            SceneManager.LoadScene(sceneName);
         }
     }
 }

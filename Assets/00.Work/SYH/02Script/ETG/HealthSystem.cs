@@ -9,7 +9,7 @@ namespace _00.Work.SYH._02Script.ETG
     public class HealthSystem : MonoBehaviour, IHealth
     {
         [field: SerializeField] public float Health { get; private set; }
-        [SerializeField] private float maxHealth;
+        [SerializeField] private float maxHealth; // 최대체력 늘리기 효과 만들려면 이거 건드리면 됨
 
         private bool _isLowHealth = false;
         
@@ -20,26 +20,39 @@ namespace _00.Work.SYH._02Script.ETG
         public event Action OnRecoverHealth;
         public event Action OnDead;
 
+        public bool _isCounter;
+        public event Action OnCounter;
+
         private void Awake()
         {
             _isLowHealth = false;
-            OnHealthChanged?.Invoke(Health, maxHealth);
         }
 
         private void Start()
         {
+            maxHealth = Player.Instance.PlayerStatusCompo._fullHp;
             Health = maxHealth;
+            OnHealthChanged?.Invoke(Health, maxHealth);
         }
-
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                Damage(1);
+            }
+        }
         public void Damage(float damage)
         {
-            if (PoolManager.Instance == null) 
-                Debug.LogError("PoolManager not initialized yet!");
-            print(damage);
+            if(_isCounter)
+            {
+                OnCounter?.Invoke();
+                return;
+            }
             if (damage <= 0) return;
             Debug.Log("Damage");
             Health = Mathf.Clamp(Health - damage, 0, maxHealth);
             CreateDamageText(transform.position + Vector3.up * 1.5f, damage);
+            print(222);
             CheckHealthState();
         }
     
@@ -95,8 +108,8 @@ namespace _00.Work.SYH._02Script.ETG
             Debug.Log("사망");
             //Destroy(gameObject);
         }
-        
-        public void CreateDamageText(Vector3 pos, float damage)
+
+        private void CreateDamageText(Vector3 pos, float damage)
         {
             IPoolable poolable = PoolManager.Instance.Pop("DamageText");
             if (poolable is DamageTextUI damageText)

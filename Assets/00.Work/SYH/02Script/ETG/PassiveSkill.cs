@@ -37,7 +37,7 @@ public class PassiveSkill : MonoBehaviour, IPoolable
                 break;
             case PassiveSkillSO.Status.MaxMana:
                 Player.Instance.PlayerStatusCompo._fullMana += _statusValue;
-                Player.Instance.PlayerStatusCompo._mana += _statusValue;
+                Player.Instance.PlayerStatusCompo.Mana += _statusValue;
                 break;
             case PassiveSkillSO.Status.ManaRecovery:
                 Player.Instance.PlayerStatusCompo._manaRecovry += _statusValue;

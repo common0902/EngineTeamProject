@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -13,7 +13,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.Direction
         
         public event Action PlayerPortalIn;
 
-        private void Awake()
+        private void OnEnable()
         {
             if (_interactionText) 
                 _interactionText.gameObject.SetActive(false);
@@ -35,11 +35,11 @@ namespace _00.Work.Yeonwoo._01.Scripts.Direction
 
             if (distance <= _range)
             {
-                Debug.Log("상호작용 가능");
                 _interactionText.gameObject.SetActive(true);
                 if (Input.GetKeyDown(KeyCode.F))
                 {
                     PlayerPortalIn?.Invoke();
+                    NextStage();
                 }
             }
             else
@@ -48,20 +48,9 @@ namespace _00.Work.Yeonwoo._01.Scripts.Direction
             }
         }
 
-        public void NextScene()
+        private void NextStage()
         {
-            int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-            int nextSceneIndex = currentSceneIndex + 1;
-            
-            if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
-            {
-                SceneManager.LoadScene(nextSceneIndex);
-            }
-            else
-            {
-                SceneManager.LoadScene("Title");
-                return;
-            }
+            _playerPos.position = Vector3.zero;
         }
     }
 }

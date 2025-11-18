@@ -8,7 +8,7 @@ public class SkillController : MonoBehaviour
     public event Action OnChangeUltimateSkill;
     //public Queue<Skill> Skills { get; private set; }
     [field:SerializeField] public List<Skill> Skills { get; private set; }
-    [field: SerializeField] public int CurrentAutoAttackNum { get; private set; }
+    [field: SerializeField] public int CurrentAutoAttackNum { get; set; }
     [SerializeField] LayerMask _skillLayer;
     [SerializeField] float _skillChangeRange = 1.5f;
     [SerializeField] AutoAttackListSO AutoAttackList;
@@ -85,6 +85,12 @@ public class SkillController : MonoBehaviour
 
     void UseSkill(bool onOff)
     {
+        if (UltimateSkill != null && UltimateSkill.Name == "Saber")
+        {
+            UltimateSkill.GetComponent<Saber>()._skill.Active();
+            return;
+        }
+
         if (Skills[0] == null)
         {
             print("스킬 없음");
@@ -133,12 +139,15 @@ public class SkillController : MonoBehaviour
             {
                 UltimateSkill = skill;
                 skill.transform.position = new Vector3(9999, 9999, 0);
+                skill.Passive();
                 return;
             }
             Skill tmp = UltimateSkill;
             UltimateSkill = skill;
             skill.transform.position = new Vector3(9999, 9999, 0);
             tmp.transform.position = transform.position;
+            tmp.DisPassive();
+            skill.Passive();
             OnChangeUltimateSkill?.Invoke();
             return;
         }

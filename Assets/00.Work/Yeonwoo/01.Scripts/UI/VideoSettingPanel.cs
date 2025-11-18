@@ -24,6 +24,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
     
         protected override void Awake()
         {
+            base.Awake();
             InitializeResolutions();
             StartCoroutine(LoadVideoSettingsDelayed());
     
