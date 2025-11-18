@@ -7,6 +7,7 @@ public abstract class SkillPrefab : MonoBehaviour
     public float _damage;
     public float _duration;
     float _waitTime;
+    [SerializeField] AudioClip _sound;
     protected virtual void Update()
     {
         if (_duration == 0) return;
