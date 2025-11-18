@@ -15,14 +15,14 @@ public class AssassinAttackBehavior : IEnemyAttackBehavior
     public void Initialize(Enemy enemy)
     {
         _enemy = enemy;
-        _targetHealth = _enemy.target.GetComponent<HealthSystem>();
+        _targetHealth = _enemy.Target.GetComponent<HealthSystem>();
         _renderer = _enemy.GetComponentInChildren<SpriteRenderer>();
         _attackDelay = new WaitForSeconds(_enemy.enemySO.attackDelay);
     }
     
     public IEnumerator ExecuteAttack(Vector2 direction)
     {
-        if (!_canAttack || _enemy.target == null)
+        if (!_canAttack || _enemy.Target == null)
             yield break;
         _enemy.ColliderCompo.enabled = false;
         _canAttack = false;
@@ -65,10 +65,10 @@ public class AssassinAttackBehavior : IEnemyAttackBehavior
 
     public void AppearBehind()
     {
-        if (_enemy.target == null)
+        if (_enemy.Target == null)
             return;
 
-        Vector3 playerPos = _enemy.target.position;
+        Vector3 playerPos = _enemy.Target.position;
         Vector3 dir = (playerPos - _enemy.transform.position).normalized;
 
         float dist = _enemy.enemySO.assassinData.appearBehindDistance;

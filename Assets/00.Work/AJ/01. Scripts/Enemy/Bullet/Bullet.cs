@@ -29,7 +29,7 @@ public class Bullet : MonoBehaviour
             _rb.gravityScale = 0; 
             _startPosition = transform.position;
             
-            _targetPosition = enemy.target.position;
+            _targetPosition = enemy.Target.position;
 
             _travelTime = enemySo.rangedData.bulletData.arcTime;
             _elapsedTime = 0f;

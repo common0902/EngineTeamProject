@@ -11,12 +11,35 @@ public class SuicideAttackBehavior : IEnemyAttackBehavior
     private SpriteRenderer _spriteRenderer;
     public bool IsAttackAnimationEnd { get; set; }
 
+    private SpriteRenderer _rangeSprite;
+    private GameObject _rangeIndicator;
     public void Initialize(Enemy enemy)
     {
         _enemy = enemy;
         _spriteRenderer = enemy.GetComponentInChildren<SpriteRenderer>();
+
+        CreateRangeIndicator();
     }
 
+    private void CreateRangeIndicator()
+    {
+        if (_enemy.enemySO.suicideAttackerData.rangeIndicator != null)
+        {
+            _rangeIndicator = Object.Instantiate(_enemy.enemySO.suicideAttackerData.rangeIndicator,
+                _enemy.transform.position, Quaternion.identity, _enemy.transform);
+            _rangeSprite = _rangeIndicator.GetComponent<SpriteRenderer>();
+            UpdateRangeIndicator();    
+        }
+    }
+
+    private void UpdateRangeIndicator()
+    {
+        if (_rangeSprite == null || _enemy.enemySO.suicideAttackerData == null) 
+            return;
+        
+        float diameter = _enemy.enemySO.suicideAttackerData.explosionRadius * 2f;
+        _rangeIndicator.transform.localScale = new Vector3(diameter, diameter, 1f);
+    }
     public IEnumerator ExecuteAttack(Vector2 direction)
     {
         if (!_canAttack)
@@ -25,6 +48,7 @@ public class SuicideAttackBehavior : IEnemyAttackBehavior
         _canAttack = false;
         _isExploding = true;
         
+        _enemy.AgentCompo.enabled = false;
         if (_enemy.AgentCompo != null)
             _enemy.AgentCompo.isStopped = true;
         
@@ -65,12 +89,22 @@ public class SuicideAttackBehavior : IEnemyAttackBehavior
             
             blinkSpeed = Mathf.Lerp(0.3f, 0.05f, progress);
             
+            float t = Mathf.PingPong(Time.time / blinkSpeed, 1f);
             if (_spriteRenderer != null)
             {
-                float t = Mathf.PingPong(Time.time / blinkSpeed, 1f);
                 _spriteRenderer.color = Color.Lerp(Color.white, Color.red, t);
             }
-            
+            if (_rangeIndicator != null)
+            {
+                float baseAlpha = Mathf.Lerp(0.3f, 0.8f, progress);
+                
+                Color rangeColor = Color.Lerp(
+                    new Color(1f, 0.5f, 0f, baseAlpha * 0.5f),  
+                    new Color(1f, 0f, 0f, baseAlpha),
+                    t
+                );
+                _rangeSprite.color = rangeColor;
+            }
             yield return null;
         }
         
@@ -88,11 +122,13 @@ public class SuicideAttackBehavior : IEnemyAttackBehavior
         foreach (var hit in hits)
         {
             HealthSystem health = hit.GetComponent<HealthSystem>();
-            if (health != null && hit.gameObject != _enemy.gameObject)
+            if (health != null)
             {
                 health.Damage(_enemy.enemySO.damage);
             }
         }
+
+        Object.Destroy(_rangeIndicator);
     }
 
     public void OnAttackAnimationEnd()

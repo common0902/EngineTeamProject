@@ -8,13 +8,13 @@ public class EnemyAttackState : EnemyState
     private EnemyAttack _enemyAttack;
     private bool isAttack;
 
-    private float delay = 0;//
-    private float timer = 0;//
+    private float delay = 0;
+    private float timer = 0;
     public EnemyAttackState(Enemy enemy, string animName, EnemyStateMachine stateMachine) : base(enemy, animName, stateMachine)
     {
         _enemyAttack = enemy.GetComponent<EnemyAttack>();
 
-        delay = enemy.enemySO.attackDelay;//
+        delay = enemy.enemySO.attackDelay;
     }
     public override void Enter()
     {
@@ -24,7 +24,7 @@ public class EnemyAttackState : EnemyState
             _enemy.ChangeFlip(false);
         else
             _enemy.ChangeFlip(true);
-        _enemy.VisualCompo.Flip(_enemy.target.position - _enemy.transform.position);
+        _enemy.VisualCompo.Flip(_enemy.Target.position - _enemy.transform.position);
     }
 
     public override void Update()
@@ -59,7 +59,7 @@ public class EnemyAttackState : EnemyState
 
     private void CalculateTargetRotation()
     {
-        Vector2 direction = (_enemy.target.position - _enemy.transform.position).normalized;
+        Vector2 direction = (_enemy.Target.position - _enemy.transform.position).normalized;
              
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         angle = Mathf.Clamp(angle, -45f, 45f); 

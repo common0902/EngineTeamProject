@@ -76,8 +76,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -549116473
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 1446657577502163369, guid: 0aa4a912fb89f8d4d90db69120ba8ba4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -168,7 +168,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5796770667258720552}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 8.4, y: -1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -275,8 +275,9 @@ MonoBehaviour:
   whatIsWall:
     serializedVersion: 2
     m_Bits: 2147483648
-  vfx: {fileID: 0}
-  <wayPoints>k__BackingField: {fileID: 0}
+  autoDespawnWhenOutScreen: 1
+  outScreenDespawnDelay: 10
+  <WayPoints>k__BackingField: {fileID: 0}
 --- !u!114 &4640938478608583709
 MonoBehaviour:
   m_ObjectHideFlags: 0

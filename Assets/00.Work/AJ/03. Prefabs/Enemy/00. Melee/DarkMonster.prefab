@@ -76,8 +76,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -549116473
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -6089931227810857437, guid: b3ba68b2c28ce09469e99625edca21eb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -100,7 +100,7 @@ Animator:
   m_GameObject: {fileID: 6966803058494743394}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6a80c3234c6168c47bd49caafc36aa6c, type: 2}
+  m_Controller: {fileID: 9100000, guid: 9d13e580f1598d54fbfe1dc66e32855f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -206,7 +206,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -275,8 +275,9 @@ MonoBehaviour:
   whatIsWall:
     serializedVersion: 2
     m_Bits: 2147483648
-  vfx: {fileID: 0}
-  <wayPoints>k__BackingField: {fileID: 0}
+  autoDespawnWhenOutScreen: 1
+  outScreenDespawnDelay: 10
+  <WayPoints>k__BackingField: {fileID: 0}
 --- !u!114 &9009995000986886630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,7 +290,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b3f67ab3b784c441aa0c35812a4b33a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isAnimationEnd: 0
 --- !u!114 &6232277499888030864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -316,7 +316,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Health>k__BackingField: 0
-  maxHealth: 50
+  maxHealth: 0
 --- !u!195 &2544511300945310630
 NavMeshAgent:
   m_ObjectHideFlags: 0

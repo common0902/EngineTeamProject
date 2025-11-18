@@ -31,8 +31,8 @@ public class EnemySO : ScriptableObject
     [Header("Range")]
     public float chaseRange; // Chase범위
     public float attackRange; // Attack범위
-    public float deathRange; // 죽는 범위 (폭발하는 적만)
 
+    public float deathRange; // 죽는 범위 (폭발하는 적만)
     public float deathDamage; // 죽었을때 얼마만큼의 피해를 줄건지
     
     [Header("Types Setting")]
@@ -98,6 +98,7 @@ public class EnemySuicideAttackerData
     public ParticleSystem particleSystem;
     public float explosionRadius = 1.5f;
     public float explosionDelay = 0.3f;
+    public GameObject rangeIndicator;
 }
 
 [Serializable]

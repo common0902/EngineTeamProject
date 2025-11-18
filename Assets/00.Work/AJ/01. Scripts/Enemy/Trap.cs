@@ -5,6 +5,7 @@ using UnityEngine;
 public class Trap : MonoBehaviour
 {
     [SerializeField] private GameObject _rangeIndicatorPrefab;
+    [SerializeField] private LayerMask playerMask;
     
     private EnemyTrapperData _data;
     private SpriteRenderer _spriteRenderer;
@@ -16,6 +17,7 @@ public class Trap : MonoBehaviour
     
     private float _blinkInterval = 0.5f;
     private bool _isBlinking = false;
+    
     
     private void Awake()
     {
@@ -44,7 +46,6 @@ public class Trap : MonoBehaviour
         if (_rangeIndicator != null)
         {
             _rangeIndicator.color = new Color(1f, 1f, 0f, 0.3f);
-            _rangeIndicator.sortingOrder = -1; 
         }
     }
     private void UpdateRangeIndicator()
@@ -130,11 +131,9 @@ public class Trap : MonoBehaviour
     }
     private void TriggerTrap(HealthSystem target)
     {
-        target.Damage(_data.trapDamage);
-        
-        StartCoroutine(ExplodeEffect());
+        StartCoroutine(ExplodeEffect(target));
     }
-    private IEnumerator ExplodeEffect()
+    private IEnumerator ExplodeEffect(HealthSystem target)
     {
         for (int i = 0; i < 3; i++)
         {
@@ -163,6 +162,9 @@ public class Trap : MonoBehaviour
             explosion.Play();
             Destroy(explosion.gameObject, 2f);
         }
+        
+        if(Physics2D.OverlapCircle(transform.position, _data.trapTriggerRadius, playerMask))
+            target.Damage(_data.trapDamage);
         
         Destroy(gameObject);
     }

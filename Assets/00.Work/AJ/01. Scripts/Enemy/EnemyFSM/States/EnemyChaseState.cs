@@ -47,7 +47,7 @@ public class EnemyChaseState : EnemyState
             return;
         }
         
-        _enemy.AgentCompo.SetDestination(_enemy.target.position);
+        _enemy.AgentCompo.SetDestination(_enemy.Target.position);
         
         if (_enemy.CheckAttackRange())
         {

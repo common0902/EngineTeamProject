@@ -3,6 +3,8 @@ using System.Linq;
 using NavMeshPlus.Components;
 using NavMeshPlus.Extensions;
 using UnityEngine;
+using UnityEngine.AI;
+using UnityEngine.Tilemaps;
 
 public class NavMeshBakeManager : MonoSingleton<NavMeshBakeManager>
 {
@@ -34,6 +36,8 @@ public class NavMeshBakeManager : MonoSingleton<NavMeshBakeManager>
                 addComp.AddComponent<CollectSources2d>();
                 addComp.transform.rotation = Quaternion.Euler(-90f, 0f, 0f);
                 surface.hideEditorLogs = true;
+                surface.agentTypeID = 0;
+                surface.useGeometry = NavMeshCollectGeometry.PhysicsColliders;
             }
         }
     }
@@ -48,10 +52,29 @@ public class NavMeshBakeManager : MonoSingleton<NavMeshBakeManager>
 
         if (!HasModifierTilemap())
         {
-            Debug.LogError("<color=#FF5555>NavMeshModifierTilemap is null</color> \n <color=yellow>Please add NavMeshModifier and ModifierTileMap to the scene</color>");
+            Debug.LogError("<color=#FF5555>NavMeshModifierTilemap is null</color>");
             return;
         }
-        surface.BuildNavMesh();
+        
+        try
+        {
+            surface.BuildNavMesh();
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"<color=#FF5555>BuildNavMesh error</color> {e.Message}");
+            return;
+        }
+    
+        var navMeshData = surface.navMeshData;
+        if (navMeshData != null)
+        {
+            Debug.Log("<color=green>NavMesh spawned</color>");
+        }
+        else
+        {
+            Debug.LogError("<color=red> NavMesh Bake Failed navMeshData is null</color>");
+        }
     }
     private bool HasModifierTilemap()
     {

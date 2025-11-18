@@ -29,8 +29,8 @@ Transform:
   m_GameObject: {fileID: 2195815605626424862}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.02, y: -0.92, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.8485, y: 1.8485, z: 1.8485}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5361543226729869403}
@@ -76,10 +76,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -549116473
+  m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1446657577502163369, guid: 0aa4a912fb89f8d4d90db69120ba8ba4, type: 3}
+  m_Sprite: {fileID: -8090400823333399398, guid: 22580f5a4bc73464cab53bbb2685e833, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -100,7 +100,7 @@ Animator:
   m_GameObject: {fileID: 2195815605626424862}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4f928d12fc8328b4580ac09bd6bdd470, type: 2}
+  m_Controller: {fileID: 9100000, guid: 10bc87046a70a8542876da18d1414dd0, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -206,12 +206,12 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.0072573423, y: -0.08491552}
-  m_Size: {x: 0.74403024, y: 1.6165502}
+  m_Offset: {x: 0.0072573423, y: -0.006210685}
+  m_Size: {x: 1.34, y: 0.82950187}
   m_Direction: 0
 --- !u!50 &294701577151063348
 Rigidbody2D:
@@ -275,8 +275,9 @@ MonoBehaviour:
   whatIsWall:
     serializedVersion: 2
     m_Bits: 2147483648
-  vfx: {fileID: 0}
-  <wayPoints>k__BackingField: {fileID: 0}
+  autoDespawnWhenOutScreen: 1
+  outScreenDespawnDelay: 10
+  <WayPoints>k__BackingField: {fileID: 0}
 --- !u!114 &1136722358922939718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,7 +290,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b3f67ab3b784c441aa0c35812a4b33a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isAnimationEnd: 0
 --- !u!114 &8437702506251100505
 MonoBehaviour:
   m_ObjectHideFlags: 0

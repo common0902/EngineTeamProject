@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using _00.Work.SYH._02Script.ETG;
 using UnityEngine;
 using UnityEngine.AI;
@@ -9,7 +10,7 @@ public class Enemy : Agent, IPoolable
     //public BehaviorGraphAgent BtAgent { get; private set; }
     public string ItemName => enemySO.enemyName;
     public GameObject GameObject => gameObject;
-    public Transform target { get; private set; }
+    public Transform Target { get; private set; }
     [field:SerializeField]public Transform FirePos { get; private set; }
     [field:SerializeField] public EnemySO enemySO { get; private set; }
     [SerializeField] public LayerMask playerMask;
@@ -22,6 +23,8 @@ public class Enemy : Agent, IPoolable
     public bool IsDead { get; set; }
     public bool IsHit { get; set; } = false;
     public ParticleSystem AssashinVfx { get; set; }
+
+    private bool _isCheckingDespawn = false;
 
     #region Components
     public Animator AnimCompo { get; private set; }
@@ -42,10 +45,11 @@ public class Enemy : Agent, IPoolable
         RbCompo = GetComponent<Rigidbody2D>();
         ColliderCompo = GetComponent<Collider2D>();
         HealthCompo = GetComponent<HealthSystem>();
-        target = FindAnyObjectByType<Player>().transform;
+        Target = FindAnyObjectByType<Player>().transform;
         WayPoints = FindAnyObjectByType<WayPoints>().GetComponent<WayPoints>();
         //BtAgent = GetComponent<BehaviorGraphAgent>();
 
+        AgentCompo.enabled = true;
         AgentCompo.updateRotation = false;
         AgentCompo.updateUpAxis = false;
         
@@ -69,13 +73,6 @@ public class Enemy : Agent, IPoolable
             );
         }
     }
-
-    private void Start()
-    {
-        EnemyManager.Instance.RegisterEnemy(this);
-    }
-
-
     public void ChangeChaseRange(float value) => ChaseRange = value;
     public void ChangeAttackRange(float value) => AttackRange = value;
     public bool CheckChaseRange()
@@ -95,10 +92,10 @@ public class Enemy : Agent, IPoolable
     // 플레이어가 시야 안에 있는지
     public bool IsPlayerInSight()
     {
-        if (target == null) return false;
+        if (Target == null) return false;
 
-        Vector2 dir = (target.transform.position - transform.position).normalized;
-        float dist = Vector2.Distance(transform.position, target.transform.position);
+        Vector2 dir = (Target.transform.position - transform.position).normalized;
+        float dist = Vector2.Distance(transform.position, Target.transform.position);
         RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, dist, whatIsWall);
 
         return hit.collider == null;
@@ -108,6 +105,7 @@ public class Enemy : Agent, IPoolable
     {
         if (Camera.main != null)
         {
+            Debug.Log("dfjakf");
             Vector2 screenPoint = Camera.main.WorldToScreenPoint(transform.position);
             bool isOutScreen = screenPoint.x <= 0 || screenPoint.x >= Screen.width || screenPoint.y <= 0 || screenPoint.y >= Screen.height;
             return isOutScreen;
@@ -124,9 +122,9 @@ public class Enemy : Agent, IPoolable
             {
                 VisualCompo.Flip(AgentCompo.velocity); 
             }
-            else if (CheckChaseRange() && target != null)
+            else if (CheckChaseRange() && Target != null)
             {
-                VisualCompo.Flip(target.position - transform.position);
+                VisualCompo.Flip(Target.position - transform.position);
             }
         }
     }
@@ -141,7 +139,6 @@ public class Enemy : Agent, IPoolable
         IsDead = false;
         _canFlip = true;
     }
-
 #if UNITY_EDITOR
     private void OnValidate()
     {

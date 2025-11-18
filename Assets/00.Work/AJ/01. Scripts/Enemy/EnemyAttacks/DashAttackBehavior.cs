@@ -13,7 +13,7 @@ public class DashAttackBehavior : IEnemyAttackBehavior
     public void Initialize(Enemy enemy)
     {
         _enemy = enemy;
-        _targetHealth = _enemy.target.GetComponent<HealthSystem>();
+        _targetHealth = _enemy.Target.GetComponent<HealthSystem>();
         _attackDelay = new WaitForSeconds(_enemy.enemySO.attackDelay);
     }
 
