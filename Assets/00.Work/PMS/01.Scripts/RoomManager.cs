@@ -5,7 +5,6 @@ public class RoomManager : MonoBehaviour
 {
     [SerializeField] private GameObject startRoomPrefab;
     [SerializeField] private GameObject[] bossRoomPrefab;
-    [SerializeField] private GameObject[] eventRoomPrefab;
     [SerializeField] private GameObject[] goldRoomPrefab;
     [SerializeField] private GameObject[] roomPrefab;
     [SerializeField] private GameObject[] shopRoomPrefab;
@@ -35,7 +34,6 @@ public class RoomManager : MonoBehaviour
     [SerializeField] private bool bossRoomGeneration = false;
 
     [Header("room index")]
-    public int eventRoomIndex = 0;
     public int goldRoomIndex = 0;
     public int shopRoomIndex = 0;
 
@@ -117,10 +115,9 @@ public class RoomManager : MonoBehaviour
 
     private void RandomIndex()
     {
-        int offSet = maxRooms / 3;
+        int offSet = maxRooms / 2;
         goldRoomIndex = Random.Range(2, offSet);
         shopRoomIndex = Random.Range(offSet, offSet * 2);
-        eventRoomIndex = Random.Range(offSet * 2, maxRooms);
 
     }
     
@@ -204,13 +201,7 @@ public class RoomManager : MonoBehaviour
     { 
         GameObject newRoom; 
         int rand; roomGrid[x, y] = 2; 
-        if (roomCount == eventRoomIndex) 
-        {
-            rand = Random.Range(0, eventRoomPrefab.Length); 
-            newRoom = Instantiate(eventRoomPrefab[rand], GetPositionFromGridIndex(roomIndex), Quaternion.identity); 
-            newRoom.name = "eventRoom"; 
-        } 
-        else if (roomCount == goldRoomIndex) 
+        if (roomCount == goldRoomIndex) 
         { 
             rand = Random.Range(0, goldRoomPrefab.Length); 
             newRoom = Instantiate(goldRoomPrefab[rand], GetPositionFromGridIndex(roomIndex), Quaternion.identity); 

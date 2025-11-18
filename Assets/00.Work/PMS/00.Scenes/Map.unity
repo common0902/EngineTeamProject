@@ -441,8 +441,6 @@ MonoBehaviour:
   startRoomPrefab: {fileID: 2006649140709060410, guid: 6e7e513380d4d0d47b458fab781c541d, type: 3}
   bossRoomPrefab:
   - {fileID: 2006649140709060410, guid: f1bcd4353568f4343bbb94bf30644875, type: 3}
-  eventRoomPrefab:
-  - {fileID: 2006649140709060410, guid: a0223f1b9df908a4fbad442eaf0dbb70, type: 3}
   goldRoomPrefab:
   - {fileID: 2006649140709060410, guid: 4fd3c18db115bb348b4c52ea7a6a19d8, type: 3}
   roomPrefab:
@@ -471,14 +469,13 @@ MonoBehaviour:
   - {fileID: 2006649140709060410, guid: 7a0ac89daf5993d42bceddcbcaee2171, type: 3}
   shopRoomPrefab:
   - {fileID: 2006649140709060410, guid: fdadc62b663639b46a385ac48020fa82, type: 3}
-  maxRooms: 15
-  minRooms: 10
+  maxRooms: 8
+  minRooms: 6
   roomWidth: 30
   roomHeight: 22
   gridSizeX: 10
   gridSizeY: 10
   bossRoomGeneration: 0
-  eventRoomIndex: 0
   goldRoomIndex: 0
   shopRoomIndex: 0
 --- !u!4 &1840950129
