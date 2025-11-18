@@ -225,7 +225,8 @@ public class RoomManager : MonoBehaviour
         {
             rand = Random.Range(0, roomPrefab.Length); 
             newRoom = Instantiate(roomPrefab[rand], GetPositionFromGridIndex(roomIndex), Quaternion.identity); 
-            newRoom.name = $"Room-{roomCount}"; roomGrid[x, y] = 1; 
+            newRoom.name = $"Room-{roomCount}"; 
+            roomGrid[x, y] = 1; 
         }
         return newRoom; 
     }
