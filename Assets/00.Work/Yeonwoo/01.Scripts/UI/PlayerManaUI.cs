@@ -40,12 +40,6 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
         private void Update()
         {
             RefreshUISmooth();
-            
-            // 밑에는 테스트
-            if (Input.GetKeyDown(KeyCode.R))
-                _mana.Mana += 10;
-            if (Input.GetKeyDown(KeyCode.T))
-                _mana.Mana -= 10;
         }
         
         private void RefreshUIImmediate()

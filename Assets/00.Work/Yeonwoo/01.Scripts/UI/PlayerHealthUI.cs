@@ -131,14 +131,6 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
                 .OnComplete(() => Destroy(gameObject));
         }
         
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.E))
-                _healthSystem.Damage(10f);
-            if (Input.GetKeyDown(KeyCode.Space))
-                _healthSystem.Heal(10f);
-        }
-
         protected void OnDestroy()
         {
             _healthBarTween?.Kill();
