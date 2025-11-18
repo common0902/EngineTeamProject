@@ -9,6 +9,7 @@ namespace _00.Work.AJ._01._Scripts.BOSS
         private Boss _boss;
         private IBossAttackBehavior _attackBehavior;
         public bool IsAnimationEnd { get; set; }
+        public bool IsBombAnimationEnd { get; private set; }
         private void Awake()
         {
             _bossAnimator = GetComponentInChildren<BossAnimator>();
@@ -19,6 +20,8 @@ namespace _00.Work.AJ._01._Scripts.BOSS
         {
             _bossAnimator.OnAttackTrigger += Attack;
             _bossAnimator.OnAttackEndTrigger += OnAttackEnd;
+            _bossAnimator.OnAppearTrigger += OnAppearEnd;
+            _bossAnimator.OnReturnToIdleTrigger += OnAppearEnd;
         }
 
         private void InitializeAttackBehavior()
@@ -39,6 +42,9 @@ namespace _00.Work.AJ._01._Scripts.BOSS
                     break;
                 case BossStateType.AttackBomb:
                     _attackBehavior = new BossBombAttackBehavior();
+                    break;
+                case BossStateType.AttackLaser:
+                    _attackBehavior = new BossLaserAttackBehavior();
                     break;
                 default:
                     Debug.LogError($"No Type: {_boss.CurrentType}");
@@ -62,6 +68,10 @@ namespace _00.Work.AJ._01._Scripts.BOSS
             IsAnimationEnd = true;
             _attackBehavior?.OnAttackAnimationEnd();
         }
+        public void OnAppearEnd()
+        {
+            IsAnimationEnd = true;
+        }
 
         private void OnDestroy()
         {
@@ -69,6 +79,7 @@ namespace _00.Work.AJ._01._Scripts.BOSS
             {
                 _bossAnimator.OnAttackTrigger -= Attack;
                 _bossAnimator.OnAttackEndTrigger -= OnAttackEnd;
+                _bossAnimator.OnAppearTrigger -= OnAppearEnd;   
             }
         }
     }

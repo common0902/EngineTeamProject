@@ -11,6 +11,8 @@ namespace _00.Work.AJ._01._Scripts.BOSS
         public Action OnHitEndTrigger;
         public Action OnDeathEndTrigger;
         public Action OnVanishTrigger;
+        public Action OnAppearTrigger;
+        public Action OnReturnToIdleTrigger;
         public void AttackStart()
         {
             OnAttackStartTrigger?.Invoke();
@@ -36,6 +38,16 @@ namespace _00.Work.AJ._01._Scripts.BOSS
         public void Vanish()
         {
             OnVanishTrigger?.Invoke();
+        }
+
+        public void Appear()
+        {
+            OnAppearTrigger?.Invoke();
+        }
+
+        public void ReturnToIdle()
+        {
+            OnReturnToIdleTrigger?.Invoke();
         }
     }
 }

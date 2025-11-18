@@ -7,7 +7,8 @@ namespace _00.Work.AJ._01._Scripts.BOSS.FSM.States
     {
         private BossAnimator _animator;
         private BossAttack _bossAttack;
-        
+        private float _timer;
+        private float _vanishDuration = 2f;
         public BossVanishState(Boss boss, string animName, BossStateMachine stateMachine) 
             : base(boss, animName, stateMachine)
         {
@@ -31,13 +32,16 @@ namespace _00.Work.AJ._01._Scripts.BOSS.FSM.States
 
         private void MoveToSpecialPosition()
         {
-            _boss.transform.DOMove((Vector2)_boss.transform.position + Vector2.up * 30f, 3f)
-                .OnComplete(() => _stateMachine.ChangeState(BossStateType.Appear));
+            _boss.transform.DOMove(_boss.CenterPos.position + Vector3.up * 10, 2f);
         }
 
         public override void Update()
         {
-            base.Update();
+            _timer += Time.deltaTime;
+            if (_timer >= _vanishDuration)
+            {
+                _stateMachine.ChangeState(BossStateType.Appear);
+            }
         }
 
         public override void Exit()

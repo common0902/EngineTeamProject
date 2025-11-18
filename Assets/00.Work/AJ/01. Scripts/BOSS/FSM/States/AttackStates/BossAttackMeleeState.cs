@@ -23,7 +23,7 @@ namespace _00.Work.AJ._01._Scripts.BOSS.FSM.States.AttackStates
             if (_bossAttack.IsAnimationEnd)
             {
                 _bossAttack.IsAnimationEnd = false;
-                _stateMachine.ChangeState(BossStateType.Idle);
+                _stateMachine.ChangeState(BossStateType.ReturnToIdle);
             }
         }
         public override void Exit()

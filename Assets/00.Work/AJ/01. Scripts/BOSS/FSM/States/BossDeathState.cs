@@ -26,12 +26,15 @@ namespace _00.Work.AJ._01._Scripts.BOSS.FSM.States
         {
             base.Enter();
             Debug.Log("Death");
-            CameraHandler.Instance.ShakeCamera(0.03f, 10f);
+            CameraHandler.Instance.ShakeCamera(0.03f, 11f);
             Player.Instance.PlayerMoveCompo._isCasting = true;
             _whiteRect.localScale = new Vector3(0f, 0f, 1f);
             _whiteImg.color = new Color(1f,1f,1f,0.7f);
             _whiteRect.transform.position = Camera.main.WorldToScreenPoint(_boss.transform.position);
-            _sequence.Append(_whiteRect.DOScale(new Vector3(0.001f, 5f, 1f), 0.5f)).Append(_whiteRect.DOScale(new Vector3(5f, 5f, 1f), 1f));
+            _sequence.Append(_whiteRect.DOScaleY(3f, 0.5f));
+            _sequence.AppendInterval(1f);    
+            _sequence.Append(_whiteRect.DOScaleX(3f, 1f));
+            
             _timer = 0f;
         }
 

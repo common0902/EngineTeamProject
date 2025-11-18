@@ -20,6 +20,8 @@ namespace _00.Work.AJ._01._Scripts.BOSS
         public BossStateType CurrentType { get; set; } = BossStateType.AttackMelee;
         public GameObject[] summonPrefabs;
         public GameObject white;
+        public GameObject laserRange;
+        public GameObject laserPrefab;
         public bool IsDead { get; set; }
         public bool IsHit { get; set; }
         [field:SerializeField]public int CurrentSummonCount { get; set; }= 0;
