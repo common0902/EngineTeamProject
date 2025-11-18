@@ -12,20 +12,28 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
         {
             if (items == null || items.Count == 0)
             {
-                Debug.LogWarning("아이템 리스트가 비어 있습니다."); 
+                Debug.LogWarning($"[{nameof(DefaultBox)}] 아이템 리스트가 비어 있습니다.");
                 return;
             }
-            
-            GameObject selectedItem = items[Random.Range(0, items.Count)];
-            StartCoroutine(Buffer(selectedItem));
-            GameObject drop = Drop;
-            
-            drop.transform.localScale = Vector3.zero;
-            
-            Vector2 randomDIr = Random.insideUnitCircle.normalized;
 
-            Vector3 targetPos = transform.position + (Vector3)(randomDIr * ScatteringRange);
-            
+            GameObject selectedItem = items[Random.Range(0, items.Count)];
+
+            StartCoroutine(Buffer(selectedItem));
+        }
+
+        protected override void OnDropCreated(GameObject drop)
+        {
+            if (drop == null)
+            {
+                Debug.LogWarning("Drop 생성 실패: null");
+                return;
+            }
+
+            drop.transform.localScale = Vector3.zero;
+
+            Vector2 randomDir = Random.insideUnitCircle.normalized;
+            Vector3 targetPos = transform.position + (Vector3)(randomDir * ScatteringRange);
+
             Sequence seq = DOTween.Sequence();
 
             seq.Append(drop.transform.DOScale(Vector3.one, 0.5f))
