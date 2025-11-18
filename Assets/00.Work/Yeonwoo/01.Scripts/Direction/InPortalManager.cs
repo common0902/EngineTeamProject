@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -13,7 +13,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.Direction
         
         public event Action PlayerPortalIn;
 
-        private void Awake()
+        private void OnEnable()
         {
             if (_interactionText) 
                 _interactionText.gameObject.SetActive(false);

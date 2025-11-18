@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using DG.Tweening;
 using UnityEngine;
 
@@ -14,20 +14,16 @@ namespace _00.Work.Yeonwoo._01.Scripts.Direction
     
         public event Action AppearanceComplete;
 
-        private void Awake()
+        private void OnEnable()
         {
             visualChange = GameObject.Find("Player").GetComponentInChildren<AppearancePlayerVisual>();
             player = GameObject.Find("Player").GetComponent<AppearancePlayer>();
             SpriteRenderer spriteRenderer = GetComponentInChildren<SpriteRenderer>();
             material = spriteRenderer.material;
             player.transform.position = transform.position;
-        }
-
-        private void OnEnable()
-        {
             visualChange.PlayerScaleChanged += PortalAnim;
         }
-        
+
         private void PortalAnim()
         {
             Vector3 targetPos = player.transform.position + Vector3.down * distance;
