@@ -39,6 +39,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.Direction
                 if (Input.GetKeyDown(KeyCode.F))
                 {
                     PlayerPortalIn?.Invoke();
+                    NextStage();
                 }
             }
             else
@@ -47,20 +48,9 @@ namespace _00.Work.Yeonwoo._01.Scripts.Direction
             }
         }
 
-        public void NextScene()
+        private void NextStage()
         {
-            int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-            int nextSceneIndex = currentSceneIndex + 1;
-            
-            if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
-            {
-                SceneManager.LoadScene(nextSceneIndex);
-            }
-            else
-            {
-                SceneManager.LoadScene("Title");
-                return;
-            }
+            _playerPos.position = Vector3.zero;
         }
     }
 }
