@@ -44,6 +44,7 @@ public abstract class Skill : MonoBehaviour
         {
             if (_waitTime >= CoolTime)
             {
+                if (!SkillUtility.CanUseSkill(Cost)) return;
                 UseSkill();
                 _waitTime -= CoolTime;
             }
@@ -60,7 +61,7 @@ public abstract class Skill : MonoBehaviour
     }
     virtual protected void UseSkill()
     {
-        if (!SkillUtility.CanUseSkill(Cost)) return;
+        
     }
     virtual public void Passive()
     {
