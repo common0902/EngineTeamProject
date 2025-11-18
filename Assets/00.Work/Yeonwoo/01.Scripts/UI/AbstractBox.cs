@@ -14,7 +14,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
         private InteractionBox _boxOpenAction;
         private BoxCollider2D _collider;
         protected readonly float ScatteringRange = 1.2f;
-        protected GameObject Drop;
+        private GameObject _drop;
         
         protected virtual void Awake()
         {
@@ -37,12 +37,15 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
             _boxOpenAction.OnBoxOpen -= BoxOpenAnim;
         }
 
-        protected IEnumerator Buffer(GameObject item)
+        protected virtual IEnumerator Buffer(GameObject item)
         {
-            yield return new WaitForEndOfFrame();
-            Drop = Instantiate(item, transform.position, Quaternion.identity);
+            _drop = Instantiate(item, transform.position, Quaternion.identity);
+            yield return null;
+            OnDropCreated(_drop);
         }
-        
+
         protected abstract void ItemScattering();
+        
+        protected abstract void OnDropCreated(GameObject drop);
     }
 }
