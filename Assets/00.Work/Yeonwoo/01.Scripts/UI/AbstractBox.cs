@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
@@ -15,6 +16,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
         private InteractionBox _boxOpenAction;
         private BoxCollider2D _collider;
         protected readonly float ScatteringRange = 1.2f;
+        GameObject _drop;
         
         protected virtual void Awake()
         {
@@ -46,7 +48,8 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
             }
             
             GameObject selectedItem = items[Random.Range(0, items.Count)];
-            GameObject drop = Instantiate(selectedItem, transform.position, Quaternion.identity);
+            StartCoroutine(Buffer(selectedItem));
+            GameObject drop = _drop;
             
             drop.transform.localScale = Vector3.zero;
             
@@ -59,6 +62,11 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
             seq.Append(drop.transform.DOScale(Vector3.one, 0.5f))
                 .Append(drop.transform.DOMove(targetPos, 0.7f))
                 .SetEase(Ease.OutQuad);
+        }
+        IEnumerator Buffer(GameObject item)
+        {
+            yield return new WaitForEndOfFrame();
+            _drop = Instantiate(item, transform.position, Quaternion.identity);
         }
     }
 }
