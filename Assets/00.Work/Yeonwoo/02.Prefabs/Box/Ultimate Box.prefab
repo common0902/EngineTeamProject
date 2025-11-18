@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 40, y: 7}
+  m_AnchoredPosition: {x: 40, y: 40.8}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3049287924736059275
@@ -145,11 +145,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7215910778664190194}
+  - component: {fileID: 510088660076405727}
   - component: {fileID: 3412246996541579033}
-  - component: {fileID: -3060656493462029221}
   - component: {fileID: 1461652828183962019}
   m_Layer: 0
-  m_Name: DefaultBox
+  m_Name: Ultimate Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -172,6 +172,23 @@ Transform:
   - {fileID: 8715703051799204975}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &510088660076405727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2151955644996462312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b0502524ea14104ae8c421d501c4d33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  openBoxSprite: {fileID: -198523455, guid: 81abc816ec37d23429c97c19670ce30d, type: 3}
+  items:
+  - {fileID: 1718860211512986008, guid: 38ba9a1a333855044b28fccd4b0dd889, type: 3}
+  - {fileID: 1364442024458381398, guid: 44628a78718e05e4ea24d73585806d10, type: 3}
+  - {fileID: 1718860211512986008, guid: b5cfba67c68ed8a4581efcfd41d73f8b, type: 3}
 --- !u!114 &3412246996541579033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,27 +201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9507fea33e1844bb9ded21c1b360f3ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionRange: 1.2
---- !u!114 &-3060656493462029221
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2151955644996462312}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c51e53c74adf42589033ce33a19abd26, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  openBoxSprite: {fileID: 108578946, guid: fdfe33c1836ee2c43b3b8850d24bf5d1, type: 3}
-  items:
-  - {fileID: 3794773668572874349, guid: 840b44dfa903c9142950c7ccd5206df7, type: 3}
-  - {fileID: 5438076006791206462, guid: a35ddbfc72c3ca543a7e701ce42c01be, type: 3}
-  - {fileID: 7864930631436541555, guid: 5b815e0e21d4b6345bbf79eb2235d6ac, type: 3}
-  - {fileID: 4291822814770124065, guid: 0c9135ddd53fa594089a34bc08c6d7f6, type: 3}
-  - {fileID: 8094799656766972596, guid: 5bc731c259632b6499bb0936c2b2cf68, type: 3}
-  - {fileID: 830689652850500976, guid: bfc305970c451814d962b2b18175a20f, type: 3}
+  interactionRange: 1.4
 --- !u!61 &1461652828183962019
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -239,7 +236,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.0021488667, y: -0.1783402}
+  m_Offset: {x: 0.0011045039, y: -0.12465775}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -249,7 +246,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.7894293, y: 0.6433196}
+  m_Size: {x: 1.1928608, y: 1.0955534}
   m_EdgeRadius: 0
 --- !u!1 &2188467286840502085
 GameObject:
@@ -408,7 +405,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fbd88b2780a618f47aac31a4d8107316, type: 2}
+  - {fileID: 2100000, guid: 0aa42e897c371fb42801c2a2be521b4b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -429,7 +426,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: -215534446, guid: fdfe33c1836ee2c43b3b8850d24bf5d1, type: 3}
+  m_Sprite: {fileID: 1334591315, guid: 81abc816ec37d23429c97c19670ce30d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

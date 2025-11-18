@@ -6,7 +6,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
 {
     public class InteractionBox : MonoBehaviour
     {
-        private readonly float _interactionRange = 1.25f;
+        [SerializeField] private float interactionRange = 1.25f;
         private Transform _playerPos;
         public TextMeshProUGUI InteractionText { get; private set; }
 
@@ -36,7 +36,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
         {
             float distance = Vector3.Distance(transform.position, _playerPos.position);
 
-            if (distance <= _interactionRange)
+            if (distance <= interactionRange)
             {
                 InteractionText.gameObject.SetActive(true);
                 if (Input.GetKeyDown(KeyCode.F))
