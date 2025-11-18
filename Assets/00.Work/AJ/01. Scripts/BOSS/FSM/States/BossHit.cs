@@ -17,7 +17,7 @@ namespace _00.Work.AJ._01._Scripts.BOSS.FSM.States
             _bossAnimator.OnHitEndTrigger += () => isAnimationEnd = true;
             _boss.HealthCompo.OnHealthChanged += (float health, float maxHealth) => _boss.IsHit = true;
             _boss.HealthCompo.OnDead += () => _boss.IsDead = true;
-            _bossAnimator.OnDeathEndTrigger += () => Destroy(_boss.gameObject, 1f);
+            _bossAnimator.OnDeathEndTrigger += () => isAnimationEnd = true;
         }
     }
 }

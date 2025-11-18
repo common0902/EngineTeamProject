@@ -19,12 +19,14 @@ namespace _00.Work.AJ._01._Scripts.BOSS.FSM.States
             base.Enter();
             if (!_boss.HasStarted)
             {
-                _waitTime = 0f;
+                _waitTime = Random.Range(0f, 1f);
+                _stateMachine.ChangeState(BossStateType.Chase);
                 _boss.HasStarted = true;
             }
             else
             {
-                _waitTime = Random.Range(3f, 5f); 
+                _waitTime = Random.Range(2f, 3f); 
+                Debug.Log($"WaitTime : {_waitTime}");
             }
         }
 
@@ -57,15 +59,20 @@ namespace _00.Work.AJ._01._Scripts.BOSS.FSM.States
             BossStateType next = pool[Random.Range(0, pool.Count)];
             Debug.Log($"Next Pattern : {next}");
             _boss.CurrentType = next;
-            if (next == BossStateType.AttackLaser || next == BossStateType.AttackBomb)
+            if (next == BossStateType.AttackBomb)
             {
-                _boss.NextStateAfterVanish = next;
+                _stateMachine.ChangeState(BossStateType.AttackBomb);
+                return;
+            }
+            if (next == BossStateType.AttackLaser)
+            {
                 _stateMachine.ChangeState(BossStateType.Vanish);
                 return;
             }
         
             if (next == BossStateType.AttackMelee || next == BossStateType.AttackDash)
             {
+                _boss.HasStarted = false;
                 _stateMachine.ChangeState(BossStateType.Chase);
                 return;
             }

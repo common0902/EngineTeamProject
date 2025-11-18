@@ -37,8 +37,11 @@ namespace _00.Work.AJ._01._Scripts.BOSS
                 case BossStateType.AttackRange:
                     _attackBehavior = new BossRangeAttackBehavior();  
                     break;
+                case BossStateType.AttackBomb:
+                    _attackBehavior = new BossBombAttackBehavior();
+                    break;
                 default:
-                    Debug.LogError($"지원하지 않는 공격 타입: {_boss.CurrentType}");
+                    Debug.LogError($"No Type: {_boss.CurrentType}");
                     _attackBehavior = null;
                     break;
             }

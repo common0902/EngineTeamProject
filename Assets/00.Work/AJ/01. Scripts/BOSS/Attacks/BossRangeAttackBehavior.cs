@@ -17,9 +17,10 @@ namespace _00.Work.AJ._01._Scripts.BOSS.Attacks
 
         public IEnumerator ExecuteAttack(Vector2 direction)
         {
-            for (int wave = 0; wave < 2; wave++)
+            for (int i = 0; i < 2; i++)
             {
-                FireBulletWave(direction, wave);
+                FireBulletWave(direction, i);
+                Debug.Log("Fire");
                 yield return new WaitForSeconds(0.3f);
             }
             
@@ -35,7 +36,6 @@ namespace _00.Work.AJ._01._Scripts.BOSS.Attacks
             {
                 float angle = startAngle + (angleStep * i);
                 Vector2 bulletDirection = Quaternion.Euler(0, 0, angle) * Vector2.right;
-                
                 SpawnBullet(bulletDirection);
             }
         }
@@ -48,12 +48,6 @@ namespace _00.Work.AJ._01._Scripts.BOSS.Attacks
                 Quaternion.identity
             );
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-            if (rb == null)
-            {
-                rb = bullet.AddComponent<Rigidbody2D>();
-                rb.freezeRotation = false;
-                rb.gravityScale = 0f;
-            }
             if (rb != null)
             {
                 rb.linearVelocity = direction * _bulletSpeed;

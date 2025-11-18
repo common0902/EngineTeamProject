@@ -19,9 +19,14 @@ namespace _00.Work.AJ._01._Scripts.BOSS
         public List<BossStateType> Patterns { get; set; } = new() { BossStateType.AttackMelee, BossStateType.AttackDash, BossStateType.AttackSummon, BossStateType.AttackRange };
         public BossStateType CurrentType { get; set; } = BossStateType.AttackMelee;
         public GameObject[] summonPrefabs;
+        public GameObject white;
         public bool IsDead { get; set; }
         public bool IsHit { get; set; }
         [field:SerializeField]public int CurrentSummonCount { get; set; }= 0;
+        [field: SerializeField] public Transform CenterPos { get; private set; }
+        [field: SerializeField] public GameObject Bomb { get; private set; }
+        [field: SerializeField] public SpriteRenderer RangeSprite { get; set; }
+
         #region Components
         [field:SerializeField]public WayPoints WayPoints { get; private set; }
         public Animator AnimCompo { get; private set; }
@@ -32,7 +37,6 @@ namespace _00.Work.AJ._01._Scripts.BOSS
         public bool Phase3Executed { get; set; }
         public bool Phase2Unlocked { get; set; }
         public bool HasStarted { get; set; }
-        public BossStateType NextStateAfterVanish { get; set; }
         [field:SerializeField]public float Damage { get; set; }
         [field:SerializeField]public GameObject BulletPrefab { get; set; }
         public Transform PreviousPos { get; private set; }
