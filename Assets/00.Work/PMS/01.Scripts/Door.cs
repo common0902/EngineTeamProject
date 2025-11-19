@@ -15,6 +15,11 @@ public class Door : MonoBehaviour
 
     private Animator _animator;
 
+    [Header("Special Marks")]
+    [SerializeField] private GameObject goldMarkObject;   
+    [SerializeField] private GameObject shopMarkObject;   
+    [SerializeField] private GameObject bossMarkObject;
+
     private void Awake()
     {
         _animator = GetComponent<Animator>();
@@ -22,10 +27,11 @@ public class Door : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && !_isLocked)
-        {
-            TeleportPlayer(collision.gameObject);
-        }
+        if (!collision.CompareTag("Player") || _isLocked)
+            return;
+
+        TeleportPlayer(collision.gameObject);
+
     }
 
     private void TeleportPlayer(GameObject player)
@@ -48,5 +54,39 @@ public class Door : MonoBehaviour
     {
         _isLocked = false;
         _animator.SetBool(_lockHash, false);
+    }
+
+    public void SetSpecialMark(RoomType roomType)
+    {
+        switch (roomType)
+        {
+            case RoomType.Gold:
+                if (goldMarkObject != null) goldMarkObject.SetActive(true);
+                break;
+
+            case RoomType.Shop:
+                if (shopMarkObject != null) shopMarkObject.SetActive(true);
+                break;
+
+            case RoomType.Boss:
+                if (bossMarkObject != null) bossMarkObject.SetActive(true);
+                break;
+
+        }
+    }
+    public void RefreshMarkByConnectedRoom()
+    {
+        RoomType type = RoomType.Normal;
+
+        if (parentRoom != null && parentRoom.roomType != RoomType.Normal)
+        {
+            type = parentRoom.roomType;
+        }
+        else if (connectedDoor != null && connectedDoor.parentRoom != null)
+        {
+            type = connectedDoor.parentRoom.roomType;
+        }
+
+        SetSpecialMark(type);
     }
 }

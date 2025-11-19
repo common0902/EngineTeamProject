@@ -266,55 +266,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8434492114031902754, guid: 187e0ca0babfb4d419e12f7d4c35425d, type: 3}
   m_PrefabInstance: {fileID: 1819083490}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &581082455 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6839599402493226269, guid: 187e0ca0babfb4d419e12f7d4c35425d, type: 3}
-  m_PrefabInstance: {fileID: 1819083490}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 581082451}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10019ecf03b92a241b8375d2ff02a221, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &581082459 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3908922201087372522, guid: 187e0ca0babfb4d419e12f7d4c35425d, type: 3}
-  m_PrefabInstance: {fileID: 1819083490}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 581082451}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32493ed47f1d45743ac98577c78836dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &581082460 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7081561312850541444, guid: 187e0ca0babfb4d419e12f7d4c35425d, type: 3}
-  m_PrefabInstance: {fileID: 1819083490}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 581082451}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e0f80468d520a443990206bbc6dba26, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &581082461
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 581082451}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fa5d099b63c40a0a643e9af449af999, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controlScripts:
-  - {fileID: 581082460}
-  - {fileID: 581082455}
-  - {fileID: 581082459}
 --- !u!114 &581082462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -327,8 +278,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 274faf01f76d0a4439c5bdf502e227f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  portalAnimation: {fileID: 0}
-  _portalManager: {fileID: 0}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -366,7 +315,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 000000004bf126d8019972c015c2dd8163497f61f73683c5
+  m_ApplyToSortingLayers: 000000004bf126d8019972c015c2dd8163497f61f73683c5ad412e9e171f0858
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -500,9 +449,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8434492114031902754, guid: 187e0ca0babfb4d419e12f7d4c35425d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 581082462}
-    - targetCorrespondingSourceObject: {fileID: 8434492114031902754, guid: 187e0ca0babfb4d419e12f7d4c35425d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 581082461}
     - targetCorrespondingSourceObject: {fileID: 3060876874431918615, guid: 187e0ca0babfb4d419e12f7d4c35425d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 783981664}
@@ -537,8 +483,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startRoomPrefab: {fileID: 2006649140709060410, guid: 6e7e513380d4d0d47b458fab781c541d, type: 3}
-  bossRoomPrefab:
-  - {fileID: 2006649140709060410, guid: f1bcd4353568f4343bbb94bf30644875, type: 3}
+  portalRoomPrefab: {fileID: 2006649140709060410, guid: f1bcd4353568f4343bbb94bf30644875, type: 3}
+  bossRoomPrefab: {fileID: 2006649140709060410, guid: a0223f1b9df908a4fbad442eaf0dbb70, type: 3}
   goldRoomPrefab:
   - {fileID: 2006649140709060410, guid: 4fd3c18db115bb348b4c52ea7a6a19d8, type: 3}
   roomPrefab:
@@ -567,13 +513,13 @@ MonoBehaviour:
   - {fileID: 2006649140709060410, guid: 7a0ac89daf5993d42bceddcbcaee2171, type: 3}
   shopRoomPrefab:
   - {fileID: 2006649140709060410, guid: fdadc62b663639b46a385ac48020fa82, type: 3}
-  maxRooms: 8
+  maxRooms: 12
   minRooms: 6
   roomWidth: 30
   roomHeight: 22
   gridSizeX: 10
   gridSizeY: 10
-  bossRoomGeneration: 0
+  lastRoomGeneration: 0
   goldRoomIndex: 0
   shopRoomIndex: 0
 --- !u!4 &1840950129
