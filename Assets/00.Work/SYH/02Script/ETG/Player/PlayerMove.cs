@@ -71,7 +71,7 @@ public class PlayerMove : MonoBehaviour
         {
             if (_canDash)
             {
-                StartCoroutine(Dash(aaa));
+                StartCoroutine(Dash(aaa.normalized));
             }
         }
         OnMove(aaa.normalized);
