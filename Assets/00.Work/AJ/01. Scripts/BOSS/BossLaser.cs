@@ -70,7 +70,7 @@ namespace _00.Work.AJ._01._Scripts.BOSS
                 Gizmos.color = Color.red;
                 float currentLength = laser.transform.localScale.x;
                 Vector3 center = laser.transform.position + laser.transform.right * (currentLength / 2f);
-                Gizmos.DrawWireCube(center, new Vector3(currentLength, laserWidth, 0.1f));
+                Gizmos.DrawWireCube(center, new Vector3(currentLength * 2, laserWidth, 0f));
             }
         }
     }
