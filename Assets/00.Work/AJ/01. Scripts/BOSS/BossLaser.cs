@@ -59,10 +59,13 @@ namespace _00.Work.AJ._01._Scripts.BOSS
                 Vector2 size = new Vector2(currentLength, laserWidth);
                 RaycastHit2D hit = Physics2D.BoxCast(origin,size,0f,direction,0f,_boss.playerMask);
             }
+
+            yield return null;
         }
+        
         private void OnDrawGizmos()
         {
-            if (laser != null && Application.isPlaying)
+            if (laser != null)
             {
                 Gizmos.color = Color.red;
                 float currentLength = laser.transform.localScale.x;
