@@ -39,7 +39,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
             if (distance <= interactionRange)
             {
                 InteractionText.gameObject.SetActive(true);
-                if (Input.GetKeyDown(KeyCode.F))
+                if (Input.GetKeyDown(KeyCode.E))
                 {
                     OnBoxOpen?.Invoke();
                     this.enabled = false;

@@ -12,7 +12,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
         [SerializeField] private string itemName;
         public GameObject GameObject => gameObject;
         
-        [SerializeField] private float time = 0.3f;
+        [SerializeField] private float spreadTime = 0.3f;
         [SerializeField] private float speed = 5f;
         [SerializeField] private int goldAmount = 1;
         
@@ -36,6 +36,10 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
 
             ResetPhysics();
             
+            Vector2 randomForce = new Vector2(UnityEngine.Random.Range(-2.5f, 2.5f), UnityEngine.Random.Range(3f, 5f));
+            _rb.AddForce(randomForce, ForceMode2D.Impulse);
+            
+            
             if (_dropRoutine != null)
             {
                 StopCoroutine(_dropRoutine);
@@ -47,7 +51,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
         {
             _isFollow = false;
             _rb.gravityScale = 1f;
-            yield return new WaitForSeconds(time);
+            yield return new WaitForSeconds(spreadTime);
             
             _rb.gravityScale = 0f;
             _rb.linearVelocity = Vector2.zero;

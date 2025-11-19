@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1744438978292055195}
   - component: {fileID: 2246815991467783460}
   - component: {fileID: 4930334020540250393}
+  - component: {fileID: 7311259530551280747}
   m_Layer: 3
   m_Name: Laser
   m_TagString: Untagged
@@ -84,7 +85,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _waitTime: 0
-  <Data>k__BackingField: {fileID: 0}
+  <Data>k__BackingField: {fileID: 11400000, guid: 6650c9e05b11b3440a315a51ab7bff2d, type: 2}
   <Cost>k__BackingField: 2
   <PastDelay>k__BackingField: 0
   <CoolTime>k__BackingField: 0.25
@@ -94,6 +95,20 @@ MonoBehaviour:
   <ThisSkill>k__BackingField: {fileID: 4930334020540250393}
   <SkillSprite>k__BackingField: {fileID: 21300000, guid: f1ed005a6190d564f8d4094c8f504e3c, type: 3}
   <SkillPrefab>k__BackingField: {fileID: 8257670205621739926, guid: 29d483b13ae39e74fae4970e8d06ca3f, type: 3}
+--- !u!114 &7311259530551280747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177754586777799005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d000b683b0246d095c629fd6e508a81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 2
+  skillData: {fileID: 11400000, guid: 6650c9e05b11b3440a315a51ab7bff2d, type: 2}
 --- !u!1 &236967079437715093
 GameObject:
   m_ObjectHideFlags: 0

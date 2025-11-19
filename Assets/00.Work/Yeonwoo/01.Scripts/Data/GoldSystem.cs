@@ -38,8 +38,8 @@ namespace _00.Work.Yeonwoo._01.Scripts.Data
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Z)) 
-                SpawnGoldDrop(transform.position, 10, 5);
+            if (Input.GetKeyDown(KeyCode.Z))
+                SpawnGoldDrop(transform.position, 10, 10);
         }
 
         public void SpawnGoldDrop(Vector3 spawnWorldPos, int totalGoldAmount, int split = 1)
@@ -65,7 +65,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.Data
             Vector3 targetWorld = goldTarget.position;
             if (Camera.main != null && goldTarget is RectTransform)
             {
-                targetWorld = Camera.main.ScreenToWorldPoint(goldTarget.position);
+                targetWorld = goldTarget.position;
             }
 
             targetWorld.z = 0f;

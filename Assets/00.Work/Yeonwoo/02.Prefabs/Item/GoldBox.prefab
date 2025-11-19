@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9507fea33e1844bb9ded21c1b360f3ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactionRange: 1.25
 --- !u!114 &8664364215870343113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,7 +179,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: F
+  m_text: E
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 021bef0df164ce745b99aca36a500a25, type: 2}
   m_sharedMaterial: {fileID: 7195204555297139510, guid: 021bef0df164ce745b99aca36a500a25, type: 2}

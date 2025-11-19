@@ -8,7 +8,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
 {
     public class GoldUI : MonoBehaviour
     {
-       private TextMeshProUGUI  _text;
+        private TextMeshProUGUI  _text;
         private GoldSystem _goldSystem;
 
         private int _currentDisplayGold;
@@ -20,6 +20,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
         {
             _goldSystem = GetComponent<GoldSystem>();
             _text = GetComponentInChildren<TextMeshProUGUI>();
+            _goldSystem = GameObject.Find("Player").GetComponent<GoldSystem>();
         }
 
         private void OnEnable()
