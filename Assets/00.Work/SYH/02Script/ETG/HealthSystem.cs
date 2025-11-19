@@ -30,7 +30,7 @@ namespace _00.Work.SYH._02Script.ETG
 
         private void Start()
         {
-            maxHealth = Player.Instance.PlayerStatusCompo._fullHp;
+            //maxHealth = Player.Instance.PlayerStatusCompo._fullHp;
             Health = maxHealth;
             OnHealthChanged?.Invoke(Health, maxHealth);
         }

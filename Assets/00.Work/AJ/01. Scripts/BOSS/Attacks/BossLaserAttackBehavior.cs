@@ -22,7 +22,7 @@ namespace _00.Work.AJ._01._Scripts.BOSS.Attacks
             Debug.Log("Laser");
             for (int i = 0; i < 3; i++)
             {
-                GameObject obj = Object.Instantiate(_boss.laserRange, _boss.transform.position, Quaternion.identity);
+                GameObject obj = Object.Instantiate(_boss.laserPoint, _boss.transform.position, Quaternion.identity);
                 _laserList.Add(obj.transform);
                 Debug.Log("LaserRangeSpawned");
             }
@@ -44,7 +44,7 @@ namespace _00.Work.AJ._01._Scripts.BOSS.Attacks
                     Quaternion.identity).GetComponentInChildren<BossLaser>();
                 
                 Debug.Log("LaserFire");
-                laser.Init(_laserList[i].transform.position);
+                laser.Init(_laserList[i].transform.position, _boss);
                 yield return new WaitForSeconds(0.5f);
             }
 

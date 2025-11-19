@@ -1,9 +1,9 @@
 ﻿namespace _00.Work.AJ._01._Scripts.BOSS.FSM.States
 {
-    public class BossAttackToIdleState : BossState
+    public class BossReturnIdle : BossState
     {
         private BossAttack _attack;
-        public BossAttackToIdleState(Boss boss, string animName, BossStateMachine stateMachine) : base(boss, animName, stateMachine)
+        public BossReturnIdle(Boss boss, string animName, BossStateMachine stateMachine) : base(boss, animName, stateMachine)
         {
             _attack = boss.GetComponent<BossAttack>();
         }
