@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 5550973271165424427}
   - component: {fileID: 6351338224116146353}
   - component: {fileID: 5613642735783846223}
+  - component: {fileID: 2846807035541340828}
   m_Layer: 7
   m_Name: DmgPotion1
   m_TagString: Untagged
@@ -133,10 +134,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c60be52efabb7b4ba129b59853c6976, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <StatusType>k__BackingField: 1
-  <StatusValue>k__BackingField: 100
-  <SkillSprite>k__BackingField: {fileID: 1185527514606905908, guid: 4e88795c2daf6d5468b3869d22332ab9, type: 3}
-  <Name>k__BackingField: DmgPotion
+  <Data>k__BackingField: {fileID: 11400000, guid: a48d14ac2dddc874381b38f00d4b7dfe, type: 2}
+  _skillListSO: {fileID: 11400000, guid: c957f6b0ee6057647ae90649443e9057, type: 2}
+  _deviation: 0
+  _itemName: 
 --- !u!58 &5613642735783846223
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -173,3 +174,17 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
+--- !u!114 &2846807035541340828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3794773668572874349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f5a92be782c49c69495129230a333b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 2
+  passiveData: {fileID: 11400000, guid: a48d14ac2dddc874381b38f00d4b7dfe, type: 2}

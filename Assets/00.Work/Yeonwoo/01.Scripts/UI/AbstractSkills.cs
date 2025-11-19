@@ -11,23 +11,22 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
         private Transform _playerPos;
         private bool _isPlayerInRange = false;
         
-        protected virtual void Awake()
+        protected virtual void OnEnable()
         {
             GameObject player = GameObject.Find("Player"); // 에디터 이름으로 찾는거라 이름은 Player로 계속 유지
             if (player != null)
             {
                 _playerPos = player.transform;
             }
-        }
-
-        protected void Start()
-        {
+            else if (player == null)
+                Debug.LogError("Not found player");
+            
             if (_playerPos == null)
             {
                 Debug.LogWarning($"[{nameof(AbstractSkills)}] Player Transform not found. Make sure there is a GameObject named 'Player' or assign player transform some other way.");
             }
         }
-
+        
         protected virtual void Update()
         {
             if (_playerPos == null) return; 
@@ -42,6 +41,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
             {
                 if (!_isPlayerInRange)
                 {
+                    Debug.Log("플레이어 인");
                     OnPlayerEnterRange();
                     _isPlayerInRange = true;
                 }
@@ -50,6 +50,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
             {
                 if (_isPlayerInRange)
                 {
+                    Debug.Log("플레이어 아웃");
                     OnPlayerExitRange();
                     _isPlayerInRange = false;
                 }

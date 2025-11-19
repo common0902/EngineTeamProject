@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6020309970391692379}
   - component: {fileID: 7409332344312911649}
   - component: {fileID: 8478338345349348236}
+  - component: {fileID: 7048171890507672600}
   m_Layer: 3
   m_Name: Gatling
   m_TagString: Untagged
@@ -84,7 +85,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _waitTime: 0
-  <Data>k__BackingField: {fileID: 0}
+  <Data>k__BackingField: {fileID: 11400000, guid: 2b0877199af5f664f8b90fa738425eda, type: 2}
   <Cost>k__BackingField: 2
   <PastDelay>k__BackingField: 0
   <CoolTime>k__BackingField: 0.5
@@ -94,6 +95,20 @@ MonoBehaviour:
   <ThisSkill>k__BackingField: {fileID: 8478338345349348236}
   <SkillSprite>k__BackingField: {fileID: 0}
   <SkillPrefab>k__BackingField: {fileID: 4821584167500444787, guid: cb8405af52452e6459e5fdee60a3afb0, type: 3}
+--- !u!114 &7048171890507672600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4834727862822132475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d000b683b0246d095c629fd6e508a81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 2
+  skillData: {fileID: 11400000, guid: 2b0877199af5f664f8b90fa738425eda, type: 2}
 --- !u!1 &8045670505348651590
 GameObject:
   m_ObjectHideFlags: 0
