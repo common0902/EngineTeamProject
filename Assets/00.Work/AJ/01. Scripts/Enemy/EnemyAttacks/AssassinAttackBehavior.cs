@@ -26,7 +26,7 @@ public class AssassinAttackBehavior : IEnemyAttackBehavior
             yield break;
         _enemy.ColliderCompo.enabled = false;
         _canAttack = false;
-
+        
         _targetHealth.Damage(_enemy.enemySO.damage);
         
         IsAttackAnimationEnd = false;

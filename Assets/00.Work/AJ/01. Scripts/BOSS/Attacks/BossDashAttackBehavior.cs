@@ -18,8 +18,9 @@ namespace _00.Work.AJ._01._Scripts.BOSS.Attacks
         public IEnumerator ExecuteAttack(Vector2 direction)
         {
             float dashSpeed = 10f;
-            float dashDuration = 0.3f;
+            float dashDuration = 0.5f;
             float elapsed = 0f;
+            Debug.Log("dkdkdkd");
     
             while (elapsed < dashDuration)
             {
@@ -27,13 +28,15 @@ namespace _00.Work.AJ._01._Scripts.BOSS.Attacks
                 elapsed += Time.deltaTime;
                 yield return null;
             }
-    
+            
             _boss.RbCompo.linearVelocity = Vector2.zero;
-    
+            
             yield return new WaitForSeconds(0.1f);
 
             if (_boss.CheckAttackRange())
                 _targetHealth.Damage(_boss.Damage);
+
+            OnAttackAnimationEnd();
         }
 
         public void OnAttackAnimationEnd()

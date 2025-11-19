@@ -33,6 +33,7 @@ namespace _00.Work.AJ._01._Scripts.BOSS
                     break;
                 case BossStateType.AttackDash:
                     _attackBehavior = new BossDashAttackBehavior();
+                    Debug.Log(_attackBehavior);
                     break;
                 case BossStateType.AttackSummon:
                     _attackBehavior = new BossSummonAttackBehavior();  
@@ -46,6 +47,10 @@ namespace _00.Work.AJ._01._Scripts.BOSS
                 case BossStateType.AttackLaser:
                     _attackBehavior = new BossLaserAttackBehavior();
                     break;
+                case BossStateType.AttackAOE:
+                    _attackBehavior = new BossAoeAttackBehavior();
+                    Debug.Log("dkdkd");
+                    break;
                 default:
                     Debug.LogError($"No Type: {_boss.CurrentType}");
                     _attackBehavior = null;
@@ -58,7 +63,6 @@ namespace _00.Work.AJ._01._Scripts.BOSS
         private void Attack()
         {
             InitializeAttackBehavior();
-            
             if (_attackBehavior == null) Debug.Log("dkdkdkdkdd");
             Vector2 dir = (_boss.Target.position - _boss.transform.position).normalized;
             StartCoroutine(_attackBehavior?.ExecuteAttack(dir));

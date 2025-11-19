@@ -19,6 +19,7 @@ namespace _00.Work.AJ._01._Scripts.BOSS.FSM.States.AttackStates
             Debug.Log("Bomb Attack");
             _isMoving = true;
             MoveToCenter();
+            _boss.HealthCompo.enabled = false;
         }
         private void MoveToCenter()
         {
@@ -31,7 +32,8 @@ namespace _00.Work.AJ._01._Scripts.BOSS.FSM.States.AttackStates
         }
         public override void Update()
         {
-            _boss.RbCompo.linearVelocity = Vector2.zero;
+            _boss.Speed = 0f;
+            _boss.RbCompo.linearVelocity = Vector3.zero;
             if (_bossAttack.IsAnimationEnd) 
             {
                 _bossAttack.IsAnimationEnd = false;

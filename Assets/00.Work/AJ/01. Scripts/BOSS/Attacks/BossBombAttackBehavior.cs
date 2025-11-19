@@ -19,18 +19,22 @@ namespace _00.Work.AJ._01._Scripts.BOSS.Attacks
 
         public IEnumerator ExecuteAttack(Vector2 direction)
         {
+            _boss.Speed = 0f;
             yield return new WaitForSeconds(2f);
-            CameraHandler.Instance.ShakeCamera(0.03f, 10f);
+            CameraHandler.Instance.ShakeCamera(0.03f, 20f);
             _boss.RangeSprite.DOFade(0.5f, 10f).OnComplete(() =>
             {
-                var bomb = Object.Instantiate(_boss.Bomb, _boss.transform.position, Quaternion.identity, _boss.transform);
+                var bomb = Object.Instantiate(_boss.Bomb, _boss.transform.position, Quaternion.identity,
+                    _boss.transform);
                 if (bomb.GetComponent<Circle>().GetCollision())
                 {
                     _boss.StartCoroutine(ApplyDotDamage(bomb));
                 }
+
                 bomb.transform.localScale = new Vector3(0f, 0f, 0f);
-                bomb.transform.DOScale(10f, 1f);
-            });
+                bomb.transform.DOScale(10f, 0.5f);
+            })
+            .OnComplete(OnAttackAnimationEnd);
         }
         private IEnumerator ApplyDotDamage(GameObject bomb)
         {
@@ -55,8 +59,9 @@ namespace _00.Work.AJ._01._Scripts.BOSS.Attacks
 
             bomb.GetComponent<SpriteRenderer>().DOFade(0f, 1f).OnComplete(() =>
             {
+                Debug.Log("아앙");
                 Object.Destroy(bomb);
-                _boss.RangeSprite.DOFade(0f, 1f);
+                _boss.RangeSprite.DOFade(0f, 1f).OnComplete(OnAttackAnimationEnd);
             });
             
         }

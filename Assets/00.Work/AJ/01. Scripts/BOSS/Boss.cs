@@ -29,6 +29,8 @@ namespace _00.Work.AJ._01._Scripts.BOSS
         [field: SerializeField] public Transform CenterPos { get; private set; }
         [field: SerializeField] public GameObject Bomb { get; private set; }
         [field: SerializeField] public SpriteRenderer RangeSprite { get; set; }
+        [field: SerializeField] public GameObject AoeSprite { get; private set; }
+        [field: SerializeField] public GameObject Aoe { get; private set; }
 
         #region Components
         [field:SerializeField]public WayPoints WayPoints { get; private set; }

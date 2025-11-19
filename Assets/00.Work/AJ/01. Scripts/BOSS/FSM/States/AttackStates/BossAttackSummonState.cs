@@ -16,13 +16,12 @@ namespace _00.Work.AJ._01._Scripts.BOSS.FSM.States.AttackStates
         {
             base.Enter();
             //Debug.Log("Summon Attack");
-            _boss.RbCompo.linearVelocity = Vector2.zero;
         }
 
         public override void Update()
         {
             base.Update();
-            
+            _boss.RbCompo.linearVelocity = Vector2.zero;
             if (_bossAttack.IsAnimationEnd)
             {
                 _bossAttack.IsAnimationEnd = false;

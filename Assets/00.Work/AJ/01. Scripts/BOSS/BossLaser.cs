@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using _00.Work.SYH._02Script.ETG;
 using DG.Tweening;
 using UnityEngine;
 
@@ -11,7 +13,8 @@ namespace _00.Work.AJ._01._Scripts.BOSS
         private float _dmg;
         private bool _isDamaging;
         private Coroutine _damageCoroutine;
-        private float laserWidth = 0.1f;
+        [SerializeField] private float damageTickInterval = 0.3f; 
+        [SerializeField]private float laserWidth = 1f;
 
         private void Awake()
         {
@@ -25,7 +28,10 @@ namespace _00.Work.AJ._01._Scripts.BOSS
             _dmg = boss.Damage;
             CameraHandler.Instance.ShakeCamera(0.03f, 8f);
             transform.position = new Vector3(pos.x - 11f, pos.y, 0f);
-            laser.transform.DOScaleX(11.88f, 5f).OnComplete(() =>
+            gameObject.GetComponentInChildren<LaserBoss>().Init(_boss);
+            laser.transform.DOScaleX(22f, 5f)
+                .OnStart(StartDamage)
+                .OnComplete(() =>
             {
                 StopDamage();
                 laser.transform.DOScaleX(0f, 1f);
@@ -58,9 +64,15 @@ namespace _00.Work.AJ._01._Scripts.BOSS
                 Vector2 direction = laser.transform.right;
                 Vector2 size = new Vector2(currentLength, laserWidth);
                 RaycastHit2D hit = Physics2D.BoxCast(origin,size,0f,direction,0f,_boss.playerMask);
+                if (hit.collider != null)
+                {
+                    Player.Instance.PlayerHealthSystemCompo.Damage(_dmg);
+                    Debug.Log($"Laser Hit Damage: {_dmg}");
+                }
+                
+                yield return new WaitForSeconds(damageTickInterval);
             }
 
-            yield return null;
         }
         
         private void OnDrawGizmos()
@@ -70,8 +82,13 @@ namespace _00.Work.AJ._01._Scripts.BOSS
                 Gizmos.color = Color.red;
                 float currentLength = laser.transform.localScale.x;
                 Vector3 center = laser.transform.position + laser.transform.right * (currentLength / 2f);
-                Gizmos.DrawWireCube(center, new Vector3(currentLength * 2, laserWidth, 0f));
+                Gizmos.DrawWireCube(center, new Vector3(currentLength, laserWidth, 0f));
             }
+        }
+
+        private void OnDestroy()
+        {
+            StopDamage();
         }
     }
 }

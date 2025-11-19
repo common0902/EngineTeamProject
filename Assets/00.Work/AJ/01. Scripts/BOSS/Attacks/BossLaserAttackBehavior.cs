@@ -20,14 +20,15 @@ namespace _00.Work.AJ._01._Scripts.BOSS.Attacks
         public IEnumerator ExecuteAttack(Vector2 direction)
         {
             Debug.Log("Laser");
-            for (int i = 0; i < 3; i++)
+            int rand = 3;
+            for (int i = 0; i < rand; i++)
             {
                 GameObject obj = Object.Instantiate(_boss.laserPoint, _boss.transform.position, Quaternion.identity);
                 _laserList.Add(obj.transform);
                 Debug.Log("LaserRangeSpawned");
             }
 
-            for(int i = 0; i < 3; i++)
+            for(int i = 0; i < rand; i++)
             {
                 float yOffset = (1 - i) * 5f;
                 _laserList[i].transform.position = _boss.CenterPos.position + new Vector3(0, yOffset, 0);
@@ -37,7 +38,7 @@ namespace _00.Work.AJ._01._Scripts.BOSS.Attacks
 
             yield return new WaitForSeconds(1f);
 
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < rand; i++)
             {
                 var laser = Object.Instantiate(_boss.laserPrefab, 
                     _laserList[i].transform.position,
@@ -52,6 +53,7 @@ namespace _00.Work.AJ._01._Scripts.BOSS.Attacks
             {
                 Object.Destroy(laser.gameObject);
             }
+            OnAttackAnimationEnd();
         }
 
         public void OnAttackAnimationEnd()
