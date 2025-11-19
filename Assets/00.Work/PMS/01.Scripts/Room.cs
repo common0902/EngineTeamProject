@@ -1,11 +1,21 @@
 ﻿using UnityEngine;
 
+public enum RoomType
+{
+    Normal,
+    Gold,
+    Shop,
+    Boss,
+    Portal
+}
 public class Room : MonoBehaviour
 {
     [SerializeField] private GameObject topDoor;
     [SerializeField] private GameObject bottomDoor;
     [SerializeField] private GameObject leftDoor;
     [SerializeField] private GameObject rightDoor;
+
+    public RoomType roomType;
 
     private int enemyCount;
     private bool hasEnemies;

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using _00.Work.SYH._02Script.ETG;
 using UnityEngine;
 using UnityEngine.AI;
