@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using _00.Work.SYH._02Script.ETG;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Serialization;
 using Object = UnityEngine.Object;
 
 namespace _00.Work.AJ._01._Scripts.BOSS
@@ -20,7 +21,7 @@ namespace _00.Work.AJ._01._Scripts.BOSS
         public BossStateType CurrentType { get; set; } = BossStateType.AttackMelee;
         public GameObject[] summonPrefabs;
         public GameObject white;
-        public GameObject laserRange;
+        public GameObject laserPoint;
         public GameObject laserPrefab;
         public bool IsDead { get; set; }
         public bool IsHit { get; set; }

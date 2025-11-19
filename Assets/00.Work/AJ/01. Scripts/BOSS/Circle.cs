@@ -7,9 +7,10 @@ namespace _00.Work.AJ._01._Scripts.BOSS
     public class Circle : MonoBehaviour
     {
         [SerializeField] private float radius;
+        [SerializeField] private LayerMask playerMask;
         public bool GetCollision()
         {
-            return Physics2D.OverlapCircle(transform.position, radius) && gameObject.activeInHierarchy;
+            return Physics2D.OverlapCircle(transform.position, radius, playerMask);
         }
         
 
