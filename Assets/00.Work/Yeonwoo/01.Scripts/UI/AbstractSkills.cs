@@ -56,7 +56,23 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
                 }
             }
         }
-        
+
+        protected virtual void OnDisable()
+        {
+            if (_isPlayerInRange)
+            {
+                try
+                {
+                    OnPlayerExitRange();
+                }
+                catch (Exception ex)
+                {
+                    Debug.LogWarning($"[{nameof(AbstractSkills)}] OnPlayerExitRange threw: {ex.Message}");
+                }
+                _isPlayerInRange = false;
+            }
+        }
+
         protected virtual void OnPlayerEnterRange() { }
         protected virtual void OnPlayerExitRange() { }
         

@@ -48,7 +48,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
 
         public void GameStart()
         {
-            SceneManager.LoadScene("Develop");
+            SceneManager.LoadScene("Prolog");
             Time.timeScale = 1f;
         }
 

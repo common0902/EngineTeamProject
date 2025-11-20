@@ -15,6 +15,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
         
         [SerializeField] private NewInteractionSkillUI newInteractionSkillUI;
         [SerializeField] private OldInteractionSkillUI oldInteractionSkillUI;
+        [SerializeField] private NewInteractionPassiveUI newInteractionPassiveUI;
 
         private void Start()
         {
@@ -23,13 +24,28 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
 
             if (newInteractionSkillUI != null)
             {
-                newInteractionSkillUI.OnShow += HandleInteractionUIShown;
+                newInteractionSkillUI.OnShow += HandleInteractionSkillUIShown;
                 newInteractionSkillUI.OnHide += HandleInteractionUIHidden;
             }
-            else Debug.LogError("newInteractionSkillUI is null");
+            if (newInteractionPassiveUI != null)
+            {
+                newInteractionPassiveUI.OnShow += HandleInteractionPassiveUIShown;
+                newInteractionPassiveUI.OnHide+= HandleInteractionPassiveUIHidden;
+            }
+            else Debug.LogError("UI is null");
+        }
+
+        private void HandleInteractionPassiveUIShown()
+        {
+            
         }
         
-        private void HandleInteractionUIShown()
+        private void HandleInteractionPassiveUIHidden()
+        {
+            
+        }
+        
+        private void HandleInteractionSkillUIShown()
         {
             if (SkillUI == null || SkillUI.Length == 0)
             {
@@ -93,7 +109,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
             SkillControllerCompo.OnChangeSkill -= UpdateSkillUI;
             PassiveControllerCompo.OnTakePasiveSkill -= UpdatePassiveSkillUI;
             
-            newInteractionSkillUI.OnShow -= HandleInteractionUIShown;
+            newInteractionSkillUI.OnShow -= HandleInteractionSkillUIShown;
             newInteractionSkillUI.OnHide -= HandleInteractionUIHidden;
         }
     }

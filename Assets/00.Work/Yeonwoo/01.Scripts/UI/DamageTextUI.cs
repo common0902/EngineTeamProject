@@ -17,7 +17,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
         [SerializeField] private AnimationCurve alphaCurve = AnimationCurve.EaseInOut(0, 1, 1, 0);
         [SerializeField] private AnimationCurve moveCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
         private TextMeshProUGUI _text;
-
+        
         private CanvasGroup _canvasGroup;
         private Camera _mainCamera;
         private Vector3 _worldPos;
@@ -29,11 +29,12 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
             _mainCamera = Camera.main;
         }
 
-        public void SetDamage(float amount, Vector3 worldPos)
+        public void SetDamage(float amount, Vector3 worldPos, Color color)
         {
             _worldPos = worldPos;
             _text.text = ((int)amount).ToString();
-            _text.color = Color.white; // 일단
+            _text.color = color;
+
             StopAllCoroutines();
             StartCoroutine(ShowDtxCoroutine());
         }
