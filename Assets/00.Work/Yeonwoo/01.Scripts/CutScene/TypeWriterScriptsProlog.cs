@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 namespace _00.Work.Yeonwoo._01.Scripts.CutScene
 {
-    public class TypeWriterScripts : MonoBehaviour
+    public class TypeWriterScriptsProlog : MonoBehaviour
     {
         [Header("텍스트 컴포")]
         [SerializeField] private TextMeshProUGUI textUI;
