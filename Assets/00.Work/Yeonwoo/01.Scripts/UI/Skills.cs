@@ -14,7 +14,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
             base.OnEnable();
             _newInteractionSkillUI = FindAnyObjectByType<NewInteractionSkillUI>(FindObjectsInactive.Include);
             if (_newInteractionSkillUI == null)
-                Debug.LogError("No Interaction New Skill UI Found");
+                Debug.LogWarning("No Interaction New Skill UI Found");
         }
 
         protected override void OnPlayerEnterRange()
