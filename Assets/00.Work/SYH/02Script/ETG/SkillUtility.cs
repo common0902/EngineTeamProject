@@ -56,7 +56,6 @@ public class SkillUtility
     {
         if (Player.Instance.PlayerStatusCompo.Mana >= cost)
         {
-            Player.Instance.PlayerStatusCompo.Mana -= cost;
             Player.Instance.PlayerStatusCompo.CheckManaState();
             return true;
         }

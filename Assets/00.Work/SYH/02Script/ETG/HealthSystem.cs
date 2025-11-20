@@ -23,8 +23,12 @@ namespace _00.Work.SYH._02Script.ETG
         public bool _isCounter;
         public event Action OnCounter;
 
+        public bool _isMarked;
+        public float _markedValue = 1;
+
         private void Awake()
         {
+            _markedValue = 1;
             _isLowHealth = false;
         }
 
@@ -50,7 +54,7 @@ namespace _00.Work.SYH._02Script.ETG
             }
             if (damage <= 0) return;
             Debug.Log("Damage");
-            Health = Mathf.Clamp(Health - damage, 0, maxHealth);
+            Health = Mathf.Clamp(Health - damage * _markedValue, 0, maxHealth);
             CreateDamageText(transform.position + Vector3.up * 1.5f, damage);
             print(222);
             CheckHealthState();

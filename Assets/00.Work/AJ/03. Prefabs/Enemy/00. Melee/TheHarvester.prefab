@@ -77,7 +77,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -549116473
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 4586413965468972383, guid: 753c2cc57d6137c40b37540508aa4ca1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -153,6 +153,7 @@ GameObject:
   - component: {fileID: 3932912107702401095}
   - component: {fileID: 2761483570199864034}
   - component: {fileID: 343658730936096276}
+  - component: {fileID: 5550261226366745324}
   m_Layer: 8
   m_Name: TheHarvester
   m_TagString: Enemy
@@ -275,8 +276,7 @@ MonoBehaviour:
   whatIsWall:
     serializedVersion: 2
     m_Bits: 2147483648
-  autoDespawnWhenOutScreen: 1
-  outScreenDespawnDelay: 10
+  _speed: 0
   <WayPoints>k__BackingField: {fileID: 0}
 --- !u!114 &6813979710905381332
 MonoBehaviour:
@@ -317,6 +317,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Health>k__BackingField: 0
   maxHealth: 100
+  _isCounter: 0
+  _isMarked: 0
+  _markedValue: 0
 --- !u!195 &343658730936096276
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -339,3 +342,15 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 0
+--- !u!114 &5550261226366745324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8338307515876266603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1ab860e505f68441bf1291e51ec5cfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
