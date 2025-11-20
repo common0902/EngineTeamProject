@@ -11,46 +11,71 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
         [field: SerializeField] public TextMeshProUGUI NameText { get; private set; }
         [field: SerializeField] public TextMeshProUGUI DescriptionText { get; private set; }
         [field: SerializeField] public Image IconImage { get; private set; }
-
-        // 현재 이 UI가 표시 중인 SkillData 정보 저장
-        private SkillData _data;
+        [field:SerializeField] public Image CoolTimeImage { get; private set; }
         
-        public SkillData GetCurrentSkillData() => _data;
+        private Skill _boundSkill;
 
-        public bool HasData => _data != null;
+        public SkillData GetCurrentSkillData() => _boundSkill?.Data;
+        public bool HasData => _boundSkill != null;
         
-        // 외부에서 SkillData를 전달받아 UI를 갱신하는 함수
-        public void SetSkillData(SkillData data)
+        public void SetSkill(Skill skill)
         {
-            _data = data;
+            _boundSkill = skill;
 
-            if (_data == null)
+            if (_boundSkill == null)
             {
-                // 스킬이 비어 있을 경우 초기화
                 IconImage.sprite = null;
                 NameText.text = "";
                 DescriptionText.text = "";
+                if (CoolTimeImage != null) CoolTimeImage.gameObject.SetActive(false);
                 return;
             }
-
-            // SO에 저장된 정보로 UI 갱신
-            IconImage.sprite = _data.Icon;
-            NameText.text = _data.Name;
-            DescriptionText.text = _data.Description;
+            
+            var data = _boundSkill.Data;
+            if (data != null)
+            {
+                IconImage.sprite = data.Icon;
+                NameText.text = data.Name;
+                DescriptionText.text = data.Description;
+            }
+            else
+            {
+                IconImage.sprite = null;
+                NameText.text = "";
+                DescriptionText.text = "";
+            }
+            
+            if (CoolTimeImage != null)
+            {
+                CoolTimeImage.type = Image.Type.Filled;
+                CoolTimeImage.fillMethod = Image.FillMethod.Radial360;
+                CoolTimeImage.gameObject.SetActive(_boundSkill.CooldownFillAmount > 0f);
+                CoolTimeImage.fillAmount = _boundSkill.CooldownFillAmount;
+            }
         }
 
         private void Start()
         {
             NameText.gameObject.SetActive(false);
             DescriptionText.gameObject.SetActive(false);
+            if (CoolTimeImage != null) CoolTimeImage.gameObject.SetActive(false);
         }
-        
+
+        private void Update()
+        {
+            if (_boundSkill == null || CoolTimeImage == null) return;
+            
+            float fill = _boundSkill.CooldownFillAmount;
+            CoolTimeImage.fillAmount = fill;
+            CoolTimeImage.gameObject.SetActive(fill > 0f);
+        }
+
         public void OnPointerEnter(PointerEventData eventData)
         {
             NameText.gameObject.SetActive(true);
             DescriptionText.gameObject.SetActive(true);
         }
-        
+
         public void OnPointerExit(PointerEventData eventData)
         {
             NameText.gameObject.SetActive(false);

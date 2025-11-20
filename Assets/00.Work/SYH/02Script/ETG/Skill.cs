@@ -21,7 +21,13 @@ public abstract class Skill : MonoBehaviour
     [field: SerializeField] public Skill ThisSkill { get; protected set; }
     [field: SerializeField] public Sprite SkillSprite { get; protected set; }
     [field: SerializeField] public GameObject SkillPrefab { get; protected set; }
-
+    
+    public float CooldownProgressNormalized => (CoolTime <= 0f) ? 1f : Mathf.Clamp01(_waitTime / CoolTime);
+    
+    public float CooldownRemaining => (CoolTime <= 0f) ? 0f : Mathf.Clamp(CoolTime - _waitTime, 0f, CoolTime);
+    
+    public float CooldownFillAmount => (CoolTime <= 0f) ? 0f : (CooldownRemaining / CoolTime);
+    
     protected virtual void Awake()
     {
         _waitTime = CoolTime;

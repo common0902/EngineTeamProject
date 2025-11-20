@@ -85,9 +85,9 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
             {
                 // 슬롯이 비어있거나 null이면 초기화, 있으면 SkillData 전달
                 if (i < elements.Length && elements[i] != null)
-                    SkillUI[i].SetSkillData(elements[i].Data);
+                    SkillUI[i].SetSkill(elements[i]);
                 else
-                    SkillUI[i].SetSkillData(null);
+                    SkillUI[i].SetSkill(null);
             }
         }
         
