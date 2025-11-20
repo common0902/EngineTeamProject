@@ -21,7 +21,8 @@ namespace _00.Work.AJ._01._Scripts.BOSS.FSM.States
             base.Enter();
             Debug.Log("Vanish");
             _boss.RbCompo.linearVelocity = Vector2.zero;
-            
+
+            _boss.HealthCompo.Invincibility = true;
             _animator.OnVanishTrigger += OnVanishComplete;
         }
 

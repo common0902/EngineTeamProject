@@ -6,7 +6,7 @@ namespace _00.Work.AJ._01._Scripts.BOSS.FSM.States.AttackStates
     public class BossAttackAOEState : BossState
     {
         private BossAttack _bossAttack;
-        private float _aoeDuration = 100f; // 광역기 지속 시간
+        private float _aoeDuration = 22f; // 광역기 지속 시간
         private float _timer;
         
         public BossAttackAOEState(Boss boss, string animName, BossStateMachine stateMachine) 
@@ -28,9 +28,10 @@ namespace _00.Work.AJ._01._Scripts.BOSS.FSM.States.AttackStates
         public override void Update()
         {
             _timer += Time.deltaTime;
-            
-            if (_timer >= _aoeDuration)
+
+            if (_timer >= _aoeDuration || _bossAttack.IsAnimationEnd)
             {
+                _timer = 0f;
                 _stateMachine.ChangeState(BossStateType.Idle);
             }
         }

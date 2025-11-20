@@ -7,6 +7,8 @@ namespace _00.Work.AJ._01._Scripts.BOSS.FSM.States.AttackStates
     {
         private BossAttack _bossAttack;
         private bool _isMoving;
+        private float _timer;
+        private float _waitTime = 21f;
         public BossAttackBombState(Boss boss, string animName, BossStateMachine stateMachine) 
             : base(boss, animName, stateMachine)
         {
@@ -19,7 +21,7 @@ namespace _00.Work.AJ._01._Scripts.BOSS.FSM.States.AttackStates
             Debug.Log("Bomb Attack");
             _isMoving = true;
             MoveToCenter();
-            _boss.HealthCompo.enabled = false;
+            _boss.HealthCompo.Invincibility = true;
         }
         private void MoveToCenter()
         {
@@ -32,9 +34,11 @@ namespace _00.Work.AJ._01._Scripts.BOSS.FSM.States.AttackStates
         }
         public override void Update()
         {
-            _boss.Speed = 0f;
-            _boss.RbCompo.linearVelocity = Vector3.zero;
-            if (_bossAttack.IsAnimationEnd) 
+            if (_isMoving)
+                return;
+            _boss.RbCompo.linearVelocity = Vector2.zero;
+            _timer += Time.deltaTime;
+            if (_bossAttack.IsAnimationEnd && _timer > _waitTime) 
             {
                 _bossAttack.IsAnimationEnd = false;
                 _stateMachine.ChangeState(BossStateType.Idle);

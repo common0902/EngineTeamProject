@@ -12,12 +12,33 @@ namespace _00.Work.AJ._01._Scripts.BOSS.FSM.States
             _bossAnimator = GetComponentInChildren<BossAnimator>();
             _boss = GetComponent<Boss>();
         }
+    
         private void Start()
         {
-            _bossAnimator.OnHitEndTrigger += () => isAnimationEnd = true;
-            _boss.HealthCompo.OnHealthChanged += (float health, float maxHealth) => _boss.IsHit = true;
-            _boss.HealthCompo.OnDead += () => _boss.IsDead = true;
-            _bossAnimator.OnDeathEndTrigger += () => isAnimationEnd = true;
+            _bossAnimator.OnHitEndTrigger += HandleHitEnd;
+            _boss.HealthCompo.OnHealthChanged += HandleHealthChanged;
+            _boss.HealthCompo.OnDead += HandleDead;
+            _bossAnimator.OnDeathEndTrigger += HandleDeathEnd;
+        }
+    
+        private void HandleHitEnd() => isAnimationEnd = true;
+        private void HandleHealthChanged(float health, float maxHealth) => _boss.IsHit = true;
+        private void HandleDead() => _boss.IsDead = true;
+        private void HandleDeathEnd() => isAnimationEnd = true;
+    
+        private void OnDestroy()
+        {
+            if (_bossAnimator != null)
+            {
+                _bossAnimator.OnHitEndTrigger -= HandleHitEnd;
+                _bossAnimator.OnDeathEndTrigger -= HandleDeathEnd;
+            }
+        
+            if (_boss?.HealthCompo != null)
+            {
+                _boss.HealthCompo.OnHealthChanged -= HandleHealthChanged;
+                _boss.HealthCompo.OnDead -= HandleDead;
+            }
         }
     }
 }

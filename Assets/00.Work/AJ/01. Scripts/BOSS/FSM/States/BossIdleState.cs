@@ -33,6 +33,8 @@ namespace _00.Work.AJ._01._Scripts.BOSS.FSM.States
         public override void Update()
         {
             base.Update();
+            if (_boss.IsDead) return;
+            HandlePhase();
             
             Debug.Log($"Current Pattern : {_boss.CurrentType}");
             
@@ -52,9 +54,11 @@ namespace _00.Work.AJ._01._Scripts.BOSS.FSM.States
         private void DecideNextPattern()
         {
             HandlePhase();
-            
+
             if (_boss.Phase3Executed)
+            {
                 return;
+            }
             
             var pool = _boss.Patterns;
             BossStateType next = pool[Random.Range(0, pool.Count)];

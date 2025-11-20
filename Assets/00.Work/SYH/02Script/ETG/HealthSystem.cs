@@ -21,6 +21,7 @@ namespace _00.Work.SYH._02Script.ETG
         public event Action OnDead;
 
         public bool _isCounter;
+        [field:SerializeField]public bool Invincibility { get; set; }
         public event Action OnCounter;
 
         private void Awake()
@@ -43,6 +44,8 @@ namespace _00.Work.SYH._02Script.ETG
         }
         public void Damage(float damage)
         {
+            if (Invincibility)
+                return;
             if(_isCounter)
             {
                 OnCounter?.Invoke();

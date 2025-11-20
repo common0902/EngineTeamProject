@@ -8,73 +8,77 @@ namespace _00.Work.AJ._01._Scripts.BOSS
     public class AoeAttack : MonoBehaviour
     {
         private Boss _boss;
-        private float _damagePerTick;
         private float _tickInterval;
-        private float _duration;
+        private float _damageMultiplier;
         private LayerMask _targetLayer;
+        private Coroutine _damageCoroutine;
+        private bool _isPlayerInside = false; // 플레이어 상태 추적
 
-        [SerializeField] private BoxCollider2D _boxCollider;
-
-        public void Initialize(Boss boss, float damagePerTick, float tickInterval, float duration, LayerMask targetLayer)
+        public void Initialize(Boss boss, float damageMultiplier, float tickInterval, LayerMask targetLayer)
         {
             _boss = boss;
-            _damagePerTick = damagePerTick;
             _tickInterval = tickInterval;
-            _duration = duration;
+            _damageMultiplier = damageMultiplier;
             _targetLayer = targetLayer;
-
-            if (_boxCollider == null)
-                _boxCollider = GetComponent<BoxCollider2D>();
-
-            if (_boxCollider == null)
-            {
-                Debug.LogError("BoxCollider2D 가 없습니다.");
-                return;
-            }
-
-            Debug.Log("Start");
-            StartCoroutine(TickDamageRoutine());
         }
 
-        private IEnumerator TickDamageRoutine()
+        private void OnTriggerEnter2D(Collider2D other)
         {
-            float elapsed = 0f;
-
-            while (elapsed < _duration)
+            if (other.TryGetComponent(out Player player) && !_isPlayerInside)
             {
-                DoDamage();
-
-                elapsed += _tickInterval;
-                yield return new WaitForSeconds(_tickInterval);
-            }
-        }
-        private void DoDamage()
-        {
-            Vector2 center = _boxCollider.bounds.center;
-            Vector2 size = _boxCollider.bounds.size;
-            float angle = _boxCollider.transform.eulerAngles.z;
-
-            Collider2D[] hits = Physics2D.OverlapBoxAll(center, size, angle, _targetLayer);
+                _isPlayerInside = true;
                 
-            foreach (var hit in hits)
-            {
-                var health = hit.GetComponent<HealthSystem>();
-                if (health != null)
+                if (_damageCoroutine != null)
                 {
-                    health.Damage(_damagePerTick);
-                    Debug.Log($"[AoeAttack] Hit {hit.name}, Damage = {_damagePerTick}");
+                    StopCoroutine(_damageCoroutine);
+                }
+                
+                _damageCoroutine = StartCoroutine(DamageOverTime(other.gameObject));
+            }
+        }
+
+        private void OnTriggerExit2D(Collider2D other)
+        {
+            if (other.TryGetComponent(out Player player) && _isPlayerInside)
+            {
+                _isPlayerInside = false;
+                
+                if (_damageCoroutine != null)
+                {
+                    StopCoroutine(_damageCoroutine);
+                    _damageCoroutine = null;
                 }
             }
         }
-#if UNITY_EDITOR
-        private void OnDrawGizmos()
+        
+        private IEnumerator DamageOverTime(GameObject target)
         {
-            if (_boxCollider == null) return;
-
-            Gizmos.color = Color.red;
-
-            Gizmos.DrawWireCube(transform.parent.position, _boxCollider.bounds.size);
+            while (_isPlayerInside && target != null)
+            {
+                float damage = _boss.Damage * _damageMultiplier;
+                Player.Instance.PlayerHealthSystemCompo.Damage(damage);
+                
+                yield return new WaitForSeconds(_tickInterval);
+            }
+            
+            _damageCoroutine = null;
         }
-#endif
+        private void OnDisable()
+        {
+            if (_damageCoroutine != null)
+            {
+                StopCoroutine(_damageCoroutine);
+                _damageCoroutine = null;
+            }
+            _isPlayerInside = false;
+        }
+        private void OnDestroy()
+        {
+            if (_damageCoroutine != null)
+            {
+                StopCoroutine(_damageCoroutine);
+                _damageCoroutine = null;
+            }
+        }
     }
 }
