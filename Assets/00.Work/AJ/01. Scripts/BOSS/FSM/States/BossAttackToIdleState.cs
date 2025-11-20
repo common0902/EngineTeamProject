@@ -15,6 +15,7 @@
         {
             if (_attack.IsAnimationEnd)
             {
+                _attack.IsAnimationEnd = false;
                 _stateMachine.ChangeState(BossStateType.Idle);
                 return;
             }

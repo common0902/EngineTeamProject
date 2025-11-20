@@ -24,7 +24,7 @@ namespace _00.Work.AJ._01._Scripts.BOSS.FSM.States
         public override void Update()
         {
             _timer += Time.deltaTime;
-            if (_bossAttack.IsAnimationEnd && _timer >= _appearDuration)
+            if (_bossAttack.IsAnimationEnd)
             {
                 _stateMachine.ChangeState(BossStateType.AttackLaser);
             }

@@ -21,6 +21,8 @@ public abstract class EnemyState
     }
     public virtual void Update()
     {
+        if(_enemy.AgentCompo.speed <= 0f)
+            _stateMachine.ChangeState(EnemyStateType.Idle);
         if (_enemy.IsDead)
         {
             _stateMachine.ChangeState(EnemyStateType.Dead);

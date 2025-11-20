@@ -6,6 +6,7 @@ namespace _00.Work.AJ._01._Scripts.BOSS.FSM.States
     public class BossChaseState : BossState
     {
         private float _speed;
+        
         public BossChaseState(Boss boss, string animName, BossStateMachine stateMachine) : base(boss, animName, stateMachine)
         {
             _speed = boss.Speed;
@@ -18,13 +19,15 @@ namespace _00.Work.AJ._01._Scripts.BOSS.FSM.States
         public override void Update()
         {
             base.Update();
-            Vector2 direction = (_boss.Target.position - _boss.transform.position).normalized;
-            _boss.RbCompo.linearVelocity = direction * _speed;
+            
             if (_boss.CheckAttackRange())
             {
                 _stateMachine.ChangeState(_boss.CurrentType);
                 return;
             }
+            
+            Vector2 direction = (_boss.Target.position - _boss.transform.position).normalized;
+            _boss.RbCompo.linearVelocity = direction * _speed;
         }
         public override void Exit()
         {

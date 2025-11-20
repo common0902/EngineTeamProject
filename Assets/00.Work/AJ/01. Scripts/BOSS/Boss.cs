@@ -15,10 +15,10 @@ namespace _00.Work.AJ._01._Scripts.BOSS
         [SerializeField] public LayerMask playerMask;
         [SerializeField] public LayerMask whatIsWall;
         [field:SerializeField] public float Speed { get; set; } = 1f;
-        [field:SerializeField]public float ChaseRange { get; private set; }
-        [field:SerializeField]public float AttackRange { get; private set; }
-        public List<BossStateType> Patterns { get; set; } = new() { BossStateType.AttackMelee, BossStateType.AttackDash, BossStateType.AttackSummon, BossStateType.AttackRange };
-        public BossStateType CurrentType { get; set; } = BossStateType.AttackMelee;
+        [field:SerializeField] public float ChaseRange { get; private set; }
+        [field:SerializeField] public float AttackRange { get; private set; }
+        [field:SerializeField] public List<BossStateType> Patterns { get; set; }= new() { BossStateType.AttackMelee, BossStateType.AttackDash, BossStateType.AttackSummon, BossStateType.AttackRange };
+        [field:SerializeField] public BossStateType CurrentType { get; set; } = BossStateType.AttackMelee;
         public GameObject[] summonPrefabs;
         public GameObject white;
         public GameObject laserPoint;
@@ -29,6 +29,8 @@ namespace _00.Work.AJ._01._Scripts.BOSS
         [field: SerializeField] public Transform CenterPos { get; private set; }
         [field: SerializeField] public GameObject Bomb { get; private set; }
         [field: SerializeField] public SpriteRenderer RangeSprite { get; set; }
+        [field: SerializeField] public GameObject AoeSprite { get; private set; }
+        [field: SerializeField] public GameObject Aoe { get; private set; }
 
         #region Components
         [field:SerializeField]public WayPoints WayPoints { get; private set; }
@@ -53,7 +55,7 @@ namespace _00.Work.AJ._01._Scripts.BOSS
             HealthCompo = GetComponent<HealthSystem>();
             Target = FindAnyObjectByType<Player>().transform;
             WayPoints = FindAnyObjectByType<WayPoints>().GetComponent<WayPoints>();
-            
+            Patterns = new() { BossStateType.AttackMelee, BossStateType.AttackDash, BossStateType.AttackSummon, BossStateType.AttackRange };
         }
 
         public bool CheckChaseRange()

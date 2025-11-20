@@ -14,7 +14,7 @@ namespace _00.Work.AJ._01._Scripts.BOSS.FSM.States.AttackStates
         {
             base.Enter();
             _boss.RbCompo.linearVelocity = Vector2.zero;
-            //Debug.Log("Melee");
+            Debug.Log("Melee");
         }
 
         public override void Update()
@@ -22,6 +22,7 @@ namespace _00.Work.AJ._01._Scripts.BOSS.FSM.States.AttackStates
             base.Update();
             if (_bossAttack.IsAnimationEnd)
             {
+                Debug.Log("End");
                 _bossAttack.IsAnimationEnd = false;
                 _stateMachine.ChangeState(BossStateType.ReturnToIdle);
             }

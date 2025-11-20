@@ -18,8 +18,9 @@ public class EnemyChaseState : EnemyState
     public override void Enter()
     {
         base.Enter();
+        if(_enemy.AgentCompo.speed == 0f)
+            _stateMachine.ChangeState(EnemyStateType.Idle);
         _enemy.ChangeFlip(true);
-        _enemy.AgentCompo.speed = _enemy.enemySO.speed;
 
         if (!_enemy.enemySO.useBoxRange)
             _enemy.AgentCompo.stoppingDistance = _enemy.AttackRange;

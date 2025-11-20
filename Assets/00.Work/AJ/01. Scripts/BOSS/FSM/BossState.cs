@@ -17,6 +17,11 @@ namespace _00.Work.AJ._01._Scripts.BOSS.FSM
         public virtual void Enter()
         {
             _boss.AnimCompo.SetBool(_animHash, true);
+            var attack = _boss.GetComponent<BossAttack>();
+            if (attack != null)
+            {
+                attack.IsAnimationEnd = false;
+            }
         }
         public virtual void Update()
         {

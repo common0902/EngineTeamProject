@@ -9,6 +9,7 @@ namespace _00.Work.AJ._01._Scripts.BOSS.FSM.States
         private BossAttack _bossAttack;
         private float _timer;
         private float _vanishDuration = 2f;
+        private Sequence _sequence;
         public BossVanishState(Boss boss, string animName, BossStateMachine stateMachine) 
             : base(boss, animName, stateMachine)
         {
@@ -21,18 +22,22 @@ namespace _00.Work.AJ._01._Scripts.BOSS.FSM.States
             base.Enter();
             Debug.Log("Vanish");
             _boss.RbCompo.linearVelocity = Vector2.zero;
-            
+
+            _boss.HealthCompo.Invincibility = true;
             _animator.OnVanishTrigger += OnVanishComplete;
         }
 
         private void OnVanishComplete()
         {
+            _sequence = DOTween.Sequence();
             MoveToSpecialPosition();
         }
 
         private void MoveToSpecialPosition()
         {
-            _boss.transform.DOMove(_boss.CenterPos.position + Vector3.up * 10, 2f);
+            _sequence.Append(_boss.transform.DOMove(_boss.CenterPos.position + Vector3.up * 50, 1.5f));
+            _sequence.Append(_boss.transform.DOMove(_boss.CenterPos.position + Vector3.up * 10, 1.5f));
+            _sequence.JoinCallback(() => _boss.transform.localScale = new Vector3(3, 3, 3));
         }
 
         public override void Update()

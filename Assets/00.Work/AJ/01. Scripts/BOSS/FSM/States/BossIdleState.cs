@@ -11,13 +11,13 @@ namespace _00.Work.AJ._01._Scripts.BOSS.FSM.States
         public BossIdleState(Boss boss, string animName, BossStateMachine stateMachine) : base(boss, animName,
             stateMachine)
         {
-
+            
         }
 
         public override void Enter()
         {
             base.Enter();
-            if (!_boss.HasStarted)
+            if (!_boss.HasStarted && !_boss.Phase3Executed)
             {
                 _waitTime = Random.Range(0f, 1f);
                 _stateMachine.ChangeState(BossStateType.Chase);
@@ -33,12 +33,13 @@ namespace _00.Work.AJ._01._Scripts.BOSS.FSM.States
         public override void Update()
         {
             base.Update();
-            
-            Debug.Log($"Current Pattern : {_boss.CurrentType}");
+            if (_boss.IsDead || _boss.Phase3Executed) return;
+            HandlePhase();
             
             _timer += Time.deltaTime;
             if (_timer > _waitTime)
             {
+                Debug.Log("Hello");
                 DecideNextPattern();
                 _timer = 0f;
             }
@@ -50,35 +51,38 @@ namespace _00.Work.AJ._01._Scripts.BOSS.FSM.States
 
         private void DecideNextPattern()
         {
-            HandlePhase();
-            
             if (_boss.Phase3Executed)
+            {
                 return;
+            }
             
             var pool = _boss.Patterns;
             BossStateType next = pool[Random.Range(0, pool.Count)];
             Debug.Log($"Next Pattern : {next}");
-            _boss.CurrentType = next;
+            
             if (next == BossStateType.AttackBomb)
             {
+                _boss.CurrentType = next;
                 _stateMachine.ChangeState(BossStateType.AttackBomb);
                 return;
             }
             if (next == BossStateType.AttackLaser)
             {
+                _boss.CurrentType = next;
                 _stateMachine.ChangeState(BossStateType.Vanish);
                 return;
             }
         
             if (next == BossStateType.AttackMelee || next == BossStateType.AttackDash)
             {
-                _boss.HasStarted = false;
+                _boss.CurrentType = next;
                 _stateMachine.ChangeState(BossStateType.Chase);
                 return;
             }
 
             if (next == BossStateType.AttackRange || next == BossStateType.AttackSummon)
             {
+                _boss.CurrentType = next;
                 _stateMachine.ChangeState(next);
                 return;
             }
@@ -98,6 +102,7 @@ namespace _00.Work.AJ._01._Scripts.BOSS.FSM.States
             if (!_boss.Phase3Executed && hpRate <= 10f)
             {
                 _boss.Phase3Executed = true;
+                _boss.CurrentType = BossStateType.AttackAOE;
                 _stateMachine.ChangeState(BossStateType.AttackAOE); 
                 return;
             }

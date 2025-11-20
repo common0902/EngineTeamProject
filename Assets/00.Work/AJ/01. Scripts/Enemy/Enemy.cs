@@ -49,6 +49,7 @@ public class Enemy : Agent, IPoolable
         Target = FindAnyObjectByType<Player>().transform;
         WayPoints = FindAnyObjectByType<WayPoints>().GetComponent<WayPoints>();
         //BtAgent = GetComponent<BehaviorGraphAgent>();
+        _speed = AgentCompo.speed;
 
         AgentCompo.enabled = true;
         AgentCompo.updateRotation = false;
@@ -149,6 +150,7 @@ public class Enemy : Agent, IPoolable
 
     private void OnDrawGizmos()
     {
+        if (enemySO == null) return;
         if (enemySO.useBoxRange)
         {
             Gizmos.color = Color.green;

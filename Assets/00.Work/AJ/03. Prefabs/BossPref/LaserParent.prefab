@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 377550093626517144}
   - component: {fileID: 3534576981047432137}
   - component: {fileID: 7302105753464734378}
-  - component: {fileID: 4644543616078593171}
-  - component: {fileID: 5439944633687364677}
-  m_Layer: 9
+  - component: {fileID: 604639604443889739}
+  - component: {fileID: 6094008069697893213}
+  m_Layer: 8
   m_Name: Tail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.5, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1.6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7085648566673618148}
@@ -112,23 +112,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &4644543616078593171
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2997970101138806351}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b69f6c910bd832b48a2ca3c150b77adc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _shotSpeed: 0
-  _damage: 0
-  _duration: 0
-  _sound: {fileID: 0}
---- !u!61 &5439944633687364677
+--- !u!61 &604639604443889739
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -162,7 +146,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.000459522, y: 0.0005850196}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -172,8 +156,20 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 0.625}
+  m_Size: {x: 1.0064666, y: 0.6339444}
   m_EdgeRadius: 0
+--- !u!114 &6094008069697893213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2997970101138806351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70fea7eb092f2534cabb9c891392d5ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3341556825371852382
 GameObject:
   m_ObjectHideFlags: 0
@@ -216,7 +212,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6565006588778538266}
   - component: {fileID: 6172287810183503263}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LaserParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -252,3 +248,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   laser: {fileID: 3341556825371852382}
+  damageTickInterval: 0.3
+  laserWidth: 0.7
