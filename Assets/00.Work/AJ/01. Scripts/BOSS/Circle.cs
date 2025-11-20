@@ -62,6 +62,12 @@ namespace _00.Work.AJ._01._Scripts.BOSS
             
             _damageCoroutine = null;
         }
+
+        private void Update()
+        {
+            transform.rotation *= Quaternion.Euler(0, 0, 5f);
+        }
+
         private void OnDisable()
         {
             if (_damageCoroutine != null)

@@ -49,7 +49,7 @@ namespace _00.Work.AJ._01._Scripts.BOSS.FSM.States
                     _whiteImg.DOFade(0f, 1f).OnComplete(() =>
                     {
                         Player.Instance.PlayerMoveCompo._isCasting = false;
-                        _whiteRect.transform.position = Camera.main.WorldToScreenPoint(new Vector3(0f, 0f, 0f));
+                        _whiteRect.transform.position = Camera.main.WorldToScreenPoint(Vector3.zero);
                         _whiteRect.localScale = new Vector3(1f, 1f, 1f);
                         Object.Destroy(_boss.gameObject, 3f);
                     });

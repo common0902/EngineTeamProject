@@ -6,6 +6,7 @@ using Unity.Cinemachine;
 using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;
+using Random = UnityEngine.Random;
 
 namespace _00.Work.AJ._01._Scripts.BOSS.Attacks
 {
@@ -15,6 +16,7 @@ namespace _00.Work.AJ._01._Scripts.BOSS.Attacks
         private Sequence _sequence;
         private List<Transform> _laserList = new List<Transform>();
         private List<GameObject> _laserPointInstances = new List<GameObject>();
+        private float _waitTime = 1f;
         public void Initialize(Boss boss)
         {
             _boss = boss;
@@ -24,7 +26,10 @@ namespace _00.Work.AJ._01._Scripts.BOSS.Attacks
         public IEnumerator ExecuteAttack(Vector2 direction)
         {
             Debug.Log("Laser");
-            int rand = 3;
+            int rand = Random.Range(3, 6);
+            float totalHeight = 10f;
+            float spacing = (rand > 1) ? totalHeight / (rand - 1) : 0f;
+            float startOffset = -totalHeight / 2f;
             for (int i = 0; i < rand; i++)
             {
                 GameObject obj = Object.Instantiate(_boss.laserPoint, _boss.transform.position, Quaternion.identity);
@@ -35,13 +40,13 @@ namespace _00.Work.AJ._01._Scripts.BOSS.Attacks
 
             for(int i = 0; i < rand; i++)
             {
-                float yOffset = (1 - i) * 5f;
+                float yOffset = startOffset + spacing * i;
                 _laserList[i].transform.position = _boss.CenterPos.position + new Vector3(0, yOffset, 0);
                 Debug.Log("LaserRangePositionSet");
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(.5f);
             }
 
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(_waitTime);
 
             for (int i = 0; i < rand; i++)
             {
@@ -60,8 +65,9 @@ namespace _00.Work.AJ._01._Scripts.BOSS.Attacks
                         Object.Destroy(_laserPointInstances[currentIndex]);
                     }
 
+                    _boss.transform.DOScale(Vector3.one * 1.5f, 0.5f);
                     _boss.HealthCompo.Invincibility = false;
-                };             
+                };
             }
         }
 

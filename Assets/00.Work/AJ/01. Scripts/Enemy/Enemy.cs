@@ -23,7 +23,7 @@ public class Enemy : Agent, IPoolable
     public bool IsDead { get; set; }
     public bool IsHit { get; set; } = false;
     public ParticleSystem AssashinVfx { get; set; }
-    public float speed;
+    public float _speed;
 
     private bool _isCheckingDespawn = false;
 
@@ -49,7 +49,7 @@ public class Enemy : Agent, IPoolable
         Target = FindAnyObjectByType<Player>().transform;
         WayPoints = FindAnyObjectByType<WayPoints>().GetComponent<WayPoints>();
         //BtAgent = GetComponent<BehaviorGraphAgent>();
-        speed = AgentCompo.speed;
+        _speed = AgentCompo.speed;
 
         AgentCompo.enabled = true;
         AgentCompo.updateRotation = false;

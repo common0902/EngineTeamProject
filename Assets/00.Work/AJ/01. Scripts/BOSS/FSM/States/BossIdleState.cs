@@ -17,7 +17,7 @@ namespace _00.Work.AJ._01._Scripts.BOSS.FSM.States
         public override void Enter()
         {
             base.Enter();
-            if (!_boss.HasStarted)
+            if (!_boss.HasStarted && !_boss.Phase3Executed)
             {
                 _waitTime = Random.Range(0f, 1f);
                 _stateMachine.ChangeState(BossStateType.Chase);
@@ -33,10 +33,8 @@ namespace _00.Work.AJ._01._Scripts.BOSS.FSM.States
         public override void Update()
         {
             base.Update();
-            if (_boss.IsDead) return;
+            if (_boss.IsDead || _boss.Phase3Executed) return;
             HandlePhase();
-            
-            Debug.Log($"Current Pattern : {_boss.CurrentType}");
             
             _timer += Time.deltaTime;
             if (_timer > _waitTime)
@@ -53,8 +51,6 @@ namespace _00.Work.AJ._01._Scripts.BOSS.FSM.States
 
         private void DecideNextPattern()
         {
-            HandlePhase();
-
             if (_boss.Phase3Executed)
             {
                 return;
