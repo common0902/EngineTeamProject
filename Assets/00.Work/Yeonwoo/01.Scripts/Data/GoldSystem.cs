@@ -92,7 +92,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.Data
                 
                 int giveAmount = amountPerDrop + ((i == split - 1) ? rest : 0);
 
-                drop.Setup(targetWorld, this, giveAmount);
+                drop.Setup(goldTarget, this, giveAmount);
             }
         }
     }
