@@ -193,7 +193,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -549116473
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 10
   m_Sprite: {fileID: -150889491768633645, guid: b0189bbbf7ebf8048b780c3d22c1968b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -468,9 +468,10 @@ GameObject:
   - component: {fileID: 7625348128515076318}
   - component: {fileID: 6281791438683811309}
   - component: {fileID: 3528823426988526535}
+  - component: {fileID: 4932204728751306273}
   m_Layer: 8
   m_Name: Boss
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -507,6 +508,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Health>k__BackingField: 0
   maxHealth: 1000
+  _isCounter: 0
 --- !u!114 &7541671573637571610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -557,7 +559,13 @@ MonoBehaviour:
   - {fileID: 6143283685880891309, guid: 05ec177b7066628449aa80a05df2b710, type: 3}
   - {fileID: 6107684666727283772, guid: 7c6d269c446cd1f46842b20c2868dbc0, type: 3}
   - {fileID: 5796770667258720552, guid: 8ebbe440af7727741bd0964db59f7bf6, type: 3}
+  white: {fileID: 0}
+  laserPoint: {fileID: 0}
+  laserPrefab: {fileID: 0}
   <CurrentSummonCount>k__BackingField: 0
+  <CenterPos>k__BackingField: {fileID: 0}
+  <Bomb>k__BackingField: {fileID: 0}
+  <RangeSprite>k__BackingField: {fileID: 0}
   <WayPoints>k__BackingField: {fileID: 0}
   <Damage>k__BackingField: 0
   <BulletPrefab>k__BackingField: {fileID: 2800715699890370306, guid: 1e820e269beaf254797fab2cdae2d4f2, type: 3}
@@ -650,6 +658,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &4932204728751306273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5000473184932603712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1ab860e505f68441bf1291e51ec5cfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7628887098079804327
 GameObject:
   m_ObjectHideFlags: 0

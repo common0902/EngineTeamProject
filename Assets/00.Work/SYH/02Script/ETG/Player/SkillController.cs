@@ -102,7 +102,6 @@ public class SkillController : MonoBehaviour
             print("마나 부족"); 
             return; 
         }
-
         if (onOff) Skills[0].Active();
         else Skills[0].DisActive();
             print("스킬 사용");
