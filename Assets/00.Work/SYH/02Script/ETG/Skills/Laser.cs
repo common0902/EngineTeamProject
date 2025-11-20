@@ -22,6 +22,10 @@ public class Laser : Skill
     protected override void UseSkill()
     {
         base.UseSkill();
+        if (!SkillUtility.CanUseSkill(Cost))
+        {
+            DisActive();
+        }
         if(_prefab.TryGetComponent(out LaserParentPrefab prefab)) prefab.Attack();
     }
 }

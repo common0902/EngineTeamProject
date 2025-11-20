@@ -10,6 +10,7 @@ public class BeamPrefab : SkillPrefab
     CircleCollider2D _collider;
     readonly int _endHash = Animator.StringToHash("End");
     [SerializeField] bool _canMove;
+    [SerializeField] float _bondageTime;
     private void Awake()
     {
         _ani = GetComponent<Animator>();
@@ -34,6 +35,7 @@ public class BeamPrefab : SkillPrefab
             foreach (HealthSystem i in _hitEnemys)
             {
                 i.Damage(SkillUtility.CalcurateDamage(_damage));
+                i.GetComponent<DebuffController>().SetDebuff(Debuffs.Bondage, _bondageTime, 0);
                 if (i.gameObject == null)
                 {
                     _hitEnemys.Remove(i);

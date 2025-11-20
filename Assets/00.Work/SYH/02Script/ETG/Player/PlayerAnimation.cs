@@ -55,10 +55,7 @@ public class PlayerAnimation : MonoBehaviour
     }
     public void Casting()
     {
-        print(_spriteContainer.Containers);
-        print(_spriteContainer.Containers[_animatorNum]);
-        print(_spriteContainer.Containers[_animatorNum].Sprites[_casting]);
-        _renderer.sprite = _spriteContainer.Containers[_animatorNum].Sprites[_casting];
+        _renderer.sprite = _spriteContainer .Containers[_animatorNum].Sprites[_casting];
         _ani.enabled = false;   
     }
     public void CastingEnd()

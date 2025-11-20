@@ -22,6 +22,10 @@ public class Beam : Skill
     protected override void UseSkill()
     {
         base.UseSkill();
+        if (!SkillUtility.CanUseSkill(Cost))
+        {
+            DisActive();
+        }
         _prefab.GetComponent<BeamPrefab>().Attack();
     }
 }

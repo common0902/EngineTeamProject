@@ -14,7 +14,6 @@ public class PlayerSpriteContainerSO : ScriptableObject
         try
         {
             _animator = Resources.Load<RuntimeAnimatorController>($"PlayerRuntimeAnimatorControlleres/{_name}");
-            Debug.Log(_animator);
         }
         catch
         {
