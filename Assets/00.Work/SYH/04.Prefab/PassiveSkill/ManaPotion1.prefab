@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 3797941381569598851}
   - component: {fileID: 3075875612259662449}
   - component: {fileID: 674729459434903611}
+  - component: {fileID: -4639591671343661095}
   m_Layer: 7
   m_Name: ManaPotion1
   m_TagString: Untagged
@@ -133,10 +134,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c60be52efabb7b4ba129b59853c6976, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <StatusType>k__BackingField: 2
-  <StatusValue>k__BackingField: 100
-  <SkillSprite>k__BackingField: {fileID: -3065595510956808684, guid: 4e88795c2daf6d5468b3869d22332ab9, type: 3}
-  <Name>k__BackingField: DmgPotion
+  <Data>k__BackingField: {fileID: 11400000, guid: 8c8676d523930174aab9e87e6c967b81, type: 2}
+  _skillListSO: {fileID: 11400000, guid: c957f6b0ee6057647ae90649443e9057, type: 2}
+  _deviation: 0
+  _itemName: 
 --- !u!58 &674729459434903611
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -173,3 +174,17 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
+--- !u!114 &-4639591671343661095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8094799656766972596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f5a92be782c49c69495129230a333b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 2
+  passiveData: {fileID: 11400000, guid: 8c8676d523930174aab9e87e6c967b81, type: 2}

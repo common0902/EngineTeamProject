@@ -77,7 +77,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -549116473
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -1963603097434476661, guid: e9f5877461f363644b2e39dd41d44ef2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -153,6 +153,7 @@ GameObject:
   - component: {fileID: 7198866531478194757}
   - component: {fileID: 3874715545800999019}
   - component: {fileID: 6811873611198119299}
+  - component: {fileID: 4691221010348538671}
   m_Layer: 8
   m_Name: DarkMonster2
   m_TagString: Enemy
@@ -275,8 +276,7 @@ MonoBehaviour:
   whatIsWall:
     serializedVersion: 2
     m_Bits: 2147483648
-  autoDespawnWhenOutScreen: 1
-  outScreenDespawnDelay: 10
+  _speed: 0
   <WayPoints>k__BackingField: {fileID: 0}
 --- !u!114 &6354277910590423440
 MonoBehaviour:
@@ -317,6 +317,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Health>k__BackingField: 0
   maxHealth: 65
+  _isCounter: 0
+  _isMarked: 0
+  _markedValue: 0
 --- !u!195 &6811873611198119299
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -339,3 +342,15 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 0
+--- !u!114 &4691221010348538671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8760366041113459609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1ab860e505f68441bf1291e51ec5cfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

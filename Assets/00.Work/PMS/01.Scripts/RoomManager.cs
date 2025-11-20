@@ -1,13 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using DG.Tweening;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class RoomManager : MonoBehaviour
 {
+    [Header("normal Room Prefabs")]
     [SerializeField] private GameObject startRoomPrefab;
-    [SerializeField] private GameObject[] bossRoomPrefab;
+    [SerializeField] private GameObject portalRoomPrefab;
+    [SerializeField] private GameObject bossRoomPrefab;
     [SerializeField] private GameObject[] goldRoomPrefab;
     [SerializeField] private GameObject[] roomPrefab;
     [SerializeField] private GameObject[] shopRoomPrefab;
+
+    [Header("purple Room Prefabs")]
+    
 
     [Header("room num")]
     [SerializeField] private int maxRooms = 15;
@@ -30,12 +36,16 @@ public class RoomManager : MonoBehaviour
     private int roomCount;
 
     private bool generationComplete = false;
-    [Header("boss room")]
-    [SerializeField] private bool bossRoomGeneration = false;
+
+    [Header("last room")]
+    [SerializeField] private bool lastRoomGeneration = true;
+    private bool lastRoomCreated = false;
 
     [Header("room index")]
     public int goldRoomIndex = 0;
     public int shopRoomIndex = 0;
+
+    public bool BossRoomTurn { get; set; } = false;
 
     private void Start()
     {
@@ -70,9 +80,16 @@ public class RoomManager : MonoBehaviour
             Debug.Log("RoomCount was less than the minimum amount of rooms. Trying again ");
             RegenerateRooms();
         }
-        else if (bossRoomGeneration)
+        else if (lastRoomGeneration)
         {
-            BossRoomGeneration();
+            if (roomQueue.Count > 0)
+                LastRoomGeneration();
+            else
+                RegenerateRooms();
+        }
+        else if (!lastRoomCreated)  
+        {
+            RegenerateRooms();
         }
         else if (!generationComplete)
         {
@@ -82,8 +99,9 @@ public class RoomManager : MonoBehaviour
         
     }
 
-    private void BossRoomGeneration()
+    private void LastRoomGeneration()
     {
+
         Vector2Int roomIndex = roomQueue.Dequeue();
         int gridX = roomIndex.x;
         int gridY = roomIndex.y;
@@ -91,26 +109,15 @@ public class RoomManager : MonoBehaviour
         if (roomGrid[gridX, gridY] != 1)
             return;
 
-        if (TryGenerateBossRoom(new Vector2Int(gridX - 1, gridY)))
-        {
-            bossRoomGeneration = false;
+        if (TryGenerateLastRoom(new Vector2Int(gridX - 1, gridY)))
             return;
-        }
-        else if (TryGenerateBossRoom(new Vector2Int(gridX + 1, gridY)))
-        {
-            bossRoomGeneration = false;
+        else if (TryGenerateLastRoom(new Vector2Int(gridX + 1, gridY)))
             return;
-        }
-        else if (TryGenerateBossRoom(new Vector2Int(gridX, gridY - 1)))
-        {
-            bossRoomGeneration = false;
+        else if (TryGenerateLastRoom(new Vector2Int(gridX, gridY - 1)))
             return;
-        }
-        else if (TryGenerateBossRoom(new Vector2Int(gridX, gridY + 1)))
-        {
-            bossRoomGeneration = false;
+        else if (TryGenerateLastRoom(new Vector2Int(gridX, gridY + 1)))
             return;
-        }
+        
     }
 
     private void RandomIndex()
@@ -118,7 +125,6 @@ public class RoomManager : MonoBehaviour
         int offSet = maxRooms / 2;
         goldRoomIndex = Random.Range(2, offSet);
         shopRoomIndex = Random.Range(offSet, offSet * 2);
-
     }
     
     private void StartRoomGenerationFromRoom(Vector2Int roomIndex)
@@ -138,7 +144,7 @@ public class RoomManager : MonoBehaviour
         roomObjects.Add(initialRoom);
     }
 
-    private bool TryGenerateBossRoom(Vector2Int roomIndex)
+    private bool TryGenerateLastRoom(Vector2Int roomIndex)
     {
         int x = roomIndex.x;
         int y = roomIndex.y;
@@ -152,13 +158,21 @@ public class RoomManager : MonoBehaviour
         if (roomGrid[x, y] != 0)
             return false;
 
-        int rand = Random.Range(0, bossRoomPrefab.Length);
-        var bossRoom = Instantiate(bossRoomPrefab[rand], GetPositionFromGridIndex(roomIndex), Quaternion.identity);
+        GameObject lastRoom;
 
-        bossRoom.GetComponent<Room>().RoomIndex = roomIndex;
-        roomObjects.Add(bossRoom);
+        if (BossRoomTurn)
+            lastRoom = Instantiate(bossRoomPrefab, GetPositionFromGridIndex(roomIndex), Quaternion.identity);
+        else
+            lastRoom = Instantiate(portalRoomPrefab, GetPositionFromGridIndex(roomIndex), Quaternion.identity);
 
-        OpenDoors(bossRoom, x, y);
+
+        lastRoom.GetComponent<Room>().RoomIndex = roomIndex;
+        roomObjects.Add(lastRoom);
+
+        OpenDoors(lastRoom, x, y);
+
+        lastRoomGeneration = false;
+        lastRoomCreated = true;
 
         return true;
     }
@@ -229,6 +243,8 @@ public class RoomManager : MonoBehaviour
         roomQueue.Clear();
         roomCount = 0;
         generationComplete = false;
+        lastRoomGeneration = true;
+        lastRoomCreated = false;
 
         Vector2Int initialRoomIndex = new Vector2Int(gridSizeX / 2, gridSizeY / 2);
         StartRoomGenerationFromRoom(initialRoomIndex);
@@ -258,6 +274,9 @@ public class RoomManager : MonoBehaviour
 
                 newDoor.targetRoomIndex = leftRoomScript.RoomIndex;
                 leftDoor.targetRoomIndex = newRoomScript.RoomIndex;
+
+                newDoor.RefreshMarkByConnectedRoom();
+                leftDoor.RefreshMarkByConnectedRoom();
             }
         }
 
@@ -274,6 +293,9 @@ public class RoomManager : MonoBehaviour
 
                 newDoor.targetRoomIndex = rightRoomScript.RoomIndex;
                 rightDoor.targetRoomIndex = newRoomScript.RoomIndex;
+
+                newDoor.RefreshMarkByConnectedRoom();
+                rightDoor.RefreshMarkByConnectedRoom();
             }
         }
 
@@ -290,6 +312,9 @@ public class RoomManager : MonoBehaviour
 
                 newDoor.targetRoomIndex = bottomRoomScript.RoomIndex;
                 bottomDoor.targetRoomIndex = newRoomScript.RoomIndex;
+
+                newDoor.RefreshMarkByConnectedRoom();
+                bottomDoor.RefreshMarkByConnectedRoom();
             }
         }
 
@@ -306,6 +331,9 @@ public class RoomManager : MonoBehaviour
 
                 newDoor.targetRoomIndex = topRoomScript.RoomIndex;
                 topDoor.targetRoomIndex = newRoomScript.RoomIndex;
+
+                newDoor.RefreshMarkByConnectedRoom();
+                topDoor.RefreshMarkByConnectedRoom();
             }
         }
     }

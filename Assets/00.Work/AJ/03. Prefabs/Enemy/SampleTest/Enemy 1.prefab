@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 2734596803334514491}
   - component: {fileID: 917317131217081980}
   - component: {fileID: 3470477851575176756}
+  - component: {fileID: -7991158089637536851}
   m_Layer: 8
   m_Name: Enemy 1
   m_TagString: Enemy
@@ -139,8 +140,8 @@ MonoBehaviour:
   whatIsWall:
     serializedVersion: 2
     m_Bits: 2147483648
-  vfx: {fileID: 0}
-  <wayPoints>k__BackingField: {fileID: 0}
+  _speed: 0
+  <WayPoints>k__BackingField: {fileID: 0}
 --- !u!114 &3592595520242275394
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,7 +154,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b3f67ab3b784c441aa0c35812a4b33a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isAnimationEnd: 0
 --- !u!114 &2734596803334514491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,6 +181,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Health>k__BackingField: 0
   maxHealth: 30
+  _isCounter: 0
+  _isMarked: 0
+  _markedValue: 0
 --- !u!195 &3470477851575176756
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -203,6 +206,18 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &-7991158089637536851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 486401526572816636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1ab860e505f68441bf1291e51ec5cfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5429824734834786172
 GameObject:
   m_ObjectHideFlags: 0

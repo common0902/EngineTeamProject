@@ -45,6 +45,7 @@ public abstract class Skill : MonoBehaviour
             if (_waitTime >= CoolTime)
             {
                 if (!SkillUtility.CanUseSkill(Cost)) return;
+                Player.Instance.PlayerStatusCompo.Mana -= Cost;
                 UseSkill();
                 _waitTime -= CoolTime;
             }

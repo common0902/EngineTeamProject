@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7852652380805626395}
   - component: {fileID: 8457973533615018272}
   - component: {fileID: 7768047028277035357}
+  - component: {fileID: 3458461142950909705}
   m_Layer: 3
   m_Name: StarStrike
   m_TagString: Untagged
@@ -85,7 +86,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _waitTime: 0
-  <Data>k__BackingField: {fileID: 0}
+  <Data>k__BackingField: {fileID: 11400000, guid: 41f2480ae4cc7474ebd782f5425c43e3, type: 2}
   <Cost>k__BackingField: 0
   <PastDelay>k__BackingField: 0
   <CoolTime>k__BackingField: 140
@@ -97,6 +98,20 @@ MonoBehaviour:
   <SkillPrefab>k__BackingField: {fileID: 4416300278765972602, guid: 2ce67d9867cad5949849f2d4af5837c3, type: 3}
   _image: {fileID: 0}
   _bigStar: {fileID: 8993815033291963567, guid: 3a5ef85185296a640be32f55254e0479, type: 3}
+--- !u!114 &3458461142950909705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1718860211512986008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d000b683b0246d095c629fd6e508a81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 2
+  skillData: {fileID: 11400000, guid: 41f2480ae4cc7474ebd782f5425c43e3, type: 2}
 --- !u!1 &5594322667739221250
 GameObject:
   m_ObjectHideFlags: 0
@@ -172,7 +187,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -10
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
@@ -259,7 +274,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -9
   m_Sprite: {fileID: 21300000, guid: b1b34f83a987b4218835429db886f398, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0

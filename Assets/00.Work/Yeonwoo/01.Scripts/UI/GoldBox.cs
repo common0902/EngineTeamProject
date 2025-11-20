@@ -12,7 +12,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
         {
             if (items == null || items.Count == 0)
             {
-                Debug.LogWarning($"[{nameof(DefaultBox)}] 아이템 리스트가 비어 있습니다.");
+                Debug.LogWarning($"[{nameof(GoldBox)}] 아이템 리스트가 비어 있습니다.");
                 return;
             }
 

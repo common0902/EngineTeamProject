@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 6177484995291458961}
   - component: {fileID: 8531937127675613921}
   - component: {fileID: 1046359797595247957}
+  - component: {fileID: -6096443408417388499}
   m_Layer: 8
   m_Name: Sword
   m_TagString: Enemy
@@ -127,8 +128,7 @@ MonoBehaviour:
   whatIsWall:
     serializedVersion: 2
     m_Bits: 2147483648
-  autoDespawnWhenOutScreen: 1
-  outScreenDespawnDelay: 10
+  _speed: 0
   <WayPoints>k__BackingField: {fileID: 0}
 --- !u!114 &7222837407466117086
 MonoBehaviour:
@@ -181,6 +181,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Health>k__BackingField: 0
   maxHealth: 150
+  _isCounter: 0
+  _isMarked: 0
+  _markedValue: 0
 --- !u!195 &1046359797595247957
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -203,6 +206,18 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 0
+--- !u!114 &-6096443408417388499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6704316854911615356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1ab860e505f68441bf1291e51ec5cfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6988219907248879454
 GameObject:
   m_ObjectHideFlags: 0
@@ -280,7 +295,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -549116473
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 712035800519618848, guid: ee6874ad1da9de34d8fa04e580462e12, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

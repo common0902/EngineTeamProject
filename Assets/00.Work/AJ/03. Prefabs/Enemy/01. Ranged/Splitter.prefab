@@ -48,6 +48,9 @@ GameObject:
   - component: {fileID: 8306066689905671225}
   - component: {fileID: 3924762264591160849}
   - component: {fileID: 1969125914014851890}
+  - component: {fileID: -2362055944668116310}
+  - component: {fileID: 457308803261956932}
+  - component: {fileID: -301283932552403453}
   m_Layer: 8
   m_Name: Splitter
   m_TagString: Enemy
@@ -171,8 +174,7 @@ MonoBehaviour:
   whatIsWall:
     serializedVersion: 2
     m_Bits: 2147483648
-  autoDespawnWhenOutScreen: 1
-  outScreenDespawnDelay: 10
+  _speed: 0
   <WayPoints>k__BackingField: {fileID: 0}
 --- !u!114 &4320415626132484012
 MonoBehaviour:
@@ -213,6 +215,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Health>k__BackingField: 0
   maxHealth: 45
+  _isCounter: 0
+  _isMarked: 0
+  _markedValue: 0
 --- !u!195 &1969125914014851890
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -235,6 +240,42 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 0
+--- !u!114 &-2362055944668116310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2202816712704159238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1ab860e505f68441bf1291e51ec5cfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &457308803261956932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2202816712704159238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1ab860e505f68441bf1291e51ec5cfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-301283932552403453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2202816712704159238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1ab860e505f68441bf1291e51ec5cfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8381576020619421374
 GameObject:
   m_ObjectHideFlags: 0
@@ -312,7 +353,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -549116473
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -2262434749787313899, guid: 1e98a3ca80e95154eba7a21e4649c0d4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

@@ -516,11 +516,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _waitTime: 0
+  <Data>k__BackingField: {fileID: 11400000, guid: 9b52553b9126744428911179593d7ebe, type: 2}
   <Cost>k__BackingField: 10
   <PastDelay>k__BackingField: 0
   <CoolTime>k__BackingField: 0.2
   <Name>k__BackingField: FireBall
   <IsActive>k__BackingField: 0
+  <SkillType>k__BackingField: 0
   <ThisSkill>k__BackingField: {fileID: 7434969570136395314}
   <SkillSprite>k__BackingField: {fileID: 8832167503239892954, guid: 1abe93aa1725300469d939abc243aa4b, type: 3}
   <SkillPrefab>k__BackingField: {fileID: 3060115442278459066, guid: 796fbaf185485e74992212f804c6b12c, type: 3}
@@ -572,9 +574,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d000b683b0246d095c629fd6e508a81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameText: {fileID: 3754957468252143109}
-  descriptionText: {fileID: 7534545269859695428}
+  range: 2
   skillData: {fileID: 11400000, guid: 9b52553b9126744428911179593d7ebe, type: 2}
+  newInteractionSkillUI: {fileID: 6913737409342069886, guid: cb57384a0b757304da68f11f3804a930, type: 3}
 --- !u!1 &7367723876864982456
 GameObject:
   m_ObjectHideFlags: 0

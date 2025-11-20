@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using _00.Work.Yeonwoo._01.Scripts.Data;
+using UnityEngine;
 
 namespace _00.Work.Yeonwoo._01.Scripts.Direction
 {
@@ -10,6 +12,11 @@ namespace _00.Work.Yeonwoo._01.Scripts.Direction
         {
             foreach (MonoBehaviour script in controlScripts)
                 script.enabled = false;
+        }
+
+        private void Update()
+        {
+            
         }
 
         public void EnableControls()

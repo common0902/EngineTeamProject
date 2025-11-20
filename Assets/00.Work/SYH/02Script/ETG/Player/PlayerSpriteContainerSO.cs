@@ -9,30 +9,30 @@ public class PlayerSpriteContainerSO : ScriptableObject
     public string[] _strings;
     public Dictionary<string, Sprite> Sprites { get; private set; }
     public RuntimeAnimatorController _animator;
-    private void OnValidate()
-    {
-        try
-        {
-            _animator = Resources.Load<RuntimeAnimatorController>($"PlayerRuntimeAnimatorControlleres/{_name}");
-            Debug.Log(_animator);
-        }
-        catch
-        {
-            Debug.LogError("Failed get _animaror.");
-        }
-        if (Sprites != null) Sprites.Clear();
-        else Sprites = new Dictionary<string, Sprite>();
+    //private void OnValidate()
+    //{
+    //    try
+    //    {
+    //        _animator = Resources.Load<RuntimeAnimatorController>($"PlayerRuntimeAnimatorControlleres/{_name}");
+    //        Debug.Log(_animator);
+    //    }
+    //    catch
+    //    {
+    //        Debug.LogError("Failed get _animaror.");
+    //    }
+    //    if (Sprites != null) Sprites.Clear();
+    //    else Sprites = new Dictionary<string, Sprite>();
 
-        try
-        {
-            for (int i = 0; i < _sprites.Length; i++)
-            {
-                Sprites.Add(_strings[i], _sprites[i]);
-            }
-        }
-        catch
-        {
+    //    try
+    //    {
+    //        for (int i = 0; i < _sprites.Length; i++)
+    //        {
+    //            Sprites.Add(_strings[i], _sprites[i]);
+    //        }
+    //    }
+    //    catch
+    //    {
 
-        }
-    }
+    //    }
+    //}
 }

@@ -164,7 +164,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.9169811, g: 0.5449295, b: 0.33737972, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -185,6 +185,7 @@ GameObject:
   - component: {fileID: 4222764967658784812}
   - component: {fileID: 1550092773315197391}
   - component: {fileID: 5375674487537950560}
+  - component: {fileID: 8086666189528638621}
   m_Layer: 3
   m_Name: Beam
   m_TagString: Untagged
@@ -258,7 +259,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _waitTime: 0
-  <Data>k__BackingField: {fileID: 0}
+  <Data>k__BackingField: {fileID: 11400000, guid: 81854e7432265f849b8b0e87fc8647a3, type: 2}
   <Cost>k__BackingField: 4
   <PastDelay>k__BackingField: 0
   <CoolTime>k__BackingField: 0.5
@@ -268,3 +269,17 @@ MonoBehaviour:
   <ThisSkill>k__BackingField: {fileID: 5375674487537950560}
   <SkillSprite>k__BackingField: {fileID: 0}
   <SkillPrefab>k__BackingField: {fileID: 1762333186924701650, guid: bac04f539678aa0499453ee70183098d, type: 3}
+--- !u!114 &8086666189528638621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7013210023120503833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d000b683b0246d095c629fd6e508a81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 2
+  skillData: {fileID: 11400000, guid: 81854e7432265f849b8b0e87fc8647a3, type: 2}

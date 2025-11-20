@@ -8,10 +8,9 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
     {
         [SerializeField] private PassiveData passiveData;
         
-        protected override void Awake()
+        protected override void OnEnable()
         { 
-            base.Awake();
-            
+            base.OnEnable();
         }
     }
 }

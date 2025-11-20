@@ -99,6 +99,7 @@ GameObject:
   - component: {fileID: 5884970469277497677}
   - component: {fileID: 4034091666744285786}
   - component: {fileID: 2035016818734653003}
+  - component: {fileID: 4267201875802687410}
   m_Layer: 3
   m_Name: Saber
   m_TagString: Untagged
@@ -173,7 +174,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _waitTime: 0
-  <Data>k__BackingField: {fileID: 0}
+  <Data>k__BackingField: {fileID: 11400000, guid: e8b3bf34e9963aa43ac1d6417555eeed, type: 2}
   <Cost>k__BackingField: 0
   <PastDelay>k__BackingField: 0
   <CoolTime>k__BackingField: 0
@@ -197,7 +198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _waitTime: 8
-  <Data>k__BackingField: {fileID: 0}
+  <Data>k__BackingField: {fileID: 11400000, guid: e8b3bf34e9963aa43ac1d6417555eeed, type: 2}
   <Cost>k__BackingField: 0
   <PastDelay>k__BackingField: 0
   <CoolTime>k__BackingField: 8
@@ -208,6 +209,20 @@ MonoBehaviour:
   <SkillSprite>k__BackingField: {fileID: 0}
   <SkillPrefab>k__BackingField: {fileID: 7463496211405912168, guid: 9b49a67e74994694eaa808d7cd0c9abd, type: 3}
   _counterSucessces: 0
+--- !u!114 &4267201875802687410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1364442024458381398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d000b683b0246d095c629fd6e508a81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 2
+  skillData: {fileID: 11400000, guid: e8b3bf34e9963aa43ac1d6417555eeed, type: 2}
 --- !u!1 &3476770878438506993
 GameObject:
   m_ObjectHideFlags: 0
@@ -283,7 +298,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -10
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
@@ -370,7 +385,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: -1911984070639876900, guid: 07e5bfdadcb34d4489a2f3123fea8bfa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
