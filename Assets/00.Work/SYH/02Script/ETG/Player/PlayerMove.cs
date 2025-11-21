@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using _00.Work.Yeonwoo._01.Scripts.UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -22,6 +23,9 @@ public class PlayerMove : MonoBehaviour
 
     Rigidbody2D _rb;
     BoxCollider2D _collider;
+
+    [SerializeField] private DashCoolUI coolUI;
+    
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
@@ -29,6 +33,9 @@ public class PlayerMove : MonoBehaviour
         _collider = GetComponent<BoxCollider2D>();
         _trail.time = 0;
         _waitTime = _dashCooltime;
+        
+        if (coolUI != null && coolUI.CoolTimeImage != null)
+            coolUI.SetFill(_dashCooltime > 0 ? _waitTime / _dashCooltime : 1);
     }
 
     private void Update()
@@ -36,12 +43,16 @@ public class PlayerMove : MonoBehaviour
         if (_waitTime >= _dashCooltime)
         {
             _canDash = true;
+            _waitTime = _dashCooltime;
         }
         else
         {
             _waitTime += Time.deltaTime;
         }
 
+        float fill = _dashCooltime > 0f ? Mathf.Clamp01(_waitTime / _dashCooltime) : 1f;
+        coolUI.SetFill(fill);
+        
         if (_isCasting)
         {
             _rb.linearVelocity = Vector2.zero;
@@ -90,6 +101,7 @@ public class PlayerMove : MonoBehaviour
         _rb.linearVelocity += dir * _dashPower;
         _canDash = false;
         _waitTime = 0;
+        coolUI.SetFill(0);
         yield return null;
         while (Mathf.Abs(_rb.linearVelocityX) + Mathf.Abs(_rb.linearVelocityY) > 2f)
         {

@@ -22,7 +22,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
         {
             SkillControllerCompo.OnChangeSkill += UpdateSkillUI;
             SkillControllerCompo.OnChangeUltimateSkill += UpdateUltimateSkillUI;
-            PassiveControllerCompo.OnTakePasiveSkill += UpdatePassiveSkillUI;
+            //PassiveControllerCompo.OnTakePasiveSkill += UpdatePassiveSkillUI;
 
             UpdateUltimateSkillUI();
             if (newInteractionSkillUI != null)
@@ -95,17 +95,17 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
         }
         
         // 위랑 똑같은 패시브 UI 갱신
-        private void UpdatePassiveSkillUI(PassiveSkill newSkill)
-        {
-            for (int i = 0; i < PassiveSkillUI.Length; i++)
-            {
-                if (PassiveSkillUI[i].HasData == false)
-                {
-                    PassiveSkillUI[i].SetPassiveData(newSkill.Data);
-                    return;
-                }
-            }
-        }
+       //private void UpdatePassiveSkillUI(PassiveSkill newSkill)
+       //{
+       //    for (int i = 0; i < PassiveSkillUI.Length; i++)
+       //    {
+       //        if (PassiveSkillUI[i].HasData == false)
+       //        {
+       //            PassiveSkillUI[i].SetPassiveData(newSkill.Data);
+       //            return;
+       //        }
+       //    }
+       //}
 
         private void UpdateUltimateSkillUI()
         {
@@ -137,7 +137,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
         private void OnDisable()
         {
             SkillControllerCompo.OnChangeSkill -= UpdateSkillUI;
-            PassiveControllerCompo.OnTakePasiveSkill -= UpdatePassiveSkillUI;
+            //PassiveControllerCompo.OnTakePasiveSkill -= UpdatePassiveSkillUI;
             
             newInteractionSkillUI.OnShow -= HandleInteractionSkillUIShown;
             newInteractionSkillUI.OnHide -= HandleInteractionUIHidden;

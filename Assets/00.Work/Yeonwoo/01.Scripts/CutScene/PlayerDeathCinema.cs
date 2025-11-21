@@ -55,9 +55,9 @@ namespace _00.Work.Yeonwoo._01.Scripts.CutScene
             deathSequence.AppendInterval(0.3f);
 
             _spriteRenderer.sortingOrder += 2;
-            deathSequence.Append(_deathImage.DeathImage.DOFade(1f, 1.5f));
+            deathSequence.Append(_deathImage.DeathImage.DOFade(1f, 1.2f));
             
-            deathSequence.Append(transform.DOScale(new Vector3(0f, 0f, 0f),2.5f));
+           
             
             deathSequence.OnComplete(() =>
             {
