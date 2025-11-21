@@ -1,74 +1,132 @@
 ﻿using System;
 using _00.Work.SYH._02Script.ETG;
-using _00.Work.Yeonwoo._01.Scripts.Direction;
-using _00.Work.Yeonwoo._01.Scripts.UI;
 using DG.Tweening;
-using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.UI;
+using _00.Work.Yeonwoo._01.Scripts.Direction;
+using _00.Work.Yeonwoo._01.Scripts.Interfaces;
 
 namespace _00.Work.Yeonwoo._01.Scripts.CutScene
 {
     public class PlayerDeathCinema : MonoBehaviour
     {
-        private HealthSystem _event;
+        private HealthSystem _health;
         private PlayerStateStopper _stopState;
-        private DeathCinemaPanel _deathImage;
-        private SpriteRenderer _spriteRenderer;
-        [SerializeField] private CinemachineCamera deathCam;
+
+        [SerializeField] private Image deathOverlay;
+        [SerializeField] private Fire deathEffectBehaviour;
+        private IDeathCinema _deathEffect;
 
         public Action OnCinemaComplete; // 사망 연출 끝나고 UI 띄우기용
-        
+
         private void Awake()
         {
-            _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
             _stopState = GetComponent<PlayerStateStopper>();
-            _event = GetComponent<HealthSystem>();
-            _deathImage = DeathCinemaPanel.Instance;
-            Debug.Assert(_deathImage != null, "deathImage is null!");
+            _health = GetComponent<HealthSystem>();
+
+            if (deathOverlay == null)
+                Debug.LogWarning("Death overlay(Image) is not assigned in PlayerDeathCinema.");
+
+            if (deathEffectBehaviour is IDeathCinema effect)
+                _deathEffect = effect;
+            else
+                Debug.LogWarning("Death effect is not assigned or does not implement IDeathEffect.");
         }
 
         private void Start()
         {
-            _event.OnDead += DeadCinema;
+            if (_health != null)
+                _health.OnDead += DeadCinema;
+            else
+                Debug.LogWarning("HealthSystem is null on PlayerDeathCinema.");
         }
 
         private void DeadCinema()
         {
-            _stopState.DisableControls();
+            _health.OnDead -= DeadCinema;
+            _stopState?.DisableControls();
 
-            var lens = deathCam.Lens;
-            
-            Sequence deathSequence = DOTween.Sequence();
-
-            if (lens.Orthographic)
+            Sequence seq = DOTween.Sequence().SetUpdate(true);
+    
+            if (deathOverlay != null)
             {
-                float originalSize = lens.OrthographicSize;
-                deathSequence.Append(DOTween.To(
-                    () => lens.OrthographicSize,
-                    x => { lens.OrthographicSize = x; deathCam.Lens = lens; },
-                    1.5f,
-                    1f
-                ));
+                Color c = deathOverlay.color;
+                c.a = 0f;
+                deathOverlay.color = c;
+                seq.Append(deathOverlay.DOFade(1f, 1.2f));
+            }
+            else
+            {
+                seq.AppendInterval(1.2f);
+            }
+    
+            seq.AppendCallback(() =>
+            {
+            if (deathEffectBehaviour != null)
+            {
+                var overlayCanvas = deathOverlay != null ? deathOverlay.GetComponentInParent<Canvas>() : null;
+                var fireCanvas = deathEffectBehaviour.GetComponentInParent<Canvas>();
+
+            if (overlayCanvas != null && fireCanvas != null)
+            {
+                if (overlayCanvas == fireCanvas)
+                {
+                    var overlayIdx = deathOverlay.transform.GetSiblingIndex();
+                    deathEffectBehaviour.transform.SetSiblingIndex(Mathf.Min(overlayIdx + 1, deathEffectBehaviour.transform.parent.childCount - 1));
+                }
+                else
+                {
+                    try
+                    {
+                        fireCanvas.sortingOrder = overlayCanvas.sortingOrder + 1;
+                    }
+                    catch (Exception e)
+                    {
+                        Debug.LogWarning($"Canvas sortingOrder adjust failed: {e.Message}");
+                    }
+                }
+            }
+            else
+            {
+                try
+                {
+                    int overlayIdx = deathOverlay != null ? deathOverlay.transform.GetSiblingIndex() : 0;
+                    deathEffectBehaviour.transform.SetSiblingIndex(overlayIdx + 1);
+                }
+                catch
+                {
+                    // 무시
+                }
             }
             
-            deathSequence.AppendInterval(0.3f);
-
-            _spriteRenderer.sortingOrder += 2;
-            deathSequence.Append(_deathImage.DeathImage.DOFade(1f, 1.2f));
-            
-           
-            
-            deathSequence.OnComplete(() =>
-            {
-                OnCinemaComplete?.Invoke(); // 결과창은 다른 코드에서
-                Debug.Log("Death Sequence Complete: Game paused.");
+            deathEffectBehaviour.gameObject.SetActive(true);
+            }
             });
-        }
+    
+    if (_deathEffect != null)
+    {
+        seq.Append(_deathEffect.PlayEntrance(0.8f, true));
+        seq.Append(_deathEffect.PlayDead(2f, true));
+    }
+    else
+    {
+        seq.AppendInterval(2.8f);
+    }
+    
+    seq.AppendCallback(() =>
+    {
+        OnCinemaComplete?.Invoke();
+        Debug.Log("UI 뜨기");
+    });
 
+    seq.Play();
+}
+
+        
         private void OnDestroy()
         {
-            _event.OnDead -= DeadCinema;
+            if (_health != null)
+                _health.OnDead -= DeadCinema;
         }
     }
 }
