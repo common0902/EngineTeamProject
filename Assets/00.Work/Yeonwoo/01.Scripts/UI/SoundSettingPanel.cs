@@ -10,18 +10,18 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
         [Header("음향 시스템")]
         [SerializeField] private AudioMixer _audioMixer;
         [SerializeField] private Slider _masterSlider;
+        [SerializeField] private Slider _bgmSlider;
         [SerializeField] private Slider _sfxSlider;
-        [SerializeField] private Slider _vfxSlider;
         
         public bool IsOpen => gameObject.activeSelf;
 
         private const string MasterKey = "Volume_Master";
+        private const string BgmKey = "Volume_BGM";
         private const string SfxKey = "Volume_SFX";
-        private const string VfxKey = "Volume_VFX";
         
         private const string MasterVolumeKey = "Master";
+        private const string BgmVolumeKey = "BGM";
         private const string SfxVolumeKey = "SFX";
-        private const string VfxVolumeKey = "VFX";
         
         protected override void Awake()
         {
@@ -30,10 +30,10 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
             if (_masterSlider != null) _masterSlider.onValueChanged.AddListener(SetMasterVolume);
             else Debug.LogWarning("[SoundSettingPanel] _masterSlider is not assigned.");
 
-            if (_sfxSlider != null) _sfxSlider.onValueChanged.AddListener(SetSfxVolume);
+            if (_bgmSlider != null) _bgmSlider.onValueChanged.AddListener(SetBgmVolume);
             else Debug.LogWarning("[SoundSettingPanel] _sfxSlider is not assigned.");
 
-            if (_vfxSlider != null) _vfxSlider.onValueChanged.AddListener(SetVfxVolume);
+            if (_sfxSlider != null) _sfxSlider.onValueChanged.AddListener(SetSfxVolume);
             else Debug.LogWarning("[SoundSettingPanel] _vfxSlider is not assigned.");
             
             LoadVolumeSettings();
@@ -45,16 +45,16 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
             SetAudioMixerVolume(MasterVolumeKey, value);
         }
 
+        private void SetBgmVolume(float value)
+        {
+            PlayerPrefs.SetFloat(BgmKey, value);
+            SetAudioMixerVolume(BgmVolumeKey, value);
+        }
+
         private void SetSfxVolume(float value)
         {
             PlayerPrefs.SetFloat(SfxKey, value);
             SetAudioMixerVolume(SfxVolumeKey, value);
-        }
-
-        private void SetVfxVolume(float value)
-        {
-            PlayerPrefs.SetFloat(VfxKey, value);
-            SetAudioMixerVolume(VfxVolumeKey, value);
         }
 
         private void SetAudioMixerVolume(string paraName, float value)
@@ -68,16 +68,16 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
         private void LoadVolumeSettings()
         {
             float master = PlayerPrefs.GetFloat(MasterKey, 1f);
-            float sfx = PlayerPrefs.GetFloat(SfxKey, 1f);
-            float vfx = PlayerPrefs.GetFloat(VfxKey, 1f);
+            float sfx = PlayerPrefs.GetFloat(BgmKey, 1f);
+            float vfx = PlayerPrefs.GetFloat(SfxKey, 1f);
 
             _masterSlider.value = master;
-            _sfxSlider.value = sfx;
-            _vfxSlider.value = vfx;
+            _bgmSlider.value = sfx;
+            _sfxSlider.value = vfx;
             
             SetAudioMixerVolume(MasterVolumeKey, master);
-            SetAudioMixerVolume(SfxVolumeKey, sfx);
-            SetAudioMixerVolume(VfxVolumeKey, vfx);
+            SetAudioMixerVolume(BgmVolumeKey, sfx);
+            SetAudioMixerVolume(SfxVolumeKey, vfx);
         }
         
         public void ApplySavedVolumeSettings()

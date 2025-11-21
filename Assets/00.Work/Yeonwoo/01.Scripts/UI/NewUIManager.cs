@@ -8,6 +8,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
     public class NewUIManager : MonoBehaviour
     {
         [field: SerializeField] public SkillUI[] SkillUI { get; private set; }
+        [field:SerializeField] public UltimateSkillUI[] UltiMateSkillUI { get; private set; }
         [field: SerializeField] public PassiveSkillUI[] PassiveSkillUI { get; private set; }
         
         [field: SerializeField] public SkillController SkillControllerCompo { get; private set; }
@@ -20,8 +21,10 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
         private void Start()
         {
             SkillControllerCompo.OnChangeSkill += UpdateSkillUI;
+            SkillControllerCompo.OnChangeUltimateSkill += UpdateUltimateSkillUI;
             PassiveControllerCompo.OnTakePasiveSkill += UpdatePassiveSkillUI;
 
+            UpdateUltimateSkillUI();
             if (newInteractionSkillUI != null)
             {
                 newInteractionSkillUI.OnShow += HandleInteractionSkillUIShown;
@@ -85,9 +88,9 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
             {
                 // 슬롯이 비어있거나 null이면 초기화, 있으면 SkillData 전달
                 if (i < elements.Length && elements[i] != null)
-                    SkillUI[i].SetSkillData(elements[i].Data);
+                    SkillUI[i].SetSkill(elements[i]);
                 else
-                    SkillUI[i].SetSkillData(null);
+                    SkillUI[i].SetSkill(null);
             }
         }
         
@@ -104,6 +107,33 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
             }
         }
 
+        private void UpdateUltimateSkillUI()
+        {
+            if (UltiMateSkillUI == null || UltiMateSkillUI.Length == 0)
+            {
+                Debug.LogWarning("[NewUIManager] UltiMateSkillUI array is empty.");
+                return;
+            }
+
+            var ultimate = SkillControllerCompo.UltimateSkill;
+
+            // 첫 슬롯에만 표시 (원하면 all-slot 동기화로 변경 가능)
+            var first = UltiMateSkillUI[0];
+            if (first == null)
+            {
+                Debug.LogWarning("[NewUIManager] UltiMateSkillUI[0] is null.");
+                return;
+            }
+
+            first.SetSkill(ultimate != null ? ultimate : null);
+
+            // 나머지 슬롯은 비워두기(선택)
+            for (int i = 1; i < UltiMateSkillUI.Length; i++)
+            {
+                UltiMateSkillUI[i]?.SetSkill(null);
+            }
+        }
+        
         private void OnDisable()
         {
             SkillControllerCompo.OnChangeSkill -= UpdateSkillUI;

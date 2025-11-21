@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -39,16 +40,22 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
             if (distance <= interactionRange)
             {
                 InteractionText.gameObject.SetActive(true);
-                if (Input.GetKeyDown(KeyCode.E))
+                if (Input.GetKeyDown(KeyCode.F))
                 {
-                    OnBoxOpen?.Invoke();
-                    this.enabled = false;
+                    StartCoroutine(OpenWait());
                 }
             }
             else
             {
                 InteractionText.gameObject.SetActive(false);
             }
+        }
+
+        private IEnumerator OpenWait()
+        {
+            yield return null;
+            OnBoxOpen?.Invoke();
+            this.enabled = false;
         }
     }
 }
