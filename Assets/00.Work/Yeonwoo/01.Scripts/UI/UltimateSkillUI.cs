@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace _00.Work.Yeonwoo._01.Scripts.UI
 {
-    public class SkillUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+    public class UltimateSkillUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         [field: SerializeField] public TextMeshProUGUI NameText { get; private set; }
         [field: SerializeField] public TextMeshProUGUI DescriptionText { get; private set; }

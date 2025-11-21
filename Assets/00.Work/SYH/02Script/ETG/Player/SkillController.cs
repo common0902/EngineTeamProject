@@ -93,24 +93,24 @@ public class SkillController : MonoBehaviour
 
         if (Skills[0] == null)
         {
-            print("½ºÅ³ ¾øÀ½");
+            print("ï¿½ï¿½Å³ ï¿½ï¿½ï¿½ï¿½");
             return;
         }
         if (!SkillUtility.CanUseSkill(Skills[0].Cost))
         {
             Skills[0].DisActive();
-            print("¸¶³ª ºÎÁ·"); 
+            print("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½"); 
             return; 
         }
         if (onOff) Skills[0].Active();
         else Skills[0].DisActive();
-            print("½ºÅ³ »ç¿ë");
+            print("ï¿½ï¿½Å³ ï¿½ï¿½ï¿½");
         #region
         //Skill[] eliments = Skills.ToArray();
 
         //if (eliments == null || eliments.Length == 0 || eliments[skillNum] == null)
         //{
-        //    print("½ºÅ³ ¾øÀ½");
+        //    print("ï¿½ï¿½Å³ ï¿½ï¿½ï¿½ï¿½");
         //    return;
         //}
 
@@ -123,11 +123,11 @@ public class SkillController : MonoBehaviour
     {
         if (UltimateSkill == null)
         {
-            print("±Ã±Ø±â ¾øÀ½");
+            print("ï¿½Ã±Ø±ï¿½ ï¿½ï¿½ï¿½ï¿½");
             return;
         }
         UltimateSkill.Active();
-        print("±Ã±Ø±â »ç¿ë");
+        print("ï¿½Ã±Ø±ï¿½ ï¿½ï¿½ï¿½");
     }
 
     public void ChangeSkill(Skill skill)
@@ -139,6 +139,7 @@ public class SkillController : MonoBehaviour
                 UltimateSkill = skill;
                 skill.transform.position = new Vector3(9999, 9999, 0);
                 skill.Passive();
+                OnChangeUltimateSkill?.Invoke();
                 return;
             }
             Skill tmp = UltimateSkill;
