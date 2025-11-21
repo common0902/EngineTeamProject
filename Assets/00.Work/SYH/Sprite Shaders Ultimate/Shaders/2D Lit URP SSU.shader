@@ -3716,7 +3716,7 @@ Shader "Sprite Shaders Ultimate/2D Lit URP SSU"
 				InitializeSurfaceData(Color.rgb, Color.a, Mask, surfaceData);
 				InputData2D inputData;
 				InitializeInputData(IN.texCoord0.xy, half2(IN.screenPosition.xy / IN.screenPosition.w), inputData);
-				SETUP_DEBUG_DATA_2D(inputData, positionWS);
+				SETUP_DEBUG_DATA_2D(inputData, positionWS, In.instanceID);
 				return CombinedShapeLightShared(surfaceData, inputData);
 			}
 
