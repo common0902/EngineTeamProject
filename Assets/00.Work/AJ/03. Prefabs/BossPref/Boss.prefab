@@ -190,7 +190,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Health>k__BackingField: 0
-  maxHealth: 100
+  maxHealth: 1000
+  isPlayer:
+    serializedVersion: 2
+    m_Bits: 0
   _isCounter: 0
   <Invincibility>k__BackingField: 0
   _isMarked: 0
@@ -229,6 +232,8 @@ MonoBehaviour:
   <Speed>k__BackingField: 3
   <ChaseRange>k__BackingField: 20
   <AttackRange>k__BackingField: 2
+  <Patterns>k__BackingField: 04000000070000000800000005000000
+  <CurrentType>k__BackingField: 4
   summonPrefabs:
   - {fileID: 796293081409320900, guid: cafef031884b6c349b0514713d8000e5, type: 3}
   - {fileID: 8491730989217949394, guid: 5a3a1a14f70578d4ba534bb10ba53f41, type: 3}
@@ -247,6 +252,7 @@ MonoBehaviour:
   white: {fileID: 0}
   laserPoint: {fileID: 6159059675930639216, guid: 0bc9fb1843bad80429ca55c5cacca0f0, type: 3}
   laserPrefab: {fileID: 3659724824511517263, guid: c7a9f7ebce808ef4cbb83f0061ec20c8, type: 3}
+  detectDistance: 1.6
   <CurrentSummonCount>k__BackingField: 0
   <CenterPos>k__BackingField: {fileID: 0}
   <Bomb>k__BackingField: {fileID: 5438732150706983837, guid: 835b5e8f44a325241b562d65609910ad, type: 3}
@@ -315,8 +321,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.035743356, y: 0.2254188}
-  m_Size: {x: 1.5723021, y: 3.6526313}
+  m_Offset: {x: -0.035743397, y: 0.062754154}
+  m_Size: {x: 1.5723022, y: 3.3273058}
   m_Direction: 0
 --- !u!50 &3528823426988526535
 Rigidbody2D:

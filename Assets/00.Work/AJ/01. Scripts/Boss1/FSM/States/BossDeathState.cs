@@ -1,11 +1,12 @@
-﻿using DG.Tweening;
-using Unity.VisualScripting;
-using UnityEditor;
+﻿using _00.Work.AJ._01._Scripts.BOSS;
+using _00.Work.AJ._01._Scripts.BOSS.FSM;
+using _00.Work.AJ._01._Scripts.BOSS.FSM.States;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 using Sequence = DG.Tweening.Sequence;
 
-namespace _00.Work.AJ._01._Scripts.BOSS.FSM.States
+namespace _00.Work.AJ._01._Scripts.Boss1.FSM.States
 {
     public class BossDeathState : BossState
     {

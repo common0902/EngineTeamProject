@@ -23,6 +23,7 @@ namespace _00.Work.AJ._01._Scripts.BOSS
         public GameObject white;
         public GameObject laserPoint;
         public GameObject laserPrefab;
+        public float detectDistance = 5f;
         public bool IsDead { get; set; }
         public bool IsHit { get; set; }
         [field:SerializeField]public int CurrentSummonCount { get; set; }= 0;
@@ -53,9 +54,15 @@ namespace _00.Work.AJ._01._Scripts.BOSS
             RbCompo = GetComponent<Rigidbody2D>();
             ColliderCompo = GetComponent<Collider2D>();
             HealthCompo = GetComponent<HealthSystem>();
-            Target = FindAnyObjectByType<Player>().transform;
-            WayPoints = FindAnyObjectByType<WayPoints>().GetComponent<WayPoints>();
+            //Target = FindAnyObjectByType<Player>().transform;
+            if (Target == null)
+            {
+                Target = Player.Instance.transform;
+            }
+            if (WayPoints == null)
+                WayPoints = GetComponentInParent<WayPoints>();
             Patterns = new() { BossStateType.AttackMelee, BossStateType.AttackDash, BossStateType.AttackSummon, BossStateType.AttackRange };
+            if (CenterPos == null) CenterPos = transform.parent.Find("CenterPos");
         }
 
         public bool CheckChaseRange()
@@ -79,6 +86,9 @@ namespace _00.Work.AJ._01._Scripts.BOSS
             Gizmos.DrawWireSphere(transform.position, ChaseRange);
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, AttackRange);
+
+            Gizmos.color = Color.cyan;
+            Gizmos.DrawWireSphere(transform.position, detectDistance);
         }
     }
 }

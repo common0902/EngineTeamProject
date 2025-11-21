@@ -24,6 +24,15 @@ namespace _00.Work.AJ._01._Scripts.BOSS.Attacks
     
             while (elapsed < dashDuration)
             {
+                Vector2 nextPos = (Vector2)_boss.transform.position + direction * dashSpeed * Time.deltaTime;
+                Debug.Log(nextPos);
+                Debug.Assert(Physics2D.OverlapCircle(nextPos, _boss.detectDistance, _boss.whatIsWall) == true, "Wall");
+                if (Physics2D.OverlapCircle(nextPos, _boss.detectDistance, _boss.whatIsWall))
+                {
+                    _boss.RbCompo.linearVelocity = Vector2.zero;
+                    break;
+                }
+                
                 _boss.RbCompo.linearVelocity = direction * dashSpeed;
                 elapsed += Time.deltaTime;
                 yield return null;

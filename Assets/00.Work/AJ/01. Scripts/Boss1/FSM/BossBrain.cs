@@ -1,5 +1,6 @@
 ﻿using _00.Work.AJ._01._Scripts.BOSS.FSM.States;
 using _00.Work.AJ._01._Scripts.BOSS.FSM.States.AttackStates;
+using _00.Work.AJ._01._Scripts.Boss1.FSM.States;
 using UnityEngine;
 
 namespace _00.Work.AJ._01._Scripts.BOSS.FSM
