@@ -54,9 +54,20 @@ namespace _00.Work.AJ._01._Scripts.Boss2
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.gameObject.TryGetComponent(out Player player))
+            if (_boss != null)
             {
-                player.PlayerHealthSystemCompo.Damage(_boss.Damage * _damageMultiplier);
+                if (other.gameObject.TryGetComponent(out Player player))
+                {
+                    player.PlayerHealthSystemCompo.Damage(_boss.Damage * _damageMultiplier);
+                }
+            }
+
+            if (_cloneboss != null)
+            {
+                if (other.gameObject.TryGetComponent(out Player player))
+                {
+                    player.PlayerHealthSystemCompo.Damage(_cloneboss.Damage * _damageMultiplier);
+                }
             }
             Destroy(gameObject);
         }

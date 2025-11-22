@@ -9,7 +9,7 @@ namespace _00.Work.AJ._01._Scripts.BossClones
     {
         public Rigidbody2D RbCompo { get; private set; }
         [field:SerializeField] public float Speed { get; set; }
-        [SerializeField]private float _damage;
+        [field:SerializeField]public float Damage { get; private set; }
         public Transform Target { get; set; }
         [field:SerializeField]public float AttackRange { get; private set; }
         [field:SerializeField]public float ChaseRange { get; private set; }

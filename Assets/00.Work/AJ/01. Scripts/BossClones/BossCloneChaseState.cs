@@ -17,11 +17,16 @@ namespace _00.Work.AJ._01._Scripts.BossClones
         public override void Update()
         {
             base.Update();
+            if (!_boss.CheckChaseRange())
+            {
+                _stateMachine.ChangeState(BossCloneStateType.Idle);
+                return;
+            }
             if (_boss.CheckAttackRange())
             {
                 _stateMachine.ChangeState(BossCloneStateType.Attack);
+                return;
             }
-
             Vector2 dir = (_boss.Target.position - _boss.transform.position).normalized;
             _boss.RbCompo.linearVelocity = dir * _boss.Speed;
         }

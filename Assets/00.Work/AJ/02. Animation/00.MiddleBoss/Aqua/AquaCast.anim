@@ -24,17 +24,17 @@ AnimationClip:
       value: {fileID: 21300000, guid: 98a93f445dcc9544186c713981cf6224, type: 3}
     - time: 0.083333336
       value: {fileID: 21300000, guid: 39237a1e0b0c5874fbbc39a6213b5b76, type: 3}
-    - time: 0.16666667
-      value: {fileID: 21300000, guid: 8031b6d979c15084c8dbe7fcabee2013, type: 3}
-    - time: 0.25
-      value: {fileID: 21300000, guid: f63055377c22ad24883b774aa4692c56, type: 3}
     - time: 0.33333334
-      value: {fileID: 21300000, guid: a705897e31b8dc44c86b1430fb94c591, type: 3}
+      value: {fileID: 21300000, guid: 8031b6d979c15084c8dbe7fcabee2013, type: 3}
     - time: 0.41666666
-      value: {fileID: 21300000, guid: d7e1f9458d0d4cb4fb85fa7ac037d2d8, type: 3}
+      value: {fileID: 21300000, guid: f63055377c22ad24883b774aa4692c56, type: 3}
     - time: 0.5
-      value: {fileID: 21300000, guid: 692e0631efba6264eb18f126ad425da7, type: 3}
+      value: {fileID: 21300000, guid: a705897e31b8dc44c86b1430fb94c591, type: 3}
     - time: 0.5833333
+      value: {fileID: 21300000, guid: d7e1f9458d0d4cb4fb85fa7ac037d2d8, type: 3}
+    - time: 0.6666667
+      value: {fileID: 21300000, guid: 692e0631efba6264eb18f126ad425da7, type: 3}
+    - time: 0.75
       value: {fileID: 21300000, guid: d3251b48809d46048b66c84322106435, type: 3}
     attribute: m_Sprite
     path: 
@@ -71,12 +71,12 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.6666667
+    m_StopTime: 0.8333333
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
     m_HasAdditiveReferencePose: 0
-    m_LoopTime: 1
+    m_LoopTime: 0
     m_LoopBlend: 0
     m_LoopBlendOrientation: 0
     m_LoopBlendPositionY: 0
@@ -91,14 +91,14 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.25
+  - time: 0.33333334
     functionName: Attack
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.6666667
+  - time: 0.8333333
     functionName: AttackEnd
     data: 
     objectReferenceParameter: {fileID: 0}

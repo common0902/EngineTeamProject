@@ -5,12 +5,12 @@ namespace _00.Work.AJ._01._Scripts.BossClones
 {
     public class BossCloneHit : MonoBehaviour
     {
-        private BossAnimator _bossAnimator;
+        private BossCloneAnimator _bossAnimator;
         public bool isAnimationEnd = false;
         private BossClone _boss;
         private void Awake()
         {
-            _bossAnimator = GetComponentInChildren<BossAnimator>();
+            _bossAnimator = GetComponentInChildren<BossCloneAnimator>();
             _boss = GetComponent<BossClone>();
         }
         private void Start()

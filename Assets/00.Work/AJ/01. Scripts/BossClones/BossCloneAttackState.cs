@@ -21,7 +21,9 @@ namespace _00.Work.AJ._01._Scripts.BossClones
             _boss.RbCompo.linearVelocity = Vector2.zero;
             if (_bossAttack.isAnimationEnd)
             {
-                _stateMachine.ChangeState(BossCloneStateType.Idle);
+                _bossAttack.isAnimationEnd = false;
+                _stateMachine.ChangeState(BossCloneStateType.Chase);
+                return;
             }
         }
         public override void Exit()

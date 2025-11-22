@@ -5,6 +5,8 @@ namespace _00.Work.AJ._01._Scripts.BossClones
 {
     public class BossCloneIdleState : BossCloneState
     {
+        private float _timer;
+        private float _waitTime = 1.5f;
         public BossCloneIdleState(BossClone boss, string animName, BossCloneStateMachine stateMachine) : base(boss, animName, stateMachine)
         {
             
@@ -16,10 +18,15 @@ namespace _00.Work.AJ._01._Scripts.BossClones
         public override void Update()
         {
             base.Update();
-            if (_boss.CheckChaseRange())
+            
+            _timer += Time.deltaTime;
+            if (_timer >= _waitTime)
             {
-                _stateMachine.ChangeState(BossCloneStateType.Chase);
-                return;
+                if (_boss.CheckChaseRange())
+                {
+                    _stateMachine.ChangeState(BossCloneStateType.Chase);
+                    return;
+                }
             }
         }
 
