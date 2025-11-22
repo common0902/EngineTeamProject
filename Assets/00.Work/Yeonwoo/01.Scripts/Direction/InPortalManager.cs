@@ -51,6 +51,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.Direction
         private void NextStage()
         {
             _playerPos.position = Vector3.zero;
+            RoomManager.Instance.RegenerateRooms();
         }
     }
 }

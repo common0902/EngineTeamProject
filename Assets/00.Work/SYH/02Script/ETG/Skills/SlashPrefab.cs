@@ -11,7 +11,6 @@ public class SlashPrefab : SkillPrefab
     {
         _pos = 1.5f * (Vector3)SkillUtility.AimWeapon(transform);
         Collider2D[] enemys = Physics2D.OverlapBoxAll(new Vector2(transform.position.x + 0.5f, transform.position.y), new Vector2(4, 5),0);
-        print(enemys);
         if (enemys == null)
         {
 

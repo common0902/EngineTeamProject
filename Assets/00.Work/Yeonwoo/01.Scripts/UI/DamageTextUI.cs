@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace _00.Work.Yeonwoo._01.Scripts.UI
 {
-    public class DamageTextUI : MonoBehaviour, IPoolable // 바이브로 애니메이션 커브를 사용해서 제작, 추후 DOTween으로 바꿀거임
+    public class DamageTextUI : MonoBehaviour, IPoolable
     {
         public string ItemName => itemName;
         [SerializeField] private string itemName = "DamageText";
@@ -66,7 +66,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
                 yield return null;
             }
 
-            PoolManager.Instance.Push(this);
+            PoolManager2.Instance.Push(this);    
         }
 
         public void ResetItem()

@@ -5,7 +5,6 @@ public class StarStrikePrefab2 : SkillPrefab, IPoolable
 {
     public string ItemName => _nameString;
     [SerializeField] string _nameString;
-    [SerializeField] LayerMask _skillLayer;
 
     public GameObject GameObject => gameObject;
     float _tarPos;
@@ -13,13 +12,9 @@ public class StarStrikePrefab2 : SkillPrefab, IPoolable
     {
         if (transform.position.y <= _tarPos)
         {
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 50, _skillLayer);
-            foreach (Collider2D c in colliders)
-            {
-                c.GetComponent<HealthSystem>().Damage(_damage + Player.Instance.PlayerStatusCompo.Mana / 5f);
-            }
+            SkillUtility.WideAreaDamage(_damage + Player.Instance.PlayerStatusCompo.Mana / 5f, 30, SkillUtility.GetEnemyLayer());
+            //SkillUtility.WideAreaDamage(_damage + Player.Instance.PlayerStatusCompo.Mana / 5f, 30, SkillUtility.GetEnemyLayer(), Debuffs.Slow, 2.5f, 0.5f);
             PoolManager.Instance.Push(GetComponent<IPoolable>());
-            //gameObject.SetActive(false);
         }
         else
         {

@@ -1,3 +1,4 @@
+using _00.Work.SYH._02Script.ETG;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -112,5 +113,29 @@ public class SkillUtility
             array[randNum] = array[i];
             array[i] = tmp;
         }
+    }
+    public static void WideAreaDamage(float damage, float radious, LayerMask skillLayer)
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(Player.Instance.transform.position, radious, skillLayer);
+        foreach (Collider2D c in colliders)
+        {
+            c.GetComponent<HealthSystem>().Damage(damage);
+        }
+    }
+    public static void WideAreaDamage(float damage, float radious, LayerMask skillLayer, Debuffs debuff, float time, float value)
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(Player.Instance.transform.position, radious, skillLayer);
+        foreach (Collider2D c in colliders)
+        {
+            c.GetComponent<HealthSystem>().Damage(damage);
+            if (c != null)
+            {
+                c.GetComponent<DebuffController>().SetDebuff(debuff, time, value);
+            }
+        }
+    }
+    public static LayerMask GetEnemyLayer()
+    {
+        return Resources.Load<EnemyLayerContainerSO>("EnemyLayerContainerSO")._enemy;
     }
 }

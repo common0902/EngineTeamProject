@@ -38,16 +38,27 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
             if (_boxOpenAction != null)
                 _boxOpenAction.OnBoxOpen -= BoxOpenAnim;
         }
-
+        
         protected virtual IEnumerator Buffer(GameObject item)
         {
             _drop = Instantiate(item, transform.position, Quaternion.identity);
+            SetDropInteractable(_drop, false);
             yield return null;
             OnDropCreated(_drop);
         }
-
+        
         protected abstract void ItemScattering();
 
         protected abstract void OnDropCreated(GameObject drop);
+        
+        protected void SetDropInteractable(GameObject drop, bool interactable)
+        {
+            if (drop == null) return;
+            Collider2D[] colliders = drop.GetComponentsInChildren<Collider2D>(true);
+            foreach (var c in colliders)
+            {
+                c.enabled = interactable;
+            }
+        }
     }
 }

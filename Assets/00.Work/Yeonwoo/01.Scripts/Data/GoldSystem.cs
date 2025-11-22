@@ -44,7 +44,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.Data
 
         public void SpawnGoldDrop(Vector3 spawnWorldPos, int totalGoldAmount, int split = 1)
         {
-            if (PoolManager.Instance == null)
+            if (PoolManager2.Instance == null)
             {
                 Debug.LogWarning("PoolManager is null. Can not spawn GoldDrop.");
                 GetGold(totalGoldAmount);
@@ -72,7 +72,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.Data
 
             for (int i = 0; i < split; i++)
             {
-                IPoolable poolItem = PoolManager.Instance.Pop(_goldDropPoolName);
+                IPoolable poolItem = PoolManager2.Instance.Pop(_goldDropPoolName);
                 if (poolItem == null)
                 {
                     GetGold(amountPerDrop);

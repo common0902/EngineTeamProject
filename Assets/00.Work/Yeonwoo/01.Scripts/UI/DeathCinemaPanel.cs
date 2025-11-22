@@ -4,58 +4,77 @@ using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 using Button = UnityEngine.UI.Button;
-using Image = UnityEngine.UI.Image;
 
 namespace _00.Work.Yeonwoo._01.Scripts.UI
 {
     public class DeathCinemaPanel : MonoSingletonUI<DeathCinemaPanel>
     {
-        public Image DeathImage;
-        private PlayerDeathCinema _cinema;
         [SerializeField] private TextMeshProUGUI[] texts;
         [SerializeField] private Button[] buttons;
+
+        private PlayerDeathCinema _cinema;
 
         protected override void Awake()
         {
             base.Awake();
-            _cinema = GameObject.Find("Player").GetComponent<PlayerDeathCinema>();
+            var player = GameObject.FindWithTag("Player") ?? GameObject.Find("Player");
+            if (player != null)
+                _cinema = player.GetComponent<PlayerDeathCinema>();
+            else
+                Debug.LogWarning("Player not found for DeathCinemaPanel.");
         }
 
         private void Start()
         {
-            _cinema.OnCinemaComplete += AppearanceUI;
+            if (_cinema != null)
+                _cinema.OnCinemaComplete += AppearanceUI;
+            else
+                Debug.LogWarning("PlayerDeathCinema reference is null in DeathCinemaPanel.");
         }
 
         private void AppearanceUI()
         {
-            foreach (TextMeshProUGUI text in texts)
+            Time.timeScale = 0f;
+
+            foreach (var text in texts)
             {
+                if (text == null) continue;
                 text.gameObject.SetActive(true);
-                text.DOFade(1f, 1.5f);
+                text.alpha = 0f;
+                text.DOFade(1f, 1.5f).SetUpdate(true);
             }
 
-            foreach (Button button in buttons)
+            foreach (var button in buttons)
             {
+                if (button == null) continue;
                 button.gameObject.SetActive(true);
-                button.image.DOFade(1f, 1.5f);
+                if (button.image != null)
+                {
+                    var col = button.image.color;
+                    col.a = 0f;
+                    button.image.color = col;
+                    button.image.DOFade(1f, 1.5f).SetUpdate(true);
+                }
             }
         }
 
         private void OnDisable()
         {
-            _cinema.OnCinemaComplete -= AppearanceUI;
+            if (_cinema != null)
+                _cinema.OnCinemaComplete -= AppearanceUI;
         }
 
         public void Restart()
         {
             SceneManager.LoadScene("Develop");
+            Time.timeScale = 1f;
         }
 
         public void EgenExit()
         {
-            Application.Quit();
+            SceneManager.LoadScene("Title");
         }
     }
 }

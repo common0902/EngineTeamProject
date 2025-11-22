@@ -336,6 +336,7 @@ GameObject:
   - component: {fileID: 4915412839961996721}
   - component: {fileID: 1237729694059482141}
   - component: {fileID: 9028154947735711627}
+  - component: {fileID: 2461777991311095955}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -581,7 +582,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Health>k__BackingField: 0
   maxHealth: 0
+  isPlayer:
+    serializedVersion: 2
+    m_Bits: 0
   _isCounter: 0
+  <Invincibility>k__BackingField: 0
+  _isMarked: 0
+  _markedValue: 1
 --- !u!58 &9028154947735711627
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -618,3 +625,15 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: -0.28}
   m_Radius: 0.37
+--- !u!114 &2461777991311095955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8434492114031902754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bca4049a8b5e6f4a8d1a0572c09700e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -12,6 +12,8 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
         private SettingPanel _settingPanel;
         private readonly List<ISettingPanel> _subPanels = new();
         
+        public Action OnStartButtonClick;
+        
         private void Awake()
         {
             try
@@ -48,7 +50,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
 
         public void GameStart()
         {
-            SceneManager.LoadScene("Prolog");
+            OnStartButtonClick?.Invoke();
             Time.timeScale = 1f;
         }
 

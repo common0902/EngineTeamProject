@@ -483,10 +483,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startRoomPrefab: {fileID: 2006649140709060410, guid: 6e7e513380d4d0d47b458fab781c541d, type: 3}
-  portalRoomPrefab: {fileID: 2006649140709060410, guid: f1bcd4353568f4343bbb94bf30644875, type: 3}
-  bossRoomPrefab: {fileID: 2006649140709060410, guid: a0223f1b9df908a4fbad442eaf0dbb70, type: 3}
+  portalRoomPrefab: {fileID: 2006649140709060410, guid: ffff4dc6061fd6b4e8a1b1d87bb42549, type: 3}
+  bossRoomPrefab: {fileID: 2006649140709060410, guid: f1bcd4353568f4343bbb94bf30644875, type: 3}
   goldRoomPrefab:
-  - {fileID: 2006649140709060410, guid: 4fd3c18db115bb348b4c52ea7a6a19d8, type: 3}
+  - {fileID: 2006649140709060410, guid: a4dfc058cdd25ec40be05a1ce02cc6d3, type: 3}
+  - {fileID: 2006649140709060410, guid: 4fadfbbd18fb2584c9c6e27150f156e6, type: 3}
+  - {fileID: 2006649140709060410, guid: c2160b30c675d5f4da04edaf3bb114fa, type: 3}
   roomPrefab:
   - {fileID: 2006649140709060410, guid: f2c5c940cc3a8b24490fb5337ad1e000, type: 3}
   - {fileID: 2006649140709060410, guid: 1138f26a7320e1e43b2b9d9c4b5ec5b2, type: 3}
@@ -512,7 +514,7 @@ MonoBehaviour:
   - {fileID: 2006649140709060410, guid: 962c3a443ccaefa459d15644e46a99c0, type: 3}
   - {fileID: 2006649140709060410, guid: 7a0ac89daf5993d42bceddcbcaee2171, type: 3}
   shopRoomPrefab:
-  - {fileID: 2006649140709060410, guid: fdadc62b663639b46a385ac48020fa82, type: 3}
+  - {fileID: 2006649140709060410, guid: 003ac8e11692b65419ff7ae7682d1f5b, type: 3}
   maxRooms: 12
   minRooms: 6
   roomWidth: 30

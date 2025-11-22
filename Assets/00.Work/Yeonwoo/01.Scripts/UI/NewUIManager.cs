@@ -1,58 +1,88 @@
 ﻿using System;
 using _00.Work.Yeonwoo._01.Scripts.Data;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace _00.Work.Yeonwoo._01.Scripts.UI
 {
     public class NewUIManager : MonoBehaviour
     {
         [field: SerializeField] public SkillUI[] SkillUI { get; private set; }
-        [field:SerializeField] public UltimateSkillUI[] UltiMateSkillUI { get; private set; }
+        [field: SerializeField] public UltimateSkillUI[] UltimateSkillUI { get; private set; }
         [field: SerializeField] public PassiveSkillUI[] PassiveSkillUI { get; private set; }
-        
+
         [field: SerializeField] public SkillController SkillControllerCompo { get; private set; }
         [field: SerializeField] public PassiveSkillController PassiveControllerCompo { get; private set; }
-        
+
         [SerializeField] private NewInteractionSkillUI newInteractionSkillUI;
         [SerializeField] private OldInteractionSkillUI oldInteractionSkillUI;
         [SerializeField] private NewInteractionPassiveUI newInteractionPassiveUI;
 
-        private void Start()
+        private void OnEnable()
         {
-            SkillControllerCompo.OnChangeSkill += UpdateSkillUI;
-            SkillControllerCompo.OnChangeUltimateSkill += UpdateUltimateSkillUI;
-            PassiveControllerCompo.OnTakePasiveSkill += UpdatePassiveSkillUI;
+            if (SkillControllerCompo != null)
+            {
+                SkillControllerCompo.OnChangeSkill += UpdateSkillUI;
+                SkillControllerCompo.OnChangeUltimateSkill += UpdateUltimateSkillUI;
+            }
 
-            UpdateUltimateSkillUI();
             if (newInteractionSkillUI != null)
             {
                 newInteractionSkillUI.OnShow += HandleInteractionSkillUIShown;
                 newInteractionSkillUI.OnHide += HandleInteractionUIHidden;
             }
+
             if (newInteractionPassiveUI != null)
             {
                 newInteractionPassiveUI.OnShow += HandleInteractionPassiveUIShown;
-                newInteractionPassiveUI.OnHide+= HandleInteractionPassiveUIHidden;
+                newInteractionPassiveUI.OnHide += HandleInteractionPassiveUIHidden;
             }
-            else Debug.LogError("UI is null");
+            
+            SafeUpdateAllUI();
+        }
+
+        private void OnDisable()
+        {
+            if (SkillControllerCompo != null)
+            {
+                SkillControllerCompo.OnChangeSkill -= UpdateSkillUI;
+                SkillControllerCompo.OnChangeUltimateSkill -= UpdateUltimateSkillUI;
+            }
+
+            if (newInteractionSkillUI != null)
+            {
+                newInteractionSkillUI.OnShow -= HandleInteractionSkillUIShown;
+                newInteractionSkillUI.OnHide -= HandleInteractionUIHidden;
+            }
+
+            if (newInteractionPassiveUI != null)
+            {
+                newInteractionPassiveUI.OnShow -= HandleInteractionPassiveUIShown;
+                newInteractionPassiveUI.OnHide -= HandleInteractionPassiveUIHidden;
+            }
+        }
+
+        private void SafeUpdateAllUI()
+        {
+            UpdateUltimateSkillUI();
+            UpdateSkillUI();
         }
 
         private void HandleInteractionPassiveUIShown()
         {
-            
+           
         }
-        
+
         private void HandleInteractionPassiveUIHidden()
         {
             
         }
-        
+
         private void HandleInteractionSkillUIShown()
         {
             if (SkillUI == null || SkillUI.Length == 0)
             {
-                Debug.LogWarning("[NewUIManager] SkillUI array is empty.");
+                Debug.LogWarning("[NewUIManager] SkillUI array is empty or null.");
+                oldInteractionSkillUI?.Hide();
                 return;
             }
 
@@ -60,6 +90,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
             if (first == null)
             {
                 Debug.LogWarning("[NewUIManager] SkillUI[0] is null.");
+                oldInteractionSkillUI?.Hide();
                 return;
             }
 
@@ -78,69 +109,70 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
         {
             oldInteractionSkillUI?.Hide();
         }
-        
+
         // 현재 보유 중인 스킬 리스트를 받아 UI 슬롯에 반영
         private void UpdateSkillUI()
         {
-            var elements = SkillControllerCompo.Skills.ToArray();
+            if (SkillControllerCompo == null)
+            {
+                Debug.LogWarning("[NewUIManager] SkillControllerCompo is null. Cannot UpdateSkillUI.");
+                if (SkillUI != null)
+                {
+                    for (int i = 0; i < SkillUI.Length; i++) SkillUI[i]?.SetSkill(null);
+                }
+                return;
+            }
+
+            var skills = SkillControllerCompo.Skills;
+            if (skills == null)
+            {
+                Debug.LogWarning("[NewUIManager] SkillControllerCompo.Skills is null.");
+                if (SkillUI != null)
+                {
+                    for (int i = 0; i < SkillUI.Length; i++) SkillUI[i]?.SetSkill(null);
+                }
+                return;
+            }
 
             for (int i = 0; i < SkillUI.Length; i++)
             {
-                // 슬롯이 비어있거나 null이면 초기화, 있으면 SkillData 전달
-                if (i < elements.Length && elements[i] != null)
-                    SkillUI[i].SetSkill(elements[i]);
+                if (i < skills.Count && skills[i] != null)
+                    SkillUI[i]?.SetSkill(skills[i]);
                 else
-                    SkillUI[i].SetSkill(null);
-            }
-        }
-        
-        // 위랑 똑같은 패시브 UI 갱신
-        private void UpdatePassiveSkillUI(PassiveSkill newSkill)
-        {
-            for (int i = 0; i < PassiveSkillUI.Length; i++)
-            {
-                if (PassiveSkillUI[i].HasData == false)
-                {
-                    PassiveSkillUI[i].SetPassiveData(newSkill.Data);
-                    return;
-                }
+                    SkillUI[i]?.SetSkill(null);
             }
         }
 
         private void UpdateUltimateSkillUI()
         {
-            if (UltiMateSkillUI == null || UltiMateSkillUI.Length == 0)
+            if (UltimateSkillUI == null || UltimateSkillUI.Length == 0)
             {
-                Debug.LogWarning("[NewUIManager] UltiMateSkillUI array is empty.");
+                Debug.LogWarning("[NewUIManager] UltimateSkillUI array is empty or null.");
+                return;
+            }
+
+            if (SkillControllerCompo == null)
+            {
+                Debug.LogWarning("[NewUIManager] SkillControllerCompo is null. Cannot UpdateUltimateSkillUI.");
+                for (int i = 0; i < UltimateSkillUI.Length; i++) UltimateSkillUI[i]?.SetSkill(null);
                 return;
             }
 
             var ultimate = SkillControllerCompo.UltimateSkill;
-
-            // 첫 슬롯에만 표시 (원하면 all-slot 동기화로 변경 가능)
-            var first = UltiMateSkillUI[0];
+            
+            var first = UltimateSkillUI[0];
             if (first == null)
             {
-                Debug.LogWarning("[NewUIManager] UltiMateSkillUI[0] is null.");
+                Debug.LogWarning("[NewUIManager] UltimateSkillUI[0] is null.");
                 return;
             }
 
             first.SetSkill(ultimate != null ? ultimate : null);
-
-            // 나머지 슬롯은 비워두기(선택)
-            for (int i = 1; i < UltiMateSkillUI.Length; i++)
-            {
-                UltiMateSkillUI[i]?.SetSkill(null);
-            }
-        }
-        
-        private void OnDisable()
-        {
-            SkillControllerCompo.OnChangeSkill -= UpdateSkillUI;
-            PassiveControllerCompo.OnTakePasiveSkill -= UpdatePassiveSkillUI;
             
-            newInteractionSkillUI.OnShow -= HandleInteractionSkillUIShown;
-            newInteractionSkillUI.OnHide -= HandleInteractionUIHidden;
+            for (int i = 1; i < UltimateSkillUI.Length; i++)
+            {
+                UltimateSkillUI[i]?.SetSkill(null);
+            }
         }
     }
 }

@@ -6,6 +6,7 @@ using static UnityEngine.Rendering.DebugUI;
 
 public enum Debuffs
 {
+    None,
     Slow,
     Bondage,
     Marked

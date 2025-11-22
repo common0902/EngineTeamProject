@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RoomManager : MonoBehaviour
+public class RoomManager : MonoSingleton<RoomManager>
 {
     [Header("normal Room Prefabs")]
     [SerializeField] private GameObject startRoomPrefab;
@@ -235,7 +235,7 @@ public class RoomManager : MonoBehaviour
         }
         return newRoom; 
     }
-    private void RegenerateRooms() // 지금 있는 방 싹 다 처리하고 다시 생성
+    public void RegenerateRooms() // 지금 있는 방 싹 다 처리하고 다시 생성
     {
         roomObjects.ForEach(Destroy);
         roomObjects.Clear();

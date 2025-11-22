@@ -12,7 +12,7 @@ public class Sniper : FireBall
         base.Start();
         Player.Instance.PlayerMoveCompo.OnMoved += (float a) => _isStoped = false;
         Player.Instance.PlayerMoveCompo.OnDisMoved += () => _isStoped = true;
-        Player.Instance.SkillControllerCompo.OnChangeSkill += FirstSkillOption;
+        //Player.Instance.SkillControllerCompo.OnChangeSkill += FirstSkillOption;
     }
     protected override void Update()
     {
