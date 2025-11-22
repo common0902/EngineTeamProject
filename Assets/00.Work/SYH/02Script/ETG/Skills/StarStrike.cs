@@ -39,11 +39,11 @@ public class StarStrike : Skill
         CameraHandler.Instance.ShakeCamera(0.045f, 17);
         PoolManager.Instance.Pop("BigStar");
         yield return new WaitForSeconds(2);
-        StartCoroutine(IntroManager.Instance.Show(8, IntroManager.Instance._image));
+        StartCoroutine(IntroManager.Instance.Show(8, IntroManager.Instance._white));
         yield return new WaitForSeconds(8);
         CameraHandler.Instance.MovedTarget(Player.Instance.transform);
         yield return new WaitForSeconds(3);
-        StartCoroutine(IntroManager.Instance.Hide(2.5f, IntroManager.Instance._image));
+        StartCoroutine(IntroManager.Instance.Hide(2.5f, IntroManager.Instance._white));
         _prefab.SetActive(false);
         yield return new WaitForSeconds(2.5F);
         Player.Instance.Mujuck(false);

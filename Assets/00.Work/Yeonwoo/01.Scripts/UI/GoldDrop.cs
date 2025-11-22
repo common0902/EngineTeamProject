@@ -77,7 +77,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
         private void ReachTarget()
         {
             _goldSystem?.GetGold(goldAmount);
-            PoolManager.Instance.Push(this);
+            PoolManager2.Instance.Push(this);
         }
 
         private void ResetPhysics()

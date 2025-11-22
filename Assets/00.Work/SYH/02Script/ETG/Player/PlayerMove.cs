@@ -98,7 +98,7 @@ public class PlayerMove : MonoBehaviour
         {
             dir = transform.GetChild(0).localScale.x > 0 ? Vector2.right : Vector2.left;
         }
-        _rb.linearVelocity += dir * _dashPower;
+        _rb.linearVelocity += dir.normalized * _dashPower;
         _canDash = false;
         _waitTime = 0;
         coolUI.SetFill(0);

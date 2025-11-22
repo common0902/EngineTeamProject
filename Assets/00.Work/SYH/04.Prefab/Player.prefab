@@ -337,6 +337,9 @@ GameObject:
   - component: {fileID: 1237729694059482141}
   - component: {fileID: 9028154947735711627}
   - component: {fileID: 2461777991311095955}
+  - component: {fileID: 209892066559033974}
+  - component: {fileID: 5633317309160388275}
+  - component: {fileID: 3516065109722323403}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -398,6 +401,7 @@ MonoBehaviour:
   _waitTime: 0
   _dashCooltime: 1.25
   _dashPower: 24
+  coolUI: {fileID: 0}
 --- !u!61 &5112159421654928489
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -637,3 +641,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bca4049a8b5e6f4a8d1a0572c09700e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &209892066559033974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8434492114031902754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8ed75d132a946f18c0bfcd0cafe4bca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathOverlay: {fileID: 0}
+  deathEffectBehaviour: {fileID: 0}
+--- !u!114 &5633317309160388275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8434492114031902754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1811955f24c40edace2126049419610, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goldTarget: {fileID: 0}
+--- !u!114 &3516065109722323403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8434492114031902754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa5d099b63c40a0a643e9af449af999, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controlScripts: []

@@ -94,18 +94,15 @@ public class SkillController : MonoBehaviour
 
         if (Skills[0] == null)
         {
-            print("��ų ����");
             return;
         }
         if (!SkillUtility.CanUseSkill(Skills[0].Cost))
         {
             Skills[0].DisActive();
-            print("���� ����"); 
             return; 
         }
         if (onOff) Skills[0].Active();
         else Skills[0].DisActive();
-            print("��ų ���");
         #region
         //Skill[] eliments = Skills.ToArray();
 
@@ -124,11 +121,9 @@ public class SkillController : MonoBehaviour
     {
         if (UltimateSkill == null)
         {
-            print("�ñر� ����");
             return;
         }
         UltimateSkill.Active();
-        print("�ñر� ���");
     }
 
     public void ChangeSkill(Skill skill)

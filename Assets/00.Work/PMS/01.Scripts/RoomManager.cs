@@ -1,6 +1,8 @@
 ﻿using DG.Tweening;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class RoomManager : MonoSingleton<RoomManager>
 {
@@ -46,7 +48,7 @@ public class RoomManager : MonoSingleton<RoomManager>
     public int shopRoomIndex = 0;
 
     public bool BossRoomTurn { get; set; } = false;
-
+    public event Action OnInPortal;
     private void Start()
     {
         RandomIndex();
@@ -95,6 +97,7 @@ public class RoomManager : MonoSingleton<RoomManager>
         {
             Debug.Log($"Generation complete, {roomCount} rooms created");
             generationComplete = true;
+            OnInPortal?.Invoke();
         }
         
     }

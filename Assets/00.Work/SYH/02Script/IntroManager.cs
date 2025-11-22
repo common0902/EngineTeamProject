@@ -6,14 +6,21 @@ using UnityEngine.SceneManagement;
 public class IntroManager : MonoSingleton<IntroManager>
 {
 
-    public Image _image;
+    public Image _white;
+    public Image _black;
     [SerializeField] float _waitTime;
     [SerializeField] float _coolTime = 0.5f;
     //CutScene _cutScene;
     PlayerMove _pl;
     bool _isGameOver;
 
-
+    private void Start()
+    {
+        RoomManager.Instance.OnInPortal += () =>
+        {
+            StartCoroutine(Hide(0.01f, _black));
+        };
+    }
     public IEnumerator Hide(float time, SpriteRenderer sprite)
     {
         sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 1);
