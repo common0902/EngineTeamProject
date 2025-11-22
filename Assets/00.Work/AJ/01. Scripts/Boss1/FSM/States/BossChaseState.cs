@@ -9,12 +9,12 @@ namespace _00.Work.AJ._01._Scripts.BOSS.FSM.States
         
         public BossChaseState(Boss boss, string animName, BossStateMachine stateMachine) : base(boss, animName, stateMachine)
         {
-            _speed = boss.Speed;
         }
         public override void Enter()
         {
             base.Enter();
             Debug.Log("Chase");
+            _speed = _boss.Speed;
         }
         public override void Update()
         {

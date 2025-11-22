@@ -51,6 +51,7 @@ namespace _00.Work.AJ._01._Scripts.BOSS
         {
             AnimCompo = GetComponentInChildren<Animator>();
             VisualCompo = GetComponentInChildren<BossRenderer>();
+            VisualCompo.Init(this);
             RbCompo = GetComponent<Rigidbody2D>();
             ColliderCompo = GetComponent<Collider2D>();
             HealthCompo = GetComponent<HealthSystem>();

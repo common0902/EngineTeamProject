@@ -13,6 +13,7 @@ namespace _00.Work.AJ._01._Scripts.BOSS
         public Action OnVanishTrigger;
         public Action OnAppearTrigger;
         public Action OnReturnToIdleTrigger;
+        public Action OnHitTrigger;
         public void AttackStart()
         {
             OnAttackStartTrigger?.Invoke();
@@ -27,6 +28,10 @@ namespace _00.Work.AJ._01._Scripts.BOSS
             OnAttackEndTrigger?.Invoke();
         }
 
+        public void Hit()
+        {
+            OnHitTrigger?.Invoke();
+        }
         public void HitEnd()
         {
             OnHitEndTrigger?.Invoke();

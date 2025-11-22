@@ -5,21 +5,33 @@ namespace _00.Work.AJ._01._Scripts.BOSS
 {
     public class BossRenderer : MonoBehaviour
     {
-        private Boss _owner;
-
-        private void Awake()
+        private Transform _target;
+        
+        public void Init(Transform target)
         {
-            _owner = GetComponentInParent<Boss>();
+            _target = target;
         }
-
+        
+        public void Init(MonoBehaviour target)
+        {
+            _target = target.transform;
+        }
+        
+        public void Init(GameObject target)
+        {
+            _target = target.transform;
+        }
+        
         public void Flip(Vector2 value)
         {
-            Vector3 currentRotation = _owner.transform.eulerAngles;
+            if (_target == null) return;
+            
+            Vector3 currentRotation = _target.transform.eulerAngles;
         
             if(value.x > 0)
-                _owner.transform.rotation = Quaternion.Euler(currentRotation.x, 0, 0);
+                _target.transform.rotation = Quaternion.Euler(currentRotation.x, 0, 0);
             else
-                _owner.transform.rotation = Quaternion.Euler(currentRotation.x, 180, 0);
+                _target.transform.rotation = Quaternion.Euler(currentRotation.x, 180, 0);
         }
     }
 }

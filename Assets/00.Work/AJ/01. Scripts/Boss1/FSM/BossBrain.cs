@@ -41,22 +41,26 @@ namespace _00.Work.AJ._01._Scripts.BOSS.FSM
         }
     }
 }
-public enum BossStateType
+
+namespace _00.Work.AJ._01._Scripts.BOSS
 {
-    Idle,
-    Chase,
-    Vanish,
-    Appear,
-    
-    AttackMelee,
-    AttackRange,
-    AttackLaser,
-    AttackDash,
-    AttackSummon,
-    AttackBomb,
-    AttackAOE,
-    
-    ReturnToIdle,
-    Hit,
-    Dead,
+    public enum BossStateType
+    {
+        Idle,
+        Chase,
+        Vanish,
+        Appear,
+        
+        AttackMelee,
+        AttackRange,
+        AttackLaser,
+        AttackDash,
+        AttackSummon,
+        AttackBomb,
+        AttackAOE,
+        
+        ReturnToIdle,
+        Hit,
+        Dead,
+    }
 }
