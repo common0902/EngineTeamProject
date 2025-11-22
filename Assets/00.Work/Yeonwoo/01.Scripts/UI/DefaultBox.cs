@@ -7,16 +7,22 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
     public class DefaultBox : AbstractBox
     {
         [SerializeField] private List<GameObject> items = new List<GameObject>();
-        
+
+        protected override void Awake()
+        {
+            base.Awake();
+            SharedItemPool.AddItems(items, nameof(DefaultBox));
+        }
+
         protected override void ItemScattering()
         {
-            if (items == null || items.Count == 0)
+            GameObject selectedItem = SharedItemPool.PopNext(nameof(DefaultBox));
+
+            if (selectedItem == null)
             {
-                Debug.LogWarning($"[{nameof(DefaultBox)}] 아이템 리스트가 비어 있습니다.");
+                Debug.LogWarning("[DefaultBox] 씬 전체(DefaultBox 풀)에서 사용할 아이템이 없습니다.");
                 return;
             }
-
-            GameObject selectedItem = items[Random.Range(0, items.Count)];
 
             StartCoroutine(Buffer(selectedItem));
         }
@@ -25,7 +31,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
         {
             if (drop == null)
             {
-                Debug.LogWarning("Drop 생성 실패: null");
+                Debug.LogWarning("[DefaultBox] Drop 생성 실패: null");
                 return;
             }
 
@@ -39,10 +45,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
             seq.Append(drop.transform.DOScale(Vector3.one, 0.3f))
                 .Append(drop.transform.DOMove(targetPos, 0.4f))
                 .SetEase(Ease.OutQuad)
-                .OnComplete(() =>
-                {
-                    SetDropInteractable(drop, true);
-                });
+                .OnComplete(() => SetDropInteractable(drop, true));
         }
     }
 }
