@@ -33,6 +33,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
             var data = _boundSkill.Data;
             if (data != null)
             {
+                IconImage.gameObject.SetActive(true);
                 IconImage.sprite = data.Icon;
                 NameText.text = data.Name;
                 DescriptionText.text = data.Description;
@@ -57,6 +58,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
         {
             NameText.gameObject.SetActive(false);
             DescriptionText.gameObject.SetActive(false);
+            IconImage.gameObject.SetActive(false);
             if (CoolTimeImage != null) CoolTimeImage.gameObject.SetActive(false);
         }
 

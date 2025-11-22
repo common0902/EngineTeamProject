@@ -36,9 +36,13 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
 
             Sequence seq = DOTween.Sequence();
 
-            seq.Append(drop.transform.DOScale(Vector3.one, 0.5f))
-                .Append(drop.transform.DOMove(targetPos, 0.7f))
-                .SetEase(Ease.OutQuad);
+            seq.Append(drop.transform.DOScale(Vector3.one, 0.3f))
+                .Append(drop.transform.DOMove(targetPos, 0.4f))
+                .SetEase(Ease.OutQuad)
+                .OnComplete(() =>
+                {
+                    SetDropInteractable(drop, true);
+                });
         }
     }
 }

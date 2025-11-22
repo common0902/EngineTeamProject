@@ -53,7 +53,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.CutScene
                 Color c = deathOverlay.color;
                 c.a = 0f;
                 deathOverlay.color = c;
-                seq.Append(deathOverlay.DOFade(1f, 1.2f));
+                seq.Append(deathOverlay.DOFade(1f, 0.9f));
             }
             else
             {
@@ -105,8 +105,8 @@ namespace _00.Work.Yeonwoo._01.Scripts.CutScene
     
     if (_deathEffect != null)
     {
-        seq.Append(_deathEffect.PlayEntrance(0.8f, true));
-        seq.Append(_deathEffect.PlayDead(2f, true));
+        seq.Append(_deathEffect.PlayEntrance(1.5f, true));
+        seq.Append(_deathEffect.PlayDead(3f, true));
     }
     else
     {
