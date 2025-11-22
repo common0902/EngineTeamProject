@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using static Unity.Burst.Intrinsics.X86.Avx;
 
 public class SkillController : MonoBehaviour
 {
@@ -158,6 +159,7 @@ public class SkillController : MonoBehaviour
                 Skills[i] = skill;
                 OnChangeSkill?.Invoke();
                 skill.transform.position = new Vector3(9999, 9999, 0);
+                skill.Passive();
                 return;
             }
         }
@@ -166,6 +168,8 @@ public class SkillController : MonoBehaviour
         Skills[0] = skill;
         skill.transform.position = new Vector3(9999, 9999, 0);
         value.transform.position = transform.position;
+        value.DisPassive();
+        skill.Passive();
         OnChangeSkill?.Invoke();
         #region
         //Skills.Enqueue(skill);
@@ -184,6 +188,8 @@ public class SkillController : MonoBehaviour
         Skill tmp = Skills[0];
         Skills[0] = Skills[1];
         Skills[1] = tmp;
+        if(tmp!=null) tmp.DisPassive();
+        if (Skills[0]!=null)Skills[0].Passive();
         OnChangeSkill?.Invoke();
     }
 }

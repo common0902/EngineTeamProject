@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -1
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0.604771, b: 0.34528297, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -114,7 +114,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 4224854855799132443}
@@ -163,7 +163,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 8832167503239892954, guid: 1abe93aa1725300469d939abc243aa4b, type: 3}
+  m_Sprite: {fileID: -1749496723178263841, guid: c1921449d92ae79459cddd290d28f604, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -187,7 +187,7 @@ GameObject:
   - component: {fileID: 429377295158188236}
   - component: {fileID: 7312836586669889711}
   m_Layer: 3
-  m_Name: FireBall
+  m_Name: T_H_R_O_W
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -227,12 +227,12 @@ MonoBehaviour:
   <Cost>k__BackingField: 1
   <PastDelay>k__BackingField: 0
   <CoolTime>k__BackingField: 0.5
-  <Name>k__BackingField: FireBall
+  <Name>k__BackingField: T_H_R_O_W
   <IsActive>k__BackingField: 0
   <SkillType>k__BackingField: 0
   <ThisSkill>k__BackingField: {fileID: 771092893451104335}
   <SkillSprite>k__BackingField: {fileID: 8832167503239892954, guid: 1abe93aa1725300469d939abc243aa4b, type: 3}
-  <SkillPrefab>k__BackingField: {fileID: 3060115442278459066, guid: 796fbaf185485e74992212f804c6b12c, type: 3}
+  <SkillPrefab>k__BackingField: {fileID: 2688944937146340327, guid: 4db58d6737ec98249a77563761d68363, type: 3}
 --- !u!58 &429377295158188236
 CircleCollider2D:
   m_ObjectHideFlags: 0
