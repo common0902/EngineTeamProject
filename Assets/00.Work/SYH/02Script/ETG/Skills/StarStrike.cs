@@ -21,6 +21,7 @@ public class StarStrike : Skill
         Player.Instance.PlayerAnimationCompo.CastingStart();
         CameraHandler.Instance.MovedTarget(_prefab.transform);
         Player.Instance.Mujuck(true);
+        //SkillUtility.WideAreaDamage(0, 30, SkillUtility.GetEnemyLayer(), Debuffs.Bondage, 20, 0);
         StartCoroutine(SummonStar());
     }
     private IEnumerator SummonStar()
