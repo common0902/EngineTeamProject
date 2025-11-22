@@ -51,7 +51,7 @@ public class PlayerMove : MonoBehaviour
         }
 
         float fill = _dashCooltime > 0f ? Mathf.Clamp01(_waitTime / _dashCooltime) : 1f;
-        //coolUI.SetFill(fill);
+        coolUI.SetFill(fill);
         
         if (_isCasting)
         {
