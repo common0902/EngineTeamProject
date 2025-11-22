@@ -1,3 +1,4 @@
+using _00.Work.SYH._02Script.ETG;
 using System;
 using UnityEngine;
 using UnityEngine.Events;
@@ -43,8 +44,8 @@ public class PlayerStatus : MonoBehaviour
     public float _fullHp;
     public float _skillCoolDownSpeed;
     public float _speed;
-     public float Speed 
-     { 
+    public float Speed
+    {
         get
         {
             if (_speed < 1f)
@@ -57,16 +58,18 @@ public class PlayerStatus : MonoBehaviour
             }
         }
         private set { _speed = value; }
-     }
+    }
 
-     private bool _isZeroMana = false;
-     public UnityEvent OnZeroMana;
-     public UnityEvent OnRecoverMana;
-     
+    private bool _isZeroMana = false;
+    public UnityEvent OnZeroMana;
+    public UnityEvent OnRecoverMana;
+    HealthSystem _healthSystem;
     private void Awake()
     {
+        _healthSystem = GetComponent<HealthSystem>();
         _hp = _fullHp;
         Mana = _fullMana;
+        HpUpdate();
     }
 
     public void CheckManaState()
@@ -81,5 +84,11 @@ public class PlayerStatus : MonoBehaviour
             _isZeroMana = false;
             OnRecoverMana?.Invoke();
         }
+    }
+
+    public void HpUpdate()
+    {
+        _healthSystem.SetMaxHealth(_fullHp);
+        _healthSystem.SetHealth(_hp);
     }
 }

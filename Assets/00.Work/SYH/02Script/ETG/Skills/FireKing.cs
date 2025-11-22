@@ -75,8 +75,8 @@ public class FireKing : Skill
         Player.Instance.GetComponentInChildren<SpriteRenderer>().color = new Color(1, 1, 1, 0.5f);
         yield return new WaitForSeconds(4);
         Player.Instance.PlayerAnimationCompo.SetAnimatorController(0);
-        IntroManager.Instance._image.color = new Color(1, 1, 1, 1);
-        StartCoroutine(IntroManager.Instance.Hide(0.75f, IntroManager.Instance._image));
+        IntroManager.Instance._white.color = new Color(1, 1, 1, 1);
+        StartCoroutine(IntroManager.Instance.Hide(0.75f, IntroManager.Instance._white));
         yield return new WaitForSeconds(0.75f);
         Player.Instance.GetComponentInChildren<SpriteRenderer>().color = new Color(1, 1, 1, 1);
 

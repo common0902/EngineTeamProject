@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,7 +13,6 @@ namespace _00.Work.Yeonwoo._01.Scripts.Direction
         private Transform _playerPos;
         
         public event Action PlayerPortalIn;
-
         private void OnEnable()
         {
             if (_interactionText) 
@@ -39,6 +39,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.Direction
                 if (Input.GetKeyDown(KeyCode.F))
                 {
                     PlayerPortalIn?.Invoke();
+                    print(222);
                     NextStage();
                 }
             }
@@ -50,6 +51,8 @@ namespace _00.Work.Yeonwoo._01.Scripts.Direction
 
         private void NextStage()
         {
+            print(333);
+            StartCoroutine(IntroManager.Instance.Show(0.01f, IntroManager.Instance._black));
             _playerPos.position = Vector3.zero;
             RoomManager.Instance.RegenerateRooms();
         }

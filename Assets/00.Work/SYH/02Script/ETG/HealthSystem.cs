@@ -110,6 +110,10 @@ namespace _00.Work.SYH._02Script.ETG
         {
             maxHealth = health;
         }
+        public void SetHealth(float hp)
+        {
+            Health = hp;
+        }
         private void Dead()
         {
             OnDead?.Invoke();
@@ -119,7 +123,7 @@ namespace _00.Work.SYH._02Script.ETG
 
         private void CreateDamageText(Vector3 pos, float damage)
         {
-            IPoolable poolable = PoolManager.Instance.Pop("DamageText");
+            IPoolable poolable = PoolManager2.Instance.Pop("DamageText");
             if (poolable is DamageTextUI damageText)
             {
                 bool isPlayerLayer = ((1 << gameObject.layer) & isPlayer.value) != 0;
