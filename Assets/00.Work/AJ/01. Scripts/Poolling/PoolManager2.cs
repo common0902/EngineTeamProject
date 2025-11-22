@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class PoolManager : MonoSingleton<PoolManager>
+public class PoolManager2 : MonoSingleton<PoolManager2>
 {
     [SerializeField] private PoolingListSO poolList;
 
@@ -35,7 +35,7 @@ public class PoolManager : MonoSingleton<PoolManager>
     {
         if (_pools.ContainsKey(itemName))
         {
-            IPoolable item = _pools[itemName].Pop(); 
+            IPoolable item = _pools[itemName].Pop();
             item.ResetItem(); // 리셋해서
             return item;
         }

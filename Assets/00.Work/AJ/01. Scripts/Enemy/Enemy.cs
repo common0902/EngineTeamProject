@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using _00.Work.SYH._02Script.ETG;
 using UnityEngine;
@@ -35,6 +35,7 @@ public class Enemy : Agent, IPoolable
     public Collider2D ColliderCompo { get; private set; }
     public HealthSystem HealthCompo { get; private set; }
     [field:SerializeField]public WayPoints WayPoints { get; private set; }
+
     #endregion
     
     protected override void InitializeComponents()

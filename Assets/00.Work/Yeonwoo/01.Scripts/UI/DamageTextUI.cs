@@ -66,7 +66,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
                 yield return null;
             }
 
-            PoolManager.Instance.Push(this);
+            PoolManager2.Instance.Push(this);    
         }
 
         public void ResetItem()
