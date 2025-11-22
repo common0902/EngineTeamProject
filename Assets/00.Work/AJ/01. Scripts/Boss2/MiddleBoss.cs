@@ -33,7 +33,7 @@ namespace _00.Work.AJ._01._Scripts.Boss2
         public BossRenderer VisualCompo { get; private set; }
         [field:SerializeField]public MiddleBossStateType CurrentType { get; set; }
         [field:SerializeField]public List<MiddleBossStateType> Patterns { get; set; }
-        public bool Phase3Executed { get; set; }
+        public bool Phase2Activated { get; set; }
         [field:SerializeField]public List<GameObject> Bosses { get; private set; }
         #endregion
     
@@ -52,7 +52,15 @@ namespace _00.Work.AJ._01._Scripts.Boss2
             Patterns = new() {/*MiddleBossStateType.Attack, MiddleBossStateType.Range, MiddleBossStateType.CircleRange,*/ MiddleBossStateType.Dash };
             HasStarted = false;
         }
+        private void OnEnable()
+        {
+            HealthCompo.OnHealthChanged += CheckPhase;
+        }
 
+        private void OnDisable()
+        {
+            HealthCompo.OnHealthChanged -= CheckPhase;
+        }
 
         public bool CheckAttackRange()
         {
@@ -70,7 +78,25 @@ namespace _00.Work.AJ._01._Scripts.Boss2
             if (_canFlip)
                 VisualCompo.Flip(Target.position - transform.position);
         }
+        
 
+        private void CheckPhase(float currentHealth, float maxHealth)
+        {
+            float healthPercent = currentHealth / maxHealth;
+    
+            if (healthPercent <= 0.5f && !Phase2Activated)
+            {
+                Phase2Activated = true;
+                AddDashPattern();
+            }
+        }
+        private void AddDashPattern()
+        {
+            if (!Patterns.Contains(MiddleBossStateType.Dash))
+            {
+                Patterns.Add(MiddleBossStateType.Dash);
+            }
+        }
         public bool CanFilp(bool value) => _canFlip =  value;
         
         private void OnDrawGizmos()

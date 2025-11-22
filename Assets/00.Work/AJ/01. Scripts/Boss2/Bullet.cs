@@ -14,6 +14,7 @@ namespace _00.Work.AJ._01._Scripts.Boss2
         private SpriteRenderer _spriteRenderer;
         [SerializeField] private float _speed = 10f;
         private MiddleBoss _boss;
+        private BossClones.BossClone _cloneboss;
         private float _damageMultiplier = 1f;
         
         private void Awake()
@@ -22,12 +23,24 @@ namespace _00.Work.AJ._01._Scripts.Boss2
             _anim = GetComponentInChildren<Animator>();
             _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         }
-
         
         
         public void SetUp(MiddleBoss boss, Vector2 dir, float speed = 1f, float damageMultiplier = 1f)
         {
             _boss = boss;
+            _damageMultiplier = damageMultiplier;
+            _speed = speed;
+            dir = dir.normalized;
+            _rb.linearVelocity = dir * _speed;
+            Vector2 blendDir = dir;
+            _spriteRenderer.flipX = blendDir.x > 0;
+            _anim.SetFloat(MoveX, blendDir.x);
+            _anim.SetFloat(MoveY, blendDir.y);
+            Destroy(gameObject, 3f);
+        }
+        public void SetUp(BossClones.BossClone boss, Vector2 dir, float speed = 1f, float damageMultiplier = 1f)
+        {
+            _cloneboss = boss;
             _damageMultiplier = damageMultiplier;
             _speed = speed;
             dir = dir.normalized;

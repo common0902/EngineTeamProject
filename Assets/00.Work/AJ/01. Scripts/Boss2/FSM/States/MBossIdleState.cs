@@ -35,7 +35,7 @@ namespace _00.Work.AJ._01._Scripts.Boss2.FSM.States
         public override void Update()
         {   
             base.Update();
-            if (_boss.IsDead || _boss.Phase3Executed) return;
+            if (_boss.IsDead || _boss.Phase2Activated) return;
             
             _timer += Time.deltaTime;
             if (_timer >= _waitTime)
@@ -60,20 +60,20 @@ namespace _00.Work.AJ._01._Scripts.Boss2.FSM.States
                 _stateMachine.ChangeState(MiddleBossStateType.Vanish);
                 return;
             }
-            else if (next == MiddleBossStateType.Attack || next == MiddleBossStateType.Range)
+            if (next == MiddleBossStateType.Attack || next == MiddleBossStateType.Range)
             {
                 _boss.CurrentType = next;
                 Debug.Log("djafkda");   
                 _stateMachine.ChangeState(MiddleBossStateType.Chase);
                 return;
             }
-            else if (next == MiddleBossStateType.CircleRange)
+            if (next == MiddleBossStateType.CircleRange)
             {
                 _boss.CurrentType = next;
                 _stateMachine.ChangeState(MiddleBossStateType.CircleRange);
                 return;
             }
-            else if (next == MiddleBossStateType.Dash)
+            if (next == MiddleBossStateType.Dash)
             {
                 _boss.CurrentType = next;
                 _stateMachine.ChangeState(MiddleBossStateType.DashBefore);
