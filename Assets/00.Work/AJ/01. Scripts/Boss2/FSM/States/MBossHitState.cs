@@ -24,7 +24,6 @@ namespace _00.Work.AJ._01._Scripts.Boss2.FSM.States
             if (_bossHit.isAnimationEnd)
             {
                 _boss.IsHit = false;
-                _boss.HasStarted = false;
                 _bossHit.isAnimationEnd = false;
                 _stateMachine.ChangeState(MiddleBossStateType.Idle);
             }
