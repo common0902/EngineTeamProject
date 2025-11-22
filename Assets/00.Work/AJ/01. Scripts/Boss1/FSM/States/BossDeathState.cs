@@ -1,9 +1,11 @@
-﻿using _00.Work.AJ._01._Scripts.BOSS;
+﻿using System;
+using _00.Work.AJ._01._Scripts.BOSS;
 using _00.Work.AJ._01._Scripts.BOSS.FSM;
 using _00.Work.AJ._01._Scripts.BOSS.FSM.States;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
+using Object = UnityEngine.Object;
 using Sequence = DG.Tweening.Sequence;
 
 namespace _00.Work.AJ._01._Scripts.Boss1.FSM.States
@@ -16,6 +18,7 @@ namespace _00.Work.AJ._01._Scripts.Boss1.FSM.States
         private Image _whiteImg;
         private RectTransform _whiteRect;
         private Sequence _sequence;
+        public Action BossDeathAction;
         public BossDeathState(Boss boss, string animName, BossStateMachine stateMachine) : base(boss, animName, stateMachine)
         {
             _bossHit = boss.GetComponent<BossHit>();
@@ -35,7 +38,6 @@ namespace _00.Work.AJ._01._Scripts.Boss1.FSM.States
             _sequence.Append(_whiteRect.DOScaleY(3f, 0.5f));
             _sequence.AppendInterval(1f);    
             _sequence.Append(_whiteRect.DOScaleX(3f, 1f));
-            
             _timer = 0f;
         }
 
@@ -49,6 +51,7 @@ namespace _00.Work.AJ._01._Scripts.Boss1.FSM.States
                 {
                     _whiteImg.DOFade(0f, 1f).OnComplete(() =>
                     {
+                        BossDeathAction?.Invoke();
                         Player.Instance.PlayerMoveCompo._isCasting = false;
                         _whiteRect.transform.position = Camera.main.WorldToScreenPoint(Vector3.zero);
                         _whiteRect.localScale = new Vector3(1f, 1f, 1f);

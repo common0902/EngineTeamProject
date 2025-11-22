@@ -36,7 +36,7 @@ namespace _00.Work.AJ._01._Scripts.BossClones
                 var bullet = Instantiate(_bullet, transform.position, Quaternion.identity);
                 Vector2 dir = _boss.Target.position - transform.position;
                 bullet.GetComponent<Boss2.Bullet>().SetUp(_boss, dir.normalized, 5f);
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSeconds(0.4f);
             }
         }
     }

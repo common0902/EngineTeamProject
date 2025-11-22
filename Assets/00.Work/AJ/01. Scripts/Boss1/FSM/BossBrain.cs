@@ -28,8 +28,11 @@ namespace _00.Work.AJ._01._Scripts.BOSS.FSM
             _stateMachine.AddState(BossStateType.AttackBomb, new BossAttackBombState(_boss, "AttackBomb", _stateMachine));
             _stateMachine.AddState(BossStateType.AttackAOE, new BossAttackAOEState(_boss, "AttackAOE", _stateMachine));
             _stateMachine.AddState(BossStateType.Hit, new BossHitState(_boss, "Hit", _stateMachine));
-            _stateMachine.AddState(BossStateType.Dead, new BossDeathState(_boss, "Death", _stateMachine));
             _stateMachine.AddState(BossStateType.ReturnToIdle, new BossAttackToIdleState(_boss, "StopMove", _stateMachine));
+            
+            var deathState = new BossDeathState(_boss, "Death", _stateMachine);
+            _stateMachine.AddState(BossStateType.Dead, deathState);
+            _boss.DeathState = deathState;
         }
         private void Start()
         {

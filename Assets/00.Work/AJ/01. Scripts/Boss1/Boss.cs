@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using _00.Work.AJ._01._Scripts.Boss1.FSM.States;
 using _00.Work.SYH._02Script.ETG;
 using UnityEngine;
 using UnityEngine.AI;
@@ -32,7 +33,7 @@ namespace _00.Work.AJ._01._Scripts.BOSS
         [field: SerializeField] public SpriteRenderer RangeSprite { get; set; }
         [field: SerializeField] public GameObject AoeSprite { get; private set; }
         [field: SerializeField] public GameObject Aoe { get; private set; }
-
+        public BossDeathState DeathState { get; set; }
         #region Components
         [field:SerializeField]public WayPoints WayPoints { get; private set; }
         public Animator AnimCompo { get; private set; }
