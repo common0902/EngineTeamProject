@@ -27,7 +27,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.Direction
                 .SetEase(Ease.OutQuad)
                 .OnComplete(() =>
                 {
-                    SceneManager.LoadScene("Develop");
+                    SceneManager.LoadScene("Prolog");
                 });
         }
         
