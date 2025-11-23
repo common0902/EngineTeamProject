@@ -30,7 +30,6 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
 
         [Header("Scene Transition")]
         [Tooltip("빈값이면 씬 전환하지 않습니다.")]
-        [SerializeField] private string nextSceneName = "";
         [SerializeField] private bool loadNextScene = true;
         [SerializeField] private float delayBeforeLoad = 0.5f;
 
@@ -79,10 +78,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
             else
             {
                 // 아무 것도 없으면 즉시 씬 로드(혹은 아무 동작 없음)
-                if (loadNextScene && !string.IsNullOrEmpty(nextSceneName))
-                {
-                    SceneManager.LoadScene(nextSceneName);
-                }
+                    SceneManager.LoadScene("Title");
             }
         }
 
@@ -123,10 +119,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
             seq.AppendInterval(delayBeforeLoad);
             seq.OnComplete(() =>
             {
-                if (loadNextScene && !string.IsNullOrEmpty(nextSceneName))
-                {
-                    SceneManager.LoadScene(nextSceneName);
-                }
+                    SceneManager.LoadScene("Title");
             });
 
             seq.SetUpdate(true);
@@ -154,10 +147,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
             seq.AppendInterval(delayBeforeLoad);
             seq.OnComplete(() =>
             {
-                if (loadNextScene && !string.IsNullOrEmpty(nextSceneName))
-                {
-                    SceneManager.LoadScene(nextSceneName);
-                }
+                    SceneManager.LoadScene("Title");
             });
 
             seq.SetUpdate(true);

@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76142eb23cdf4aa3b729d76b9903f68a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boss: {fileID: 0}
   firePrefabs:
   - {fileID: 5126806331234918604}
   - {fileID: 1878260907466237138}
@@ -109,13 +110,12 @@ MonoBehaviour:
   - {fileID: 5313751592606149784}
   - {fileID: 3806845591894829719}
   - {fileID: 4743475737385057964}
-  useExistingFires: 0
+  useExistingFires: 1
   existingFires: []
   spawnParent: {fileID: 7651617714751756275}
   spawnInterval: 0.25
   entranceDuration: 0.25
   winDuration: 0.6
-  nextSceneName: Title
   loadNextScene: 1
   delayBeforeLoad: 0.5
 --- !u!1001 &490823092207775789
