@@ -63,6 +63,11 @@ public class RoomManager : MonoSingleton<RoomManager>
 
     private void Update()
     {
+        if (generationComplete)
+        {
+            NavMeshBakeManager.Instance.Bake();
+            return;
+        }
         if (roomQueue.Count > 0 && roomCount < maxRooms && !generationComplete)
         {
             Vector2Int roomIndex = roomQueue.Dequeue();

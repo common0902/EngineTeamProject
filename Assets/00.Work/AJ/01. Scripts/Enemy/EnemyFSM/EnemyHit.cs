@@ -1,6 +1,8 @@
 ﻿using System;
+using _00.Work.Yeonwoo._01.Scripts.Data;
 using UnityEditor.Searcher;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class EnemyHit : MonoBehaviour
 {
@@ -8,6 +10,7 @@ public class EnemyHit : MonoBehaviour
     public bool isAnimationEnd = false;
     private Enemy _enemy;
     private Room _parentRoom;
+    public GoldSystem goldSystem;
 
     private void Awake()
     {
@@ -17,12 +20,14 @@ public class EnemyHit : MonoBehaviour
     }
     private void Start()
     {
+        goldSystem = _enemy.Target.GetComponent<GoldSystem>();
         _enemyAnimator.OnHitEndTrigger += () => isAnimationEnd = true;
         _enemy.HealthCompo.OnHealthChanged += (float health, float maxHealth) => _enemy.IsHit = true;
         _enemy.HealthCompo.OnDead += () =>
         {
             _enemy.IsDead = true;
             _parentRoom.OnEnemyDied();
+            goldSystem.SpawnGoldDrop(transform.position, Random.Range(3, 11));
         };
         _enemyAnimator.OnDeathEndTrigger += () => Destroy(_enemy.gameObject, 1f);
         _enemyAnimator.OnDeathTrigger += Death;

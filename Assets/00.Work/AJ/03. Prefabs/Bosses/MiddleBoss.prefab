@@ -161,7 +161,7 @@ Transform:
   m_GameObject: {fileID: 2017258856779095412}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.076, z: 0}
+  m_LocalPosition: {x: -0.074, y: -0.567, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -198,7 +198,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8576971973994531197}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.54, y: 0, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
@@ -232,7 +232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Health>k__BackingField: 0
-  maxHealth: 10
+  maxHealth: 1000
   isPlayer:
     serializedVersion: 2
     m_Bits: 64
@@ -259,7 +259,7 @@ MonoBehaviour:
   whatIsWall:
     serializedVersion: 2
     m_Bits: 2147483648
-  <Speed>k__BackingField: 1
+  <Speed>k__BackingField: 5
   <AttackRange>k__BackingField: 2.87
   <Damage>k__BackingField: 5
   <BulletPrefabs>k__BackingField: {fileID: 6220635119967307600, guid: 7b00829597d53cc42b6d7ec822dae5f9, type: 3}
@@ -269,6 +269,14 @@ MonoBehaviour:
   <WayPoints>k__BackingField: {fileID: 0}
   <CenterPos>k__BackingField: {fileID: 0}
   <CurrentType>k__BackingField: 4
+  <Patterns>k__BackingField: 
+  <Bosses>k__BackingField:
+  - {fileID: 6571366601371194963, guid: b2e0ae95db2ec384e9213876c29ef6fa, type: 3}
+  - {fileID: 8740832626003664808, guid: 2789a99481a13c04da1ae756780c715e, type: 3}
+  - {fileID: 3947263147579590826, guid: a81fb862546b5444383f195697fb37d4, type: 3}
+  - {fileID: 4037873763853565970, guid: ee3c5d1038567a541aaabd1f672bf1e9, type: 3}
+  - {fileID: 244634567801508926, guid: 33f57fb223ba3f847895de4fbd805aad, type: 3}
+  - {fileID: 4645111397706388731, guid: ce3184c018e3ee8419c7dc08dd480c64, type: 3}
 --- !u!114 &1194925576562752434
 MonoBehaviour:
   m_ObjectHideFlags: 0
