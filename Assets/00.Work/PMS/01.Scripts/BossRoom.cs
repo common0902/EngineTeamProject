@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using _00.Work.SYH._02Script.ETG;
+using UnityEngine;
 
 public class BossRoom : Room
 {
@@ -6,6 +7,11 @@ public class BossRoom : Room
     [SerializeField] private GameObject portal;
     [SerializeField] private GameObject box;
     [SerializeField] private GameObject boss;
+    public HealthSystem HealthSystem { get; private set; }
+    private void Awake()
+    {
+        HealthSystem = boss.GetComponent<HealthSystem>();
+    }
     protected override void Start()
     {
         hasEnemies = true;
