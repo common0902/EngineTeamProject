@@ -21,7 +21,7 @@ namespace _00.Work.AJ._01._Scripts.Boss2.FSM.States
         {
             base.Update();
             _timer += Time.deltaTime;
-            
+            _boss.HealthCompo.Invincibility = true;
             if (_bossAttack.IsAnimationEnd)
             {
                 if (_timer > _waitTime)

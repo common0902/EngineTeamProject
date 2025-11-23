@@ -1,4 +1,5 @@
 ﻿using System.Runtime.InteropServices.WindowsRuntime;
+using _00.Work.SYH._02Script.ETG;
 using DG.Tweening;
 using UnityEngine;
 
@@ -7,13 +8,14 @@ namespace _00.Work.AJ._01._Scripts.Boss2.FSM.States
     public class MBossDashState : MiddleBossState
     {
         private float _dashDistance = 50f;
-        private float _dashDuration = 2f;
-        private float _spawnDelay = 0.3f;
+        private float _dashDuration = 10f;
+        private float _spawnDelay = 5f;
         private bool _dashCompleted = false;
+        private HealthSystem _targetHealth;
 
         public MBossDashState(MiddleBoss boss, string animName, MiddleBossStateMachine stateMachine) : base(boss, animName, stateMachine)
         {
-            
+            _targetHealth = boss.Target.GetComponent<HealthSystem>();
         }
         public override void Enter()
         {
@@ -24,7 +26,7 @@ namespace _00.Work.AJ._01._Scripts.Boss2.FSM.States
             _boss.transform.DOMove(_boss.CenterPos.position + new Vector3(-_dashDistance, _boss.transform.position.y, 0f), _dashDuration)
                 .OnComplete(() =>
                 {
-                    _boss.transform.position = _boss.CenterPos.position + new Vector3(50f, 0f, 0f);
+                    _boss.transform.position = _boss.CenterPos.position + new Vector3(_dashDistance, 0f, 0f);
                     SpawnBosses();
                 });
         }
@@ -39,7 +41,7 @@ namespace _00.Work.AJ._01._Scripts.Boss2.FSM.States
             for (int i = 0; i < bosses.Count; i++)
             {
                 int index = i;
-                
+                Debug.Log($"Spawn {bosses[index].name}");
                 spawnSequence.AppendCallback(() =>
                 {
                     GameObject clone = Object.Instantiate(
@@ -72,11 +74,15 @@ namespace _00.Work.AJ._01._Scripts.Boss2.FSM.States
         public override void Update()
         {
             base.Update();
+            if (_boss.CheckAttackRange())
+            {
+                _targetHealth.Damage(_boss.Damage * 3f);
+            }
             if (_dashCompleted)
             {
+                _boss.HealthCompo.Invincibility = false;
                 _stateMachine.ChangeState(MiddleBossStateType.Idle);
             }
-
         }
         public override void Exit()
         {

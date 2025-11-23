@@ -113,7 +113,7 @@ public class Enemy : Agent, IPoolable
             Debug.Log("dfjakf");
             Vector2 screenPoint = Camera.main.WorldToScreenPoint(transform.position);
             bool isOutScreen = screenPoint.x <= 0 || screenPoint.x >= Screen.width || screenPoint.y <= 0 || screenPoint.y >= Screen.height;
-            return isOutScreen;
+            return isOutScreen; 
         }
 
         return false;

@@ -49,7 +49,7 @@ namespace _00.Work.AJ._01._Scripts.Boss2
             WayPoints = GetComponentInParent<WayPoints>();
             
             if (CenterPos == null) CenterPos = WayPoints.transform.Find("CenterPos");
-            Patterns = new() {/*MiddleBossStateType.Attack, MiddleBossStateType.Range, MiddleBossStateType.CircleRange,*/ MiddleBossStateType.Dash };
+            Patterns = new() {MiddleBossStateType.Attack, MiddleBossStateType.Range, MiddleBossStateType.CircleRange };
             HasStarted = false;
         }
         private void OnEnable()
