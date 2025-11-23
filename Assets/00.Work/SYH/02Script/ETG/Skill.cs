@@ -1,5 +1,6 @@
 using System;
 using _00.Work.Yeonwoo._01.Scripts.Data;
+using csiimnida.CSILib.SoundManager.RunTime;
 using UnityEngine;
 public enum SkillType
 {
@@ -53,6 +54,7 @@ public abstract class Skill : MonoBehaviour
                 if (!SkillUtility.CanUseSkill(Cost)) return;
                 Player.Instance.PlayerStatusCompo.Mana -= Cost;
                 UseSkill();
+                SoundManager.Instance.PlaySound("UseSkill");
                 _waitTime -= CoolTime;
             }
         }
