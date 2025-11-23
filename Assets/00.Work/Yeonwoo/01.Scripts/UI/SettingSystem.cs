@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using _00.Work.Yeonwoo._01.Scripts.Interfaces;
 using _00.Work.Yeonwoo._01.Scripts.UI;
+using csiimnida.CSILib.SoundManager.RunTime;
 
 namespace _00.Work.Yeonwoo._01.Scripts.UI
 {
@@ -50,6 +51,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
 
         public void GameStart()
         {
+            SoundManager.Instance.PlaySound("StartFire");
             OnStartButtonClick?.Invoke();
             Time.timeScale = 1f;
         }
