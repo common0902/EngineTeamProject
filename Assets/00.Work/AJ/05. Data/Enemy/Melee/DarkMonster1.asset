@@ -16,7 +16,7 @@ MonoBehaviour:
   enemyName: DarkMonsterMelee
   enemySprite: {fileID: -6089931227810857437, guid: b3ba68b2c28ce09469e99625edca21eb, type: 3}
   speed: 4
-  health: 0
+  health: 3
   canPatrol: 1
   patrolDist: 0.3
   damage: 2
@@ -52,4 +52,15 @@ MonoBehaviour:
     particleSystem: {fileID: 0}
     explosionRadius: 1.5
     explosionDelay: 0.3
+    rangeIndicator: {fileID: 0}
+  trapperData:
+    trapPrefab: {fileID: 0}
+    maxTraps: 3
+    trapPlaceInterval: 2
+    trapLifetime: 15
+    trapActivationDelay: 0.5
+    trapTriggerRadius: 0.8
+    trapDamage: 10
+    placeTrapVFX: {fileID: 0}
+    trapWarningColor: {r: 1, g: 0, b: 0, a: 1}
   attackSound: {fileID: 0}
