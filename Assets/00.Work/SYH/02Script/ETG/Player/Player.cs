@@ -1,5 +1,4 @@
 using _00.Work.SYH._02Script.ETG;
-using UnityEditor.Animations;
 using UnityEngine;
 
 public class Player : MonoSingleton<Player>
