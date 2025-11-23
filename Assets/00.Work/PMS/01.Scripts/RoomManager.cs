@@ -47,7 +47,7 @@ public class RoomManager : MonoSingleton<RoomManager>
     public int goldRoomIndex = 0;
     public int shopRoomIndex = 0;
 
-    public bool BossRoomTurn { get; set; } = false;
+    [field:SerializeField]public bool BossRoomTurn { get; set; } = false;
     public event Action OnInPortal;
     private void Start()
     {
@@ -251,6 +251,7 @@ public class RoomManager : MonoSingleton<RoomManager>
         }
         return newRoom; 
     }
+    [ContextMenu("ReGenerationRoom")]
     public void RegenerateRooms() // 지금 있는 방 싹 다 처리하고 다시 생성
     {
         roomObjects.ForEach(Destroy);
