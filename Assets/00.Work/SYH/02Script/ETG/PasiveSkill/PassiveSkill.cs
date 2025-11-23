@@ -8,10 +8,10 @@ public class PassiveSkill : MonoBehaviour, IPoolable
     [SerializeField] PassiveSkillListSO _skillListSO;
     [SerializeField] float _deviation;
     [SerializeField] string _itemName;
-    int _status;
-    int _statusValue;
+    public int _status;
+    public int _statusValue;
     [field:SerializeField]public int Price { get; private set; }
-    public PassiveSkillSO SkillSO { get; private set; }
+    [field:SerializeField]public PassiveSkillSO SkillSO { get; private set; }
 
     public string ItemName => _itemName;
 
@@ -22,13 +22,15 @@ public class PassiveSkill : MonoBehaviour, IPoolable
         
     }
 
-    public void TryBuy()
+    public bool TryBuy()
     {
         if (Player.Instance.GetComponent<GoldSystem>().Gold >= Price)
         {
             Player.Instance.GetComponent<GoldSystem>().UseGold(Price);
             Take();
+            return true;
         }
+        return false;
     }
     public void Take()
     {
@@ -63,7 +65,7 @@ public class PassiveSkill : MonoBehaviour, IPoolable
 
     public void ResetItem()
     {
-        _status = Random.Range(1, _skillListSO.PassiveSkills.Length);
+        _status = Random.Range(0, _skillListSO.PassiveSkills.Length);
         SkillSO = _skillListSO.PassiveSkills[_status];
         _statusValue = Mathf.RoundToInt(Random.Range(SkillSO.StatusValue - SkillSO.StatusValue * (_deviation / 100),
         SkillSO.StatusValue + SkillSO.StatusValue * (_deviation / 100)));

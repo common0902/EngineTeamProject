@@ -51,7 +51,6 @@ namespace _00.Work.Yeonwoo._01.Scripts.Direction
 
         private void NextStage()
         {
-            print(333);
             StartCoroutine(IntroManager.Instance.Show(0.01f, IntroManager.Instance._black));
             _playerPos.position = Vector3.zero;
             RoomManager.Instance.RegenerateRooms();

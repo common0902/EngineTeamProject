@@ -16,9 +16,10 @@ public class IntroManager : MonoSingleton<IntroManager>
 
     private void Start()
     {
+        StartCoroutine(Show(0.01f, _black));
         RoomManager.Instance.OnInPortal += () =>
         {
-            StartCoroutine(Hide(0.01f, _black));
+            StartCoroutine(Hide(1f, _black));
         };
     }
     public IEnumerator Hide(float time, SpriteRenderer sprite)
