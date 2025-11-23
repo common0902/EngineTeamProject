@@ -431,6 +431,7 @@ public class RoomManager : MonoSingleton<RoomManager>
                 shopRoomPrefab = shopRoomPurplePrefab;
         }
     }
+    
 
     private void OnDrawGizmos() // 디버그용 씬창에서 선으로 방 그리드 표현
     {

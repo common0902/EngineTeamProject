@@ -108,4 +108,13 @@ public abstract class Room : MonoBehaviour
         if (leftDoor != null && leftDoor.activeSelf) leftDoor.GetComponent<Door>()?.Unlock();
         if (rightDoor != null && rightDoor.activeSelf) rightDoor.GetComponent<Door>()?.Unlock();
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            OnPlayerEnter();
+            GameManager.Instance?.SetCurrentRoom(this);
+        }
+    }
 }
