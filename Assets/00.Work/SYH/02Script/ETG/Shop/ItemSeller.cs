@@ -1,15 +1,20 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ItemSeller : MonoBehaviour
 {
     [SerializeField]Transform[] _itemPoses;
     [SerializeField] string _passiveItemName = "Potion";
-    private void OnEnable()
+    private void Start()
     {
-        foreach (Transform i in _itemPoses)
+        RoomManager.Instance.OnInPortal += () =>
         {
-            GameObject item = PoolManager.Instance.Pop(_passiveItemName).GameObject;
-            item.transform.position = i.position;
-        }
+            foreach (Transform i in _itemPoses)
+            {
+                GameObject item = PoolManager.Instance.Pop(_passiveItemName).GameObject;
+                item.transform.position = i.position;
+            }
+        };
+
+        
     }
 }

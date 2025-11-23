@@ -63,11 +63,6 @@ public class RoomManager : MonoSingleton<RoomManager>
 
     private void Update()
     {
-        if (generationComplete)
-        {
-            NavMeshBakeManager.Instance.Bake();
-            return;
-        }
         if (roomQueue.Count > 0 && roomCount < maxRooms && !generationComplete)
         {
             Vector2Int roomIndex = roomQueue.Dequeue();
@@ -102,9 +97,17 @@ public class RoomManager : MonoSingleton<RoomManager>
         {
             Debug.Log($"Generation complete, {roomCount} rooms created");
             generationComplete = true;
-            OnInPortal?.Invoke();
+            
+            MapGenerationComplete();
         }
         
+    }
+    
+    private void MapGenerationComplete()
+    {
+
+        OnInPortal?.Invoke();
+        NavMeshBakeManager.Instance.Bake();
     }
 
     private void LastRoomGeneration()
