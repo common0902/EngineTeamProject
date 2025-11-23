@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using TMPro;
 using UnityEngine.SceneManagement;
 
 public class IntroManager : MonoSingleton<IntroManager>
@@ -8,6 +9,7 @@ public class IntroManager : MonoSingleton<IntroManager>
 
     public Image _white;
     public Image _black;
+    public TextMeshProUGUI BlackText;
     [SerializeField] float _waitTime;
     [SerializeField] float _coolTime = 0.5f;
     //CutScene _cutScene;
@@ -17,8 +19,10 @@ public class IntroManager : MonoSingleton<IntroManager>
     private void Start()
     {
         StartCoroutine(Show(0.01f, _black));
+        StartCoroutine(Show(0.01f, BlackText));
         RoomManager.Instance.OnInPortal += () =>
         {
+            StartCoroutine(Hide(1f, BlackText));
             StartCoroutine(Hide(1f, _black));
         };
     }
@@ -37,7 +41,7 @@ public class IntroManager : MonoSingleton<IntroManager>
                 
             }
             yield return null;
-            //ÀÌÁ¦ º¸¿©ÁáÀ¸´Ï±ñ ´Ù½Ã ¾Èº¸ÀÌ°Ô ÇÏ´Â ÄÚµå
+            //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½Ù½ï¿½ ï¿½Èºï¿½ï¿½Ì°ï¿½ ï¿½Ï´ï¿½ ï¿½Úµï¿½
         }
         sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 0);
     }
@@ -56,7 +60,7 @@ public class IntroManager : MonoSingleton<IntroManager>
 
             }
             yield return null;
-            //ÀÌÁ¦ º¸¿©ÁáÀ¸´Ï±ñ ´Ù½Ã ¾Èº¸ÀÌ°Ô ÇÏ´Â ÄÚµå
+            //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½Ù½ï¿½ ï¿½Èºï¿½ï¿½Ì°ï¿½ ï¿½Ï´ï¿½ ï¿½Úµï¿½
         }
         sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 0);
     }
@@ -64,7 +68,7 @@ public class IntroManager : MonoSingleton<IntroManager>
     {
         while (sprite.color.a < 1.0f)
         {
-            //ÀÌ¹ÌÁö°¡ ¾Èº¸ÀÌ´Â »óÅÂ¿¡¼­ º¸ÀÌ°Ô ÇÏ´Â ÄÚµå
+            //ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Èºï¿½ï¿½Ì´ï¿½ ï¿½ï¿½ï¿½Â¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì°ï¿½ ï¿½Ï´ï¿½ ï¿½Úµï¿½
             sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, sprite.color.a + (Time.deltaTime / time));
             yield return null;
         }
@@ -73,9 +77,39 @@ public class IntroManager : MonoSingleton<IntroManager>
     {
         while (sprite.color.a < 1.0f)
         {
-            //ÀÌ¹ÌÁö°¡ ¾Èº¸ÀÌ´Â »óÅÂ¿¡¼­ º¸ÀÌ°Ô ÇÏ´Â ÄÚµå
+            //ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Èºï¿½ï¿½Ì´ï¿½ ï¿½ï¿½ï¿½Â¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì°ï¿½ ï¿½Ï´ï¿½ ï¿½Úµï¿½
             sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, sprite.color.a + (Time.deltaTime / time));
             yield return null;
         }
+    }
+
+    public IEnumerator Show(float time, TextMeshProUGUI sprite)
+    {
+        while (sprite.color.a < 1.0f)
+        {
+            //ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Èºï¿½ï¿½Ì´ï¿½ ï¿½ï¿½ï¿½Â¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì°ï¿½ ï¿½Ï´ï¿½ ï¿½Úµï¿½
+            sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, sprite.color.a + (Time.deltaTime / time));
+            yield return null;
+        }
+    }
+
+    public IEnumerator Hide(float time, TextMeshProUGUI sprite)
+    {
+        sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 1);
+        while (sprite.color.a > 0f)
+        {
+            if (_waitTime < _coolTime)
+            {
+                _waitTime += Time.deltaTime;
+            }
+            else
+            {
+                sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, sprite.color.a - (Time.deltaTime / time));
+
+            }
+            yield return null;
+            //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½Ù½ï¿½ ï¿½Èºï¿½ï¿½Ì°ï¿½ ï¿½Ï´ï¿½ ï¿½Úµï¿½
+        }
+        sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 0);
     }
 }
