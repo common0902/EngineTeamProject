@@ -28,20 +28,25 @@ namespace _00.Work.SYH._02Script.ETG
         public bool _isMarked;
         public float _markedValue = 1;
 
+        private PlayerStatus _playerStatus;
+        
         private void Awake()
         {
             _markedValue = 1;
             _isLowHealth = false;
+            _playerStatus = GetComponent<PlayerStatus>();
         }
 
         private void Start()
         {
             //maxHealth = Player.Instance.PlayerStatusCompo._fullHp;
+            _playerStatus.HpUpdate();
             Health = maxHealth;
             OnHealthChanged?.Invoke(Health, maxHealth);
         }
         private void Update()
         {
+            _playerStatus.HpUpdate();
             if (Input.GetKeyDown(KeyCode.Q))
             {
                 Damage(1);
@@ -74,8 +79,8 @@ namespace _00.Work.SYH._02Script.ETG
 
         private void CheckHealthState()
         {
+            _playerStatus.HpUpdate();
             OnHealthChanged?.Invoke(Health, maxHealth);
-
             if (Health <= 0)
             {
                 Dead();
@@ -93,7 +98,7 @@ namespace _00.Work.SYH._02Script.ETG
                 RecoverHealth();
             }
         }
-    
+        
         private void RecoverHealth()
         {
             OnRecoverHealth?.Invoke();
