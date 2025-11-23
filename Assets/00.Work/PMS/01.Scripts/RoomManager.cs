@@ -103,7 +103,14 @@ public class RoomManager : MonoSingleton<RoomManager>
 
     private void MapGenerationComplete()
     {
-        OnInPortal?.Invoke();
+        try
+        {
+            OnInPortal?.Invoke();
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError($"OnInPortal 이벤트 처리 중 예외 발생: {ex}");
+        }
         generationComplete = true;
         NavMeshBakeManager.Instance.Bake();
     }
