@@ -24,6 +24,7 @@ public class GameManager : MonoSingleton<GameManager>
         ApplyStageSettings();
     }
 
+    [ContextMenu("Next")]
     public void OnPortalUsed()
     {
         GoToNextStage();

@@ -1878,6 +1878,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 339579058}
     - target: {fileID: 6301530087439240855, guid: 187e0ca0babfb4d419e12f7d4c35425d, type: 3}
+      propertyPath: _manaRecovry
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6301530087439240855, guid: 187e0ca0babfb4d419e12f7d4c35425d, type: 3}
       propertyPath: OnZeroMana.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -3282,6 +3286,7 @@ MonoBehaviour:
   lastRoomGeneration: 0
   goldRoomIndex: 0
   shopRoomIndex: 0
+  <BossRoomTurn>k__BackingField: 0
 --- !u!4 &2105664847
 Transform:
   m_ObjectHideFlags: 0
@@ -3359,3 +3364,4 @@ SceneRoots:
   - {fileID: 1812105733}
   - {fileID: 206559994}
   - {fileID: 1963679440}
+  - {fileID: 812112853}

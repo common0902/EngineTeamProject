@@ -484,14 +484,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startRoomPrefab: {fileID: 2006649140709060410, guid: 6e7e513380d4d0d47b458fab781c541d, type: 3}
   portalRoomPrefab: {fileID: 2006649140709060410, guid: ffff4dc6061fd6b4e8a1b1d87bb42549, type: 3}
-  bossRoomPrefab: {fileID: 2006649140709060410, guid: f1bcd4353568f4343bbb94bf30644875, type: 3}
+  bossRoomPrefab: {fileID: 2006649140709060410, guid: b1d236c46ea4117408fa38471348985f, type: 3}
   goldRoomPrefab:
   - {fileID: 2006649140709060410, guid: a4dfc058cdd25ec40be05a1ce02cc6d3, type: 3}
   roomPrefab:
   - {fileID: 2006649140709060410, guid: f2c5c940cc3a8b24490fb5337ad1e000, type: 3}
   shopRoomPrefab:
   - {fileID: 2006649140709060410, guid: 003ac8e11692b65419ff7ae7682d1f5b, type: 3}
-  maxRooms: 12
+  maxRooms: 6
   minRooms: 6
   roomWidth: 30
   roomHeight: 22
@@ -500,6 +500,7 @@ MonoBehaviour:
   lastRoomGeneration: 0
   goldRoomIndex: 0
   shopRoomIndex: 0
+  <BossRoomTurn>k__BackingField: 0
 --- !u!4 &1840950129
 Transform:
   m_ObjectHideFlags: 0

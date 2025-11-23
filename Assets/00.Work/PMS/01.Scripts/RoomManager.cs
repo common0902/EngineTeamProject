@@ -15,11 +15,21 @@ public class RoomManager : MonoSingleton<RoomManager>
     [SerializeField] private GameObject[] shopRoomPrefab;
 
     [Header("purple Room Prefabs")]
-    
+    [SerializeField] private GameObject startRoomPurplePrefab;
+    [SerializeField] private GameObject portalRoomPurplePrefab;
+    [SerializeField] private GameObject bossRoomPurplePrefab;
+    [SerializeField] private GameObject[] goldRoomPurplePrefab;
+    [SerializeField] private GameObject[] roomPurplePrefab;
+    [SerializeField] private GameObject[] shopRoomPurplePrefab;
+
 
     [Header("room num")]
     [SerializeField] private int maxRooms = 15;
     [SerializeField] private int minRooms = 10;
+    [SerializeField] private int roomsIncreasePerStage = 2;
+
+    private int baseMaxRooms;
+    private int baseMinRooms;
 
     [Header("room size")]
     [SerializeField] private int roomWidth = 20;
@@ -47,10 +57,14 @@ public class RoomManager : MonoSingleton<RoomManager>
     public int goldRoomIndex = 0;
     public int shopRoomIndex = 0;
 
-    public bool BossRoomTurn { get; set; } = false;
+    [field:SerializeField]public bool BossRoomTurn { get; set; } = false;
     public event Action OnInPortal;
     private void Start()
     {
+        baseMaxRooms = maxRooms;
+        baseMinRooms = minRooms;
+
+        ApplyStageOption();
         RandomIndex();
 
         roomGrid = new int[gridSizeX, gridSizeY];
@@ -251,7 +265,8 @@ public class RoomManager : MonoSingleton<RoomManager>
         }
         return newRoom; 
     }
-    public void RegenerateRooms() // 지금 있는 방 싹 다 처리하고 다시 생성
+    [ContextMenu("ReGenerationRoom")]
+    public void RegenerateRooms()
     {
         roomObjects.ForEach(Destroy);
         roomObjects.Clear();
@@ -261,6 +276,9 @@ public class RoomManager : MonoSingleton<RoomManager>
         generationComplete = false;
         lastRoomGeneration = true;
         lastRoomCreated = false;
+
+        ApplyStageOption();   
+        RandomIndex();
 
         Vector2Int initialRoomIndex = new Vector2Int(gridSizeX / 2, gridSizeY / 2);
         StartRoomGenerationFromRoom(initialRoomIndex);
@@ -382,6 +400,36 @@ public class RoomManager : MonoSingleton<RoomManager>
         int gridY = gridIndex.y;
         return new Vector3(roomWidth * (gridX - gridSizeX / 2), 
             roomHeight * (gridY - gridSizeY / 2));
+    }
+
+    private void ApplyStageOption()
+    {
+        if (GameManager.Instance == null)
+            return;
+
+        int world = GameManager.Instance.CurrentWorld;  
+        int stage = GameManager.Instance.CurrentStage;  
+
+        int stageIndex = (world - 1) * 3 + (stage - 1);
+
+        maxRooms = baseMaxRooms + roomsIncreasePerStage * stageIndex;
+        minRooms = baseMinRooms + roomsIncreasePerStage * stageIndex;
+
+        if (world >= 2)
+        {
+            if (startRoomPurplePrefab != null) startRoomPrefab = startRoomPurplePrefab;
+            if (portalRoomPurplePrefab != null) portalRoomPrefab = portalRoomPurplePrefab;
+            if (bossRoomPurplePrefab != null) bossRoomPrefab = bossRoomPurplePrefab;
+
+            if (goldRoomPurplePrefab != null && goldRoomPurplePrefab.Length > 0)
+                goldRoomPrefab = goldRoomPurplePrefab;
+
+            if (roomPurplePrefab != null && roomPurplePrefab.Length > 0)
+                roomPrefab = roomPurplePrefab;
+
+            if (shopRoomPurplePrefab != null && shopRoomPurplePrefab.Length > 0)
+                shopRoomPrefab = shopRoomPurplePrefab;
+        }
     }
 
     private void OnDrawGizmos() // 디버그용 씬창에서 선으로 방 그리드 표현
