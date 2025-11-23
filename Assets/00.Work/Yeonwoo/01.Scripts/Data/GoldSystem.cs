@@ -72,9 +72,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.Data
 
             for (int i = 0; i < split; i++)
             {
-                print(111);
                 IPoolable poolItem = PoolManager2.Instance.Pop(_goldDropPoolName);
-                print(222);
 
                 if (poolItem == null)
                 {

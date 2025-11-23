@@ -400,7 +400,7 @@ MonoBehaviour:
   _isCasting: 0
   _waitTime: 0
   _dashCooltime: 1.25
-  _dashPower: 24
+  _dashPower: 12
   coolUI: {fileID: 0}
 --- !u!61 &5112159421654928489
 BoxCollider2D:
@@ -418,7 +418,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2147485696
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -586,7 +586,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Health>k__BackingField: 0
   maxHealth: 0
-  isPlayer:
+  areYouPlayer:
     serializedVersion: 2
     m_Bits: 0
   _isCounter: 0
@@ -606,7 +606,7 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 2147483648
+    m_Bits: 2147485696
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 256
