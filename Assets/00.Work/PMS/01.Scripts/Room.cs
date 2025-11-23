@@ -8,7 +8,7 @@ public enum RoomType
     Boss,
     Portal
 }
-public class Room : MonoBehaviour
+public abstract class Room : MonoBehaviour
 {
     [SerializeField] private GameObject topDoor;
     [SerializeField] private GameObject bottomDoor;
@@ -17,26 +17,26 @@ public class Room : MonoBehaviour
 
     public RoomType roomType;
 
-    private int enemyCount;
-    private bool hasEnemies;
-    private bool isCleared = false;
+    protected int enemyCount;
+    protected bool hasEnemies;
+    protected bool isCleared = false;
     public Vector2Int RoomIndex {  get; set; }
 
-    private void Start()
+    protected virtual void Start()
     {
         Enemy[] enemies = GetComponentsInChildren<Enemy>();
         enemyCount = enemies.Length;
         hasEnemies = enemyCount > 0;
     }
 
-    public void OnPlayerEnter()
+    public virtual void OnPlayerEnter()
     {
         if (hasEnemies && !isCleared)
         {
             LockAllDoors();
         }
     }
-    public void OnEnemyDied()
+    public virtual void OnEnemyDied()
     {
         enemyCount--;
         if (enemyCount <= 0)
