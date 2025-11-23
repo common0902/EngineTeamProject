@@ -74,12 +74,12 @@ public class PlayerStatus : MonoBehaviour
 
     public void CheckManaState()
     {
-        if (Mana <= 0 && !_isZeroMana)
+        if (Mana <= 0.99f && !_isZeroMana)
         {
             _isZeroMana = true;
             OnZeroMana?.Invoke();
         }
-        else if (Mana > 0 && _isZeroMana)
+        else if (Mana > 0.99f && _isZeroMana)
         {
             _isZeroMana = false;
             OnRecoverMana?.Invoke();

@@ -11,7 +11,7 @@ namespace _00.Work.SYH._02Script.ETG
         [field: SerializeField] public float Health { get; private set; }
         [SerializeField] private float maxHealth; // 최대체력 늘리기 효과 만들려면 이거 건드리면 됨
 
-        [SerializeField] private LayerMask isPlayer;
+        [SerializeField] private LayerMask areYouPlayer;
         private bool _isLowHealth = false;
         
         public float MaxHealth => maxHealth;
@@ -22,7 +22,7 @@ namespace _00.Work.SYH._02Script.ETG
         public event Action OnDead;
 
         public bool _isCounter;
-        [field:SerializeField]public bool Invincibility { get; set; }
+        [field:SerializeField] public bool Invincibility { get; set; }
         public event Action OnCounter;
 
         public bool _isMarked;
@@ -126,7 +126,7 @@ namespace _00.Work.SYH._02Script.ETG
             IPoolable poolable = PoolManager2.Instance.Pop("DamageText");
             if (poolable is DamageTextUI damageText)
             {
-                bool isPlayerLayer = ((1 << gameObject.layer) & isPlayer.value) != 0;
+                bool isPlayerLayer = ((1 << gameObject.layer) & areYouPlayer.value) != 0;
                 Color color = isPlayerLayer ? Color.red : Color.white;
                 damageText.SetDamage(damage, pos, color);
             }
