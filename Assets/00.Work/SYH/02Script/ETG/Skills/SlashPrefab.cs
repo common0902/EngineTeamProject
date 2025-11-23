@@ -1,3 +1,4 @@
+using System;
 using _00.Work.SYH._02Script.ETG;
 using UnityEngine;
 
@@ -46,5 +47,11 @@ public class SlashPrefab : SkillPrefab
         }
         GameObject effect = PoolManager.Instance.Pop("HitEffect").GameObject;
         effect.transform.position = collision.transform.position;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawCube(transform.position, new Vector2(4,5));
     }
 }

@@ -23,6 +23,7 @@ namespace _00.Work.AJ._01._Scripts.Boss2.FSM.States
             _boss.CanFilp(false);
             _boss.VisualCompo.Flip(Vector2.left);
             _dashCompleted = false;
+            CameraHandler.Instance.ShakeCamera(0.07f, 10f);
             _boss.transform.DOMove(_boss.CenterPos.position + new Vector3(-_dashDistance, _boss.transform.position.y, 0f), _dashDuration)
                 .OnComplete(() =>
                 {

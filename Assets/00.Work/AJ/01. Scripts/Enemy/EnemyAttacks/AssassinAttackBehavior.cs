@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using _00.Work.SYH._02Script.ETG;
+using csiimnida.CSILib.SoundManager.RunTime;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
 
@@ -55,7 +56,7 @@ public class AssassinAttackBehavior : IEnemyAttackBehavior
     public void Vanish()
     {
         _enemy.AssashinVfx.Play();
-        
+        SoundManager.Instance.PlaySound("BossDash");
         if (_renderer != null)
             _renderer.color = new Color(1f, 1f, 1f, 0f);
 
@@ -80,6 +81,7 @@ public class AssassinAttackBehavior : IEnemyAttackBehavior
 
         _enemy.VisualCompo.Flip(playerPos - _enemy.transform.position);
 
+        SoundManager.Instance.PlaySound("BossDash");
         if (_renderer != null)
             _renderer.color = new Color(1f, 1f, 1f, 1f);
 

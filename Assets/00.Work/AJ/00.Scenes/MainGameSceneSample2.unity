@@ -2198,8 +2198,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uB9F5 \uC0DD\uC131\uC911..."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 62fdfc0740391454ea1a5a3b53a1069e, type: 2}
-  m_sharedMaterial: {fileID: -3812930008129278204, guid: 62fdfc0740391454ea1a5a3b53a1069e, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c98a36e21eaaed645987108495560bc0, type: 2}
+  m_sharedMaterial: {fileID: 9058052572770842492, guid: c98a36e21eaaed645987108495560bc0, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3514,11 +3514,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab6a3fa7d3ebe994d9e2c36028364f31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startRoomPrefab: {fileID: 2006649140709060410, guid: 6e7e513380d4d0d47b458fab781c541d, type: 3}
+  startRoomPrefab: {fileID: 2006649140709060410, guid: f5d94297172cc0740b46130ba582edd4, type: 3}
   portalRoomPrefab: {fileID: 2006649140709060410, guid: ffff4dc6061fd6b4e8a1b1d87bb42549, type: 3}
-  bossRoomPrefab: {fileID: 2006649140709060410, guid: f1bcd4353568f4343bbb94bf30644875, type: 3}
+  bossRoomPrefab: {fileID: 2006649140709060410, guid: 728ceed6d35939147b0dfead6a5c0048, type: 3}
   goldRoomPrefab:
   - {fileID: 2006649140709060410, guid: a4dfc058cdd25ec40be05a1ce02cc6d3, type: 3}
+  - {fileID: 2006649140709060410, guid: e9103aca223e7ee4e8f2055ffb060c9a, type: 3}
+  - {fileID: 2006649140709060410, guid: 670ba32ddb6d3bc418ef3aec3f21338c, type: 3}
   roomPrefab:
   - {fileID: 2006649140709060410, guid: f2c5c940cc3a8b24490fb5337ad1e000, type: 3}
   - {fileID: 2006649140709060410, guid: 775307576c732c64eb28c94dd92cb3f9, type: 3}
@@ -3545,8 +3547,46 @@ MonoBehaviour:
   - {fileID: 2006649140709060410, guid: e9ee6679606e9084a9f1489d99eacfd3, type: 3}
   shopRoomPrefab:
   - {fileID: 2006649140709060410, guid: 003ac8e11692b65419ff7ae7682d1f5b, type: 3}
+  - {fileID: 2006649140709060410, guid: e3d4467a751496c40888dd1aecace8a0, type: 3}
+  - {fileID: 2006649140709060410, guid: f78228dacdb7ab84da7346fa9aec902c, type: 3}
+  startRoomPurplePrefab: {fileID: 2006649140709060410, guid: c0b8eab295715744187636b75ccea99f, type: 3}
+  portalRoomPurplePrefab: {fileID: 2006649140709060410, guid: 8289ad130c222d246a404f3d117dde32, type: 3}
+  bossRoomPurplePrefab: {fileID: 2006649140709060410, guid: b1d236c46ea4117408fa38471348985f, type: 3}
+  goldRoomPurplePrefab:
+  - {fileID: 2006649140709060410, guid: 36e67c0e408c6e644a29e8f2cdd6741c, type: 3}
+  - {fileID: 2006649140709060410, guid: 9b5fccda66cf09e46ac1cbf857e977f7, type: 3}
+  - {fileID: 2006649140709060410, guid: 44d3ed195c45e5643afc073451b6c0ff, type: 3}
+  roomPurplePrefab:
+  - {fileID: 2006649140709060410, guid: a4dc72a5cb47fcc41851869c0b697150, type: 3}
+  - {fileID: 2006649140709060410, guid: 53b46084a52dd6945a46a7a249d19877, type: 3}
+  - {fileID: 2006649140709060410, guid: 7b124c86c6ec7c649b3ab6e44d543c7f, type: 3}
+  - {fileID: 2006649140709060410, guid: 8274767417ae96945adf9ae86071bf2e, type: 3}
+  - {fileID: 2006649140709060410, guid: 8d756577c12597740906ddd56b6bb5cf, type: 3}
+  - {fileID: 2006649140709060410, guid: ada844d1839ff5c47923158ac383f0f9, type: 3}
+  - {fileID: 2006649140709060410, guid: b2ab1e110626db44d82a471b610d3423, type: 3}
+  - {fileID: 2006649140709060410, guid: d8627755712173b429eb182e770b412e, type: 3}
+  - {fileID: 2006649140709060410, guid: a894dd125994b41488347833f9f7bc17, type: 3}
+  - {fileID: 2006649140709060410, guid: 9c7ce43b4da3b5745a563a59609e140e, type: 3}
+  - {fileID: 2006649140709060410, guid: b8a20ddfff159a540b8437bf659361ab, type: 3}
+  - {fileID: 2006649140709060410, guid: 69adb1de4f09b3448b1c377a9176beee, type: 3}
+  - {fileID: 2006649140709060410, guid: 37f700fdb9788d8429cd729bf701a9fb, type: 3}
+  - {fileID: 2006649140709060410, guid: 02655990356dbbd418e3aeae96d553bc, type: 3}
+  - {fileID: 2006649140709060410, guid: d738f47424268504a83354da808782ff, type: 3}
+  - {fileID: 2006649140709060410, guid: 29e10547057c34346bcf3d21e4b55dcd, type: 3}
+  - {fileID: 2006649140709060410, guid: 84a50a24ddaceeb499b149a855211d80, type: 3}
+  - {fileID: 2006649140709060410, guid: 7772657d97617904a8f653fbe8576618, type: 3}
+  - {fileID: 2006649140709060410, guid: 587122ab8d60f214bbe29ef618dc24c3, type: 3}
+  - {fileID: 2006649140709060410, guid: 36e8c2828fc7db34b82475e230b50696, type: 3}
+  - {fileID: 2006649140709060410, guid: dabc667276c429444ae5a1d6eed1deab, type: 3}
+  - {fileID: 2006649140709060410, guid: 649672656b7a4c74f9319dd7106caa36, type: 3}
+  - {fileID: 2006649140709060410, guid: e9696ac66346b504fb020cce423b9ccd, type: 3}
+  shopRoomPurplePrefab:
+  - {fileID: 2006649140709060410, guid: 6790ace14308e104c8dc3277147f4ec7, type: 3}
+  - {fileID: 2006649140709060410, guid: a832b8cb29178e84890f3058158e7e53, type: 3}
+  - {fileID: 2006649140709060410, guid: a218432373be50640986fff15ba6a2e7, type: 3}
   maxRooms: 12
   minRooms: 6
+  roomsIncreasePerStage: 2
   roomWidth: 30
   roomHeight: 22
   gridSizeX: 10
@@ -3554,6 +3594,7 @@ MonoBehaviour:
   lastRoomGeneration: 0
   goldRoomIndex: 0
   shopRoomIndex: 0
+  <BossRoomTurn>k__BackingField: 0
 --- !u!4 &2105664847
 Transform:
   m_ObjectHideFlags: 0
