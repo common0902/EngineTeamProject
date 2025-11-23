@@ -6,18 +6,15 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
 {
     public class UltimateBox : AbstractBox
     {
-        [SerializeField] private List<GameObject> items = new List<GameObject>();
-
         protected override void Awake()
         {
             base.Awake();
-            SharedItemPool.AddItems(items, nameof(UltimateBox));
         }
 
         protected override void ItemScattering()
         {
-            GameObject selectedItem = SharedItemPool.PopNext(nameof(UltimateBox));
-
+            GameObject selectedItem = SkillObsPoolManager.Instance.USkillPool.Pop();
+            selectedItem.SetActive(true);
             if (selectedItem == null)
             {
                 Debug.LogWarning("[UltimateBox] 씬 전체(UltimateBox 풀)에서 사용할 아이템이 없습니다.");

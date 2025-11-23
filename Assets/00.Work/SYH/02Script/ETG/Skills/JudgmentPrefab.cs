@@ -17,9 +17,9 @@ public class JudgmentPrefab : SkillPrefab, IPoolable
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
         base.OnTriggerEnter2D(collision);
-        //if (collision != null)
-        //{
-        //    collision.gameObject.GetComponent<DebuffController>().SetDebuff(Debuffs.Slow, 1, 0.5f);
-        //}
+        if (collision != null)
+        {
+            collision.gameObject.GetComponent<DebuffController>().SetDebuff(Debuffs.Slow, 1, 0.5f);
+        }
     }
 }

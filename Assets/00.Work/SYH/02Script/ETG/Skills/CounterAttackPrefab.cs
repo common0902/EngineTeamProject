@@ -30,4 +30,14 @@ public class CounterAttackPrefab : SkillPrefab
         Player.Instance.GetComponent<HealthSystem>()._isCounter = false;
         CameraHandler.Instance.Zoomout(5);
     }
+    protected override void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.TryGetComponent(out HealthSystem hp))
+        {
+            hp.Damage(SkillUtility.CalcurateDamage(_damage));
+            collision.gameObject.GetComponent<DebuffController>().SetDebuff(Debuffs.Bondage, 1.5f, 0);
+        }
+        GameObject effect = PoolManager.Instance.Pop("HitEffect").GameObject;
+        effect.transform.position = collision.transform.position;
+    }
 }

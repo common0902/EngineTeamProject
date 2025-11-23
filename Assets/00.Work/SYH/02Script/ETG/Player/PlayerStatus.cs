@@ -10,7 +10,7 @@ public class PlayerStatus : MonoBehaviour
     public bool _isSaber;
 
     public float _damage;
-    
+    public event Action OnChangedHp;
     public float Damage
     {
         get
@@ -41,6 +41,16 @@ public class PlayerStatus : MonoBehaviour
     public float _fullMana;
     public float _manaRecovry;
     public float _hp;
+    [field: SerializeField]
+    public float Hp
+    {
+        get { return _hp; }
+        set
+        {
+            _hp = value;
+            OnChangedHp?.Invoke();
+        }
+    }
     public float _fullHp;
     public float _skillCoolDownSpeed;
     public float _speed;
@@ -89,6 +99,6 @@ public class PlayerStatus : MonoBehaviour
     public void HpUpdate()
     {
         _healthSystem.SetMaxHealth(_fullHp);
-        _healthSystem.SetHealth(_hp);
+        _healthSystem.SetHealth(Hp);
     }
 }

@@ -58,13 +58,13 @@ public class FireKing : Skill
         Player.Instance.PlayerStatusCompo._fireKing = _fireKing;
         _fullHp = Player.Instance.PlayerStatusCompo._fullHp;
         Player.Instance.PlayerStatusCompo._fullMana += _fullHp;
-        _hp = Player.Instance.PlayerStatusCompo._hp;
+        _hp = Player.Instance.PlayerStatusCompo.Hp;
         Player.Instance.PlayerStatusCompo.Mana += _hp;
         Player.Instance.PlayerStatusCompo._skillCoolDownSpeed += 100;
         Player.Instance.PlayerStatusCompo._manaRecovry += 2;
         Player.Instance.SkillControllerCompo.CurrentAutoAttackNum = 2;
         Player.Instance.PlayerStatusCompo._fullHp = 0;
-        Player.Instance.PlayerStatusCompo._hp = 0;
+        Player.Instance.PlayerStatusCompo.Hp = 0;
         Player.Instance._isFireKing = true;
 
         Player.Instance.PlayerAnimationCompo.CastingEnd();
@@ -86,13 +86,13 @@ public class FireKing : Skill
         Player.Instance.PlayerStatusCompo._fireKing = 1;
         if (Player.Instance.PlayerStatusCompo.Mana < _hp)
         {
-            Player.Instance.PlayerStatusCompo._hp += Player.Instance.PlayerStatusCompo.Mana;
+            Player.Instance.PlayerStatusCompo.Hp += Player.Instance.PlayerStatusCompo.Mana;
             Player.Instance.PlayerStatusCompo.Mana = 0;
         }
         else
         {
             Player.Instance.PlayerStatusCompo.Mana -= _hp;
-            Player.Instance.PlayerStatusCompo._hp = _hp;
+            Player.Instance.PlayerStatusCompo.Hp = _hp;
         }
         Player.Instance.PlayerStatusCompo._fullMana -= _fullHp;
         Player.Instance.PlayerStatusCompo._fullHp = _fullHp;

@@ -26,5 +26,7 @@ public abstract class SkillPrefab : MonoBehaviour
         {
             hp.Damage(SkillUtility.CalcurateDamage(_damage));
         }
+        GameObject effect = PoolManager.Instance.Pop("HitEffect").GameObject;
+        effect.transform.position = collision.ClosestPoint(transform.position);
     }
 }

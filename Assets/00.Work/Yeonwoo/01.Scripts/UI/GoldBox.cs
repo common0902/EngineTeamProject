@@ -6,18 +6,15 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
 {
     public class GoldBox : AbstractBox
     {
-        [SerializeField] private List<GameObject> items = new List<GameObject>();
-
         protected override void Awake()
         {
             base.Awake();
-            SharedItemPool.AddItems(items, nameof(GoldBox));
         }
 
         protected override void ItemScattering()
         {
-            GameObject selectedItem = SharedItemPool.PopNext(nameof(GoldBox));
-
+            GameObject selectedItem = SkillObsPoolManager.Instance.SkillPool.Pop();
+            selectedItem.SetActive(true);
             if (selectedItem == null)
             {
                 Debug.LogWarning("[GoldBox] 씬 전체(GoldBox 풀)에서 사용할 아이템이 없습니다.");
