@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using csiimnida.CSILib.SoundManager.RunTime;
 using UnityEditor.Searcher;
 using UnityEngine;
 
@@ -42,6 +43,7 @@ namespace _00.Work.AJ._01._Scripts.BOSS.Attacks
 
         private void SpawnBullet(Vector2 direction)
         {
+            SoundManager.Instance.PlaySound("BossShoot");
             GameObject bullet = Object.Instantiate(
                 _boss.BulletPrefab, 
                 _boss.FirePos.position, 

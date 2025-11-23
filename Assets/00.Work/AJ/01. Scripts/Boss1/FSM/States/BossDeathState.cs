@@ -2,6 +2,7 @@
 using _00.Work.AJ._01._Scripts.BOSS;
 using _00.Work.AJ._01._Scripts.BOSS.FSM;
 using _00.Work.AJ._01._Scripts.BOSS.FSM.States;
+using csiimnida.CSILib.SoundManager.RunTime;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
@@ -32,12 +33,17 @@ namespace _00.Work.AJ._01._Scripts.Boss1.FSM.States
                 _whiteRect = _boss.white.GetComponent<RectTransform>();
                 _whiteImg.color = new Color(1f,1f,1f,0f);
             }
+            _whiteImg = _boss.white.GetComponent<Image>();
+            _whiteRect = _boss.white.GetComponent<RectTransform>();
             _sequence = DOTween.Sequence();
         }
         public override void Enter()
         {
             base.Enter();
             Debug.Log("Death");
+            SoundManager.Instance.PlaySound("Bomb");
+            SoundManager.Instance.PlaySound("Earthquake10s");
+            SoundManager.Instance.PlaySound("BossDeath");
             CameraHandler.Instance.ShakeCamera(0.03f, 11f);
             Player.Instance.PlayerMoveCompo._isCasting = true;
             _whiteRect.localScale = new Vector3(0f, 0f, 1f);
