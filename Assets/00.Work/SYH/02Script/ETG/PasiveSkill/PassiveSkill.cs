@@ -80,7 +80,7 @@ public class PassiveSkill : MonoBehaviour, IPoolable
     }
     public void Push()
     {
-        print(888);
+        //print(888);
         PoolManager.Instance.Push(this);
     }
 }

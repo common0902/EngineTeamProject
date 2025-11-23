@@ -1968,10 +1968,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 339579058}
     - target: {fileID: 6301530087439240855, guid: 187e0ca0babfb4d419e12f7d4c35425d, type: 3}
-      propertyPath: _manaRecovry
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6301530087439240855, guid: 187e0ca0babfb4d419e12f7d4c35425d, type: 3}
       propertyPath: OnZeroMana.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -2081,7 +2077,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8631571245709130996, guid: 187e0ca0babfb4d419e12f7d4c35425d, type: 3}
       propertyPath: m_SortingLayer
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3518,3 +3514,4 @@ SceneRoots:
   - {fileID: 1963679440}
   - {fileID: 812112853}
   - {fileID: 1137103739}
+  - {fileID: 875130886}
