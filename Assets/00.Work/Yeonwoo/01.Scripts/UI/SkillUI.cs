@@ -41,7 +41,6 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
                 }
                 if (CoolTimeImage != null)
                 {
-                    CoolTimeImage.sprite = null;
                     CoolTimeImage.gameObject.SetActive(false);
                 }
                 return;
