@@ -27,7 +27,7 @@ namespace _00.Work.SYH._02Script.ETG
 
         public bool _isMarked;
         public float _markedValue = 1;
-
+        
         private void Awake()
         {
             _markedValue = 1;
@@ -75,7 +75,6 @@ namespace _00.Work.SYH._02Script.ETG
         private void CheckHealthState()
         {
             OnHealthChanged?.Invoke(Health, maxHealth);
-
             if (Health <= 0)
             {
                 Dead();
@@ -93,7 +92,7 @@ namespace _00.Work.SYH._02Script.ETG
                 RecoverHealth();
             }
         }
-    
+        
         private void RecoverHealth()
         {
             OnRecoverHealth?.Invoke();

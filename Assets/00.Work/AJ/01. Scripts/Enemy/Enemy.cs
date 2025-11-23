@@ -47,10 +47,8 @@ public class Enemy : Agent, IPoolable
         RbCompo = GetComponent<Rigidbody2D>();
         ColliderCompo = GetComponent<Collider2D>();
         HealthCompo = GetComponent<HealthSystem>();
-        Target = FindAnyObjectByType<Player>().transform;
+        Target = Player.Instance.transform;
         WayPoints = GetComponentInParent<WayPoints>();
-        if (WayPoints == null)
-            WayPoints = FindAnyObjectByType<WayPoints>();
         //BtAgent = GetComponent<BehaviorGraphAgent>();
         _speed = AgentCompo.speed;
 

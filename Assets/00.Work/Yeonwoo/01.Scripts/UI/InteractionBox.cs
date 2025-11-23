@@ -18,7 +18,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
             InteractionText = GetComponentInChildren<TextMeshProUGUI>();
             if (InteractionText == null)
                 Debug.LogError("InteractionBox: No InteractionText attached!");
-            GameObject player = GameObject.Find("Player");
+            GameObject player = Player.Instance.gameObject;
             if (player != null)
                 _playerPos = player.transform;
         }

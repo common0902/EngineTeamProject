@@ -19,6 +19,8 @@ public class LaserParentPrefab : SkillPrefab
             foreach (HealthSystem i in _hitEnemys)
             {
                 i.Damage(SkillUtility.CalcurateDamage(_damage));
+                GameObject effect = PoolManager.Instance.Pop("HitEffect").GameObject;
+                effect.transform.position = i.transform.position;
                 if (i.gameObject == null)
                 {
                     _hitEnemys.Remove(i);

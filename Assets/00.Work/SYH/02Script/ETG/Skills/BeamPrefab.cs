@@ -74,6 +74,8 @@ public class BeamPrefab : SkillPrefab
         if (collision.gameObject.CompareTag("Enemy") && _hitEnemys.Contains(collision.gameObject.GetComponent<HealthSystem>()))
         {
             _hitEnemys.Remove(collision.gameObject.GetComponent<HealthSystem>());
+            GameObject effect = PoolManager.Instance.Pop("HitEffect").GameObject;
+            effect.transform.position = transform.position;
         }
     }
 }

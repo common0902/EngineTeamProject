@@ -38,4 +38,13 @@ public class SlashPrefab : SkillPrefab
     {
         transform.localPosition = _pos;
     }
+    protected override void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.TryGetComponent(out HealthSystem hp))
+        {
+            hp.Damage(SkillUtility.CalcurateDamage(_damage));
+        }
+        GameObject effect = PoolManager.Instance.Pop("HitEffect").GameObject;
+        effect.transform.position = collision.transform.position;
+    }
 }
