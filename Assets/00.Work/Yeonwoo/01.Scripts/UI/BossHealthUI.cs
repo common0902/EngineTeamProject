@@ -16,16 +16,19 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
         private IHealth _healthSource;
         private Tween _fillTween;
         private HealthSystem _healthSystem;
+        private BossRoom _bossRoom;
         
         private void Awake()
         {
+            _bossRoom = GetComponentInParent<BossRoom>();
+
             _slider = GetComponent<Slider>();
             if (_slider == null)
             {
                 Debug.LogError("BossHealthUI: Slider 컴포넌트를 찾을 수 없습니다.");
             }
 
-            _healthSystem = GetComponentInParent<HealthSystem>();
+            _healthSystem = _bossRoom.HealthSystem;
             if (_healthSystem is IHealth ih)
             {
                 _healthSource = ih;
