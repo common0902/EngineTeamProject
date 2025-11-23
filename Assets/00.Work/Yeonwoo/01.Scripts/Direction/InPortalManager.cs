@@ -18,7 +18,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.Direction
         {
             if (interactionText) 
                 interactionText.gameObject.SetActive(false);
-            GameObject player = GameObject.Find("Player"); // 에디터 이름으로 찾는거라 이름은 Player로 계속 유지
+            GameObject player = Player.Instance.gameObject;
             if (player != null)
             {
                 _playerPos = player.transform;
@@ -55,6 +55,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.Direction
             StartCoroutine(IntroManager.Instance.Show(0.01f, IntroManager.Instance._black));
             StartCoroutine(IntroManager.Instance.Show(0.01f, IntroManager.Instance.BlackText));
             _playerPos.position = Vector3.zero;
+            GameManager.Instance.OnPortalUsed();
             RoomManager.Instance.RegenerateRooms();
         }
     }
