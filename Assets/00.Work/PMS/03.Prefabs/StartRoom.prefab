@@ -112,7 +112,6 @@ MonoBehaviour:
   goldMarkObject: {fileID: 0}
   shopMarkObject: {fileID: 0}
   bossMarkObject: {fileID: 0}
-  portalMarkObject: {fileID: 0}
 --- !u!61 &7177293585379264928
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -252,7 +251,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8509843883778227384}
-  - component: {fileID: 1417872664476983115}
+  - component: {fileID: 6662480292710320747}
   m_Layer: 0
   m_Name: StartRoom
   m_TagString: Untagged
@@ -278,7 +277,7 @@ Transform:
   - {fileID: 8617603139558950636}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1417872664476983115
+--- !u!114 &6662480292710320747
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -287,7 +286,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2006649140709060410}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 359c5fa8f6640414db417a99e28db6f3, type: 3}
+  m_Script: {fileID: 11500000, guid: be8d5fd68e9d792499ca47d183a5ef1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   topDoor: {fileID: 6317553822436201932}
@@ -407,7 +406,6 @@ MonoBehaviour:
   goldMarkObject: {fileID: 0}
   shopMarkObject: {fileID: 0}
   bossMarkObject: {fileID: 0}
-  portalMarkObject: {fileID: 0}
 --- !u!61 &5687949816604759031
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -646,7 +644,6 @@ MonoBehaviour:
   goldMarkObject: {fileID: 0}
   shopMarkObject: {fileID: 0}
   bossMarkObject: {fileID: 0}
-  portalMarkObject: {fileID: 0}
 --- !u!61 &9140161950030003993
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1038,7 +1035,6 @@ MonoBehaviour:
   goldMarkObject: {fileID: 0}
   shopMarkObject: {fileID: 0}
   bossMarkObject: {fileID: 0}
-  portalMarkObject: {fileID: 0}
 --- !u!61 &2172224135152866383
 BoxCollider2D:
   m_ObjectHideFlags: 0

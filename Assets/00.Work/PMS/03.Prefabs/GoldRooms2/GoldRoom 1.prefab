@@ -1236,7 +1236,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8509843883778227384}
-  - component: {fileID: 2324775489401556848}
+  - component: {fileID: 6662480292710320747}
   m_Layer: 0
   m_Name: GoldRoom 1
   m_TagString: Untagged
@@ -1264,7 +1264,7 @@ Transform:
   - {fileID: 6727707252148343137}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2324775489401556848
+--- !u!114 &6662480292710320747
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1273,7 +1273,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2006649140709060410}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41ae25fc101adac4a9d03c2767f7bba8, type: 3}
+  m_Script: {fileID: 11500000, guid: be8d5fd68e9d792499ca47d183a5ef1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   topDoor: {fileID: 6367672944427737936}
@@ -24533,7 +24533,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4633180107459396770, guid: 1238bac42e4fd2d48b664b7a62eb97c2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.9
+      value: -6
       objectReference: {fileID: 0}
     - target: {fileID: 4633180107459396770, guid: 1238bac42e4fd2d48b664b7a62eb97c2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -24678,7 +24678,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4633180107459396770, guid: 1238bac42e4fd2d48b664b7a62eb97c2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4633180107459396770, guid: 1238bac42e4fd2d48b664b7a62eb97c2, type: 3}
       propertyPath: m_LocalPosition.y
@@ -24769,7 +24769,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4633180107459396770, guid: 1238bac42e4fd2d48b664b7a62eb97c2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.9
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4633180107459396770, guid: 1238bac42e4fd2d48b664b7a62eb97c2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -24976,7 +24976,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4633180107459396770, guid: 1238bac42e4fd2d48b664b7a62eb97c2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.9
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 4633180107459396770, guid: 1238bac42e4fd2d48b664b7a62eb97c2, type: 3}
       propertyPath: m_LocalPosition.y
