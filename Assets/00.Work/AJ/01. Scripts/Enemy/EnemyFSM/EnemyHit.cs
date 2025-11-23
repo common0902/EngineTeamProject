@@ -1,6 +1,5 @@
 ﻿using System;
 using _00.Work.Yeonwoo._01.Scripts.Data;
-using UnityEditor.Searcher;
 using UnityEngine;
 using Random = UnityEngine.Random;
 

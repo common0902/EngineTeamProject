@@ -268,7 +268,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 6398184383488754908, guid: b22c88b87da55dc4b8ff5d2c61b215d9, type: 2}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: a63829880e4cbce45bea2088f33b20cf, type: 3}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -626,9 +626,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '
-
-'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c98a36e21eaaed645987108495560bc0, type: 2}
   m_sharedMaterial: {fileID: 9058052572770842492, guid: c98a36e21eaaed645987108495560bc0, type: 2}
@@ -693,7 +691,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 101.06793, y: 123.808136, z: 85.9079, w: 368.8977}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -964,22 +962,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textUI: {fileID: 1561603220}
   dialogues:
-  - "\uC774\uAC8C \uD06C\uC0B0\uD14C\uB2E4 \uCCB4\uB825 4700 \uBC29\uC5B4\uB825 329
-    \uB9C8\uC800201\uC778 \uCC54\uD53C\uC5B8\U0001F464\uC774 \uC800\uC9C0\uBD88\uAC00\U0001F6AB,
-    \uC2E4\uB4DC\U0001F6E1, \uBCBD\U0001F9F1 \uB118\uAE30\uB294 \uAC70 \uC788\uACE0\uC694.
-    \uC5D0\uC5B4\uBCF8\U0001F32A \uC788\uACE0, \uC2EC\uC9C0\uC5B4 \uCFE8\uD0C0\uC784\uC740
-    1\uFE0F\u20E3\uCD08\uBC16\uC5D0 \uC548\uB418\uACE0 \uB9C8\uB098\U0001F9D9\u200D\u2642\uFE0F\uB294
-    1\uFE0F\u20E35\uFE0F\u20E3 \uB4E4\uACE0 w\uB294 \uC2EC\uC9C0\uC5B4 \uBCC0\uC2E0\U0001F4AB\uD558\uBA74
-    \uCFE8 \uCD08\uAE30\uD654\uC5D0\uB2E4\uAC00 \uD328\uC2DC\uBE0C\uB294 \uACE0\uC815\uD53C\uD574\U0001F5E1\uAC00
-    \uB4E4\uC5B4\uAC00\uBA70 \uADF8 \uB2E4\uC74C\uC5D0 \uBC29\uB9C8\uC800\U0001F94B
-    \uC62C\uB9AC\uBA74\U0001F4C8 \uC62C\uB9B4\uC218\uB85D\U0001F4C8 \uC2A4\uD0AC
-    \uAC00\uC18D\u23F0\uC774 \uC0DD\uAE30\uACE0! q\uC5D0 \uC2A4\uD0AC\uAC00\uC18D\u23F0\uC774
-    \uC0DD\uAE30\uACE0 \uC2A4\uD0AC \uC18D\uB3C4\U0001F680\uAC00 \uBE68\uB77C\uC9C0\uACE0\U0001F4C8
-    \uADF8 \uB2E4\uC74C\uC5D0 \uACF5\uACA9\uB825\U0001F5E1 \uACC4\uC218\uAC00 \uC788\uC5B4\uAC00\uC9C0\uACE0
-    W\uAC00 \uADF8 \uC774\uC775- \uC73C\uC544\uC544\uC544\uC545\U0001F631\U0001F631"
-  - "\uADF8\uB807\uAC8C \uB418\uC5B4 \uC8FC\uC778\uACF5\uC740 \uC798 \uD070 \uD06C\uC0B0\uD14C\uB97C
-    \uB9C9\uC73C\uB7EC \uAC04\uB2E4."
-  typingSpeed: 0.05
+  - "\uC5B4\uB290 \uB0A0 \uC9C0\uD558 \uB3C4\uC2DC\uC758 \uC0AC\uB78C\uB4E4\uC744
+    \uAD34\uBB3C\uB4E4\uB85C\uBD80\uD130 \uC9C0\uCF1C\uC8FC\uB294 \"\uC601\uC6D0\uD55C
+    \uBD88\uAF43\"\uC774 \uAEBC\uC838\uBC84\uB9AC\uB294 \uC0AC\uACE0\uAC00 \uBC1C\uC0DD\uD558\uC600\uC2B5\uB2C8\uB2E4. "
+  - "\uADF8\uB85C \uC778\uD574 \uC0AC\uB78C\uB4E4\uC744 \uC9C0\uD0A4\uB294 \uBD88\uAF43\uC774
+    \uC5C6\uC5B4\uC9C0\uBA70 \uC9C0\uD558 \uB3C4\uC2DC\uC758 \uC0AC\uB78C\uB4E4\uC740
+    \uBA78\uB9DD\uC758 \uC704\uAE30\uC5D0 \uB193\uC600\uC2B5\uB2C8\uB2E4."
+  - "\uB2F9\uC2E0\uC758 \uC784\uBB34\uB294 \uC774\uB7F0 \uC704\uAE30\uB85C\uBD80\uD130
+    \uC138\uC0C1\uC744 \uAD6C\uD558\uAE30 \uC704\uD574 \uB9C8\uC9C0\uB9C9 \uBD88\uC528\uB97C
+    \uAC00\uC9C0\uACE0 \uB358\uC804\uC774 \uB41C \uC9C0\uD558 \uB3C4\uC2DC\uC758
+    \uCD5C\uC2EC\uBD80\uB85C \uB0B4\uB824\uAC00 \"\uC601\uC6D0\uD55C \uBD88\uAF43\"\uC744
+    \uB2E4\uC2DC \uC9C0\uD53C\uB294 \uAC83\uC785\uB2C8\uB2E4."
+  - "\uB2F9\uC2E0\uC758 \uBD88\uAF43\uC73C\uB85C, \uC774 \uB3C4\uC2DC\uB97C \uC9C0\uD0AC
+    \uC2DC\uAC04\uC785\uB2C8\uB2E4."
+  typingSpeed: 0.07
   delayBetweenLines: 1
   sceneName: MainGameScene
 --- !u!1660057539 &9223372036854775807

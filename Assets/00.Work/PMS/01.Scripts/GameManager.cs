@@ -11,8 +11,11 @@ public class GameManager : MonoSingleton<GameManager>
         public int stage;
     }
 
-    public int CurrentWorld { get; private set; } = 1; // 1 ~ 2
-    public int CurrentStage { get; private set; } = 1; // 1 ~ 3
+    public int CurrentWorld { get; private set; } = 1;
+    public int CurrentStage { get; private set; } = 1;
+
+    // 현재 플레이어가 있는 방
+    public Room CurrentRoom { get; private set; }
 
     private string SavePath =>
         Path.Combine(Application.persistentDataPath, "stage_save.json");
@@ -67,9 +70,7 @@ public class GameManager : MonoSingleton<GameManager>
             world = CurrentWorld,
             stage = CurrentStage
         };
-
         string json = JsonUtility.ToJson(data, true);
-
         try
         {
             File.WriteAllText(SavePath, json);
@@ -87,19 +88,16 @@ public class GameManager : MonoSingleton<GameManager>
             CurrentStage = 1;
             return;
         }
-
         try
         {
             string json = File.ReadAllText(SavePath);
             SaveData data = JsonUtility.FromJson<SaveData>(json);
-
             if (data == null)
             {
                 CurrentWorld = 1;
                 CurrentStage = 1;
                 return;
             }
-
             CurrentWorld = Mathf.Clamp(data.world, 1, 2);
             CurrentStage = Mathf.Clamp(data.stage, 1, 3);
         }
@@ -114,8 +112,17 @@ public class GameManager : MonoSingleton<GameManager>
     {
         if (RoomManager.Instance == null)
             return;
-
         bool isBossStage = (CurrentStage == 3);
         RoomManager.Instance.BossRoomTurn = isBossStage;
+    }
+
+    public void SetCurrentRoom(Room room)
+    {
+        CurrentRoom = room;
+    }
+
+    public Vector3 GetCurrentRoomCenter()
+    {
+        return CurrentRoom != null ? CurrentRoom.transform.position : Vector3.zero;
     }
 }
