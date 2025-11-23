@@ -1387,10 +1387,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8509843883778227384}
-  - component: {fileID: 6662480292710320747}
   - component: {fileID: 6817676150059612123}
   - component: {fileID: 6926513452852039692}
   - component: {fileID: -778864713657485331}
+  - component: {fileID: 3628810563622769939}
   m_Layer: 0
   m_Name: Room 0
   m_TagString: Untagged
@@ -1417,23 +1417,6 @@ Transform:
   - {fileID: 1819891706348262073}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6662480292710320747
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2006649140709060410}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be8d5fd68e9d792499ca47d183a5ef1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  topDoor: {fileID: 1713077044336713815}
-  bottomDoor: {fileID: 4849648781329023569}
-  leftDoor: {fileID: 4463589332863100863}
-  rightDoor: {fileID: 181277585585653364}
-  roomType: 0
 --- !u!1839735485 &6817676150059612123
 Tilemap:
   m_ObjectHideFlags: 0
@@ -1502,6 +1485,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_AffectedAgents: ffffffff
   m_TileModifiers: []
+--- !u!114 &3628810563622769939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2006649140709060410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b223776f225b13c48bd07bdacc034ba8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  topDoor: {fileID: 1713077044336713815}
+  bottomDoor: {fileID: 4849648781329023569}
+  leftDoor: {fileID: 4463589332863100863}
+  rightDoor: {fileID: 181277585585653364}
+  roomType: 0
 --- !u!1 &2795198540910342541
 GameObject:
   m_ObjectHideFlags: 0
