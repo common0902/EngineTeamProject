@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 48c32755cef4f784ab6582bd331841f7, type: 3}
-  m_Name: BossShoot
+  m_Name: BossBombAttack
   m_EditorClassIdentifier: 
-  soundName: BossShoot
+  soundName: BossBombAttack
   soundType: 1
-  clip: {fileID: 8300000, guid: 4e5bd4ebb141f07408b65a8a01a5abac, type: 3}
+  clip: {fileID: 8300000, guid: c5c97017f07448b448ec344b5357213f, type: 3}
   loop: 0
   Priority: 128
-  volume: 0.1643
-  pitch: 1.666
+  volume: 0.359
+  pitch: 1.671
   stereoPan: 0
   SpatialBlend: 0
   RandomPitch: 0

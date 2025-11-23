@@ -32,6 +32,7 @@ namespace _00.Work.AJ._01._Scripts.BOSS.Attacks
         {
             float angleStep = _spreadAngle / _bulletCount;
             float startAngle = waveIndex * 15f; 
+            SoundManager.Instance.PlaySound("BossShoot");
             
             for (int i = 0; i < _bulletCount; i++)
             {
@@ -43,7 +44,6 @@ namespace _00.Work.AJ._01._Scripts.BOSS.Attacks
 
         private void SpawnBullet(Vector2 direction)
         {
-            SoundManager.Instance.PlaySound("BossShoot");
             GameObject bullet = Object.Instantiate(
                 _boss.BulletPrefab, 
                 _boss.FirePos.position, 
