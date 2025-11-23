@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using csiimnida.CSILib.SoundManager.RunTime;
 using UnityEditor.Searcher;
 using UnityEngine;
 
@@ -31,6 +32,7 @@ namespace _00.Work.AJ._01._Scripts.BOSS.Attacks
         {
             float angleStep = _spreadAngle / _bulletCount;
             float startAngle = waveIndex * 15f; 
+            SoundManager.Instance.PlaySound("BossShoot");
             
             for (int i = 0; i < _bulletCount; i++)
             {

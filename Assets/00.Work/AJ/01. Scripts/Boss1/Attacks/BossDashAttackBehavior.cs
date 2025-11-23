@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using _00.Work.SYH._02Script.ETG;
+using csiimnida.CSILib.SoundManager.RunTime;
 using DG.Tweening;
 using UnityEngine;
 
@@ -21,7 +22,8 @@ namespace _00.Work.AJ._01._Scripts.BOSS.Attacks
             float dashDuration = 0.5f;
             float elapsed = 0f;
             Debug.Log("dkdkdkd");
-    
+            SoundManager.Instance.PlaySound("BossDash");
+            SoundManager.Instance.PlaySound("BossSword");
             while (elapsed < dashDuration)
             {
                 Vector2 nextPos = (Vector2)_boss.transform.position + direction * dashSpeed * Time.deltaTime;

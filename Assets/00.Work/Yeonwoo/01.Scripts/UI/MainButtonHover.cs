@@ -1,4 +1,5 @@
 ﻿using System;
+using csiimnida.CSILib.SoundManager.RunTime;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -28,6 +29,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
                 new Vector2(hoverWidth, _targetRect.sizeDelta.y),
                 duration
             ).SetEase(Ease.OutQuad);
+            SoundManager.Instance.PlaySound("ButtonHover");
         }
 
         public void OnPointerExit(PointerEventData eventData)
