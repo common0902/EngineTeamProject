@@ -16,12 +16,6 @@ public class NavMeshBakeManager : MonoSingleton<NavMeshBakeManager>
         base.Awake();
         CheckSurface();
     }
-
-    private void Start()
-    {
-        Bake();
-    }
-
     private void CheckSurface()
     {
         if (surface == null)

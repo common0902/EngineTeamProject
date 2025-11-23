@@ -35,17 +35,13 @@ namespace _00.Work.AJ._01._Scripts.Boss2.FSM.States
         public override void Update()
         {   
             base.Update();
-            if (_boss.IsDead || _boss.Phase2Activated) return;
+            if (_boss.IsDead) return;
             
             _timer += Time.deltaTime;
             if (_timer >= _waitTime)
             {
                 ChoosePattern();
                 _timer = 0f;
-            }
-            else
-            {
-                return;
             }
         }
 

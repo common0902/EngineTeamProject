@@ -51,7 +51,7 @@ public class PlayerMove : MonoBehaviour
         }
 
         float fill = _dashCooltime > 0f ? Mathf.Clamp01(_waitTime / _dashCooltime) : 1f;
-        //coolUI.SetFill(fill);
+        coolUI.SetFill(fill);
         
         if (_isCasting)
         {
@@ -98,7 +98,7 @@ public class PlayerMove : MonoBehaviour
         {
             dir = transform.GetChild(0).localScale.x > 0 ? Vector2.right : Vector2.left;
         }
-        _rb.linearVelocity += dir.normalized * _dashPower;
+        _rb.linearVelocity += dir * _dashPower;
         _canDash = false;
         _waitTime = 0;
         coolUI.SetFill(0);
