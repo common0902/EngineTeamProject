@@ -104,8 +104,19 @@ namespace _00.Work.Yeonwoo._01.Scripts.Direction
 
         public Tween PlayWin(float duration, bool useUnscaled = true)
         {
-            // 승리 시 모션
-            return null;
+            float targetScale = 1.4f;
+            Sequence seq = DOTween.Sequence();
+            
+            if (_material != null)
+            {
+                seq.Append(_material.DOFloat(20f, "_FlameBrightness", duration * 0.35f));
+            }
+            
+            seq.Append(transform.DOScale(targetScale, duration * 0.45f).SetEase(Ease.OutCubic));
+            seq.Append(transform.DOScale(Vector3.one, duration * 0.2f).SetEase(Ease.OutBack));
+            
+            seq.SetUpdate(useUnscaled);
+            return seq;
         }
     }
 }
