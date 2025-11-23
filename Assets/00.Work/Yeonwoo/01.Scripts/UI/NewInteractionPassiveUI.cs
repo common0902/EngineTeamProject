@@ -25,7 +25,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
                 Debug.Log("상관 X");
             _currentSkillData = sd;
             if (icon != null && sd.Icon != null) icon.sprite = sd.Icon;
-            if (nameText != null) nameText.text = string.IsNullOrEmpty(sd.Name) ? "NO NAME" : sd.Name;
+            if (nameText != null) nameText.text = string.IsNullOrEmpty(sd.Name) ? "DataError" : sd.Name;
             if (descriptionText != null) descriptionText.text = string.IsNullOrEmpty(sd.Description) ? "-" : sd.Description;
             if (statText != null) statText.text = string.IsNullOrEmpty(sd.Stat) ? "-" : $"사용 효과: {sd.Stat}";
 
