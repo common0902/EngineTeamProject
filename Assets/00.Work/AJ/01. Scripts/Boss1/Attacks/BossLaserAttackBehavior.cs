@@ -33,6 +33,7 @@ namespace _00.Work.AJ._01._Scripts.BOSS.Attacks
             float startOffset = -totalHeight / 2f;
             for (int i = 0; i < rand; i++)
             {
+                SoundManager.Instance.PlaySound("Wing");
                 GameObject obj = Object.Instantiate(_boss.laserPoint, _boss.transform.position, Quaternion.identity);
                 _laserList.Add(obj.transform);
                 _laserPointInstances.Add(obj);
@@ -72,6 +73,7 @@ namespace _00.Work.AJ._01._Scripts.BOSS.Attacks
                 
                 Debug.Log("LaserFire");
                 int currentIndex = i;
+                SoundManager.Instance.PlaySound("Earthquake10s");
                 laser.Init(_laserList[i].transform.position, _boss);
                 yield return new WaitForSeconds(0.5f);
                 laser.OnLaserHitEnd += () =>
