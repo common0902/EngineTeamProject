@@ -58,6 +58,7 @@ GameObject:
   - component: {fileID: 1922911948108908984}
   - component: {fileID: 3031503935125608750}
   - component: {fileID: 2543211135972431690}
+  - component: {fileID: 5511297881991687327}
   m_Layer: 0
   m_Name: Visual
   m_TagString: Untagged
@@ -103,7 +104,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: e646a9e829caa3d4d94a34ca08ed8e34, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -286,6 +287,18 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
+--- !u!114 &5511297881991687327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3060876874431918615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 357baed3cca916749bf83a6d2799be3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4781893648028472082
 GameObject:
   m_ObjectHideFlags: 0
@@ -538,10 +551,34 @@ MonoBehaviour:
   _speed: 5
   OnZeroMana:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: _00.Work.Yeonwoo._01.Scripts.UI.PlayerManaUI, Assembly-CSharp
+        m_MethodName: ManaZeroAnim
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnRecoverMana:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: _00.Work.Yeonwoo._01.Scripts.UI.PlayerManaUI, Assembly-CSharp
+        m_MethodName: ManaRecoverAnim
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &4915412839961996721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -588,7 +625,7 @@ MonoBehaviour:
   maxHealth: 0
   areYouPlayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   _isCounter: 0
   <Invincibility>k__BackingField: 0
   _isMarked: 0
@@ -680,4 +717,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fa5d099b63c40a0a643e9af449af999, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controlScripts: []
+  controlScripts:
+  - {fileID: 7081561312850541444}
+  - {fileID: 3908922201087372522}
+  - {fileID: 6839599402493226269}
+  - {fileID: 0}
