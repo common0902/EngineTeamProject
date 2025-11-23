@@ -10,7 +10,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
 {
     public class BossDeathAfterCinema : MonoBehaviour
     {
-        private Boss _boss;
+        [SerializeField] private Boss boss;
 
         [Header("Fire sources (선택)")]
         [Tooltip("프리팹으로 생성할 Fire들 (프리팹을 넣으면 Instantiate 사용). 비워두면 scene에 있는 비활성 Fire들을 사용합니다.")]
@@ -36,8 +36,8 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
 
         private void Awake()
         {
-            _boss = GameObject.Find("Boss").GetComponent<Boss>();
-            if (_boss == null)
+            boss = GameObject.Find("Boss").GetComponent<Boss>();
+            if (boss == null)
                 Debug.LogError("보스 죽은 후 연출 판넬에서 보스 못 찾음");
 
             // 기존 Fire들을 자동으로 찾을지, 인스펙터에 수동으로 넣을지 선택
@@ -55,14 +55,14 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
 
         private void OnEnable()
         {
-            if (_boss != null && _boss.DeathState != null)
-                _boss.DeathState.BossDeathAction += FinalCinema;
+            if (boss != null && boss.DeathState != null)
+                boss.DeathState.BossDeathAction += FinalCinema;
         }
 
         private void OnDisable()
         {
-            if (_boss != null && _boss.DeathState != null)
-                _boss.DeathState.BossDeathAction -= FinalCinema;
+            if (boss != null && boss.DeathState != null)
+                boss.DeathState.BossDeathAction -= FinalCinema;
         }
 
         private void FinalCinema()
