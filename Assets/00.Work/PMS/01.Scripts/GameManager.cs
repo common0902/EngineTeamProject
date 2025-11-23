@@ -125,4 +125,34 @@ public class GameManager : MonoSingleton<GameManager>
     {
         return CurrentRoom != null ? CurrentRoom.transform.position : Vector3.zero;
     }
+    [ContextMenu("ResetSave")]
+    public void ResetSave()
+    {
+        if (File.Exists(SavePath))
+        {
+            File.Delete(SavePath);
+        }
+
+        CurrentWorld = 1;
+        CurrentStage = 1;
+
+        ApplyStageSettings();
+
+        // 세이브는 삭제만 했고, 현재 진행은 1-1 상태로만 바꿔둔 상태
+    }
+
+    [ContextMenu("NewGame")]
+    public void NewGame()
+    {
+        CurrentWorld = 1;
+        CurrentStage = 1;
+
+        SaveStage();          // 1-1로 세이브 덮어쓰기
+        ApplyStageSettings(); // 보스 여부 등 반영
+
+        if (RoomManager.Instance != null)
+        {
+            RoomManager.Instance.RegenerateRooms(); // 맵도 새로 생성
+        }
+    }
 }
