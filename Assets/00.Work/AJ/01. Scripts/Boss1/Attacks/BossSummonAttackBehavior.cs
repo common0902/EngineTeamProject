@@ -1,8 +1,6 @@
 ﻿using System.Collections;
 using _00.Work.SYH._02Script.ETG;
 using csiimnida.CSILib.SoundManager.RunTime;
-using DG.Tweening;
-using UnityEditor.Searcher;
 using UnityEngine;
 
 namespace _00.Work.AJ._01._Scripts.BOSS.Attacks

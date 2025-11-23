@@ -35,13 +35,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.Data
             Gold += amount;
             OnGoldChanged?.Invoke();
         }
-
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Z))
-                SpawnGoldDrop(transform.position, 10, 10);
-        }
-
+        
         public void SpawnGoldDrop(Vector3 spawnWorldPos, int totalGoldAmount, int split = 1)
         {
             if (PoolManager2.Instance == null)
