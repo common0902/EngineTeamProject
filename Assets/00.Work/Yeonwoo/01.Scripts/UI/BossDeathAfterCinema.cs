@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using _00.Work.AJ._01._Scripts.BOSS;
 using _00.Work.Yeonwoo._01.Scripts.Direction;
 using DG.Tweening;
@@ -35,7 +36,9 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
 
         private void Awake()
         {
-            _boss = FindAnyObjectByType<Boss>();
+            _boss = GameObject.Find("Boss").GetComponent<Boss>();
+            if (_boss == null)
+                Debug.LogError("보스 죽은 후 연출 판넬에서 보스 못 찾음");
 
             // 기존 Fire들을 자동으로 찾을지, 인스펙터에 수동으로 넣을지 선택
             if (useExistingFires)
@@ -43,6 +46,11 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
                 // includeInactive: true로 비활성 오브젝트도 찾음
                 existingFires = GetComponentsInChildren<Fire>(true);
             }
+        }
+
+        private void Update()
+        {
+            
         }
 
         private void OnEnable()

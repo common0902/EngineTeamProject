@@ -9,14 +9,14 @@ public class EnemyHit : MonoBehaviour
     private EnemyAnimator _enemyAnimator;
     public bool isAnimationEnd = false;
     private Enemy _enemy;
-    private Room _parentRoom;
+    private NormalRoom _parentRoom;
     public GoldSystem goldSystem;
 
     private void Awake()
     {
         _enemyAnimator = GetComponentInChildren<EnemyAnimator>();
         _enemy = GetComponent<Enemy>();
-        _parentRoom = GetComponentInParent<Room>();
+        _parentRoom = GetComponentInParent<NormalRoom>();
     }
     private void Start()
     {

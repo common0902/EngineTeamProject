@@ -2,6 +2,10 @@
 
 public class BossRoom : Room
 {
+    [SerializeField] private GameObject bossHealthBar;
+    [SerializeField] private GameObject portal;
+    [SerializeField] private GameObject box;
+    [SerializeField] private GameObject boss;
     protected override void Start()
     {
         hasEnemies = true;
@@ -11,11 +15,15 @@ public class BossRoom : Room
     public override void OnPlayerEnter()
     {
         base.OnPlayerEnter();
+        bossHealthBar.SetActive(true);
+        boss.SetActive(true);
     }
 
     private void HandleBossDied()
     {
-        OnEnemyDied(); 
+        OnEnemyDied();
+        portal.SetActive(true);
+        box.SetActive(true);
     }
 
     public override void OnEnemyDied()
