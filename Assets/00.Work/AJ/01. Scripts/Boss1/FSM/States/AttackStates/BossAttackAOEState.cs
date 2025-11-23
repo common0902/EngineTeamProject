@@ -1,4 +1,5 @@
-﻿using DG.Tweening;
+﻿using csiimnida.CSILib.SoundManager.RunTime;
+using DG.Tweening;
 using UnityEngine;
 
 namespace _00.Work.AJ._01._Scripts.BOSS.FSM.States.AttackStates
@@ -21,7 +22,6 @@ namespace _00.Work.AJ._01._Scripts.BOSS.FSM.States.AttackStates
             Debug.Log("AOE Attack");
             _boss.RbCompo.linearVelocity = Vector2.zero;
             _timer = 0f;
-
             _boss.transform.DOMove(_boss.CenterPos.position, 1f);
         }
 

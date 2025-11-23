@@ -63,7 +63,7 @@ public class NavMeshBakeManager : MonoSingleton<NavMeshBakeManager>
         var navMeshData = surface.navMeshData;
         if (navMeshData != null)
         {
-            Debug.Log("<color=green>NavMesh spawned</color>");
+            //Debug.Log("<color=green>NavMesh spawned</color>");
         }
         else
         {

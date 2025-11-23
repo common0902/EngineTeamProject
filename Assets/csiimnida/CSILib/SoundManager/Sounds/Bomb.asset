@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48c32755cef4f784ab6582bd331841f7, type: 3}
+  m_Name: Bomb
+  m_EditorClassIdentifier: 
+  soundName: Bomb
+  soundType: 1
+  clip: {fileID: 8300000, guid: a4ceb4da89abddd4999905525edebba2, type: 3}
+  loop: 0
+  Priority: 128
+  volume: 1
+  pitch: 0.69
+  stereoPan: 0.2
+  SpatialBlend: 0
+  RandomPitch: 0
+  MinPitch: 0.95
+  MaxPitch: 1.05

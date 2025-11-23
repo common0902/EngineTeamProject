@@ -99,7 +99,7 @@ namespace _00.Work.AJ._01._Scripts.BOSS.FSM.States
                 _boss.Patterns.Add(BossStateType.AttackBomb);
             }
 
-            if (!_boss.Phase3Executed && hpRate <= 5f)
+            if (!_boss.Phase3Executed && hpRate <= 10f)
             {
                 _boss.Phase3Executed = true;
                 _boss.CurrentType = BossStateType.AttackAOE;

@@ -1,4 +1,5 @@
-﻿using DG.Tweening;
+﻿using csiimnida.CSILib.SoundManager.RunTime;
+using DG.Tweening;
 using UnityEngine;
 
 namespace _00.Work.AJ._01._Scripts.BOSS.FSM.States
@@ -16,6 +17,7 @@ namespace _00.Work.AJ._01._Scripts.BOSS.FSM.States
         {
             base.Enter();
             Debug.Log("Hit");
+            SoundManager.Instance.PlaySound("Hit");
         }
 
         public override void Update()

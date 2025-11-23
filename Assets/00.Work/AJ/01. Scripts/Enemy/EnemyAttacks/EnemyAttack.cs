@@ -80,6 +80,7 @@ public class EnemyAttack : MonoBehaviour
         _lastAttackTime = Time.time;
 
         Vector2 dir = (_enemy.Target.position - _enemy.transform.position).normalized;
+        
         StartCoroutine(_attackBehavior.ExecuteAttack(dir));
     }
 
