@@ -30,7 +30,6 @@ public class EnemyIdleState : EnemyState
             var rend = _enemy.GetComponentInChildren<SpriteRenderer>();
             if (rend != null) rend.color = new Color(1, 1,1,0f);
             _enemy.GetComponentInChildren<EnemyAnimator>().OnAssassinVanish?.Invoke();
-            _enemy.HealthCompo.enabled = false;
             _enemy.ColliderCompo.isTrigger = true;
         }
         

@@ -20,7 +20,7 @@ MonoBehaviour:
   canPatrol: 1
   patrolDist: 0.3
   damage: 5
-  attackDelay: 1
+  attackDelay: 0
   useBoxRange: 0
   boxRange: {x: 0, y: 0}
   knockbackForce: 0.5
@@ -53,6 +53,7 @@ MonoBehaviour:
     particleSystem: {fileID: 5923970373030117632, guid: fec786b8461d04143b17cb740fdf0040, type: 3}
     explosionRadius: 1.5
     explosionDelay: 0.3
+    rangeIndicator: {fileID: 0}
   trapperData:
     trapPrefab: {fileID: 0}
     maxTraps: 3

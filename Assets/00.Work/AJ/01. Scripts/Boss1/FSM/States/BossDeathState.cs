@@ -22,8 +22,16 @@ namespace _00.Work.AJ._01._Scripts.Boss1.FSM.States
         public BossDeathState(Boss boss, string animName, BossStateMachine stateMachine) : base(boss, animName, stateMachine)
         {
             _bossHit = boss.GetComponent<BossHit>();
-            _whiteImg = _boss.white.GetComponent<Image>();
-            _whiteRect = _boss.white.GetComponent<RectTransform>();
+            if (_boss.white == null)
+            {
+                GameObject white = new GameObject("White");
+                white.AddComponent<RectTransform>();
+                white.AddComponent<Image>();
+                _boss.white = white;
+                _whiteImg = _boss.white.GetComponent<Image>();
+                _whiteRect = _boss.white.GetComponent<RectTransform>();
+                _whiteImg.color = new Color(1f,1f,1f,0f);
+            }
             _sequence = DOTween.Sequence();
         }
         public override void Enter()

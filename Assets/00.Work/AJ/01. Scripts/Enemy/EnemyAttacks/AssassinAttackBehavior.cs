@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using _00.Work.SYH._02Script.ETG;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 public class AssassinAttackBehavior : IEnemyAttackBehavior
 {
@@ -24,14 +25,13 @@ public class AssassinAttackBehavior : IEnemyAttackBehavior
     {
         if (!_canAttack || _enemy.Target == null)
             yield break;
-        _enemy.ColliderCompo.enabled = false;
         _canAttack = false;
-        
-        _targetHealth.Damage(_enemy.enemySO.damage);
-        
-        IsAttackAnimationEnd = false;
-        while (!IsAttackAnimationEnd)
-            yield return null;
+        _enemy.HealthCompo.Invincibility = false;
+
+        if (_enemy.CheckAttackRange())
+        {
+            _targetHealth.Damage(_enemy.enemySO.damage);
+        }
 
         IsAttackAnimationEnd = false;
         _canAttack = true;
@@ -59,8 +59,7 @@ public class AssassinAttackBehavior : IEnemyAttackBehavior
         if (_renderer != null)
             _renderer.color = new Color(1f, 1f, 1f, 0f);
 
-        _enemy.HealthCompo.enabled = false;
-        _enemy.ColliderCompo.enabled = false;
+        _enemy.HealthCompo.Invincibility = true;
     }
 
     public void AppearBehind()
@@ -84,7 +83,6 @@ public class AssassinAttackBehavior : IEnemyAttackBehavior
         if (_renderer != null)
             _renderer.color = new Color(1f, 1f, 1f, 1f);
 
-        _enemy.HealthCompo.enabled = true;
-        _enemy.ColliderCompo.enabled = true;
+        _enemy.HealthCompo.Invincibility = false;
     }
 }
