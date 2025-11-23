@@ -28,6 +28,11 @@ public class Sniper : FireBall
                 _waitTime2 += Time.deltaTime;
             }
         }
+        else
+        {
+            Player.Instance.PlayerStatusCompo._sniper = 1;
+            _waitTime2 = 0;
+        }
     }
     void FirstSkillOption()
     {

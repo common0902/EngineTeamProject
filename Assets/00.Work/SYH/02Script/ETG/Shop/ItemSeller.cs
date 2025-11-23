@@ -1,15 +1,51 @@
+using System;
 using UnityEngine;
 
 public class ItemSeller : MonoBehaviour
 {
     [SerializeField]Transform[] _itemPoses;
     [SerializeField] string _passiveItemName = "Potion";
-    private void OnEnable()
+    GameObject[] Potions = new GameObject[3];
+    public event Action OnPushPotion;
+    private void Start()
     {
-        foreach (Transform i in _itemPoses)
-        {
-            GameObject item = PoolManager.Instance.Pop(_passiveItemName).GameObject;
-            item.transform.position = i.position;
-        }
+        print(222);
+        RoomManager.Instance.OnInPortal += Resett;
+    }
+    private void Resett()
+    {
+            print(999);
+            RoomManager.Instance.OnInPortal -= Resett;
+            if (gameObject == null || _itemPoses == null || _itemPoses[0] == null || _itemPoses[1] == null || _itemPoses[2] == null)
+            {
+                print(gameObject);
+                print(_itemPoses);
+                print(_itemPoses[0]);
+                print(_itemPoses[1]);
+                print(_itemPoses[2]);
+            }
+            print(1010);
+            for (int i = 0; i < _itemPoses.Length; i++)
+            {
+                print("Start i = " + i);
+                Potions[i] = PoolManager.Instance.Pop(_passiveItemName).GameObject;
+                print(Potions[i].transform.position);
+                print(_itemPoses);
+                print(_itemPoses[i]);
+                print(_itemPoses[i].position);
+                Potions[i].transform.position = _itemPoses[i].position;
+                print(666);
+                Potions[i].SetActive(true);
+                OnPushPotion += Potions[i].GetComponent<PassiveSkill>().Push;
+                print(777);
+            }
+        
+        
+    }
+    private void OnDestroy()
+    {
+        print(111);
+        RoomManager.Instance.OnInPortal -= Resett;
+        OnPushPotion?.Invoke();
     }
 }

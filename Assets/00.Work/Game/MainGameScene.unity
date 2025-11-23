@@ -1825,6 +1825,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1079712894}
   m_CullTransparentMesh: 1
+--- !u!1 &1137103737
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1137103739}
+  - component: {fileID: 1137103738}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1137103738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1137103737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa13a5431164a7f42bfe562f231e13af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundListSo: {fileID: 11400000, guid: 380dcdb0a6bd8f1429264bd58af6907b, type: 2}
+  _mixer: {fileID: 24100000, guid: b22c88b87da55dc4b8ff5d2c61b215d9, type: 2}
+--- !u!4 &1137103739
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1137103737}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1148197035
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3266,7 +3312,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startRoomPrefab: {fileID: 2006649140709060410, guid: 6e7e513380d4d0d47b458fab781c541d, type: 3}
   portalRoomPrefab: {fileID: 2006649140709060410, guid: ffff4dc6061fd6b4e8a1b1d87bb42549, type: 3}
-  bossRoomPrefab: {fileID: 2006649140709060410, guid: f1bcd4353568f4343bbb94bf30644875, type: 3}
+  bossRoomPrefab: {fileID: 2006649140709060410, guid: 728ceed6d35939147b0dfead6a5c0048, type: 3}
   goldRoomPrefab:
   - {fileID: 2006649140709060410, guid: a4dfc058cdd25ec40be05a1ce02cc6d3, type: 3}
   roomPrefab:
@@ -3359,3 +3405,5 @@ SceneRoots:
   - {fileID: 1812105733}
   - {fileID: 206559994}
   - {fileID: 1963679440}
+  - {fileID: 812112853}
+  - {fileID: 1137103739}

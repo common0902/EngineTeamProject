@@ -43,7 +43,13 @@ public class FireBallPrefab : SkillPrefab, IPoolable
         if (!_isPiercing)
         {
             PoolManager.Instance.Push(GetComponent<IPoolable>());
-            gameObject.SetActive(false);
+        }
+        else
+        {
+            if (!collision.gameObject.CompareTag("Enemy"))
+            {
+                PoolManager.Instance.Push(GetComponent<IPoolable>());
+            }
         }
     }
 

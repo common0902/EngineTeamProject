@@ -1,4 +1,5 @@
-﻿using System;
+﻿using csiimnida.CSILib.SoundManager.RunTime;
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -52,6 +53,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.Direction
 
         private void NextStage()
         {
+            SoundManager.Instance.PlaySound("InPortal");
             StartCoroutine(IntroManager.Instance.Show(0.01f, IntroManager.Instance._black));
             StartCoroutine(IntroManager.Instance.Show(0.01f, IntroManager.Instance.BlackText));
             _playerPos.position = Vector3.zero;
