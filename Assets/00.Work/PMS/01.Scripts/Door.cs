@@ -19,6 +19,7 @@ public class Door : MonoBehaviour
     [SerializeField] private GameObject goldMarkObject;   
     [SerializeField] private GameObject shopMarkObject;   
     [SerializeField] private GameObject bossMarkObject;
+    [SerializeField] private GameObject portalMarkObject;
 
     private void Awake()
     {
@@ -70,6 +71,10 @@ public class Door : MonoBehaviour
 
             case RoomType.Boss:
                 if (bossMarkObject != null) bossMarkObject.SetActive(true);
+                break;
+
+            case RoomType.Portal:
+                if (portalMarkObject != null) portalMarkObject.SetActive(true);
                 break;
 
         }

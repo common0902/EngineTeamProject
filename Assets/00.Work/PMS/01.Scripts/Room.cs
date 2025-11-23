@@ -8,8 +8,10 @@ public enum RoomType
     Boss,
     Portal
 }
-public class Room : MonoBehaviour
+
+public abstract class Room : MonoBehaviour
 {
+    [Header("Doors")]
     [SerializeField] private GameObject topDoor;
     [SerializeField] private GameObject bottomDoor;
     [SerializeField] private GameObject leftDoor;
@@ -17,26 +19,28 @@ public class Room : MonoBehaviour
 
     public RoomType roomType;
 
-    private int enemyCount;
-    private bool hasEnemies;
-    private bool isCleared = false;
-    public Vector2Int RoomIndex {  get; set; }
+    protected int enemyCount;
+    protected bool hasEnemies;
+    protected bool isCleared = false;
 
-    private void Start()
+    public Vector2Int RoomIndex { get; set; }
+
+    protected virtual void Start()
     {
         Enemy[] enemies = GetComponentsInChildren<Enemy>();
         enemyCount = enemies.Length;
         hasEnemies = enemyCount > 0;
     }
 
-    public void OnPlayerEnter()
+    public virtual void OnPlayerEnter()
     {
         if (hasEnemies && !isCleared)
         {
             LockAllDoors();
         }
     }
-    public void OnEnemyDied()
+
+    public virtual void OnEnemyDied()
     {
         enemyCount--;
         if (enemyCount <= 0)
@@ -46,8 +50,8 @@ public class Room : MonoBehaviour
         }
     }
 
-    [ContextMenu("문 다 열림")] 
-    void OpenDoor() => UnlockAllDoors();
+    [ContextMenu("문 다 열림")]
+    void OpenDoorCheat() => UnlockAllDoors();
 
     public Door OpenDoor(Vector2Int direction)
     {
@@ -72,7 +76,7 @@ public class Room : MonoBehaviour
         {
             leftDoor.SetActive(true);
             doorObject = leftDoor;
-        }   
+        }
 
         if (doorObject != null)
         {
@@ -88,19 +92,20 @@ public class Room : MonoBehaviour
 
         return null;
     }
-    private void LockAllDoors()
+
+    protected void LockAllDoors()
     {
-        if (topDoor.activeSelf) topDoor.GetComponent<Door>()?.Lock();
-        if (bottomDoor.activeSelf) bottomDoor.GetComponent<Door>()?.Lock();
-        if (leftDoor.activeSelf) leftDoor.GetComponent<Door>()?.Lock();
-        if (rightDoor.activeSelf) rightDoor.GetComponent<Door>()?.Lock();
+        if (topDoor != null && topDoor.activeSelf) topDoor.GetComponent<Door>()?.Lock();
+        if (bottomDoor != null && bottomDoor.activeSelf) bottomDoor.GetComponent<Door>()?.Lock();
+        if (leftDoor != null && leftDoor.activeSelf) leftDoor.GetComponent<Door>()?.Lock();
+        if (rightDoor != null && rightDoor.activeSelf) rightDoor.GetComponent<Door>()?.Lock();
     }
 
-    private void UnlockAllDoors()
+    protected void UnlockAllDoors()
     {
-        if (topDoor.activeSelf) topDoor.GetComponent<Door>()?.Unlock();
-        if (bottomDoor.activeSelf) bottomDoor.GetComponent<Door>()?.Unlock();
-        if (leftDoor.activeSelf) leftDoor.GetComponent<Door>()?.Unlock();
-        if (rightDoor.activeSelf) rightDoor.GetComponent<Door>()?.Unlock();
+        if (topDoor != null && topDoor.activeSelf) topDoor.GetComponent<Door>()?.Unlock();
+        if (bottomDoor != null && bottomDoor.activeSelf) bottomDoor.GetComponent<Door>()?.Unlock();
+        if (leftDoor != null && leftDoor.activeSelf) leftDoor.GetComponent<Door>()?.Unlock();
+        if (rightDoor != null && rightDoor.activeSelf) rightDoor.GetComponent<Door>()?.Unlock();
     }
 }
