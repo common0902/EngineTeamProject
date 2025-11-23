@@ -40,13 +40,7 @@ namespace _00.Work.SYH._02Script.ETG
             Health = maxHealth;
             OnHealthChanged?.Invoke(Health, maxHealth);
         }
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
-                Damage(1);
-            }
-        }
+
         public void Damage(float damage)
         {
             if (Invincibility)
