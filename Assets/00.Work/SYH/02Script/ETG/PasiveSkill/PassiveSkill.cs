@@ -1,4 +1,5 @@
 using _00.Work.Yeonwoo._01.Scripts.Data;
+using TMPro;
 using UnityEngine;
 
 public class PassiveSkill : MonoBehaviour, IPoolable
@@ -12,6 +13,7 @@ public class PassiveSkill : MonoBehaviour, IPoolable
     public int _statusValue;
     [field:SerializeField]public int Price { get; private set; }
     [field:SerializeField]public PassiveSkillSO SkillSO { get; private set; }
+    TextMeshPro _text;
 
     public string ItemName => _itemName;
 
@@ -19,7 +21,7 @@ public class PassiveSkill : MonoBehaviour, IPoolable
 
     private void Awake()
     {
-        
+        _text = GetComponentInChildren<TextMeshPro>();
     }
 
     public bool TryBuy()
@@ -72,5 +74,7 @@ public class PassiveSkill : MonoBehaviour, IPoolable
         GetComponent<SpriteRenderer>().sprite = SkillSO.SkillSprite;
         Price = Mathf.RoundToInt(Random.Range(SkillSO.Price - SkillSO.Price * (_deviation / 100),
         SkillSO.Price + SkillSO.Price * (_deviation / 100)));
+
+        _text.text = Price.ToString();
     }
 }
