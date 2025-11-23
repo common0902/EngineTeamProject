@@ -31,7 +31,7 @@ namespace _00.Work.AJ._01._Scripts.BOSS.Attacks
             _sequence.Append(_boss.RangeSprite.DOFade(0.5f, 10f));
             _sequence.AppendCallback(() =>
             {
-                var bomb = Object.Instantiate(_boss.Bomb, _boss.transform.position, Quaternion.identity);
+                var bomb = Object.Instantiate(_boss.Bomb, _boss.CenterPos.position, Quaternion.identity);
                 Debug.Log(bomb);
                 var cic = bomb.GetComponent<Circle>();
                 cic.Init(_boss, _dotDamageMultiplier, _dotTickInterval);
@@ -39,7 +39,7 @@ namespace _00.Work.AJ._01._Scripts.BOSS.Attacks
                 var attackSeq = DOTween.Sequence();
                 attackSeq.Append(bomb.transform.DOScale(15f, 0.5f));
                 attackSeq.JoinCallback(() => SoundManager.Instance.PlaySound("BossBombAttack"));
-                attackSeq.AppendInterval(7f);
+                attackSeq.AppendInterval(5.2f);
                 attackSeq.Append(bomb.GetComponent<SpriteRenderer>().DOFade(0f, 1f));
                 attackSeq.AppendCallback(() =>
                 {

@@ -6380,7 +6380,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &486294871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10557,7 +10557,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Health>k__BackingField: 0
-  maxHealth: 0
+  maxHealth: 3
   areYouPlayer:
     serializedVersion: 2
     m_Bits: 0
@@ -11970,15 +11970,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be8d5fd68e9d792499ca47d183a5ef1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  topDoor: {fileID: 837369687}
-  bottomDoor: {fileID: 920476308}
-  leftDoor: {fileID: 641406097}
-  rightDoor: {fileID: 194334283}
-  roomType: 0
-  enemyCount: 0
-  hasEnemies: 0
-  isCleared: 0
-  <RoomIndex>k__BackingField: {x: 0, y: 0}
 --- !u!4 &1020123661
 Transform:
   m_ObjectHideFlags: 0
@@ -12659,7 +12650,7 @@ PrefabInstance:
       objectReference: {fileID: 1706489006}
     - target: {fileID: 5890602436695580388, guid: 1a8961321bc5464469d9b7520e3010b5, type: 3}
       propertyPath: maxHealth
-      value: 10
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 9058789966989548556, guid: 1a8961321bc5464469d9b7520e3010b5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -48490,7 +48481,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2541696089574483213, guid: 9ac9fec6f7867534b92e9e7ba55fd7eb, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9053547549051051989, guid: 9ac9fec6f7867534b92e9e7ba55fd7eb, type: 3}
       propertyPath: m_LocalPosition.x

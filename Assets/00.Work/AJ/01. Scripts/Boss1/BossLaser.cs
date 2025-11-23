@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using _00.Work.SYH._02Script.ETG;
+using csiimnida.CSILib.SoundManager.RunTime;
 using DG.Tweening;
 using UnityEngine;
 
@@ -29,13 +30,15 @@ namespace _00.Work.AJ._01._Scripts.BOSS
             CameraHandler.Instance.ShakeCamera(0.03f, 8f);
             transform.position = new Vector3(pos.x - 11f, pos.y, 0f);
             gameObject.GetComponentInChildren<LaserBoss>().Init(_boss, 1f, 0f, _boss.playerMask);
-            laser.transform.DOScaleX(22f, 5f)
+            Sequence seq = DOTween.Sequence();
+            seq.Append(laser.transform.DOScaleX(22f, 2f)
                 .SetDelay(5f)
                 .OnComplete(() =>
                 {
                     laser.transform.DOScaleX(0f, 1f).OnComplete(() => Destroy(gameObject));
                     OnLaserHitEnd?.Invoke();
-                });
+                }));
+            seq.JoinCallback(() => SoundManager.Instance.PlaySound("BossLaser2"));
         }
 
         private void OnDrawGizmos()
