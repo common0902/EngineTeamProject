@@ -16,8 +16,8 @@ namespace _00.Work.Yeonwoo._01.Scripts.Direction
         
         private void OnEnable()
         {
-            if (_interactionText) 
-                _interactionText.gameObject.SetActive(false);
+            if (interactionText) 
+                interactionText.gameObject.SetActive(false);
             GameObject player = Player.Instance.gameObject;
             if (player != null)
             {
@@ -55,6 +55,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.Direction
             StartCoroutine(IntroManager.Instance.Show(0.01f, IntroManager.Instance._black));
             StartCoroutine(IntroManager.Instance.Show(0.01f, IntroManager.Instance.BlackText));
             _playerPos.position = Vector3.zero;
+            GameManager.Instance.OnPortalUsed();
             RoomManager.Instance.RegenerateRooms();
         }
     }
