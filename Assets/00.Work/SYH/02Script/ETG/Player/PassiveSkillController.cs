@@ -22,7 +22,7 @@ public class PassiveSkillController : MonoBehaviour
             {
                 PassiveSkill skill = collider.gameObject.GetComponent<PassiveSkill>();
                 TakeSkill(skill);
-                skill.Take();
+                skill.TryBuy();
             }
         }
     }

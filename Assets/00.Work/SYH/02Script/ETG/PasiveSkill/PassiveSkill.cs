@@ -6,11 +6,11 @@ public class PassiveSkill : MonoBehaviour, IPoolable
     [field:SerializeField] public PassiveData Data { get; private set; }
     
     [SerializeField] PassiveSkillListSO _skillListSO;
-    [SerializeField] float _deviation; //����
+    [SerializeField] float _deviation;
     [SerializeField] string _itemName;
     int _status;
     int _statusValue;
-    public int Price { get; private set; }
+    [field:SerializeField]public int Price { get; private set; }
     public PassiveSkillSO SkillSO { get; private set; }
 
     public string ItemName => _itemName;
@@ -19,15 +19,17 @@ public class PassiveSkill : MonoBehaviour, IPoolable
 
     private void Awake()
     {
-        _status = Random.Range(1, _skillListSO.PassiveSkills.Length);
-        SkillSO = _skillListSO.PassiveSkills[_status];
-        _statusValue = Mathf.RoundToInt(Random.Range(SkillSO.StatusValue - SkillSO.StatusValue * (_deviation / 100), 
-        SkillSO.StatusValue + SkillSO.StatusValue * (_deviation / 100)));
-        GetComponent<SpriteRenderer>().sprite = SkillSO.SkillSprite;
-        Price = Mathf.RoundToInt(Random.Range(SkillSO.Price - SkillSO.Price * (_deviation / 100),
-        SkillSO.Price + SkillSO.Price * (_deviation / 100)));
+        
     }
 
+    public void TryBuy()
+    {
+        if (Player.Instance.GetComponent<GoldSystem>().Gold >= Price)
+        {
+            Player.Instance.GetComponent<GoldSystem>().UseGold(Price);
+            Take();
+        }
+    }
     public void Take()
     {
         switch(SkillSO.StatusType)
@@ -56,11 +58,17 @@ public class PassiveSkill : MonoBehaviour, IPoolable
                 Player.Instance.PlayerStatusCompo._skillCoolDownSpeed += _statusValue;
                 break;
         }
-        Destroy(gameObject);
+        PoolManager.Instance.Push(this);
     }
 
     public void ResetItem()
     {
-        throw new System.NotImplementedException();
+        _status = Random.Range(1, _skillListSO.PassiveSkills.Length);
+        SkillSO = _skillListSO.PassiveSkills[_status];
+        _statusValue = Mathf.RoundToInt(Random.Range(SkillSO.StatusValue - SkillSO.StatusValue * (_deviation / 100),
+        SkillSO.StatusValue + SkillSO.StatusValue * (_deviation / 100)));
+        GetComponent<SpriteRenderer>().sprite = SkillSO.SkillSprite;
+        Price = Mathf.RoundToInt(Random.Range(SkillSO.Price - SkillSO.Price * (_deviation / 100),
+        SkillSO.Price + SkillSO.Price * (_deviation / 100)));
     }
 }
