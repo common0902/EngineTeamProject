@@ -75,6 +75,8 @@ public class PassiveSkill : MonoBehaviour, IPoolable
         Price = Mathf.RoundToInt(Random.Range(SkillSO.Price - SkillSO.Price * (_deviation / 100),
         SkillSO.Price + SkillSO.Price * (_deviation / 100)));
 
+        Data = SkillSO.Data;
+
         _text.text = Price.ToString();
     }
 }

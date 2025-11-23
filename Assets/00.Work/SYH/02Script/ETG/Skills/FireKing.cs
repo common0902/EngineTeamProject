@@ -61,6 +61,7 @@ public class FireKing : Skill
         _hp = Player.Instance.PlayerStatusCompo._hp;
         Player.Instance.PlayerStatusCompo.Mana += _hp;
         Player.Instance.PlayerStatusCompo._skillCoolDownSpeed += 100;
+        Player.Instance.PlayerStatusCompo._manaRecovry += 2;
         Player.Instance.SkillControllerCompo.CurrentAutoAttackNum = 2;
         Player.Instance.PlayerStatusCompo._fullHp = 0;
         Player.Instance.PlayerStatusCompo._hp = 0;
