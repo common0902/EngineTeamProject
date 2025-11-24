@@ -32,7 +32,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
         public void SetDamage(float amount, Vector3 worldPos, Color color)
         {
             _worldPos = worldPos;
-            _text.text = ((int)amount).ToString();
+            _text.text = amount.ToString("F2");
             _text.color = color;
 
             StopAllCoroutines();
