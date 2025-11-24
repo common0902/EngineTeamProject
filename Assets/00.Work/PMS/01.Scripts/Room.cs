@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using csiimnida.CSILib.SoundManager.RunTime;
 using UnityEngine;
 
 public enum RoomType
@@ -79,6 +80,8 @@ public abstract class Room : MonoBehaviour
         if (hasEnemies && !isCleared)
         {
             LockAllDoors();
+            SoundManager.Instance.StopSound("MainGameBGM");
+            SoundManager.Instance.PlaySound("BattleBGM");
         }
     }
     private IEnumerator ActivateEnemiesWithDelay()
@@ -106,6 +109,7 @@ public abstract class Room : MonoBehaviour
             OnBattleWin?.Invoke(this);
             isCleared = true;
             UnlockAllDoors();
+            SoundManager.Instance.StopSound("FinalBossBGM");
         }
     }
 
@@ -158,6 +162,7 @@ public abstract class Room : MonoBehaviour
         if (bottomDoor != null && bottomDoor.activeSelf) bottomDoor.GetComponent<Door>()?.Lock();
         if (leftDoor != null && leftDoor.activeSelf) leftDoor.GetComponent<Door>()?.Lock();
         if (rightDoor != null && rightDoor.activeSelf) rightDoor.GetComponent<Door>()?.Lock();
+        SoundManager.Instance.PlaySound("CloseDoor");
     }
 
     protected void UnlockAllDoors()
@@ -166,6 +171,7 @@ public abstract class Room : MonoBehaviour
         if (bottomDoor != null && bottomDoor.activeSelf) bottomDoor.GetComponent<Door>()?.Unlock();
         if (leftDoor != null && leftDoor.activeSelf) leftDoor.GetComponent<Door>()?.Unlock();
         if (rightDoor != null && rightDoor.activeSelf) rightDoor.GetComponent<Door>()?.Unlock();
+        SoundManager.Instance.PlaySound("OpenDoor");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -17,7 +17,6 @@ namespace _00.Work.AJ._01._Scripts.BossClones
         }
         public override void Update()
         {
-            base.Update();
             if (_bossHit.isAnimationEnd)
             {
                 Object.Destroy(_boss.gameObject);
