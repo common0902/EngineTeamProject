@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class NormalRoom : Room
 {
-    public Action OnBattleWin;
     
     protected override void Start()
     {
@@ -18,6 +17,5 @@ public class NormalRoom : Room
     public override void OnEnemyDied()
     {
         base.OnEnemyDied();
-        OnBattleWin?.Invoke();
     }
 }
