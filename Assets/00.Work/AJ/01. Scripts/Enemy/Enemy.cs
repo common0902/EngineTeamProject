@@ -52,9 +52,9 @@ public class Enemy : Agent, IPoolable
         //BtAgent = GetComponent<BehaviorGraphAgent>();
         _speed = AgentCompo.speed;
 
-        AgentCompo.enabled = false;
-        
-        EnableNavMeshAgent();
+        AgentCompo.enabled = true;
+        AgentCompo.updateRotation = false;
+        AgentCompo.updateUpAxis = false;
         
         ChaseRange = enemySO.chaseRange;
         AttackRange = enemySO.attackRange;
@@ -77,17 +77,6 @@ public class Enemy : Agent, IPoolable
             );
         }
     }
-
-    private void EnableNavMeshAgent()
-    {
-        if (AgentCompo != null)
-        {
-            AgentCompo.enabled = true;
-            AgentCompo.updateRotation = false;
-            AgentCompo.updateUpAxis = false;
-        }
-    }
-
     public void ChangeChaseRange(float value) => ChaseRange = value;
     public void ChangeAttackRange(float value) => AttackRange = value;
     public bool CheckChaseRange()
@@ -120,6 +109,7 @@ public class Enemy : Agent, IPoolable
     {
         if (Camera.main != null)
         {
+            Debug.Log("dfjakf");
             Vector2 screenPoint = Camera.main.WorldToScreenPoint(transform.position);
             bool isOutScreen = screenPoint.x <= 0 || screenPoint.x >= Screen.width || screenPoint.y <= 0 || screenPoint.y >= Screen.height;
             return isOutScreen; 

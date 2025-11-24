@@ -37,7 +37,7 @@ public class ItemSeller : MonoBehaviour
     private void OnDestroy()
     {
         //print(111);
-        //RoomManager.Instance.OnInPortal -= Resett;
+        RoomManager.Instance.OnInPortal -= Resett;
         OnPushPotion?.Invoke();
     }
 }

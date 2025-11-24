@@ -46,7 +46,7 @@ public class EnemyPatrolState : EnemyState
             _enemy.AgentCompo.isStopped = true;
             _stateMachine.ChangeState(EnemyStateType.Idle);
         }
-        if (_enemy.enemySO.enemyType == EnemyType.Trapper && !_enemy.IsOutScreen())
+        if (_enemy.enemySO.enemyType == EnemyType.Trapper)
         {
             TryPlaceTrapWhilePatrolling();
         }

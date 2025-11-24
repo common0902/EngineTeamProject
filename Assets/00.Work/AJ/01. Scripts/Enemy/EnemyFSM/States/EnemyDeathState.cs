@@ -1,12 +1,10 @@
 using _00.Work.SYH._02Script.ETG;
-using csiimnida.CSILib.SoundManager.RunTime;
 using Unity.AppUI.UI;
 using UnityEngine;
 
 public class EnemyDeathState : EnemyState
 {
     private HealthSystem _healthSystem;
-    private bool _isDead = false;
     public EnemyDeathState(Enemy enemy, string animName, EnemyStateMachine stateMachine) : base(enemy, animName, stateMachine)
     {
         _healthSystem = enemy.GetComponent<HealthSystem>();
@@ -18,7 +16,7 @@ public class EnemyDeathState : EnemyState
         _enemy.AgentCompo.enabled = false;
         
         if (_enemy.enemySO.enemyType == EnemyType.SuisideAttacker) return;
-        if (_enemy.CheckDeathRange() && !_isDead && _enemy.enemySO.deathRange > 0f)
+        if (_enemy.CheckDeathRange())
         {
             Collider2D[] hits = Physics2D.OverlapCircleAll(_enemy.transform.position, _enemy.enemySO.deathRange);
             foreach (var hit in hits)
