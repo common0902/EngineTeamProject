@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using csiimnida.CSILib.SoundManager.RunTime;
 using UnityEngine;
 
 namespace _00.Work.AJ._01._Scripts.Boss2.Attacks
@@ -17,6 +18,7 @@ namespace _00.Work.AJ._01._Scripts.Boss2.Attacks
             Vector2 baseDir = direction.normalized;
             Vector2 leftDir = Rotate(baseDir,  _spreadAngle);
             Vector2 rightDir = Rotate(baseDir, -_spreadAngle);
+            SoundManager.Instance.PlaySound("MiddleBossShoot");
             Transform fire = _boss.FirePos;
             CreateBullet(fire.position, baseDir);
             yield return new WaitForSeconds(0.1f);
