@@ -529,6 +529,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6266289664752758970}
     m_Modifications:
+    - target: {fileID: 1818215415138464015, guid: c6921587d64bead47aba303a90b4629b, type: 3}
+      propertyPath: maxHealth
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3031526597556667181, guid: c6921587d64bead47aba303a90b4629b, type: 3}
       propertyPath: m_Name
       value: Summoner
@@ -735,6 +739,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7425881763651620926}
     m_Modifications:
+    - target: {fileID: 347089491272560572, guid: 8955213c4bb7ceb44b8d178b93e257b5, type: 3}
+      propertyPath: m_Color.b
+      value: 0.4490565
+      objectReference: {fileID: 0}
+    - target: {fileID: 347089491272560572, guid: 8955213c4bb7ceb44b8d178b93e257b5, type: 3}
+      propertyPath: m_Color.g
+      value: 0.4490565
+      objectReference: {fileID: 0}
+    - target: {fileID: 347089491272560572, guid: 8955213c4bb7ceb44b8d178b93e257b5, type: 3}
+      propertyPath: m_Color.r
+      value: 0.4490565
+      objectReference: {fileID: 0}
     - target: {fileID: 1032217738177204377, guid: 8955213c4bb7ceb44b8d178b93e257b5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
