@@ -54,11 +54,12 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
 
             string title = room.roomType switch
             {
-                RoomType.Normal => "전투",
-                RoomType.Portal => "포탈",
+                RoomType.Normal => "전투 시작",
+                RoomType.Start => "시작 공간",
+                RoomType.Portal => "포탈 방",
                 RoomType.Shop => "상점",
-                RoomType.Gold => "상자",
-                RoomType.Boss => "보스",
+                RoomType.Gold => "상자 방",
+                RoomType.Boss => "보스 전투",
                 _ => ""
             };
 
