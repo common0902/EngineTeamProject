@@ -17,6 +17,8 @@ public abstract class Room : MonoBehaviour
     [SerializeField] private GameObject leftDoor;
     [SerializeField] private GameObject rightDoor;
 
+    [SerializeField] private Vector2 roomSize = new Vector2(24, 16);
+
     public RoomType roomType;
 
     protected int enemyCount;
@@ -25,6 +27,19 @@ public abstract class Room : MonoBehaviour
 
     public Vector2Int RoomIndex { get; set; }
 
+    private BoxCollider2D roomTrigger;
+    protected virtual void Awake()
+    {
+        roomTrigger = gameObject.GetComponent<BoxCollider2D>();
+        if (roomTrigger == null)
+        {
+            roomTrigger = gameObject.AddComponent<BoxCollider2D>();
+        }
+
+        roomTrigger.isTrigger = true;
+        roomTrigger.size = roomSize;
+        roomTrigger.offset = Vector2.zero;
+    }
     protected virtual void Start()
     {
         Enemy[] enemies = GetComponentsInChildren<Enemy>();
