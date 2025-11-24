@@ -287,7 +287,8 @@ public class RoomManager : MonoSingleton<RoomManager>
         lastRoomGeneration = true;
         lastRoomCreated = false;
 
-        ApplyStageOption();   
+        ApplyStageOption();
+        BossRoomTurn = (GameManager.Instance.CurrentStage == 3);
         RandomIndex();
 
         Vector2Int initialRoomIndex = new Vector2Int(gridSizeX / 2, gridSizeY / 2);
