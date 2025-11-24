@@ -25,8 +25,16 @@ namespace _00.Work.AJ._01._Scripts.Boss1.FSM.States
             _bossHit = boss.GetComponent<BossHit>();
             if (_boss.white == null)
             {
+                GameObject whiteParent = new GameObject("WhiteParent");
+                whiteParent.AddComponent<RectTransform>();
+                var canvas = whiteParent.AddComponent<Canvas>();
+                canvas.renderMode = RenderMode.ScreenSpaceCamera;
+                canvas.worldCamera = Camera.main;
+                canvas.sortingLayerName = "UI";
                 GameObject white = new GameObject("White");
-                white.AddComponent<RectTransform>();
+                white.transform.SetParent(whiteParent.transform);
+                var rect = white.AddComponent<RectTransform>();
+                rect.anchoredPosition = new Vector3(0, 0, 0);
                 white.AddComponent<Image>();
                 _boss.white = white;
                 _whiteImg = _boss.white.GetComponent<Image>();

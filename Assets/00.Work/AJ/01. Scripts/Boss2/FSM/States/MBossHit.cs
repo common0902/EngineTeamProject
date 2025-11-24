@@ -14,10 +14,11 @@ namespace _00.Work.AJ._01._Scripts.Boss2.FSM.States
         private void Awake()
         {
             _bossAnimator = GetComponentInChildren<BossAnimator>();
-            _boss = GetComponent<MiddleBoss>();
+            _parentBossRoom = GetComponentInParent<MiddleBossRoom>();
         }
         private void OnEnable()
         {
+            _boss = GetComponent<MiddleBoss>();
             _bossAnimator.OnHitEndTrigger += HandleHitEnd;
             _boss.HealthCompo.OnHealthChanged += HandleHealthChanged;
             _boss.HealthCompo.OnDead += HandleDead;
@@ -34,6 +35,7 @@ namespace _00.Work.AJ._01._Scripts.Boss2.FSM.States
         {
             _parentBossRoom.OnEnemyDied();
             _boss.IsDead = true;
+            Debug.Log("Dead");
         }
 
         private void HandleDeathEnd() => isAnimationEnd = true;

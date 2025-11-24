@@ -36,7 +36,7 @@ namespace _00.Work.PMS._01.Scripts
 
         private void HandleBossDied()
         {
-            OnEnemyDied();
+            //OnEnemyDied();
             portal.SetActive(true);
             box.SetActive(true);
             SoundManager.Instance.PlaySound("MainGameBGM");
