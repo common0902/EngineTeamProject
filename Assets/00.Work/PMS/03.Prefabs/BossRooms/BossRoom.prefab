@@ -1504,6 +1504,8 @@ MonoBehaviour:
   bottomDoor: {fileID: 7181086637899756178}
   leftDoor: {fileID: 7101820612325699226}
   rightDoor: {fileID: 3934455139648610995}
+  roomSize: {x: 24, y: 16}
+  enemyActivationDelay: 0.1
   roomType: 3
   bossHealthBar: {fileID: 5170108369387575974}
   portal: {fileID: 489259143700730842}
@@ -10200,7 +10202,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1641135699
-  m_SortingLayer: 6
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -27154,7 +27156,7 @@ PrefabInstance:
       objectReference: {fileID: 723091665527847929}
     - target: {fileID: 3136222094294706140, guid: d9a9f3ea2a011014093618e20faca6c9, type: 3}
       propertyPath: maxHealth
-      value: 10
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 8576971973994531197, guid: d9a9f3ea2a011014093618e20faca6c9, type: 3}
       propertyPath: m_Name

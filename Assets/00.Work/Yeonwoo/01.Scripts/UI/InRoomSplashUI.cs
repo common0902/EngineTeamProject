@@ -19,8 +19,15 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
                 // displayTitle가 null이면 Show 호출 시 안전장치로 로그 출력
                 if (displayTitle == null)
                     Debug.LogWarning("DisplayTitle을 찾지 못했습니다. 인스펙터에 할당해 주세요.");
+                else
+                    displayTitle.gameObject.SetActive(false); // <- 추가: 처음엔 꺼두기
+            }
+            else
+            {
+                displayTitle.gameObject.SetActive(false); // 인스펙터에 할당되어 있어도 꺼둠
             }
 
+            if (_inRoomText != null) _inRoomText.text = "";
             // 씬에 이미 존재하는 Room들 구독 (비활성 포함)
             Room[] existingRooms = FindObjectsByType<Room>(FindObjectsInactive.Include, FindObjectsSortMode.InstanceID);
             foreach (Room r in existingRooms)
@@ -48,6 +55,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
             string title = room.roomType switch
             {
                 RoomType.Normal => "전투",
+                RoomType.Portal => "포탈",
                 RoomType.Shop => "상점",
                 RoomType.Gold => "상자",
                 RoomType.Boss => "보스",
