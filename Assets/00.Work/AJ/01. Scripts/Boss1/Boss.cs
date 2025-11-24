@@ -4,6 +4,7 @@ using _00.Work.AJ._01._Scripts.Boss1.FSM.States;
 using _00.Work.SYH._02Script.ETG;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Experimental.GlobalIllumination;
 using UnityEngine.Serialization;
 using Object = UnityEngine.Object;
 

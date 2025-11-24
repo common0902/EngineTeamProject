@@ -1,4 +1,4 @@
-﻿// GameStartSplashUI.cs
+﻿// GameStartSplashUI.cs (수정본)
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -7,20 +7,44 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
 {
     public class GameStartSplashUI : MonoBehaviour
     {
-        [SerializeField] private TextMeshProUGUI currentStg; // 예: "currentStg(1)"
-        [SerializeField] private TextMeshProUGUI stgNum;     // 예: "stgSum(1)"
+        [SerializeField] private TextMeshProUGUI currentStg; // 예: "현재 스테이지"
+        [SerializeField] private TextMeshProUGUI stgNum;     // 예: "1 - 1"
         [SerializeField] private float showDuration = 4.0f;  // 화면에 보여줄 시간(초)
 
         private void Awake()
         {
-            // 텍스트 컴포넌트가 할당 안 되어있다면 자식에서 찾아본다.
-            if (currentStg == null) currentStg = GetComponentInChildren<TextMeshProUGUI>();
-            // 만약 두 개를 쓰고 싶다면, 인스펙터에서 명확히 할당하세요.
+            // currentStg, stgNum이 인스펙터에 없으면 자식에서 찾아서 채운다.
+            var allTmps = GetComponentsInChildren<TextMeshProUGUI>(true);
+
+            if (currentStg == null)
+            {
+                // 우선 이름 기준으로 찾기: "currentStg" 이름을 쓴다면 그걸 우선
+                foreach (var t in allTmps)
+                {
+                    if (t.name.ToLower().Contains("current") || t.name.ToLower().Contains("stage"))
+                    {
+                        currentStg = t;
+                        break;
+                    }
+                }
+                // 못 찾으면 첫 번째를 사용
+                if (currentStg == null && allTmps.Length > 0) currentStg = allTmps[0];
+            }
+
+            if (stgNum == null)
+            {
+                // currentStg과 다른 TextMeshProUGUI를 stgNum으로 사용
+                foreach (var t in allTmps)
+                {
+                    if (t == currentStg) continue;
+                    stgNum = t;
+                    break;
+                }
+            }
         }
 
         private void OnEnable()
         {
-            // RoomManager 인스턴스가 있으면 이벤트 구독
             if (RoomManager.Instance != null)
             {
                 RoomManager.Instance.OnSetComplete += OnMapSetComplete;
@@ -33,15 +57,15 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
             {
                 RoomManager.Instance.OnSetComplete -= OnMapSetComplete;
             }
+            StopAllCoroutines();
         }
 
-        // RoomManager의 맵 세팅이 완전해졌을 때 호출되는 핸들러
         private void OnMapSetComplete()
         {
             ShowCurrentStage();
         }
 
-        // 외부에서 수동으로도 호출 가능 (예: UI가 이벤트를 놓쳤을 때)
+        // 외부에서 수동으로도 호출 가능 (예: GameManager에서 호출)
         public void ShowCurrentStage()
         {
             if (GameManager.Instance == null)
@@ -53,22 +77,24 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
             int world = GameManager.Instance.CurrentWorld;
             int stage = GameManager.Instance.CurrentStage;
 
-            // 요청하신 형식으로 텍스트 설정
             if (currentStg != null)
                 currentStg.text = $"현재 스테이지";
 
             if (stgNum != null)
                 stgNum.text = $"{world} - {stage}";
 
-            // 활성화 후 일정시간 후 비활성화
-            gameObject.SetActive(true);
+            // 재트리거 보장: 이미 활성화 상태라도 비활성화 후 활성화해서 OnEnable/애니메이션을 확실히 다시 실행
             StopAllCoroutines();
+            gameObject.SetActive(false);
+            gameObject.SetActive(true);
+
             StartCoroutine(HideAfterSeconds(showDuration));
         }
 
         private IEnumerator HideAfterSeconds(float t)
         {
             yield return new WaitForSeconds(t);
+            // UI가 더 이상 보여질 필요가 없으면 비활성화
             gameObject.SetActive(false);
         }
     }

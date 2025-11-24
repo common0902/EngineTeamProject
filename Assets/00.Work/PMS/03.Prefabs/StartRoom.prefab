@@ -1504,7 +1504,7 @@ MonoBehaviour:
   rightDoor: {fileID: 3934455139648610995}
   roomSize: {x: 24, y: 16}
   enemyActivationDelay: 0.1
-  roomType: 0
+  roomType: 5
 --- !u!1 &2795198540910342541
 GameObject:
   m_ObjectHideFlags: 0
@@ -26135,11 +26135,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 347089491272560572, guid: 8955213c4bb7ceb44b8d178b93e257b5, type: 3}
       propertyPath: m_Color.b
-      value: 1
+      value: 0.645283
       objectReference: {fileID: 0}
     - target: {fileID: 347089491272560572, guid: 8955213c4bb7ceb44b8d178b93e257b5, type: 3}
       propertyPath: m_Color.g
-      value: 0.34297752
+      value: 0.22181603
       objectReference: {fileID: 0}
     - target: {fileID: 347089491272560572, guid: 8955213c4bb7ceb44b8d178b93e257b5, type: 3}
       propertyPath: m_Color.r

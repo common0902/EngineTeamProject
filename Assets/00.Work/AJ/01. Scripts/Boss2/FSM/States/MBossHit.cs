@@ -1,4 +1,5 @@
 ﻿using _00.Work.AJ._01._Scripts.BOSS;
+using csiimnida.CSILib.SoundManager.RunTime;
 using UnityEngine;
 
 namespace _00.Work.AJ._01._Scripts.Boss2.FSM.States
@@ -21,7 +22,12 @@ namespace _00.Work.AJ._01._Scripts.Boss2.FSM.States
             _bossAnimator.OnDeathEndTrigger += HandleDeathEnd;
         }
         private void HandleHitEnd() => isAnimationEnd = true;
-        private void HandleHealthChanged(float health, float maxHealth) => _boss.IsHit = true;
+        private void HandleHealthChanged(float health, float maxHealth)
+        {
+            _boss.IsHit = true;
+            SoundManager.Instance.PlaySound("BossHit");
+        }
+
         private void HandleDead() => _boss.IsDead = true;
         private void HandleDeathEnd() => isAnimationEnd = true;
         private void OnDestroy()

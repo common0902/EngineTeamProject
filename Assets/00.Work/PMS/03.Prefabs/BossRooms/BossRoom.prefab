@@ -9998,7 +9998,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10085,7 +10085,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -27322,7 +27322,7 @@ PrefabInstance:
       objectReference: {fileID: 723091665527847929}
     - target: {fileID: 3136222094294706140, guid: d9a9f3ea2a011014093618e20faca6c9, type: 3}
       propertyPath: maxHealth
-      value: 500
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 8576971973994531197, guid: d9a9f3ea2a011014093618e20faca6c9, type: 3}
       propertyPath: m_Name
@@ -27446,6 +27446,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 2027898593, guid: 9ac9ce449d4182348a8c2e54044d8c31, type: 3}
+    - target: {fileID: 3119828596379911314, guid: e153213ba13fbf84fb19221de381e37d, type: 3}
+      propertyPath: maxHealth
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4549313245223028159, guid: e153213ba13fbf84fb19221de381e37d, type: 3}
       propertyPath: m_Name
       value: System
