@@ -17,11 +17,11 @@ public class Player : MonoSingleton<Player>
     {
         if (use)
         {
-            gameObject.layer = _mujuckLayer;
+            PlayerHealthSystemCompo.Invincibility = true;
         }
         else
         {
-            gameObject.layer = _originLayer;
+            PlayerHealthSystemCompo.Invincibility = false;
         }
     }
 }

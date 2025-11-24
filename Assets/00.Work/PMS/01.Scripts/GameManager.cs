@@ -20,11 +20,28 @@ public class GameManager : MonoSingleton<GameManager>
     private string SavePath =>
         Path.Combine(Application.persistentDataPath, "stage_save.json");
 
+    [SerializeField] GameObject _boxPrefab;
+    GameObject _prefab;
     protected override void Awake()
     {
         base.Awake();
         LoadStage();
         ApplyStageSettings();
+        print(111);
+        _prefab = Instantiate(_boxPrefab, Vector3.down*2, Quaternion.identity);
+    }
+    private void Start()
+    {
+        print(444);
+        RoomManager.Instance.OnInPortal += () =>
+        {
+            print(222);
+            if(CurrentStage != 1 || CurrentWorld !=1)
+            {
+                print(333);
+                Destroy(_prefab);
+            }
+        };
     }
 
     [ContextMenu("Next")]
@@ -110,8 +127,6 @@ public class GameManager : MonoSingleton<GameManager>
 
     private void ApplyStageSettings()
     {
-        if (RoomManager.Instance == null)
-            return;
         bool isBossStage = (CurrentStage == 3);
         RoomManager.Instance.BossRoomTurn = isBossStage;
     }
@@ -149,10 +164,7 @@ public class GameManager : MonoSingleton<GameManager>
 
         SaveStage();          // 1-1로 세이브 덮어쓰기
         ApplyStageSettings(); // 보스 여부 등 반영
-
-        if (RoomManager.Instance != null)
-        {
-            RoomManager.Instance.RegenerateRooms(); // 맵도 새로 생성
-        }
+        RoomManager.Instance.RegenerateRooms(); // 맵도 새로 생성
+        
     }
 }

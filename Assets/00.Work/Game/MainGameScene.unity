@@ -915,7 +915,7 @@ MonoBehaviour:
   priority: 0
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: 63f2f2b442405c348bcf67108dc5df07, type: 2}
+  sharedProfile: {fileID: 11400000, guid: 89c17569bd5ec3a4a8b7c7a1be46304e, type: 2}
 --- !u!4 &746810144
 Transform:
   m_ObjectHideFlags: 0
@@ -1390,6 +1390,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0740ad4a40c9d0d4389269e34ae72cfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _boxPrefab: {fileID: 2928541682615564402, guid: de7bfee4476ef5a44a1c5afc0f839f54, type: 3}
 --- !u!4 &875130886
 Transform:
   m_ObjectHideFlags: 0
@@ -3205,6 +3206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolList: {fileID: 11400000, guid: d0ae75c31a227f646804f0f4d546e3e3, type: 2}
+  _useIt: 1
 --- !u!4 &1812105733
 Transform:
   m_ObjectHideFlags: 0
@@ -3463,6 +3465,7 @@ MonoBehaviour:
   goldRoomIndex: 0
   shopRoomIndex: 0
   <BossRoomTurn>k__BackingField: 0
+  _useIt: 1
 --- !u!4 &2105664847
 Transform:
   m_ObjectHideFlags: 0

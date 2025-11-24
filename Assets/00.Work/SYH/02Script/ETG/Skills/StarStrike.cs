@@ -20,9 +20,10 @@ public class StarStrike : Skill
     {
         base.UseSkill();
         _prefab.SetActive(true);
+        _prefab.transform.position = _pos;
         CameraHandler.Instance.ShakeCamera(0.03f, 20);
         Player.Instance.PlayerAnimationCompo.CastingStart();
-        CameraHandler.Instance.MovedTarget(_prefab.transform);
+        Player.Instance.transform.position = _pos;
         Player.Instance.Mujuck(true);
         SkillUtility.WideAreaDamage(0, 30, SkillUtility.GetEnemyLayer(), Debuffs.Bondage, 20, 0);
         StartCoroutine(SummonStar());
@@ -49,7 +50,6 @@ public class StarStrike : Skill
         yield return new WaitForSeconds(2);
         StartCoroutine(IntroManager.Instance.Show(8, IntroManager.Instance._white));
         yield return new WaitForSeconds(8);
-        CameraHandler.Instance.MovedTarget(Player.Instance.transform);
         yield return new WaitForSeconds(3);
         StartCoroutine(IntroManager.Instance.Hide(2.5f, IntroManager.Instance._white));
         _prefab.SetActive(false);

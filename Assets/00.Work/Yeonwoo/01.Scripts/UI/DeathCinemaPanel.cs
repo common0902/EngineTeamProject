@@ -69,6 +69,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
         public void Restart()
         {
             Time.timeScale = 1f;
+            GameManager.Instance.ResetSave();
             SceneManager.LoadScene("MainGameScene");
         }
 
