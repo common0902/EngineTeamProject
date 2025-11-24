@@ -1880,7 +1880,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <CurrentWorld>k__BackingField: 1
   <CurrentStage>k__BackingField: 1
-  _boxPrefab: {fileID: 0}
+  _boxPrefab: {fileID: 2928541682615564402, guid: de7bfee4476ef5a44a1c5afc0f839f54, type: 3}
 --- !u!4 &875130886
 Transform:
   m_ObjectHideFlags: 0
@@ -1909,6 +1909,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _roomManager: {fileID: 3357402155035961890, guid: 651b4efc11192f74f91b53bb36f2893b, type: 3}
+  _poolManager: {fileID: 4925969258120346579, guid: 649550dfa38d2b041bb204b567ec472c, type: 3}
 --- !u!1001 &887471094
 PrefabInstance:
   m_ObjectHideFlags: 0
