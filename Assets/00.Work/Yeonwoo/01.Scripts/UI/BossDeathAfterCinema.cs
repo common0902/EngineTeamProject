@@ -66,6 +66,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
 
         private void FinalCinema()
         {
+            SceneManager.LoadScene("Title");
             // 실행 경로 결정: 프리팹 사용 우선, 없으면 existingFires 사용
             if (firePrefabs != null && firePrefabs.Length > 0)
             {

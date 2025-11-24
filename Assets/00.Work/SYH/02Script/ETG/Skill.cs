@@ -1,5 +1,6 @@
 using System;
 using _00.Work.Yeonwoo._01.Scripts.Data;
+using csiimnida.CSILib.SoundManager.RunTime;
 using UnityEngine;
 public enum SkillType
 {
@@ -68,7 +69,7 @@ public abstract class Skill : MonoBehaviour
     }
     virtual protected void UseSkill()
     {
-        
+        SoundManager.Instance.PlaySound("UseSkill");
     }
     virtual public void Passive()
     {

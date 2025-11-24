@@ -21,7 +21,6 @@ public class Laser : Skill
     }
     protected override void UseSkill()
     {
-        base.UseSkill();
         if (!SkillUtility.CanUseSkill(Cost))
         {
             DisActive();

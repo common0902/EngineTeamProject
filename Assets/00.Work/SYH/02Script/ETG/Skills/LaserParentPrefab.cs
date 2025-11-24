@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using _00.Work.SYH._02Script.ETG;
+using csiimnida.CSILib.SoundManager.RunTime;
 using UnityEngine;
 
 public class LaserParentPrefab : SkillPrefab
@@ -16,6 +17,7 @@ public class LaserParentPrefab : SkillPrefab
         //if (_hitEnemys.Count == 0) return;
         try
         {
+            SoundManager.Instance.PlaySound("UseSkill");
             foreach (HealthSystem i in _hitEnemys)
             {
                 i.Damage(SkillUtility.CalcurateDamage(_damage));

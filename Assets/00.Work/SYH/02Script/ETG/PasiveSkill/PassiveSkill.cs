@@ -23,7 +23,6 @@ public class PassiveSkill : MonoBehaviour, IPoolable
     {
         _text = GetComponentInChildren<TextMeshPro>();
     }
-
     public bool TryBuy()
     {
         if (Player.Instance.GetComponent<GoldSystem>().Gold >= Price)
@@ -78,5 +77,10 @@ public class PassiveSkill : MonoBehaviour, IPoolable
         Data = SkillSO.Data;
 
         _text.text = Price.ToString();
+    }
+    public void Push()
+    {
+        //print(888);
+        PoolManager.Instance.Push(this);
     }
 }

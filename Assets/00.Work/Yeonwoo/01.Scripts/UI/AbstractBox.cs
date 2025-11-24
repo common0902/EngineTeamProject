@@ -41,7 +41,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
         
         protected virtual IEnumerator Buffer(GameObject item)
         {
-            _drop = Instantiate(item, transform.position, Quaternion.identity);
+            _drop = item;
             SetDropInteractable(_drop, false);
             yield return null;
             OnDropCreated(_drop);
