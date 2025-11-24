@@ -1469,6 +1469,8 @@ MonoBehaviour:
   bottomDoor: {fileID: 7181086637899756178}
   leftDoor: {fileID: 7101820612325699226}
   rightDoor: {fileID: 3934455139648610995}
+  roomSize: {x: 24, y: 16}
+  enemyActivationDelay: 0.1
   roomType: 0
 --- !u!1 &2795198540910342541
 GameObject:
@@ -10115,7 +10117,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1641135699
-  m_SortingLayer: 6
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -26733,7 +26735,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 590650216658892943, guid: 5a3a1a14f70578d4ba534bb10ba53f41, type: 3}
       propertyPath: maxHealth
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1658611652792925390, guid: 5a3a1a14f70578d4ba534bb10ba53f41, type: 3}
       propertyPath: <WayPoints>k__BackingField
@@ -26940,7 +26942,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 590650216658892943, guid: 5a3a1a14f70578d4ba534bb10ba53f41, type: 3}
       propertyPath: maxHealth
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1658611652792925390, guid: 5a3a1a14f70578d4ba534bb10ba53f41, type: 3}
       propertyPath: <WayPoints>k__BackingField
@@ -27584,7 +27586,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6516569883698714219, guid: e153213ba13fbf84fb19221de381e37d, type: 3}
       propertyPath: maxHealth
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7089762094782633727, guid: e153213ba13fbf84fb19221de381e37d, type: 3}
       propertyPath: m_IsActive
