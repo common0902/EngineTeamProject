@@ -20,7 +20,6 @@ namespace _00.Work.AJ._01._Scripts.Boss2.FSM.States
 
         public override void Update()
         {
-            base.Update();
             _boss.RbCompo.linearVelocity = Vector2.zero;
             if (_bossHit.isAnimationEnd)
             {

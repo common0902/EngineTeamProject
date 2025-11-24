@@ -5,7 +5,6 @@ using _00.Work.AJ._01._Scripts.BOSS.FSM.States;
 using csiimnida.CSILib.SoundManager.RunTime;
 using DG.Tweening;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
 using Sequence = DG.Tweening.Sequence;
@@ -26,14 +25,7 @@ namespace _00.Work.AJ._01._Scripts.Boss1.FSM.States
             _bossHit = boss.GetComponent<BossHit>();
             if (_boss.white == null)
             {
-                GameObject whiteParent = new GameObject("WhiteParent");
-                whiteParent.AddComponent<RectTransform>();
-                var canvas = whiteParent.AddComponent<Canvas>();
-                canvas.renderMode = RenderMode.ScreenSpaceCamera;
-                canvas.worldCamera = Camera.main;
-                canvas.sortingLayerName = "UI";
                 GameObject white = new GameObject("White");
-                white.transform.SetParent(whiteParent.transform);
                 white.AddComponent<RectTransform>();
                 white.AddComponent<Image>();
                 _boss.white = white;
@@ -75,11 +67,9 @@ namespace _00.Work.AJ._01._Scripts.Boss1.FSM.States
                     {
                         BossDeathAction?.Invoke();
                         Player.Instance.PlayerMoveCompo._isCasting = false;
-                        SceneManager.LoadScene("Title");
                         _whiteRect.transform.position = Camera.main.WorldToScreenPoint(Vector3.zero);
-                        Object.Destroy(_boss.gameObject, 2f);
-                        
-                        _whiteImg.color = Color.black;
+                        _whiteRect.localScale = new Vector3(1f, 1f, 1f);
+                        Object.Destroy(_boss.gameObject, 3f);
                     });
                 }
             }

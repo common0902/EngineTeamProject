@@ -1,5 +1,4 @@
-﻿using System;
-using _00.Work.AJ._01._Scripts.Boss2.FSM.States;
+﻿using _00.Work.AJ._01._Scripts.Boss2.FSM.States;
 using UnityEngine;
 
 namespace _00.Work.AJ._01._Scripts.Boss2.FSM
@@ -10,7 +9,7 @@ namespace _00.Work.AJ._01._Scripts.Boss2.FSM
         private MiddleBossStateMachine _stateMachine;
         private MiddleBoss _boss;
         
-        private void Awake()
+         private void OnEnable()
         {
             _boss = GetComponent<MiddleBoss>();
             _stateMachine = new MiddleBossStateMachine();
@@ -25,12 +24,6 @@ namespace _00.Work.AJ._01._Scripts.Boss2.FSM
             _stateMachine.AddState(MiddleBossStateType.DashBefore, new MBossDashBeforeState(_boss, "DashBefore", _stateMachine));
             
         }
-
-        private void OnEnable()
-        {
-            
-        }
-
         private void Start()
         {
             _stateMachine.AddState(MiddleBossStateType.Dash, new MBossDashState(_boss, "Dash", _stateMachine));

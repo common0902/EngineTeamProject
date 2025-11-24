@@ -1,6 +1,5 @@
 ﻿using System.Runtime.InteropServices.WindowsRuntime;
 using _00.Work.SYH._02Script.ETG;
-using csiimnida.CSILib.SoundManager.RunTime;
 using DG.Tweening;
 using UnityEngine;
 
@@ -53,7 +52,7 @@ namespace _00.Work.AJ._01._Scripts.Boss2.FSM.States
                     );
                     
                     Vector3 targetPos = _boss.WayPoints.GetNextWayPoint();
-                    SoundManager.Instance.PlaySound("BossSummon");
+
                     clone.transform.DOMove(targetPos, 2f);
                 });
                 

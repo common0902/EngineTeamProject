@@ -1,7 +1,6 @@
 ﻿using System;
 using _00.Work.SYH._02Script.ETG;
 using _00.Work.Yeonwoo._01.Scripts.Interfaces;
-using csiimnida.CSILib.SoundManager.RunTime;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -127,10 +126,6 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
         
         private void DeadMotion()
         {
-            SoundManager.Instance.StopSound("MainGameBGM");
-            SoundManager.Instance.StopSound("BattleBGM");
-            SoundManager.Instance.StopSound("MiddleBossBGM");
-            SoundManager.Instance.StopSound("FinalBossBGM");
             _canvasGroup.DOFade(0f, 0.5f)
                 .SetEase(Ease.OutQuad)
                 .OnComplete(() => Destroy(gameObject));
