@@ -45,7 +45,7 @@ public class BeamPrefab : SkillPrefab
         }
         catch
         {
-            Attack();
+            
         }
     }
     public void StartAttack()
