@@ -24903,6 +24903,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8509843883778227384}
     m_Modifications:
+    - target: {fileID: 505191900459297263, guid: e153213ba13fbf84fb19221de381e37d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 505191900459297263, guid: e153213ba13fbf84fb19221de381e37d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.59999985
+      objectReference: {fileID: 0}
+    - target: {fileID: 505191900459297263, guid: e153213ba13fbf84fb19221de381e37d, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.19633022
+      objectReference: {fileID: 0}
+    - target: {fileID: 505191900459297263, guid: e153213ba13fbf84fb19221de381e37d, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1343078313290844358, guid: e153213ba13fbf84fb19221de381e37d, type: 3}
       propertyPath: m_Sprite
       value: 
