@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 48c32755cef4f784ab6582bd331841f7, type: 3}
-  m_Name: BattleBGM
+  m_Name: CloseDoor
   m_EditorClassIdentifier: 
-  soundName: BattleBGM
-  soundType: 0
-  clip: {fileID: 8300000, guid: 7149ca0de3bfcae438a625cca368c66d, type: 3}
-  loop: 1
+  soundName: CloseDoor
+  soundType: 1
+  clip: {fileID: 8300000, guid: 46593b3a5d0b11a4abd5d6fc976e6ec7, type: 3}
+  loop: 0
   Priority: 128
   volume: 1
   pitch: 1

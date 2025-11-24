@@ -1,4 +1,5 @@
 ﻿using _00.Work.SYH._02Script.ETG;
+using csiimnida.CSILib.SoundManager.RunTime;
 using UnityEngine;
 
 public class BossRoom : Room
@@ -24,16 +25,19 @@ public class BossRoom : Room
     public override void OnPlayerEnter()
     {
         base.OnPlayerEnter();
+        if (!isCleared)
+            OnInRoom?.Invoke();
+        SoundManager.Instance.PlaySound("FinalBossBGM");
         bossHealthBar.SetActive(true);
         boss.SetActive(true);
-        OnInRoom?.Invoke();
     }
 
     private void HandleBossDied()
     {
-        OnEnemyDied();
+        //OnEnemyDied();
         portal.SetActive(true);
         box.SetActive(true);
+        SoundManager.Instance.PlaySound("MainGameBGM");
     }
 
     public override void OnEnemyDied()

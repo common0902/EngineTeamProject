@@ -28,8 +28,10 @@ namespace _00.Work.AJ._01._Scripts.Boss2.FSM
             if (_boss.IsDead)
             {
                 _stateMachine.ChangeState(MiddleBossStateType.Death);
+                return;
             }
-            if (_boss.IsHit)
+    
+            if (_boss.IsHit && !_boss.IsDead)
             {
                 _stateMachine.ChangeState(MiddleBossStateType.Hit);
             }
