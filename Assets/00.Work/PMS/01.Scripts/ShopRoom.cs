@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class ShopRoom : Room
 {
@@ -9,5 +10,6 @@ public class ShopRoom : Room
     public override void OnPlayerEnter()
     {
         base.OnPlayerEnter();
+        OnInRoom?.Invoke();
     }
 }

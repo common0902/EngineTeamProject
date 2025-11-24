@@ -8,12 +8,13 @@ public class BossRoom : Room
     [SerializeField] private GameObject box;
     [SerializeField] private GameObject boss;
     public HealthSystem HealthSystem { get; private set; }
+    
     protected override void Awake()
     {
         base.Awake(); 
         HealthSystem = boss.GetComponent<HealthSystem>();
     }
-
+    
     protected override void Start()
     {
         hasEnemies = true;
@@ -25,6 +26,7 @@ public class BossRoom : Room
         base.OnPlayerEnter();
         bossHealthBar.SetActive(true);
         boss.SetActive(true);
+        OnInRoom?.Invoke();
     }
 
     private void HandleBossDied()
