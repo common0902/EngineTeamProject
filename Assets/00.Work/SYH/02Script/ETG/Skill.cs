@@ -54,7 +54,6 @@ public abstract class Skill : MonoBehaviour
                 if (!SkillUtility.CanUseSkill(Cost)) return;
                 Player.Instance.PlayerStatusCompo.Mana -= Cost;
                 UseSkill();
-                SoundManager.Instance.PlaySound("UseSkill");
                 _waitTime -= CoolTime;
             }
         }
@@ -70,7 +69,7 @@ public abstract class Skill : MonoBehaviour
     }
     virtual protected void UseSkill()
     {
-        
+        SoundManager.Instance.PlaySound("UseSkill");
     }
     virtual public void Passive()
     {

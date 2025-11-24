@@ -14,6 +14,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
         protected override void ItemScattering()
         {
             GameObject selectedItem = SkillObsPoolManager.Instance.SkillPool.Pop();
+            selectedItem.transform.position = transform.position;
             selectedItem.SetActive(true);
             if (selectedItem == null)
             {
