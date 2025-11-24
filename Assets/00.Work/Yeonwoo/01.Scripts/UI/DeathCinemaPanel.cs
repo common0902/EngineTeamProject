@@ -68,8 +68,8 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
 
         public void Restart()
         {
-            SceneManager.LoadScene("MainGameScene");
             Time.timeScale = 1f;
+            SceneManager.LoadScene("MainGameScene");
         }
 
         public void EgenExit()
