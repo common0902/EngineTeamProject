@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using _00.Work.Yeonwoo._01.Scripts.UI;
 using UnityEngine;
@@ -25,7 +25,8 @@ public class PlayerMove : MonoBehaviour
     BoxCollider2D _collider;
 
     [SerializeField] private DashCoolUI coolUI;
-    
+    public bool _moveRoom;
+
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
@@ -57,7 +58,7 @@ public class PlayerMove : MonoBehaviour
         {
             _rb.linearVelocity = Vector2.zero;
         }
-        _cannotMove = _isCasting | _isDash;
+        _cannotMove = _isCasting | _isDash | _moveRoom;
         if (_cannotMove) return;
 
         Vector2 aaa = Vector2.zero;

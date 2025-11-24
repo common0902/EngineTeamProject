@@ -60,6 +60,7 @@ public class RoomManager : MonoSingleton<RoomManager>
     [SerializeField] bool _useIt;
     [field:SerializeField]public bool BossRoomTurn { get; set; } = false;
     public event Action OnInPortal;
+    public Action OnSetComplete;
     protected override void Awake()
     {
         if (!_useIt)
@@ -135,6 +136,7 @@ public class RoomManager : MonoSingleton<RoomManager>
         {
             Debug.LogError($"OnInPortal 이벤트 처리 중 예외 발생: {ex}");
         }
+        OnSetComplete?.Invoke();
         NavMeshBakeManager.Instance.Bake();
         generationComplete = true;
     }
@@ -287,7 +289,8 @@ public class RoomManager : MonoSingleton<RoomManager>
         lastRoomGeneration = true;
         lastRoomCreated = false;
 
-        ApplyStageOption();   
+        ApplyStageOption();
+        BossRoomTurn = (GameManager.Instance.CurrentStage == 3);
         RandomIndex();
 
         Vector2Int initialRoomIndex = new Vector2Int(gridSizeX / 2, gridSizeY / 2);

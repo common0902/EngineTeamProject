@@ -22,47 +22,44 @@ public class TrapperAttackBehavior : IEnemyAttackBehavior
     public IEnumerator ExecuteAttack(Vector2 direction)
     {
         CleanupDestroyedTraps();
-        if(_enemy.IsOutScreen())
+        
+        if (Time.time - _lastTrapTime < _enemy.enemySO.trapperData.trapPlaceInterval)
+            yield break;
+
+        if (_allTraps[_enemy].Count >= _enemy.enemySO.trapperData.maxTraps)
         {
-            if (Time.time - _lastTrapTime < _enemy.enemySO.trapperData.trapPlaceInterval)
-                yield break;
-
-            if (_allTraps[_enemy].Count >= _enemy.enemySO.trapperData.maxTraps)
+            if (_allTraps[_enemy].Count > 0 && _allTraps[_enemy][0] != null)
             {
-                if (_allTraps[_enemy].Count > 0 && _allTraps[_enemy][0] != null)
-                {
-                    Object.Destroy(_allTraps[_enemy][0].gameObject);
-                    _allTraps[_enemy].RemoveAt(0);
-                }
+                Object.Destroy(_allTraps[_enemy][0].gameObject);
+                _allTraps[_enemy].RemoveAt(0);
             }
-
-            _enemy.AgentCompo.isStopped = true;
-            GameObject trapObj = Object.Instantiate(_enemy.enemySO.trapperData.trapPrefab, _enemy.transform.position,
-                Quaternion.identity);
-
-            Trap trap = trapObj.GetComponent<Trap>();
-            if (trap != null)
-            {
-                trap.Initialize(_enemy.enemySO.trapperData);
-                _allTraps[_enemy].Add(trap);
-            }
-
-            if (_enemy.enemySO.trapperData.placeTrapVFX != null)
-            {
-                ParticleSystem vfx = Object.Instantiate(
-                    _enemy.enemySO.trapperData.placeTrapVFX,
-                    _enemy.transform.position,
-                    Quaternion.identity
-                );
-                vfx.Play();
-                Object.Destroy(vfx.gameObject, 2f);
-            }
-
-            _lastTrapTime = Time.time;
-
-            yield return _attackDelay;
-            _enemy.AgentCompo.isStopped = false;
         }
+
+        _enemy.AgentCompo.isStopped = true;
+        GameObject trapObj = Object.Instantiate(_enemy.enemySO.trapperData.trapPrefab, _enemy.transform.position, Quaternion.identity);
+        
+        Trap trap = trapObj.GetComponent<Trap>();
+        if (trap != null)
+        {
+            trap.Initialize(_enemy.enemySO.trapperData);
+            _allTraps[_enemy].Add(trap);
+        }
+
+        if (_enemy.enemySO.trapperData.placeTrapVFX != null)
+        {
+            ParticleSystem vfx = Object.Instantiate(
+                _enemy.enemySO.trapperData.placeTrapVFX,
+                _enemy.transform.position,
+                Quaternion.identity
+            );
+            vfx.Play();
+            Object.Destroy(vfx.gameObject, 2f);
+        }
+
+        _lastTrapTime = Time.time;
+
+        yield return _attackDelay;
+        _enemy.AgentCompo.isStopped = false;
     }
 
     private void CleanupDestroyedTraps()

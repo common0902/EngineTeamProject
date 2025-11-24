@@ -1,4 +1,5 @@
 using _00.Work.SYH._02Script.ETG;
+using csiimnida.CSILib.SoundManager.RunTime;
 using System.Collections;
 using UnityEngine;
 
@@ -64,6 +65,7 @@ public class CounterAttack : Skill
     void CounterSucesses()
     {
         StopCoroutine(Counter());
+        SoundManager.Instance.PlaySound("Parring_Sucesses");
         _counterSucessces = true;
         _prefab.SetActive(true);
     }

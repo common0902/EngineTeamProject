@@ -11,10 +11,10 @@ public class GameManager : MonoSingleton<GameManager>
         public int stage;
     }
 
-    public int CurrentWorld { get; private set; } = 1;
-    public int CurrentStage { get; private set; } = 1;
+    [field: SerializeField]public int CurrentWorld { get; private set; } = 1;
+    [field: SerializeField]public int CurrentStage { get; private set; } = 1;
 
-    // 현재 플레이어가 있는 방
+    // 현재 플레이어가 있는 방 
     public Room CurrentRoom { get; private set; }
 
     private string SavePath =>
@@ -153,7 +153,6 @@ public class GameManager : MonoSingleton<GameManager>
 
         ApplyStageSettings();
 
-        // 세이브는 삭제만 했고, 현재 진행은 1-1 상태로만 바꿔둔 상태
     }
 
     [ContextMenu("NewGame")]

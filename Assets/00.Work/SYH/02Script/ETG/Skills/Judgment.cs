@@ -25,7 +25,6 @@ public class Judgment : Skill
     }
     public override void Passive()
     {
-        print(111);
         _guideLine.SetActive(true);
     }
     public override void DisPassive()

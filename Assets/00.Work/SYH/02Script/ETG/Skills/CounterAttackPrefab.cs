@@ -1,4 +1,5 @@
 using _00.Work.SYH._02Script.ETG;
+using csiimnida.CSILib.SoundManager.RunTime;
 using System;
 using UnityEngine;
 
@@ -19,25 +20,19 @@ public class CounterAttackPrefab : SkillPrefab
     private void Check()
     {
         Collider2D[] enemys = Physics2D.OverlapCircleAll(transform.position, 2.75f, _layer);
-        foreach (Collider2D i in enemys)
+        if (enemys != null)
         {
-            if (i.CompareTag("Enemy"))
+            SoundManager.Instance.PlaySound("Slash_Hit");
+            foreach (Collider2D i in enemys)
             {
-                i.GetComponent<HealthSystem>().Damage(_damage);
+                if (i.CompareTag("Enemy"))
+                {
+                    i.GetComponent<HealthSystem>().Damage(_damage);
+                }
             }
         }
-        Player.Instance.PlayerAnimationCompo.CastingEnd();
+            Player.Instance.PlayerAnimationCompo.CastingEnd();
         Player.Instance.GetComponent<HealthSystem>()._isCounter = false;
         CameraHandler.Instance.Zoomout(5);
-    }
-    protected override void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.TryGetComponent(out HealthSystem hp))
-        {
-            hp.Damage(SkillUtility.CalcurateDamage(_damage));
-            collision.gameObject.GetComponent<DebuffController>().SetDebuff(Debuffs.Bondage, 1.5f, 0);
-        }
-        GameObject effect = PoolManager.Instance.Pop("HitEffect").GameObject;
-        effect.transform.position = collision.transform.position;
     }
 }
