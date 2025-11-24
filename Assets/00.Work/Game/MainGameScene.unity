@@ -274,6 +274,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3755263955290974635, guid: 95c86650c054943e3badc3a0df991e2a, type: 3}
+      propertyPath: playOnEnable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3755263955290974638, guid: 95c86650c054943e3badc3a0df991e2a, type: 3}
       propertyPath: m_Name
       value: BattleWinUI
@@ -742,6 +746,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 913727927202237083, guid: 4e3d76be0319f46fe866a471ff0c9f0f, type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 913727927202237083, guid: 4e3d76be0319f46fe866a471ff0c9f0f, type: 3}
+      propertyPath: playOnEnable
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -3281,6 +3289,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 587755741, guid: 610b21146c19440eda459a626c0f6290, type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 587755741, guid: 610b21146c19440eda459a626c0f6290, type: 3}
+      propertyPath: playOnEnable
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1034259680208978706, guid: 610b21146c19440eda459a626c0f6290, type: 3}
