@@ -102,11 +102,13 @@ namespace _00.Work.SYH._02Script.ETG
         {
             maxHealth = health;
             OnHealthChanged?.Invoke(Health, maxHealth);
+            CheckHealthState();
         }
         public void SetHealth(float hp)
         {
             Health = hp;
             OnHealthChanged?.Invoke(Health, maxHealth);
+            CheckHealthState();
         }
         private void Dead()
         {
