@@ -27,6 +27,7 @@ public class BossRoom : Room
         base.OnPlayerEnter();
         if (!isCleared)
             OnInRoom?.Invoke();
+        SoundManager.Instance.StopSound("MainGameBGM");
         SoundManager.Instance.PlaySound("FinalBossBGM");
         bossHealthBar.SetActive(true);
         boss.SetActive(true);
@@ -37,6 +38,7 @@ public class BossRoom : Room
         //OnEnemyDied();
         portal.SetActive(true);
         box.SetActive(true);
+        SoundManager.Instance.StopSound("FinalBossBGM");
         SoundManager.Instance.PlaySound("MainGameBGM");
     }
 

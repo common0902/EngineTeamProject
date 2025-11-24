@@ -80,6 +80,8 @@ public abstract class Room : MonoBehaviour
         if (hasEnemies && !isCleared)
         {
             LockAllDoors();
+            SoundManager.Instance.StopSound("MainGameBGM");
+            SoundManager.Instance.PlaySound("BattleBGM");
         }
     }
     private IEnumerator ActivateEnemiesWithDelay()
@@ -107,6 +109,7 @@ public abstract class Room : MonoBehaviour
             OnBattleWin?.Invoke(this);
             isCleared = true;
             UnlockAllDoors();
+            SoundManager.Instance.StopSound("FinalBossBGM");
         }
     }
 

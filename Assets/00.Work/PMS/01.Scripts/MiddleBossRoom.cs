@@ -29,6 +29,7 @@ namespace _00.Work.PMS._01.Scripts
             base.OnPlayerEnter();
             if (!isCleared)
                 OnInRoom?.Invoke();
+            SoundManager.Instance.StopSound("MainGameBGM");
             SoundManager.Instance.PlaySound("MiddleBossBGM");
             bossHealthBar.SetActive(true);
             boss.SetActive(true);
@@ -39,6 +40,7 @@ namespace _00.Work.PMS._01.Scripts
             //OnEnemyDied();
             portal.SetActive(true);
             box.SetActive(true);
+            SoundManager.Instance.StopSound("MiddleBossBGM");
             SoundManager.Instance.PlaySound("MainGameBGM");
         }
 
