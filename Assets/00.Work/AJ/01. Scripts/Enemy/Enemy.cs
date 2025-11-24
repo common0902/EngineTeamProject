@@ -60,6 +60,7 @@ public class Enemy : Agent, IPoolable
         AttackRange = enemySO.attackRange;
         if(enemySO.useBoxRange)
             AttackBoxRange = enemySO.boxRange;
+        HealthCompo.SetMaxHealth(enemySO.health);
 
         if (FirePos == null && enemySO.enemyType == EnemyType.Ranged)
         {

@@ -16,9 +16,9 @@ MonoBehaviour:
   enemyName: Trapper
   enemySprite: {fileID: -6451080061995027987, guid: 074a8ccfc7afbdb43a4a2ec17f53f829, type: 3}
   speed: 3
-  health: 100
+  health: 20
   canPatrol: 1
-  patrolDist: 0.3
+  patrolDist: 0.364
   damage: 0
   attackDelay: 0
   useBoxRange: 0
@@ -52,6 +52,7 @@ MonoBehaviour:
     particleSystem: {fileID: 0}
     explosionRadius: 1.5
     explosionDelay: 0.3
+    rangeIndicator: {fileID: 0}
   trapperData:
     trapPrefab: {fileID: 2315240728569927508, guid: b12dc09825a6f5f4f83665bb83942d33, type: 3}
     maxTraps: 3

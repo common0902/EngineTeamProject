@@ -48,7 +48,7 @@ public class PlayerStatus : MonoBehaviour
         set
         {
             _hp = value;
-            OnChangedHp?.Invoke();
+            HpUpdate();
         }
     }
     public float _fullHp;

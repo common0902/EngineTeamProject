@@ -33,6 +33,6 @@ public class StarStrikePrefab : SkillPrefab, IPoolable
         transform.localScale = new Vector3(rand, rand, 1);
         //_tarPos = Random.Range(-80f, 80f) / 10f; 1��: �������� �ϰ� ������ ���� ���߽�Ű��
         _tarPos = -12;//2��:ȭ�� ������ ������
-        transform.position = new Vector3(Random.Range(-5f, 25f), Random.Range(9f,12f), 0);
+        transform.position = new Vector3(Random.Range(-5f, 25f), Random.Range(9f,12f), 0) + (Vector3)StarStrike.Instance._pos;
     }
 }

@@ -31,10 +31,10 @@ public class CounterAttack : Skill
         _waitTime += Time.deltaTime;
         _waitTime = Mathf.Clamp(_waitTime, 0, CoolTime);
     }
-    public override void Active()
+    protected override void UseSkill()
     {
-        base.Active();
         StartCoroutine(Counter());
+        IsActive = false;
     }
     IEnumerator Counter()
     {
