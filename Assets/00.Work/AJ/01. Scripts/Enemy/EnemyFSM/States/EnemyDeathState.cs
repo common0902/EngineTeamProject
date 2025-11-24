@@ -14,6 +14,7 @@ public class EnemyDeathState : EnemyState
         base.Enter();
         _enemy.ColliderCompo.enabled = false;
         _enemy.AgentCompo.enabled = false;
+        _enemy.ChangeFlip(false);
         
         if (_enemy.enemySO.enemyType == EnemyType.SuisideAttacker) return;
         if (_enemy.CheckDeathRange() && _enemy.enemySO.deathRange > 0)
