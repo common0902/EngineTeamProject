@@ -12,7 +12,6 @@ namespace _00.Work.AJ._01._Scripts.BOSS.FSM.States
         {
             _bossAnimator = GetComponentInChildren<BossAnimator>();
             _boss = GetComponent<Boss>();
-            _bossRoom = GetComponentInParent<BossRoom>();
         }
 
         private void Start()
@@ -27,6 +26,7 @@ namespace _00.Work.AJ._01._Scripts.BOSS.FSM.States
         private void HandleHealthChanged(float health, float maxHealth) => _boss.IsHit = true;
         private void HandleDead()
         {
+            _bossRoom = GetComponentInParent<BossRoom>();
             _boss.IsDead = true;
             _bossRoom.OnEnemyDied();
         }

@@ -38,7 +38,7 @@ public abstract class Room : MonoBehaviour
     private List<Enemy> enemies = new List<Enemy>();
 
     public Action OnInRoom;
-    public Action OnBattleWin;
+    public Action<Room> OnBattleWin;
     public static Action<Room> OnRoomInitialized;
     
     protected virtual void Awake()
@@ -103,7 +103,7 @@ public abstract class Room : MonoBehaviour
         enemyCount--;
         if (enemyCount <= 0)
         {
-            OnBattleWin?.Invoke();
+            OnBattleWin?.Invoke(this);
             isCleared = true;
             UnlockAllDoors();
         }

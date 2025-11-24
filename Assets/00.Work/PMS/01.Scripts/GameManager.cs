@@ -50,6 +50,16 @@ public class GameManager : MonoSingleton<GameManager>
         GoToNextStage();
         SaveStage();
         ApplyStageSettings();
+        
+        var startSplash = FindAnyObjectByType<_00.Work.Yeonwoo._01.Scripts.UI.GameStartSplashUI>();
+        if (startSplash != null)
+        {
+            startSplash.ShowCurrentStage();
+        }
+        else
+        {
+            Debug.LogWarning("[GameManager] GameStartSplashUI 인스턴스를 찾을 수 없습니다.");
+        }
     }
 
     private void GoToNextStage()
