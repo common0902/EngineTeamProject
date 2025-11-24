@@ -176,8 +176,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 292866113931837291}
-  - component: {fileID: 351240091904036295}
   - component: {fileID: 3136222094294706140}
+  - component: {fileID: 351240091904036295}
   - component: {fileID: 2402424533849177978}
   - component: {fileID: 1194925576562752434}
   - component: {fileID: 306627823817837372}
@@ -207,18 +207,6 @@ Transform:
   - {fileID: 5047662680275871859}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &351240091904036295
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8576971973994531197}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b0411537a0847ae825fcbfa2d84a673, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3136222094294706140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,6 +228,18 @@ MonoBehaviour:
   <Invincibility>k__BackingField: 0
   _isMarked: 0
   _markedValue: 1
+--- !u!114 &351240091904036295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8576971973994531197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b0411537a0847ae825fcbfa2d84a673, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2402424533849177978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -261,8 +261,9 @@ MonoBehaviour:
     m_Bits: 2147483648
   <Speed>k__BackingField: 5
   <AttackRange>k__BackingField: 2.87
-  <Damage>k__BackingField: 5
+  <Damage>k__BackingField: 15
   <BulletPrefabs>k__BackingField: {fileID: 6220635119967307600, guid: 7b00829597d53cc42b6d7ec822dae5f9, type: 3}
+  <IsDead>k__BackingField: 0
   <IsHit>k__BackingField: 0
   <offSetDamageRange>k__BackingField: {x: 0, y: 0.77}
   <DamageRange>k__BackingField: 2.4
