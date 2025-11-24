@@ -400,8 +400,9 @@ MonoBehaviour:
   _isCasting: 0
   _waitTime: 0
   _dashCooltime: 1.25
-  _dashPower: 12
+  _dashPower: 20
   coolUI: {fileID: 0}
+  _moveRoom: 0
 --- !u!61 &5112159421654928489
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -530,8 +531,8 @@ MonoBehaviour:
   _isSaber: 0
   _damage: 100
   _mana: 0
-  _fullMana: 150
-  _manaRecovry: 2
+  _fullMana: 200
+  _manaRecovry: 3
   _hp: 0
   _fullHp: 100
   _skillCoolDownSpeed: 100

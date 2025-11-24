@@ -3,6 +3,7 @@ using UnityEngine;
 public class DebugKey : MonoBehaviour
 {
     [SerializeField] GameObject _roomManager;
+    [SerializeField] GameObject _poolManager;
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.R))
@@ -12,6 +13,7 @@ public class DebugKey : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.I))
         {
             Instantiate(_roomManager);
+            Instantiate(_poolManager);
 
             Time.timeScale = 1;
             IntroManager.Instance.BlackText.color = new Color(1,1,1, 0);

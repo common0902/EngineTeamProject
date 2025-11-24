@@ -52,7 +52,6 @@ public class EnemyChaseState : EnemyState
         
         if (_enemy.CheckAttackRange())
         {
-            Debug.Log("dkdkd");
             _enemy.AgentCompo.isStopped = true;
             _enemy.AgentCompo.autoBraking = false;
             _stateMachine.ChangeState(EnemyStateType.Attack);
