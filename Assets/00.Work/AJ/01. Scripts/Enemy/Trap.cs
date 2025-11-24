@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using _00.Work.SYH._02Script.ETG;
+using csiimnida.CSILib.SoundManager.RunTime;
 using UnityEngine;
 
 public class Trap : MonoBehaviour
@@ -139,6 +140,7 @@ public class Trap : MonoBehaviour
     {
         for (int i = 0; i < 3; i++)
         {
+            SoundManager.Instance.PlaySound("Bip");
             _spriteRenderer.color = Color.red;
             if (_rangeIndicator != null)
             {
@@ -156,6 +158,7 @@ public class Trap : MonoBehaviour
         
         if (_data.placeTrapVFX != null)
         {
+            SoundManager.Instance.PlaySound("EnemyBomb");
             ParticleSystem explosion = Instantiate(
                 _data.placeTrapVFX,
                 transform.position,

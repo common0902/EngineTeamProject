@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using _00.Work.SYH._02Script.ETG;
+using csiimnida.CSILib.SoundManager.RunTime;
 using DG.Tweening;
 using UnityEngine;
 
@@ -43,6 +44,7 @@ public class SummonerAttackBehavior : IEnemyAttackBehavior
 
             if (found)
             {
+                SoundManager.Instance.PlaySound("BossSummon");
                 int i = Random.Range(0, _enemy.enemySO.summonerData.summonPrefab.Length);
                 GameObject summon = Object.Instantiate(_enemy.enemySO.summonerData.summonPrefab[i], summonPos, Quaternion.identity);
                 _currentCount++;

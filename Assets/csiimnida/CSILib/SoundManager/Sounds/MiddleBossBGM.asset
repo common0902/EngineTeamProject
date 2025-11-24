@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 48c32755cef4f784ab6582bd331841f7, type: 3}
-  m_Name: BossSummon
+  m_Name: MiddleBossBGM
   m_EditorClassIdentifier: 
-  soundName: BossSummon
-  soundType: 1
-  clip: {fileID: 8300000, guid: 37216fe7e6c0c444f8ba1bd789986448, type: 3}
-  loop: 0
+  soundName: MiddleBossBGM
+  soundType: 0
+  clip: {fileID: 8300000, guid: f0b89af984ff05f428f18aa573b6c079, type: 3}
+  loop: 1
   Priority: 128
-  volume: 0.5
+  volume: 1
   pitch: 1
   stereoPan: 0
   SpatialBlend: 0
