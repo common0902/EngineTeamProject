@@ -24,7 +24,6 @@ public class Slash : Skill
     }
     protected override void UseSkill()
     {
-        base.UseSkill();
         if(!_prefab.GetComponent<SlashPrefab>()._canAttack)
         {
             _waitTime = CoolTime;

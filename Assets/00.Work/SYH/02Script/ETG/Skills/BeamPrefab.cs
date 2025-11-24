@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using _00.Work.SYH._02Script.ETG;
+using csiimnida.CSILib.SoundManager.RunTime;
 
 public class BeamPrefab : SkillPrefab
 {
@@ -49,6 +50,7 @@ public class BeamPrefab : SkillPrefab
     }
     public void StartAttack()
     {
+        SoundManager.Instance.PlaySound("UseSkill");
         _collider.enabled = true;
         _canMove = true;
     }
