@@ -17,7 +17,7 @@ namespace _00.Work.AJ._01._Scripts.Boss2
         [field:SerializeField]public float Damage { get; set; }
         [field:SerializeField]public GameObject BulletPrefabs { get; set; }
         private bool _canFlip = true;
-        public bool IsDead { get; set; } = false;
+        [field:SerializeField]public bool IsDead { get; set; } = false;
         [field:SerializeField]public bool IsHit { get; set; } = false;
         [field:SerializeField]public Vector2 offSetDamageRange { get; set; }
         [field:SerializeField] public float DamageRange { get; set; }
