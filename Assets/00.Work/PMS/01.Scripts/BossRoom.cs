@@ -39,5 +39,6 @@ public class BossRoom : Room
     public override void OnEnemyDied()
     {
         base.OnEnemyDied();
+        HandleBossDied();
     }
 }
