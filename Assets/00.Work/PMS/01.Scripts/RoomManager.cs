@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
+[DefaultExecutionOrder(-200)]
 public class RoomManager : MonoSingleton<RoomManager>
 {
     [Header("normal Room Prefabs")]
@@ -56,7 +57,7 @@ public class RoomManager : MonoSingleton<RoomManager>
     [Header("room index")]
     public int goldRoomIndex = 0;
     public int shopRoomIndex = 0;
-
+    [SerializeField] bool _useIt;
     [field:SerializeField]public bool BossRoomTurn { get; set; } = false;
     public event Action OnInPortal;
     [SerializeField] bool _useIt;
