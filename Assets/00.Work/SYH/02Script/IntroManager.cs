@@ -18,10 +18,12 @@ public class IntroManager : MonoSingleton<IntroManager>
 
     private void Start()
     {
+        Time.timeScale = 0;
         StartCoroutine(Show(0.01f, _black));
         StartCoroutine(Show(0.01f, BlackText));
         RoomManager.Instance.OnInPortal += () =>
         {
+            Time.timeScale = 1;
             StartCoroutine(Hide(1f, BlackText));
             StartCoroutine(Hide(1f, _black));
         };

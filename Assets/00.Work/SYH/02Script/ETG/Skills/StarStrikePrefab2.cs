@@ -12,8 +12,8 @@ public class StarStrikePrefab2 : SkillPrefab, IPoolable
     {
         if (transform.position.y <= _tarPos)
         {
-            SkillUtility.WideAreaDamage(_damage + Player.Instance.PlayerStatusCompo.Mana / 5f, 30, SkillUtility.GetEnemyLayer());
-            //SkillUtility.WideAreaDamage(_damage + Player.Instance.PlayerStatusCompo.Mana / 5f, 30, SkillUtility.GetEnemyLayer(), Debuffs.Slow, 2.5f, 0.5f);
+            SkillUtility.WideAreaDamage(_damage + Player.Instance.PlayerStatusCompo.Mana / 5f, 15, SkillUtility.GetEnemyLayer());
+            SkillUtility.WideAreaDamage(_damage + Player.Instance.PlayerStatusCompo.Mana / 5f, 15, SkillUtility.GetEnemyLayer(), Debuffs.Slow, 2.5f, 0.5f);
             PoolManager.Instance.Push(GetComponent<IPoolable>());
         }
         else
@@ -25,6 +25,6 @@ public class StarStrikePrefab2 : SkillPrefab, IPoolable
     {
         gameObject.SetActive(true);
         _tarPos = 0;
-        transform.position = new Vector3(12, 12, 0);
+        transform.position = new Vector3(12, 12, 0) + (Vector3)StarStrike.Instance._pos; ;
     }
 }

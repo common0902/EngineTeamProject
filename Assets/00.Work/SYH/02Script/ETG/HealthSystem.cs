@@ -36,7 +36,6 @@ namespace _00.Work.SYH._02Script.ETG
 
         private void Start()
         {
-            //maxHealth = Player.Instance.PlayerStatusCompo._fullHp;
             Health = maxHealth;
             OnHealthChanged?.Invoke(Health, maxHealth);
         }
@@ -102,10 +101,12 @@ namespace _00.Work.SYH._02Script.ETG
         public void SetMaxHealth(float health)
         {
             maxHealth = health;
+            OnHealthChanged?.Invoke(Health, maxHealth);
         }
         public void SetHealth(float hp)
         {
             Health = hp;
+            OnHealthChanged?.Invoke(Health, maxHealth);
         }
         private void Dead()
         {
