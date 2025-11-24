@@ -1,5 +1,4 @@
 ﻿using System;
-using csiimnida.CSILib.SoundManager.RunTime;
 using UnityEngine;
 
 public class NormalRoom : Room
@@ -12,14 +11,11 @@ public class NormalRoom : Room
     public override void OnPlayerEnter()
     {
         base.OnPlayerEnter();
-        if (!isCleared)
-            OnInRoom?.Invoke();
+        OnInRoom?.Invoke();
     }
 
     public override void OnEnemyDied()
     {
         base.OnEnemyDied();
-        SoundManager.Instance.StopSound("BattleBGM");
-        SoundManager.Instance.PlaySound("MainGameBGM");
     }
 }

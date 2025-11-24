@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using _00.Work.SYH._02Script.ETG;
 using csiimnida.CSILib.SoundManager.RunTime;
 using UnityEngine;
@@ -17,11 +17,9 @@ public class LaserParentPrefab : SkillPrefab
         //if (_hitEnemys.Count == 0) return;
         try
         {
-            print(555);
             SoundManager.Instance.PlaySound("UseSkill");
             foreach (HealthSystem i in _hitEnemys)
             {
-                print(666);
                 i.Damage(SkillUtility.CalcurateDamage(_damage));
                 GameObject effect = PoolManager.Instance.Pop("HitEffect").GameObject;
                 effect.transform.position = i.transform.position;
@@ -33,7 +31,7 @@ public class LaserParentPrefab : SkillPrefab
         }
         catch
         {
-            
+            Attack();
         }        //transform.GetChild(0).GetComponent<LaserPrefab>().Attack();
         //_tail.GetComponent<LaserPrefab>().Attack();
     }

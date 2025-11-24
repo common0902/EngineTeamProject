@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using CSILib.SoundManager.RunTime;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -11,7 +10,7 @@ namespace csiimnida.CSILib.SoundManager.RunTime
     
         [SerializeField] private SoundListSo _soundListSo;
         [SerializeField] private AudioMixer _mixer;
-        private Dictionary<string, List<AudioSource>> _playingSounds = new Dictionary<string, List<AudioSource>>();
+
         private void Awake()
         {
             if (_soundListSo == null)
@@ -32,7 +31,7 @@ namespace csiimnida.CSILib.SoundManager.RunTime
             if (_mixer == null)
             {
                 Debug.LogWarning("Mixer가 할당되지 않았습니다. SoundManager를 사용하기 전에 할당해주세요.");
-                SetAudio(source,so,soundName);
+                SetAudio(source,so);
                 return;
             }
             if(so.soundType == SoundType.SFX)
@@ -47,11 +46,11 @@ namespace csiimnida.CSILib.SoundManager.RunTime
                 source.outputAudioMixerGroup = _mixer.FindMatchingGroups("Master")[0];
 
             }
-            SetAudio(source,so,soundName);
+            SetAudio(source,so);
         
         }
 
-        private void SetAudio(AudioSource source, SoundSo sounds, string soundName)
+        private void SetAudio(AudioSource source,SoundSo sounds)
         {
             source.clip = sounds.clip;
             source.loop = sounds.loop;
@@ -68,90 +67,9 @@ namespace csiimnida.CSILib.SoundManager.RunTime
             {
                 source.time = 1;
             }
-            if (!_playingSounds.ContainsKey(soundName))
-            {
-                _playingSounds[soundName] = new List<AudioSource>();
-            }
-            _playingSounds[soundName].Add(source);
             source.Play();
             if (!sounds.loop) { StartCoroutine(DestroyCo(source.clip.length,source.gameObject)); }
 
-        }
-
-        [ContextMenu("Stop Sound")]
-        public void MainGameBGMStop()
-        {
-            StopSound("MainGameBGM");
-        }
-        // 특정 사운드 전부 멈추기
-        public void StopSound(string soundName)
-        {
-            if (_playingSounds.ContainsKey(soundName))
-            {
-                foreach (var source in _playingSounds[soundName])
-                {
-                    if (source != null)
-                    {
-                        source.Stop();
-                        Destroy(source.gameObject);
-                    }
-                }
-                _playingSounds[soundName].Clear();
-            }
-        }
-        // 특정 사운드 하나만 멈추기 (가장 최근 재생)
-        public void StopSoundOne(string soundName)
-        {
-            if (_playingSounds.ContainsKey(soundName) && _playingSounds[soundName].Count > 0)
-            {
-                var lastIndex = _playingSounds[soundName].Count - 1;
-                var source = _playingSounds[soundName][lastIndex];
-                
-                if (source != null)
-                {
-                    source.Stop();
-                    Destroy(source.gameObject);
-                }
-                
-                _playingSounds[soundName].RemoveAt(lastIndex);
-            }
-        }
-        
-        public void StopAllSounds()
-        {
-            foreach (var soundList in _playingSounds.Values)
-            {
-                foreach (var source in soundList)
-                {
-                    if (source != null)
-                    {
-                        source.Stop();
-                        Destroy(source.gameObject);
-                    }
-                }
-            }
-            _playingSounds.Clear();
-        }
-        
-        public void StopSoundsByType(SoundType soundType)
-        {
-            List<string> soundsToStop = new List<string>();
-            
-            foreach (var kvp in _playingSounds)
-            {
-                if (_soundListSo.SoundsDictionary.ContainsKey(kvp.Key))
-                {
-                    if (_soundListSo.SoundsDictionary[kvp.Key].soundType == soundType)
-                    {
-                        soundsToStop.Add(kvp.Key);
-                    }
-                }
-            }
-            
-            foreach (var soundName in soundsToStop)
-            {
-                StopSound(soundName);
-            }
         }
 
         IEnumerator DestroyCo(float endTime,GameObject obj)

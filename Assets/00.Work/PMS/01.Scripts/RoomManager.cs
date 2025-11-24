@@ -1,7 +1,6 @@
 ﻿using DG.Tweening;
 using System;
 using System.Collections.Generic;
-using _00.Work.Yeonwoo._01.Scripts.UI;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -138,7 +137,6 @@ public class RoomManager : MonoSingleton<RoomManager>
             Debug.LogError($"OnInPortal 이벤트 처리 중 예외 발생: {ex}");
         }
         OnSetComplete?.Invoke();
-        GameStartSplashUI.Instance.ShowCurrentStage();
         NavMeshBakeManager.Instance.Bake();
         generationComplete = true;
     }
