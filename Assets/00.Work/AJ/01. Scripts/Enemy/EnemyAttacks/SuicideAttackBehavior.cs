@@ -49,8 +49,7 @@ public class SuicideAttackBehavior : IEnemyAttackBehavior
         _canAttack = false;
         _isExploding = true;
         
-        _enemy.AgentCompo.enabled = false;
-        if (_enemy.AgentCompo != null)
+        if (_enemy.AgentCompo != null && _enemy.AgentCompo.enabled)
             _enemy.AgentCompo.isStopped = true;
         
         if (_enemy.RbCompo != null)
@@ -73,8 +72,8 @@ public class SuicideAttackBehavior : IEnemyAttackBehavior
             Explode();
         }
 
-        _enemy.HealthCompo.Damage(float.MaxValue);
         SoundManager.Instance.PlaySound("Bomb");
+        _enemy.HealthCompo.Damage(float.MaxValue);
         _isExploding = false;
         IsAttackAnimationEnd = true;
     }

@@ -125,8 +125,8 @@ public class RoomManager : MonoSingleton<RoomManager>
         {
             Debug.LogError($"OnInPortal 이벤트 처리 중 예외 발생: {ex}");
         }
-        generationComplete = true;
         NavMeshBakeManager.Instance.Bake();
+        generationComplete = true;
     }
 
     private void LastRoomGeneration()
@@ -437,7 +437,6 @@ public class RoomManager : MonoSingleton<RoomManager>
     {
         Color gizmoColor = new Color(0, 1f, 1f, 0.05f);
         Gizmos.color = gizmoColor;
-
         for (int x = 0; x < gridSizeX; x++)
         {
             for (int y = 0; y < gridSizeY; y++)

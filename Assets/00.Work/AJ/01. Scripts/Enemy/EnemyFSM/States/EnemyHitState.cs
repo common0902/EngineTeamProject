@@ -16,7 +16,8 @@ public class EnemyHitState : EnemyState
     public override void Enter()
     {
         base.Enter();
-        //Debug.Log("Enter Hit State");
+        if(_enemy.enemySO.enemyType == EnemyType.SuisideAttacker)
+            Debug.Log("Enter Hit State");
         _enemy.ChangeFlip(false);
 
         if(SoundManager.Instance != null)

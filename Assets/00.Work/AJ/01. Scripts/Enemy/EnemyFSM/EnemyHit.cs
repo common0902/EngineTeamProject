@@ -27,6 +27,7 @@ public class EnemyHit : MonoBehaviour
         {
             _enemy.IsDead = true;
             SoundManager.Instance.PlaySound("EnemyDeath");
+            Debug.Log("ddk");
             _parentRoom.OnEnemyDied();
             goldSystem.SpawnGoldDrop(transform.position, Random.Range(3, 11));
         };
