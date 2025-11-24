@@ -16,7 +16,7 @@ public class EnemyDeathState : EnemyState
         _enemy.AgentCompo.enabled = false;
         
         if (_enemy.enemySO.enemyType == EnemyType.SuisideAttacker) return;
-        if (_enemy.CheckDeathRange())
+        if (_enemy.CheckDeathRange() && _enemy.enemySO.deathRange > 0)
         {
             Collider2D[] hits = Physics2D.OverlapCircleAll(_enemy.transform.position, _enemy.enemySO.deathRange);
             foreach (var hit in hits)
