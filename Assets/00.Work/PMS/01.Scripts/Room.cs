@@ -9,7 +9,8 @@ public enum RoomType
     Gold,
     Shop,
     Boss,
-    Portal
+    Portal,
+    Start
 }
 
 public abstract class Room : MonoBehaviour
