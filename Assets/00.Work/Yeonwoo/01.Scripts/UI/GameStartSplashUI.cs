@@ -1,11 +1,13 @@
 ﻿// GameStartSplashUI.cs (수정본)
+
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
 
 namespace _00.Work.Yeonwoo._01.Scripts.UI
 {
-    public class GameStartSplashUI : MonoBehaviour
+    public class GameStartSplashUI : MonoSingletonUI<GameStartSplashUI>
     {
         [SerializeField] private TextMeshProUGUI currentStg; // 예: "현재 스테이지"
         [SerializeField] private TextMeshProUGUI stgNum;     // 예: "1 - 1"
@@ -50,7 +52,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
                 RoomManager.Instance.OnSetComplete += OnMapSetComplete;
             }
         }
-
+        
         private void OnDisable()
         {
             if (RoomManager.Instance != null)
