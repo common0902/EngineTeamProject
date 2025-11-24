@@ -49,7 +49,7 @@ public class PassiveSkill : MonoBehaviour, IPoolable
                 break;
             case PassiveSkillSO.Status.MaxHealth:
                 Player.Instance.PlayerStatusCompo._fullHp += _statusValue;
-                Player.Instance.PlayerStatusCompo.Hp += _statusValue;
+                Player.Instance.PlayerStatusCompo.Hp = Player.Instance.PlayerStatusCompo._fullHp;
                 break;
             case PassiveSkillSO.Status.Heal:
                 Player.Instance.PlayerStatusCompo.Hp += _statusValue;
