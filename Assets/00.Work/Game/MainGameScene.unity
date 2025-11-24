@@ -1968,6 +1968,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 339579058}
     - target: {fileID: 6301530087439240855, guid: 187e0ca0babfb4d419e12f7d4c35425d, type: 3}
+      propertyPath: _manaRecovry
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6301530087439240855, guid: 187e0ca0babfb4d419e12f7d4c35425d, type: 3}
       propertyPath: OnZeroMana.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -2747,7 +2751,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2f976e333764d268feb21bbd2ba8e9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundName: TitleBGM
+  soundName: MainGameBGM
 --- !u!114 &1543997358 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4197580609224653275, guid: 7e5dd9250bf2d0e42934ad19e58de2d9, type: 3}
