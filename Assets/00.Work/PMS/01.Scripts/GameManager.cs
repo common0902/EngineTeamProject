@@ -2,6 +2,7 @@
 using System.IO;
 using UnityEngine;
 
+[DefaultExecutionOrder(-50)]
 public class GameManager : MonoSingleton<GameManager>
 {
     [Serializable]
@@ -13,8 +14,6 @@ public class GameManager : MonoSingleton<GameManager>
 
     public int CurrentWorld { get; private set; } = 1;
     public int CurrentStage { get; private set; } = 1;
-
-    // 현재 플레이어가 있는 방
     public Room CurrentRoom { get; private set; }
 
     private string SavePath =>
@@ -23,6 +22,10 @@ public class GameManager : MonoSingleton<GameManager>
     protected override void Awake()
     {
         base.Awake();
+    }
+
+    private void Start()
+    {
         LoadStage();
         ApplyStageSettings();
     }
@@ -125,6 +128,7 @@ public class GameManager : MonoSingleton<GameManager>
     {
         return CurrentRoom != null ? CurrentRoom.transform.position : Vector3.zero;
     }
+
     [ContextMenu("ResetSave")]
     public void ResetSave()
     {
@@ -132,13 +136,9 @@ public class GameManager : MonoSingleton<GameManager>
         {
             File.Delete(SavePath);
         }
-
         CurrentWorld = 1;
         CurrentStage = 1;
-
         ApplyStageSettings();
-
-        // 세이브는 삭제만 했고, 현재 진행은 1-1 상태로만 바꿔둔 상태
     }
 
     [ContextMenu("NewGame")]
@@ -146,13 +146,11 @@ public class GameManager : MonoSingleton<GameManager>
     {
         CurrentWorld = 1;
         CurrentStage = 1;
-
-        SaveStage();          // 1-1로 세이브 덮어쓰기
-        ApplyStageSettings(); // 보스 여부 등 반영
-
+        SaveStage();
+        ApplyStageSettings();
         if (RoomManager.Instance != null)
         {
-            RoomManager.Instance.RegenerateRooms(); // 맵도 새로 생성
+            RoomManager.Instance.RegenerateRooms();
         }
     }
 }
