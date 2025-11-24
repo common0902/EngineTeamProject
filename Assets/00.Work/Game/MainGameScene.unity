@@ -546,7 +546,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6943502779432800818, guid: 953d3ff1b4e8685438d27c605a2ecf19, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -860.99994
+      value: -861
       objectReference: {fileID: 0}
     - target: {fileID: 6943502779432800818, guid: 953d3ff1b4e8685438d27c605a2ecf19, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -975,7 +975,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6100703956343638508, guid: cb57384a0b757304da68f11f3804a930, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -715.99994
+      value: -716
       objectReference: {fileID: 0}
     - target: {fileID: 6100703956343638508, guid: cb57384a0b757304da68f11f3804a930, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1368,7 +1368,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6100703956343638508, guid: 74f5b11b39a8e7642ad713c1a5f8aa9f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -714.99994
+      value: -715
       objectReference: {fileID: 0}
     - target: {fileID: 6100703956343638508, guid: 74f5b11b39a8e7642ad713c1a5f8aa9f, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -2444,10 +2444,6 @@ PrefabInstance:
       propertyPath: isPlayer.m_Bits
       value: 64
       objectReference: {fileID: 0}
-    - target: {fileID: 1237729694059482141, guid: 187e0ca0babfb4d419e12f7d4c35425d, type: 3}
-      propertyPath: areYouPlayer.m_Bits
-      value: 64
-      objectReference: {fileID: 0}
     - target: {fileID: 3516065109722323403, guid: 187e0ca0babfb4d419e12f7d4c35425d, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -2480,14 +2476,6 @@ PrefabInstance:
       propertyPath: goldTarget
       value: 
       objectReference: {fileID: 339579058}
-    - target: {fileID: 6301530087439240855, guid: 187e0ca0babfb4d419e12f7d4c35425d, type: 3}
-      propertyPath: _fullMana
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 6301530087439240855, guid: 187e0ca0babfb4d419e12f7d4c35425d, type: 3}
-      propertyPath: _manaRecovry
-      value: 3.15
-      objectReference: {fileID: 0}
     - target: {fileID: 6301530087439240855, guid: 187e0ca0babfb4d419e12f7d4c35425d, type: 3}
       propertyPath: OnZeroMana.m_PersistentCalls.m_Calls.Array.size
       value: 1
