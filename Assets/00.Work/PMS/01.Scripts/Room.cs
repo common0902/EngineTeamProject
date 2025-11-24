@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 public enum RoomType
 {
@@ -19,15 +22,24 @@ public abstract class Room : MonoBehaviour
 
     [SerializeField] private Vector2 roomSize = new Vector2(24, 16);
 
+    [SerializeField] private float enemyActivationDelay = 0.1f;
+
     public RoomType roomType;
 
     protected int enemyCount;
     protected bool hasEnemies;
     protected bool isCleared = false;
+    private bool enemiesActivated = false;
 
     public Vector2Int RoomIndex { get; set; }
 
     private BoxCollider2D roomTrigger;
+    private List<Enemy> enemies = new List<Enemy>();
+
+    public Action OnInRoom;
+    
+    public static Action<Room> OnRoomInitialized;
+    
     protected virtual void Awake()
     {
         roomTrigger = gameObject.GetComponent<BoxCollider2D>();
@@ -39,20 +51,50 @@ public abstract class Room : MonoBehaviour
         roomTrigger.isTrigger = true;
         roomTrigger.size = roomSize;
         roomTrigger.offset = Vector2.zero;
+        
+        OnRoomInitialized?.Invoke(this);
     }
     protected virtual void Start()
     {
-        Enemy[] enemies = GetComponentsInChildren<Enemy>();
-        enemyCount = enemies.Length;
+        Enemy[] foundEnemies = GetComponentsInChildren<Enemy>(false); // false = 활성화된 것만
+        enemies.AddRange(foundEnemies);
+
+        enemyCount = enemies.Count;
         hasEnemies = enemyCount > 0;
+
+        // 모든 에너미 비활성화
+        foreach (Enemy enemy in enemies)
+        {
+            enemy.gameObject.SetActive(false);
+        }
     }
 
     public virtual void OnPlayerEnter()
     {
+        if (hasEnemies && !enemiesActivated)
+        {
+            StartCoroutine(ActivateEnemiesWithDelay());
+        }
         if (hasEnemies && !isCleared)
         {
             LockAllDoors();
         }
+    }
+    private IEnumerator ActivateEnemiesWithDelay()
+    {
+        Player.Instance.PlayerMoveCompo._cannotMove = true;
+        yield return new WaitForSeconds(enemyActivationDelay);
+
+        Player.Instance.PlayerMoveCompo._cannotMove = false;
+        foreach (Enemy enemy in enemies)
+        {
+            if (enemy != null)
+            {
+                enemy.gameObject.SetActive(true);
+            }
+        }
+
+        enemiesActivated = true;
     }
 
     public virtual void OnEnemyDied()

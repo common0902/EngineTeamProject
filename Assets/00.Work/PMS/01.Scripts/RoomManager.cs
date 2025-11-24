@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
+[DefaultExecutionOrder(-200)]
 public class RoomManager : MonoSingleton<RoomManager>
 {
     [Header("normal Room Prefabs")]
@@ -56,10 +57,10 @@ public class RoomManager : MonoSingleton<RoomManager>
     [Header("room index")]
     public int goldRoomIndex = 0;
     public int shopRoomIndex = 0;
-
+    [SerializeField] bool _useIt;
     [field:SerializeField]public bool BossRoomTurn { get; set; } = false;
     public event Action OnInPortal;
-    [SerializeField] bool _useIt;
+    public Action OnSetComplete;
     protected override void Awake()
     {
         if (!_useIt)
@@ -135,8 +136,9 @@ public class RoomManager : MonoSingleton<RoomManager>
         {
             Debug.LogError($"OnInPortal 이벤트 처리 중 예외 발생: {ex}");
         }
-        generationComplete = true;
+        OnSetComplete?.Invoke();
         NavMeshBakeManager.Instance.Bake();
+        generationComplete = true;
     }
 
     private void LastRoomGeneration()
@@ -287,7 +289,8 @@ public class RoomManager : MonoSingleton<RoomManager>
         lastRoomGeneration = true;
         lastRoomCreated = false;
 
-        ApplyStageOption();   
+        ApplyStageOption();
+        BossRoomTurn = (GameManager.Instance.CurrentStage == 3);
         RandomIndex();
 
         Vector2Int initialRoomIndex = new Vector2Int(gridSizeX / 2, gridSizeY / 2);
@@ -447,7 +450,6 @@ public class RoomManager : MonoSingleton<RoomManager>
     {
         Color gizmoColor = new Color(0, 1f, 1f, 0.05f);
         Gizmos.color = gizmoColor;
-
         for (int x = 0; x < gridSizeX; x++)
         {
             for (int y = 0; y < gridSizeY; y++)
