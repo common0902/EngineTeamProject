@@ -1,0 +1,20 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="project://database/Assets/csiimnida/CSILib/SoundManager/Editor/UIS/SoundListUIs/SoundListEditor.uss?fileID=7433441132597879392&amp;guid=8c5e32789aa2413d81cf913b348e94d8&amp;type=3#SoundListEditor" />
+    <ui:VisualElement name="Container" style="flex-grow: 1;">
+        <ui:VisualElement name="Topbar" class="top_bar" style="justify-content: space-between;">
+            <ui:Label text="SoundManager Editor" name="TitleLable" style="font-size: 25px; -unity-font-style: bold; color: rgb(152, 152, 152); -unity-text-outline-color: rgba(82, 82, 82, 0.15); -unity-text-outline-width: 1px; letter-spacing: 1px;" />
+            <ui:VisualElement style="flex-grow: 1; flex-direction: row-reverse;">
+                <ui:Button text="Create" name="CreateBtn" class="create_btn" />
+                <ui:Button text="Language" name="LenBtn" class="create_btn" style="color: rgb(167, 173, 56); font-size: 10px; margin-right: 10px;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <csiimnida.CSILib.SoundManager.Editor.SplitView fixed-pane-initial-dimension="250">
+            <ui:VisualElement name="LeftPanel" style="flex-grow: 1; padding-top: 2px; padding-right: 2px; padding-bottom: 2px; padding-left: 2px;">
+                <ui:ScrollView name="ItemView" class="scroll_view" />
+            </ui:VisualElement>
+            <ui:VisualElement name="RightPanel" style="flex-grow: 1; padding-top: 2px; padding-right: 2px; padding-bottom: 2px; padding-left: 2px;">
+                <ui:VisualElement name="InspectorView" class="inspector_view" />
+            </ui:VisualElement>
+        </csiimnida.CSILib.SoundManager.Editor.SplitView>
+    </ui:VisualElement>
+</ui:UXML>

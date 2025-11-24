@@ -2,15 +2,24 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!78 &1
 TagManager:
-  serializedVersion: 2
-  tags: []
+  serializedVersion: 3
+  tags:
+  - Enemy
+  - Undefined
+  - WayPoints
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Skill
   - Water
   - UI
+  - Player
+  - PasiveSkill
+  - Enemy
+  - SkillHitBox
+  - EnemyIgnore
+  - Door
   - 
   - 
   - 
@@ -28,16 +37,48 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Minimap
+  - Trap
+  - Wall
   m_SortingLayers:
+  - name: BG
+    uniqueID: 3626430795
+    locked: 0
+  - name: Ground
+    uniqueID: 3228735745
+    locked: 0
+  - name: Wall
+    uniqueID: 2178794005
+    locked: 0
+  - name: Decoration
+    uniqueID: 1635731811
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Collision
+    uniqueID: 1476927255
+    locked: 0
+  - name: Portal
+    uniqueID: 3895624851
+    locked: 0
+  - name: SkillEffect
+    uniqueID: 2894501951
+    locked: 0
+  - name: Boom
+    uniqueID: 3806469173
+    locked: 0
+  - name: Player
+    uniqueID: 3478649853
+    locked: 0
+  - name: Enemy
+    uniqueID: 3745850823
+    locked: 0
+  - name: DecorationUp
+    uniqueID: 2653831597
+    locked: 0
+  - name: UI
+    uniqueID: 401888545
+    locked: 0
+  m_RenderingLayers:
+  - Default

@@ -1,0 +1,26 @@
+using TMPro;
+using UnityEngine;
+
+public class PassiveSkillText : MonoBehaviour
+{
+    TextMeshProUGUI _skillText;
+    private void Awake()
+    {
+        _skillText = GetComponent<TextMeshProUGUI>();
+    }
+    void Start()
+    {
+        Player.Instance.PassiveSkillControllerCompo.OnTakePasiveSkill += ChangeText;
+    }
+
+    private void ChangeText(PassiveSkill skill)
+    {
+        _skillText.text += ' ' + skill.SkillSO.Name;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+}

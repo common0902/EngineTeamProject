@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f90eb0497789b9148b6c947804544be3, type: 3}
+  m_Name: Ghoul
+  m_EditorClassIdentifier: 
+  enemyType: 0
+  enemyName: Ghoul
+  enemySprite: {fileID: 1446657577502163369, guid: 0aa4a912fb89f8d4d90db69120ba8ba4, type: 3}
+  speed: 5
+  health: 10
+  canPatrol: 1
+  patrolDist: 0.3
+  damage: 2
+  attackDelay: 0
+  useBoxRange: 0
+  boxRange: {x: 0, y: 0}
+  knockbackForce: 0.5
+  knockBackTime: 0.1
+  chaseRange: 4
+  attackRange: 1.5
+  deathRange: 0
+  deathDamage: 0
+  rangedData:
+    bulletData: {fileID: 0}
+  dashData:
+    dashForce: 5
+    dashAttackTime: 0.5
+  summonerData:
+    summonPrefab: []
+    maxSummonCount: 3
+    summonRange: 3
+    waitforNextSummon: 10
+    isLifeTimeInChildren: 0
+    summonLifeTime: 10
+    isFade: 1
+  assassinData:
+    vanishVfx: {fileID: 0}
+    hideDuration: 0.6
+    appearBehindDistance: 0.8
+    randomHideDuration: 0
+    minHideDuration: 0.4
+  suicideAttackerData:
+    particleSystem: {fileID: 0}
+    explosionRadius: 1.5
+    explosionDelay: 0.3
+    rangeIndicator: {fileID: 0}
+  trapperData:
+    trapPrefab: {fileID: 0}
+    maxTraps: 3
+    trapPlaceInterval: 2
+    trapLifetime: 15
+    trapActivationDelay: 0.5
+    trapTriggerRadius: 0.8
+    trapDamage: 10
+    placeTrapVFX: {fileID: 0}
+    trapWarningColor: {r: 1, g: 0, b: 0, a: 1}
+  attackSound: {fileID: 0}

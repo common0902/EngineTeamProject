@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f90eb0497789b9148b6c947804544be3, type: 3}
+  m_Name: Summoner
+  m_EditorClassIdentifier: 
+  enemyType: 3
+  enemyName: Summoner
+  enemySprite: {fileID: 5374604837666599638, guid: 307c5e35851bece47b3b6091959a386e, type: 3}
+  speed: 2
+  health: 10
+  canPatrol: 1
+  patrolDist: 0.3
+  damage: 5
+  attackDelay: 0
+  useBoxRange: 0
+  boxRange: {x: 0, y: 0}
+  knockbackForce: 0.5
+  knockBackTime: 0.1
+  chaseRange: 5
+  attackRange: 4.5
+  deathRange: 0
+  deathDamage: 0
+  rangedData:
+    bulletData: {fileID: 0}
+  dashData:
+    dashForce: 5
+    dashAttackTime: 0.5
+  summonerData:
+    summonPrefab:
+    - {fileID: 8491730989217949394, guid: 5a3a1a14f70578d4ba534bb10ba53f41, type: 3}
+    - {fileID: 8760366041113459609, guid: c65cb102c8d433e4592e667128b57886, type: 3}
+    - {fileID: 2541696089574483213, guid: 9ac9fec6f7867534b92e9e7ba55fd7eb, type: 3}
+    - {fileID: 2505009877867903796, guid: 518e4c148964b5241a7e9acc3c63fa60, type: 3}
+    - {fileID: 6704316854911615356, guid: 5c964c377ffa71a49a26b2fcfb048a5b, type: 3}
+    - {fileID: 8338307515876266603, guid: 987f0ba83a2d338468c69c4395cc42c0, type: 3}
+    - {fileID: 3510536520269615134, guid: c045bb1852e12524ca74c6305039b94d, type: 3}
+    - {fileID: 2202816712704159238, guid: de1885f4874679243b57b9d2f53e8390, type: 3}
+    - {fileID: 6143283685880891309, guid: 05ec177b7066628449aa80a05df2b710, type: 3}
+    maxSummonCount: 3
+    summonRange: 4.74
+    waitforNextSummon: 10
+    isLifeTimeInChildren: 0
+    summonLifeTime: 10
+    isFade: 1
+  assassinData:
+    vanishVfx: {fileID: 0}
+    hideDuration: 3
+    appearBehindDistance: 0.8
+    randomHideDuration: 0
+    minHideDuration: 0.3
+  suicideAttackerData:
+    particleSystem: {fileID: 0}
+    explosionRadius: 1.5
+    explosionDelay: 0.3
+    rangeIndicator: {fileID: 0}
+  trapperData:
+    trapPrefab: {fileID: 0}
+    maxTraps: 3
+    trapPlaceInterval: 2
+    trapLifetime: 15
+    trapActivationDelay: 0.5
+    trapTriggerRadius: 0.8
+    trapDamage: 10
+    placeTrapVFX: {fileID: 0}
+    trapWarningColor: {r: 1, g: 0, b: 0, a: 1}
+  attackSound: {fileID: 0}

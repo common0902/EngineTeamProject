@@ -1,0 +1,60 @@
+using System.Collections;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class StarStrike : Skill 
+{
+    public Image _image;
+    GameObject _prefab;
+    [SerializeField] GameObject _bigStar;
+    public Vector2 _pos;
+    public static StarStrike Instance;
+    protected override void Awake()
+    {
+        base.Awake();
+        Instance = this;
+        _prefab = Instantiate(SkillPrefab, Vector3.zero, Quaternion.identity);
+        _prefab.SetActive(false);
+    }
+    protected override void UseSkill()
+    {
+        base.UseSkill();
+        _prefab.SetActive(true);
+        _prefab.transform.position = _pos;
+        CameraHandler.Instance.ShakeCamera(0.03f, 20);
+        Player.Instance.PlayerAnimationCompo.CastingStart();
+        Player.Instance.transform.position = _pos;
+        Player.Instance.Mujuck(true);
+        SkillUtility.WideAreaDamage(0, 30, SkillUtility.GetEnemyLayer(), Debuffs.Bondage, 20, 0);
+        StartCoroutine(SummonStar());
+    }
+    protected override void Update()
+    {
+        base.Update();
+        _pos = GameManager.Instance.GetCurrentRoomCenter();
+    }
+    private IEnumerator SummonStar()
+    {
+        float waitTIme = 0;
+        float revolution = 0.5f;
+        while (waitTIme < 18)
+        {
+            PoolManager.Instance.Pop(Name);
+            waitTIme += revolution + Time.deltaTime;
+            yield return new WaitForSeconds(revolution);
+            revolution -= revolution / 20f;
+            revolution = Mathf.Clamp(revolution, 0.2f, 0.5f);
+        }
+        CameraHandler.Instance.ShakeCamera(0.045f, 17);
+        PoolManager.Instance.Pop("BigStar");
+        yield return new WaitForSeconds(2);
+        StartCoroutine(IntroManager.Instance.Show(8, IntroManager.Instance._white));
+        yield return new WaitForSeconds(8);
+        yield return new WaitForSeconds(3);
+        StartCoroutine(IntroManager.Instance.Hide(2.5f, IntroManager.Instance._white));
+        _prefab.SetActive(false);
+        yield return new WaitForSeconds(2.5F);
+        Player.Instance.Mujuck(false);
+        Player.Instance.PlayerAnimationCompo.CastingEnd();
+    }
+}

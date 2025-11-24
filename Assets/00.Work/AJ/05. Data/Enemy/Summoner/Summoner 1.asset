@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f90eb0497789b9148b6c947804544be3, type: 3}
+  m_Name: Summoner 1
+  m_EditorClassIdentifier: 
+  enemyType: 3
+  enemyName: Summoner
+  enemySprite: {fileID: 5374604837666599638, guid: 307c5e35851bece47b3b6091959a386e, type: 3}
+  speed: 2
+  health: 25
+  canPatrol: 1
+  patrolDist: 0.3
+  damage: 5
+  attackDelay: 0
+  useBoxRange: 0
+  boxRange: {x: 0, y: 0}
+  knockbackForce: 0.5
+  knockBackTime: 0.1
+  chaseRange: 5
+  attackRange: 4.5
+  deathRange: 0
+  deathDamage: 0
+  rangedData:
+    bulletData: {fileID: 0}
+  dashData:
+    dashForce: 5
+    dashAttackTime: 0.5
+  summonerData:
+    summonPrefab:
+    - {fileID: 3031526597556667181, guid: c6921587d64bead47aba303a90b4629b, type: 3}
+    maxSummonCount: 10
+    summonRange: 4.74
+    waitforNextSummon: 10
+    isLifeTimeInChildren: 0
+    summonLifeTime: 10
+    isFade: 1
+  assassinData:
+    vanishVfx: {fileID: 0}
+    hideDuration: 3
+    appearBehindDistance: 0.8
+    randomHideDuration: 0
+    minHideDuration: 0.3
+  suicideAttackerData:
+    particleSystem: {fileID: 0}
+    explosionRadius: 1.5
+    explosionDelay: 0.3
+    rangeIndicator: {fileID: 0}
+  trapperData:
+    trapPrefab: {fileID: 0}
+    maxTraps: 3
+    trapPlaceInterval: 2
+    trapLifetime: 15
+    trapActivationDelay: 0.5
+    trapTriggerRadius: 0.8
+    trapDamage: 10
+    placeTrapVFX: {fileID: 0}
+    trapWarningColor: {r: 1, g: 0, b: 0, a: 1}
+  attackSound: {fileID: 0}
