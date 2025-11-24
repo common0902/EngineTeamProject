@@ -115,5 +115,10 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
         {
             _settingPanel.SettingPanelOpen();
         }
+
+        public void TTSkip()
+        {
+            SceneManager.LoadScene("MainGameScene");
+        }
     }
 }
