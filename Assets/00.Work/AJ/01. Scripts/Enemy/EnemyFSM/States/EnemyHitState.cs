@@ -1,4 +1,5 @@
-﻿using DG.Tweening;
+﻿using csiimnida.CSILib.SoundManager.RunTime;
+using DG.Tweening;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
@@ -17,7 +18,9 @@ public class EnemyHitState : EnemyState
         base.Enter();
         //Debug.Log("Enter Hit State");
         _enemy.ChangeFlip(false);
-        
+
+        if(SoundManager.Instance != null)
+            SoundManager.Instance.PlaySound("Hit");
         if(_enemy.AgentCompo.enabled)
             _enemy.AgentCompo.isStopped = true;
         _knockbackDir = (_enemy.transform.position - _enemy.Target.position).normalized;

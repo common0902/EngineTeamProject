@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using csiimnida.CSILib.SoundManager.RunTime;
 using UnityEngine;
 
 public class RangedAttackBehavior : IEnemyAttackBehavior
@@ -19,6 +20,7 @@ public class RangedAttackBehavior : IEnemyAttackBehavior
         {
             for (int i = 0; i < _enemy.enemySO.rangedData.bulletData.GetBulletCount(); i++)
             {
+                SoundManager.Instance.PlaySound("EnemyShoot");
                 GameObject obj = Object.Instantiate(
                     _enemy.enemySO.rangedData.bulletData.projectilePrefab,
                     _enemy.FirePos.position,

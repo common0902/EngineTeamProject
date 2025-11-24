@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using _00.Work.SYH._02Script.ETG;
+using csiimnida.CSILib.SoundManager.RunTime;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
 
@@ -28,6 +29,7 @@ public class AssassinAttackBehavior : IEnemyAttackBehavior
         _canAttack = false;
         _enemy.HealthCompo.Invincibility = false;
 
+        SoundManager.Instance.PlaySound("BossDash");
         if (_enemy.CheckAttackRange())
         {
             _targetHealth.Damage(_enemy.enemySO.damage);
@@ -55,7 +57,7 @@ public class AssassinAttackBehavior : IEnemyAttackBehavior
     public void Vanish()
     {
         _enemy.AssashinVfx.Play();
-        
+        SoundManager.Instance.PlaySound("BossDash");
         if (_renderer != null)
             _renderer.color = new Color(1f, 1f, 1f, 0f);
 
