@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using _00.Work.SYH._02Script.ETG;
+using csiimnida.CSILib.SoundManager.RunTime;
 using UnityEngine;
 
 public class DashAttackBehavior : IEnemyAttackBehavior
@@ -22,6 +23,8 @@ public class DashAttackBehavior : IEnemyAttackBehavior
         _enemy.AgentCompo.isStopped = true;
         _enemy.ColliderCompo.isTrigger = true;
 
+        SoundManager.Instance.PlaySound("BossDash");
+        SoundManager.Instance.PlaySound("BossSword");
         _enemy.RbCompo.linearVelocity = direction * _enemy.enemySO.dashData.dashForce;
         yield return new WaitForSeconds(_enemy.enemySO.dashData.dashAttackTime);
 

@@ -45,7 +45,6 @@ namespace _00.Work.AJ._01._Scripts.Boss2
             AnimCompo = GetComponentInChildren<Animator>();
             VisualCompo = GetComponentInChildren<BossRenderer>();
             VisualCompo.Init(this);
-            Target = Player.Instance.transform;
             WayPoints = GetComponentInParent<WayPoints>();
             
             if (CenterPos == null) CenterPos = WayPoints.transform.Find("CenterPos");
@@ -54,6 +53,8 @@ namespace _00.Work.AJ._01._Scripts.Boss2
         }
         private void OnEnable()
         {
+            Target = Player.Instance.transform;
+            Debug.Log(Target);
             HealthCompo.OnHealthChanged += CheckPhase;
         }
 

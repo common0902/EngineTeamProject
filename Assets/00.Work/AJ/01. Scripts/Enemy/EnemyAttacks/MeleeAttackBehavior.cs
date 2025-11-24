@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using _00.Work.SYH._02Script.ETG;
+using csiimnida.CSILib.SoundManager.RunTime;
 using UnityEngine;
 
 public class MeleeAttackBehavior : IEnemyAttackBehavior
@@ -19,10 +20,10 @@ public class MeleeAttackBehavior : IEnemyAttackBehavior
 
     public IEnumerator ExecuteAttack(Vector2 direction)
     {
+        SoundManager.Instance.PlaySound("BossSword");
         if (_enemy.CheckAttackRange())
         {
             yield return _attackDelay;
-            
             _targetHealth.Damage(_enemy.enemySO.damage);
         }
     }

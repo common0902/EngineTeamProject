@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using _00.Work.AJ._01._Scripts.BOSS.FSM;
+using UnityEngine;
 
 namespace _00.Work.AJ._01._Scripts.Boss2.FSM
 {
@@ -11,6 +12,7 @@ namespace _00.Work.AJ._01._Scripts.Boss2.FSM
 
         public void AddState(MiddleBossStateType type, MiddleBossState boss)
         {
+            Debug.Log(type);
             _stateDictionary.Add(type, boss);
         }
         public void Initialized(MiddleBossStateType type)

@@ -120,13 +120,15 @@ public class Trap : MonoBehaviour
     {
         if (!_isActivated || _isTriggered)
             return;
-        
-        HealthSystem playerHealth = other.GetComponent<HealthSystem>();
-        if (playerHealth != null)
+        if (other.TryGetComponent(out Player player))
         {
-            _isTriggered = true;
-            _isBlinking = false;
-            TriggerTrap(playerHealth);
+            HealthSystem playerHealth = player.GetComponent<HealthSystem>();
+            if (playerHealth != null)
+            {
+                _isTriggered = true;
+                _isBlinking = false;
+                TriggerTrap(playerHealth);
+            }
         }
     }
     private void TriggerTrap(HealthSystem target)

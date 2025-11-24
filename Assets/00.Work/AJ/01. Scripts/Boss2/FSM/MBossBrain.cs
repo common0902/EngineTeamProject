@@ -9,7 +9,7 @@ namespace _00.Work.AJ._01._Scripts.Boss2.FSM
         private MiddleBossStateMachine _stateMachine;
         private MiddleBoss _boss;
         
-         private void Awake()
+         private void OnEnable()
         {
             _boss = GetComponent<MiddleBoss>();
             _stateMachine = new MiddleBossStateMachine();
@@ -22,12 +22,13 @@ namespace _00.Work.AJ._01._Scripts.Boss2.FSM
             _stateMachine.AddState(MiddleBossStateType.Vanish, new MBossVanishState(_boss, "Vanish", _stateMachine));
             _stateMachine.AddState(MiddleBossStateType.Appear, new MBossAppearState(_boss, "Appear", _stateMachine));
             _stateMachine.AddState(MiddleBossStateType.DashBefore, new MBossDashBeforeState(_boss, "DashBefore", _stateMachine));
-            _stateMachine.AddState(MiddleBossStateType.Dash, new MBossDashState(_boss, "Dash", _stateMachine));
-            _stateMachine.AddState(MiddleBossStateType.Hit, new MiddleBossHitState(_boss, "Hit", _stateMachine));
-            _stateMachine.AddState(MiddleBossStateType.Death, new MiddleBossDeathState(_boss, "Death", _stateMachine));
+            
         }
         private void Start()
         {
+            _stateMachine.AddState(MiddleBossStateType.Dash, new MBossDashState(_boss, "Dash", _stateMachine));
+            _stateMachine.AddState(MiddleBossStateType.Hit, new MiddleBossHitState(_boss, "Hit", _stateMachine));
+            _stateMachine.AddState(MiddleBossStateType.Death, new MiddleBossDeathState(_boss, "Death", _stateMachine));
             _stateMachine.Initialized(MiddleBossStateType.Idle);
         }
         private void Update()

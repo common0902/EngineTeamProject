@@ -19,7 +19,8 @@ public class EnemyHitState : EnemyState
         //Debug.Log("Enter Hit State");
         _enemy.ChangeFlip(false);
 
-        SoundManager.Instance.PlaySound("Hit");
+        if(SoundManager.Instance != null)
+            SoundManager.Instance.PlaySound("Hit");
         if(_enemy.AgentCompo.enabled)
             _enemy.AgentCompo.isStopped = true;
         _knockbackDir = (_enemy.transform.position - _enemy.Target.position).normalized;
