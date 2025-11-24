@@ -25,6 +25,6 @@ public class StarStrikePrefab2 : SkillPrefab, IPoolable
     {
         gameObject.SetActive(true);
         _tarPos = 0;
-        transform.position = new Vector3(12, 12, 0);
+        transform.position = new Vector3(12, 12, 0) + (Vector3)StarStrike.Instance._pos; ;
     }
 }

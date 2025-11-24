@@ -34,7 +34,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
             if (!_slider)
                 Debug.LogError("slider is null");
 
-            _healthSystem = GameObject.Find("Player").GetComponent<HealthSystem>();
+            _healthSystem = Player.Instance.GetComponent<HealthSystem>();
             if (!_healthSystem)
                 Debug.LogError("healthSystem is null");
             

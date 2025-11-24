@@ -7,9 +7,12 @@ public class StarStrike : Skill
     public Image _image;
     GameObject _prefab;
     [SerializeField] GameObject _bigStar;
+    public Vector2 _pos;
+    public static StarStrike Instance;
     protected override void Awake()
     {
         base.Awake();
+        Instance = this;
         _prefab = Instantiate(SkillPrefab, Vector3.zero, Quaternion.identity);
         _prefab.SetActive(false);
     }
@@ -23,6 +26,11 @@ public class StarStrike : Skill
         Player.Instance.Mujuck(true);
         //SkillUtility.WideAreaDamage(0, 30, SkillUtility.GetEnemyLayer(), Debuffs.Bondage, 20, 0);
         StartCoroutine(SummonStar());
+    }
+    protected override void Update()
+    {
+        base.Update();
+        _pos = GameManager.Instance.GetCurrentRoomCenter();
     }
     private IEnumerator SummonStar()
     {
