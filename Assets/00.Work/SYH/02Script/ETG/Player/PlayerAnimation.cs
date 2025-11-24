@@ -36,17 +36,6 @@ public class PlayerAnimation : MonoBehaviour
         Player.Instance.PlayerMoveCompo.OnMoved += Move;
         Player.Instance.PlayerMoveCompo.OnDisMoved += Idle;
     }
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            CastingStart();
-        }
-        else if (Input.GetKeyDown(KeyCode.P))
-        {
-            CastingEnd();
-        }
-    }
     public void CastingStart()
     {
         _ani.enabled = true;

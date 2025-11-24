@@ -19,5 +19,9 @@ public class DebugKey : MonoBehaviour
             IntroManager.Instance.BlackText.color = new Color(1,1,1, 0);
             IntroManager.Instance._black.color = new Color(1,1,1, 0);
         }
+        else if (Input.GetKeyDown(KeyCode.K))
+        {
+            Player.Instance.PlayerStatusCompo._damage += 9900;
+        }
     }
 }
