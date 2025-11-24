@@ -2,6 +2,7 @@
 
 public class NormalRoom : Room
 {
+
     protected override void Start()
     {
         base.Start();

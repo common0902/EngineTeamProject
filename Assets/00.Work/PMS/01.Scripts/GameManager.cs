@@ -153,7 +153,6 @@ public class GameManager : MonoSingleton<GameManager>
 
         ApplyStageSettings();
 
-        // 세이브는 삭제만 했고, 현재 진행은 1-1 상태로만 바꿔둔 상태
     }
 
     [ContextMenu("NewGame")]
