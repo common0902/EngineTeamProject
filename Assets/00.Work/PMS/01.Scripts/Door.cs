@@ -41,7 +41,6 @@ public class Door : MonoBehaviour
         {
             player.transform.position = connectedDoor.spawnPoint.position;
 
-            connectedDoor.parentRoom?.OnPlayerEnter();
         }
     }
 
