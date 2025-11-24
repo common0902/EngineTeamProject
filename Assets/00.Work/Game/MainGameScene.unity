@@ -1519,6 +1519,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0740ad4a40c9d0d4389269e34ae72cfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _boxPrefab: {fileID: 0}
 --- !u!4 &875130886
 Transform:
   m_ObjectHideFlags: 0
@@ -3348,6 +3349,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolList: {fileID: 11400000, guid: d0ae75c31a227f646804f0f4d546e3e3, type: 2}
+  _useIt: 0
 --- !u!4 &1812105733
 Transform:
   m_ObjectHideFlags: 0
