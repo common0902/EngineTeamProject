@@ -16,7 +16,7 @@ namespace _00.Work.AJ._01._Scripts.Boss2.FSM.States
             _bossAnimator = GetComponentInChildren<BossAnimator>();
             _boss = GetComponent<MiddleBoss>();
         }
-        private void Start()
+        private void OnEnable()
         {
             _bossAnimator.OnHitEndTrigger += HandleHitEnd;
             _boss.HealthCompo.OnHealthChanged += HandleHealthChanged;
@@ -27,7 +27,7 @@ namespace _00.Work.AJ._01._Scripts.Boss2.FSM.States
         private void HandleHealthChanged(float health, float maxHealth)
         {
             _boss.IsHit = true;
-            SoundManager.Instance.PlaySound("BossHit");
+            SoundManager.Instance.PlaySound("Hit");
         }
 
         private void HandleDead()
