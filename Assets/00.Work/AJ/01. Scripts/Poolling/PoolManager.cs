@@ -6,9 +6,15 @@ public class PoolManager : MonoSingleton<PoolManager>
     [SerializeField] private PoolingListSO poolList;
 
     private Dictionary<string, Pool> _pools;
+    [SerializeField] bool _useIt;
 
     protected override void Awake()
     {
+        if (!_useIt)
+        {
+            Destroy(gameObject);
+            return;
+        }
         base.Awake();
         _pools = new Dictionary<string, Pool>();
 

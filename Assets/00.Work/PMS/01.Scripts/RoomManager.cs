@@ -59,6 +59,16 @@ public class RoomManager : MonoSingleton<RoomManager>
 
     [field:SerializeField]public bool BossRoomTurn { get; set; } = false;
     public event Action OnInPortal;
+    [SerializeField] bool _useIt;
+    protected override void Awake()
+    {
+        if (!_useIt)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        base.Awake();
+    }
     private void Start()
     {
         baseMaxRooms = maxRooms;
