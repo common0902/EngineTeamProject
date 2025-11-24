@@ -60,7 +60,6 @@ public class RoomManager : MonoSingleton<RoomManager>
     [SerializeField] bool _useIt;
     [field:SerializeField]public bool BossRoomTurn { get; set; } = false;
     public event Action OnInPortal;
-    [SerializeField] bool _useIt;
     protected override void Awake()
     {
         if (!_useIt)
