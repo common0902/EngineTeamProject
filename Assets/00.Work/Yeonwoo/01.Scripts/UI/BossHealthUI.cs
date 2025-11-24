@@ -1,4 +1,5 @@
 ﻿using System;
+using _00.Work.PMS._01.Scripts;
 using _00.Work.SYH._02Script.ETG;
 using _00.Work.Yeonwoo._01.Scripts.Interfaces;
 using DG.Tweening;
@@ -16,11 +17,11 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
         private IHealth _healthSource;
         private Tween _fillTween;
         private HealthSystem _healthSystem;
-        private BossRoom _bossRoom;
+        private MiddleBossRoom _bossRoom;
         
         private void Awake()
         {
-            _bossRoom = GetComponentInParent<BossRoom>();
+            _bossRoom = GetComponentInParent<MiddleBossRoom>();
 
             _slider = GetComponent<Slider>();
             if (_slider == null)

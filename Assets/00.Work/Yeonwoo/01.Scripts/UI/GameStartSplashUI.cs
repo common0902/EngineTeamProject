@@ -85,8 +85,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
 
             // 재트리거 보장: 이미 활성화 상태라도 비활성화 후 활성화해서 OnEnable/애니메이션을 확실히 다시 실행
             StopAllCoroutines();
-            gameObject.SetActive(false);
-            gameObject.SetActive(true);
+
 
             StartCoroutine(HideAfterSeconds(showDuration));
         }
@@ -95,7 +94,6 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
         {
             yield return new WaitForSeconds(t);
             // UI가 더 이상 보여질 필요가 없으면 비활성화
-            gameObject.SetActive(false);
         }
     }
 }

@@ -19,12 +19,10 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
                 // displayTitle가 null이면 Show 호출 시 안전장치로 로그 출력
                 if (displayTitle == null)
                     Debug.LogWarning("DisplayTitle을 찾지 못했습니다. 인스펙터에 할당해 주세요.");
-                else
-                    displayTitle.gameObject.SetActive(false); // <- 추가: 처음엔 꺼두기
             }
             else
             {
-                displayTitle.gameObject.SetActive(false); // 인스펙터에 할당되어 있어도 꺼둠
+                
             }
 
             if (_inRoomText != null) _inRoomText.text = "";
