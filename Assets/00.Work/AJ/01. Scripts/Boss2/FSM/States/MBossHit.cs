@@ -1,4 +1,5 @@
 ﻿using _00.Work.AJ._01._Scripts.BOSS;
+using _00.Work.PMS._01.Scripts;
 using csiimnida.CSILib.SoundManager.RunTime;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ namespace _00.Work.AJ._01._Scripts.Boss2.FSM.States
         private BossAnimator _bossAnimator;
         public bool isAnimationEnd = false;
         private MiddleBoss _boss;
+        private MiddleBossRoom _parentBossRoom;
         private void Awake()
         {
             _bossAnimator = GetComponentInChildren<BossAnimator>();
@@ -28,7 +30,12 @@ namespace _00.Work.AJ._01._Scripts.Boss2.FSM.States
             SoundManager.Instance.PlaySound("BossHit");
         }
 
-        private void HandleDead() => _boss.IsDead = true;
+        private void HandleDead()
+        {
+            _parentBossRoom.OnEnemyDied();
+            _boss.IsDead = true;
+        }
+
         private void HandleDeathEnd() => isAnimationEnd = true;
         private void OnDestroy()
         {

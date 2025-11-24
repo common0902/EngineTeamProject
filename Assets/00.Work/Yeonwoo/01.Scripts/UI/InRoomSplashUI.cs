@@ -59,7 +59,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
                 RoomType.Portal => "포탈 방",
                 RoomType.Shop => "상점",
                 RoomType.Gold => "상자 방",
-                RoomType.Boss => "보스 전투",
+                RoomType.Boss => "VS 보스",
                 _ => ""
             };
 

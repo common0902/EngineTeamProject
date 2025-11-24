@@ -1390,7 +1390,7 @@ GameObject:
   - component: {fileID: 6817676150059612123}
   - component: {fileID: 6926513452852039692}
   - component: {fileID: -778864713657485331}
-  - component: {fileID: 3800843889824851819}
+  - component: {fileID: 995943474821364770}
   m_Layer: 0
   m_Name: BossRoom
   m_TagString: Untagged
@@ -1488,7 +1488,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_AffectedAgents: ffffffff
   m_TileModifiers: []
---- !u!114 &3800843889824851819
+--- !u!114 &995943474821364770
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1497,7 +1497,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2006649140709060410}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c06e92c73899976468001d9a567edf26, type: 3}
+  m_Script: {fileID: 11500000, guid: fa286ebdc109424c9b0ecbcad49d65f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   topDoor: {fileID: 6317553822436201932}
