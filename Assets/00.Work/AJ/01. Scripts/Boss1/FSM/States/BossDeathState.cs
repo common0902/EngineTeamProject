@@ -33,8 +33,7 @@ namespace _00.Work.AJ._01._Scripts.Boss1.FSM.States
                 canvas.sortingLayerName = "UI";
                 GameObject white = new GameObject("White");
                 white.transform.SetParent(whiteParent.transform);
-                var rect = white.AddComponent<RectTransform>();
-                rect.anchoredPosition = new Vector3(0, 0, 0);
+                white.AddComponent<RectTransform>();
                 white.AddComponent<Image>();
                 _boss.white = white;
                 _whiteImg = _boss.white.GetComponent<Image>();
