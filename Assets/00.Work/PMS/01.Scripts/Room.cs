@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -34,6 +35,11 @@ public abstract class Room : MonoBehaviour
 
     private BoxCollider2D roomTrigger;
     private List<Enemy> enemies = new List<Enemy>();
+
+    public Action OnInRoom;
+    
+    public static Action<Room> OnRoomInitialized;
+    
     protected virtual void Awake()
     {
         roomTrigger = gameObject.GetComponent<BoxCollider2D>();
@@ -45,6 +51,8 @@ public abstract class Room : MonoBehaviour
         roomTrigger.isTrigger = true;
         roomTrigger.size = roomSize;
         roomTrigger.offset = Vector2.zero;
+        
+        OnRoomInitialized?.Invoke(this);
     }
     protected virtual void Start()
     {
