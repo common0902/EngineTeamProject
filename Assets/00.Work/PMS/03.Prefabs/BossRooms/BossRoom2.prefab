@@ -2451,8 +2451,8 @@ Transform:
   m_GameObject: {fileID: 1974857468366318276}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.124, y: 0, z: 0}
-  m_LocalScale: {x: 0.25752074, y: 0.275915, z: 0.09028412}
+  m_LocalPosition: {x: 0.214, y: 0, z: 0}
+  m_LocalScale: {x: 0.39099684, y: 0.4189251, z: 0.13707948}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1943282370102328783}
@@ -2568,6 +2568,7 @@ MonoBehaviour:
   leftDoor: {fileID: 6757127486882549916}
   rightDoor: {fileID: 8186745560057918548}
   roomSize: {x: 24, y: 16}
+  enemyActivationDelay: 0.1
   roomType: 3
   bossHealthBar: {fileID: 7824492161428765754}
   portal: {fileID: 149875927442426553}
@@ -6869,8 +6870,8 @@ Transform:
   m_GameObject: {fileID: 6274766273698799932}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.114, y: 0, z: 0}
-  m_LocalScale: {x: 0.25752074, y: 0.275915, z: 0.09028412}
+  m_LocalPosition: {x: -0.201, y: 0, z: 0}
+  m_LocalScale: {x: 0.43818766, y: 0.4694867, z: 0.15362409}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1943282370102328783}
@@ -6918,7 +6919,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1641135699
   m_SortingLayer: 7
-  m_SortingOrder: 5
+  m_SortingOrder: 4
   m_Sprite: {fileID: -689474963, guid: 9ac9ce449d4182348a8c2e54044d8c31, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -26510,6 +26511,18 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 2027898593, guid: 9ac9ce449d4182348a8c2e54044d8c31, type: 3}
+    - target: {fileID: 4393122347019562268, guid: 8955213c4bb7ceb44b8d178b93e257b5, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.3733551
+      objectReference: {fileID: 0}
+    - target: {fileID: 4393122347019562268, guid: 8955213c4bb7ceb44b8d178b93e257b5, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.40002322
+      objectReference: {fileID: 0}
+    - target: {fileID: 4393122347019562268, guid: 8955213c4bb7ceb44b8d178b93e257b5, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.13089445
+      objectReference: {fileID: 0}
     - target: {fileID: 7754824825697832507, guid: 8955213c4bb7ceb44b8d178b93e257b5, type: 3}
       propertyPath: m_Name
       value: Minimap
