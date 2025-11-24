@@ -1,5 +1,6 @@
 ﻿using System;
 using _00.Work.Yeonwoo._01.Scripts.Data;
+using csiimnida.CSILib.SoundManager.RunTime;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -25,6 +26,7 @@ public class EnemyHit : MonoBehaviour
         _enemy.HealthCompo.OnDead += () =>
         {
             _enemy.IsDead = true;
+            SoundManager.Instance.PlaySound("EnemyDeath");
             _parentRoom.OnEnemyDied();
             goldSystem.SpawnGoldDrop(transform.position, Random.Range(3, 11));
         };

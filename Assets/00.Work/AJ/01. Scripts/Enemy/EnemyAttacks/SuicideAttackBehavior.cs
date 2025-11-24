@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using _00.Work.SYH._02Script.ETG;
+using csiimnida.CSILib.SoundManager.RunTime;
 using UnityEditor;
 using UnityEngine;
 
@@ -73,6 +74,7 @@ public class SuicideAttackBehavior : IEnemyAttackBehavior
         }
 
         _enemy.HealthCompo.Damage(float.MaxValue);
+        SoundManager.Instance.PlaySound("Bomb");
         _isExploding = false;
         IsAttackAnimationEnd = true;
     }

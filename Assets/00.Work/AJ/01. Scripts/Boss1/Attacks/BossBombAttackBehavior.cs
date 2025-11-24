@@ -23,7 +23,6 @@ namespace _00.Work.AJ._01._Scripts.BOSS.Attacks
 
         public IEnumerator ExecuteAttack(Vector2 direction)
         {
-            _boss.Speed = 0f;
             yield return new WaitForSeconds(2f);
             CameraHandler.Instance.ShakeCamera(0.03f, 20f);
             SoundManager.Instance.PlaySound("Earthquake");

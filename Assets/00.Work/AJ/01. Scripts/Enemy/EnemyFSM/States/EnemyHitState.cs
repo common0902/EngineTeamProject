@@ -25,7 +25,7 @@ public class EnemyHitState : EnemyState
             _enemy.AgentCompo.isStopped = true;
         _knockbackDir = (_enemy.transform.position - _enemy.Target.position).normalized;
         //_enemy.RbCompo.AddForce(_knockbackDir * _enemy.enemySO.knockbackForce, ForceMode2D.Impulse);
-        _enemy.transform.DOMove((Vector2)_enemy.transform.position + (_knockbackDir * _enemy.enemySO.knockbackForce), 0.3f);
+        _enemy.transform.DOMove((Vector2)_enemy.transform.position + (_knockbackDir * _enemy.enemySO.knockbackForce), 0.1f);
         _timer = 0;
     }
     public override void Update()
