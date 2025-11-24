@@ -14,12 +14,12 @@ public class NormalRoom : Room
         base.OnPlayerEnter();
         if (!isCleared)
             OnInRoom?.Invoke();
-        SoundManager.Instance.PlaySound("BattleBGM");
     }
 
     public override void OnEnemyDied()
     {
         base.OnEnemyDied();
+        SoundManager.Instance.StopSound("BattleBGM");
         SoundManager.Instance.PlaySound("MainGameBGM");
     }
 }
