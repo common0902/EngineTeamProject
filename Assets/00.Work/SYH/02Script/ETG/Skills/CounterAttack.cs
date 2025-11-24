@@ -36,6 +36,14 @@ public class CounterAttack : Skill
         StartCoroutine(Counter());
         IsActive = false;
     }
+    public override void Active()
+    {
+        base.Active();
+        if (_waitTime < CoolTime)
+        {
+            IsActive = false;
+        }
+    }
     IEnumerator Counter()
     {
         float waitTime = 0;
