@@ -2398,6 +2398,7 @@ MonoBehaviour:
   BlackText: {fileID: 1330432879}
   _waitTime: 0
   _coolTime: 0.5
+  _aaa: 0
 --- !u!1 &1079712894
 GameObject:
   m_ObjectHideFlags: 0
@@ -4264,6 +4265,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3587625760861601598, guid: 651b4efc11192f74f91b53bb36f2893b, type: 3}
       propertyPath: lastRoomGeneration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3587625760861601598, guid: 651b4efc11192f74f91b53bb36f2893b, type: 3}
+      propertyPath: roomsIncreasePerStage
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5791934611627210190, guid: 651b4efc11192f74f91b53bb36f2893b, type: 3}

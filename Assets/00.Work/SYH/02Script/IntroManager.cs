@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using TMPro;
@@ -15,18 +15,22 @@ public class IntroManager : MonoSingleton<IntroManager>
     //CutScene _cutScene;
     PlayerMove _pl;
     bool _isGameOver;
+    [SerializeField] bool _aaa;
 
     private void Start()
     {
-        Time.timeScale = 0;
-        StartCoroutine(Show(0.01f, _black));
-        StartCoroutine(Show(0.01f, BlackText));
-        RoomManager.Instance.OnInPortal += () =>
+        if (!_aaa)
         {
-            Time.timeScale = 1;
-            StartCoroutine(Hide(1f, BlackText));
-            StartCoroutine(Hide(1f, _black));
-        };
+            Time.timeScale = 0;
+            StartCoroutine(Show(0.01f, _black));
+            StartCoroutine(Show(0.01f, BlackText));
+            RoomManager.Instance.OnInPortal += () =>
+            {
+                Time.timeScale = 1;
+                StartCoroutine(Hide(1f, BlackText));
+                StartCoroutine(Hide(1f, _black));
+            };
+        }
     }
     public IEnumerator Hide(float time, SpriteRenderer sprite)
     {
