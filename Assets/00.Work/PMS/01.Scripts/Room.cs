@@ -42,6 +42,9 @@ public abstract class Room : MonoBehaviour
     public Action<Room> OnBattleWin;
     public static Action<Room> OnRoomInitialized;
     
+    protected string activeBGMName = null;
+    protected virtual string GetBattleBGMName() => "BattleBGM";
+    
     protected virtual void Awake()
     {
         roomTrigger = gameObject.GetComponent<BoxCollider2D>();
@@ -80,8 +83,15 @@ public abstract class Room : MonoBehaviour
         if (hasEnemies && !isCleared)
         {
             LockAllDoors();
+
+            // 기본 BGM 전환 처리: MainGameBGM 중지 → 룸별 BGM 재생
             SoundManager.Instance.StopSound("MainGameBGM");
-            SoundManager.Instance.PlaySound("BattleBGM");
+
+            activeBGMName = GetBattleBGMName();
+            if (!string.IsNullOrEmpty(activeBGMName))
+            {
+                SoundManager.Instance.PlaySound(activeBGMName);
+            }
         }
     }
     private IEnumerator ActivateEnemiesWithDelay()
@@ -109,7 +119,13 @@ public abstract class Room : MonoBehaviour
             OnBattleWin?.Invoke(this);
             isCleared = true;
             UnlockAllDoors();
-            SoundManager.Instance.StopSound("FinalBossBGM");
+
+            // 현재 룸에서 재생 중인 BGM이 있다면 중지
+            if (!string.IsNullOrEmpty(activeBGMName))
+            {
+                SoundManager.Instance.StopSound(activeBGMName);
+                activeBGMName = null;
+            }
         }
     }
 

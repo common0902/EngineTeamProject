@@ -156,7 +156,7 @@ public class Enemy : Agent, IPoolable
         if (enemySO.useBoxRange)
         {
             Gizmos.color = Color.green;
-            Gizmos.DrawWireSphere(transform.position, enemySO.boxRange.y);
+            Gizmos.DrawWireCube(transform.position, enemySO.boxRange);
             Gizmos.color = Color.cyan;
             Gizmos.DrawWireSphere(transform.position, transform.GetComponent<NavMeshAgent>().stoppingDistance);
         }

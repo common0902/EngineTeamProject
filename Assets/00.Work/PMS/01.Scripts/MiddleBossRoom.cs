@@ -12,6 +12,8 @@ namespace _00.Work.PMS._01.Scripts
         [SerializeField] private GameObject boss;
         public HealthSystem HealthSystem { get; private set; }
     
+        protected override string GetBattleBGMName() => "MiddleBossBGM";
+        
         protected override void Awake()
         {
             base.Awake(); 
@@ -29,18 +31,15 @@ namespace _00.Work.PMS._01.Scripts
             base.OnPlayerEnter();
             if (!isCleared)
                 OnInRoom?.Invoke();
-            SoundManager.Instance.StopSound("MainGameBGM");
-            SoundManager.Instance.PlaySound("MiddleBossBGM");
+
             bossHealthBar.SetActive(true);
             boss.SetActive(true);
         }
 
         private void HandleBossDied()
         {
-            //OnEnemyDied();
             portal.SetActive(true);
             box.SetActive(true);
-            SoundManager.Instance.StopSound("MiddleBossBGM");
             SoundManager.Instance.PlaySound("MainGameBGM");
         }
 
