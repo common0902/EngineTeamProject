@@ -10,6 +10,8 @@ public class BossRoom : Room
     [SerializeField] private GameObject boss;
     public HealthSystem HealthSystem { get; private set; }
     
+    protected override string GetBattleBGMName() => "FinalBossBGM";
+    
     protected override void Awake()
     {
         base.Awake(); 
@@ -27,18 +29,16 @@ public class BossRoom : Room
         base.OnPlayerEnter();
         if (!isCleared)
             OnInRoom?.Invoke();
-        SoundManager.Instance.StopSound("MainGameBGM");
-        SoundManager.Instance.PlaySound("FinalBossBGM");
+
         bossHealthBar.SetActive(true);
         boss.SetActive(true);
     }
 
     private void HandleBossDied()
     {
-        //OnEnemyDied();
         portal.SetActive(true);
         box.SetActive(true);
-        SoundManager.Instance.StopSound("FinalBossBGM");
+        // 전투 종료 후 메인 BGM 재생
         SoundManager.Instance.PlaySound("MainGameBGM");
     }
 
