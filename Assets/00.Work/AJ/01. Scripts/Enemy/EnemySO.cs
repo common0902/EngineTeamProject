@@ -1,7 +1,5 @@
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 [CreateAssetMenu(fileName = "Enemy", menuName = "SO/Enemy/EnemyData")]
 public class EnemySO : ScriptableObject

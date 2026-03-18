@@ -2807,6 +2807,11 @@ MonoBehaviour:
       cost: 1
     - startPosition: {x: -4.5, y: -3.5, z: 0}
       startCellPosition: {x: -5, y: -4, z: 0}
+      endPosition: {x: -3.5, y: -3.5, z: 0}
+      endCellPosition: {x: -4, y: -4, z: 0}
+      cost: 1
+    - startPosition: {x: -4.5, y: -3.5, z: 0}
+      startCellPosition: {x: -5, y: -4, z: 0}
       endPosition: {x: -3.5, y: -2.5, z: 0}
       endCellPosition: {x: -4, y: -3, z: 0}
       cost: 1.4142135
@@ -2840,9 +2845,19 @@ MonoBehaviour:
       cost: 1
     - startPosition: {x: -4.5, y: -2.5, z: 0}
       startCellPosition: {x: -5, y: -3, z: 0}
+      endPosition: {x: -3.5, y: -3.5, z: 0}
+      endCellPosition: {x: -4, y: -4, z: 0}
+      cost: 1.4142135
+    - startPosition: {x: -4.5, y: -2.5, z: 0}
+      startCellPosition: {x: -5, y: -3, z: 0}
       endPosition: {x: -3.5, y: -2.5, z: 0}
       endCellPosition: {x: -4, y: -3, z: 0}
       cost: 1
+    - startPosition: {x: -4.5, y: -2.5, z: 0}
+      startCellPosition: {x: -5, y: -3, z: 0}
+      endPosition: {x: -3.5, y: -1.5, z: 0}
+      endCellPosition: {x: -4, y: -2, z: 0}
+      cost: 1.4142135
   - worldPosition: {x: -4.5, y: -1.5, z: 0}
     cellPosition: {x: -5, y: -2, z: 0}
     neighbors:
@@ -2866,6 +2881,11 @@ MonoBehaviour:
       endPosition: {x: -3.5, y: -2.5, z: 0}
       endCellPosition: {x: -4, y: -3, z: 0}
       cost: 1.4142135
+    - startPosition: {x: -4.5, y: -1.5, z: 0}
+      startCellPosition: {x: -5, y: -2, z: 0}
+      endPosition: {x: -3.5, y: -1.5, z: 0}
+      endCellPosition: {x: -4, y: -2, z: 0}
+      cost: 1
   - worldPosition: {x: -4.5, y: 0.5, z: 0}
     cellPosition: {x: -5, y: 0, z: 0}
     neighbors:
@@ -2883,6 +2903,11 @@ MonoBehaviour:
       startCellPosition: {x: -5, y: 0, z: 0}
       endPosition: {x: -4.5, y: 1.5, z: 0}
       endCellPosition: {x: -5, y: 1, z: 0}
+      cost: 1
+    - startPosition: {x: -4.5, y: 0.5, z: 0}
+      startCellPosition: {x: -5, y: 0, z: 0}
+      endPosition: {x: -3.5, y: 0.5, z: 0}
+      endCellPosition: {x: -4, y: 0, z: 0}
       cost: 1
   - worldPosition: {x: -4.5, y: 1.5, z: 0}
     cellPosition: {x: -5, y: 1, z: 0}
@@ -3090,6 +3115,16 @@ MonoBehaviour:
       cost: 1.4142135
     - startPosition: {x: -3.5, y: -2.5, z: 0}
       startCellPosition: {x: -4, y: -3, z: 0}
+      endPosition: {x: -3.5, y: -3.5, z: 0}
+      endCellPosition: {x: -4, y: -4, z: 0}
+      cost: 1
+    - startPosition: {x: -3.5, y: -2.5, z: 0}
+      startCellPosition: {x: -4, y: -3, z: 0}
+      endPosition: {x: -3.5, y: -1.5, z: 0}
+      endCellPosition: {x: -4, y: -2, z: 0}
+      cost: 1
+    - startPosition: {x: -3.5, y: -2.5, z: 0}
+      startCellPosition: {x: -4, y: -3, z: 0}
       endPosition: {x: -2.5, y: -3.5, z: 0}
       endCellPosition: {x: -3, y: -4, z: 0}
       cost: 1.4142135
@@ -3123,6 +3158,11 @@ MonoBehaviour:
       cost: 1
     - startPosition: {x: -3.5, y: -1.5, z: 0}
       startCellPosition: {x: -4, y: -2, z: 0}
+      endPosition: {x: -3.5, y: -0.5, z: 0}
+      endCellPosition: {x: -4, y: -1, z: 0}
+      cost: 1
+    - startPosition: {x: -3.5, y: -1.5, z: 0}
+      startCellPosition: {x: -4, y: -2, z: 0}
       endPosition: {x: -2.5, y: -2.5, z: 0}
       endCellPosition: {x: -3, y: -3, z: 0}
       cost: 1.4142135
@@ -3139,6 +3179,16 @@ MonoBehaviour:
   - worldPosition: {x: -3.5, y: -0.5, z: 0}
     cellPosition: {x: -4, y: -1, z: 0}
     neighbors:
+    - startPosition: {x: -3.5, y: -0.5, z: 0}
+      startCellPosition: {x: -4, y: -1, z: 0}
+      endPosition: {x: -3.5, y: -1.5, z: 0}
+      endCellPosition: {x: -4, y: -2, z: 0}
+      cost: 1
+    - startPosition: {x: -3.5, y: -0.5, z: 0}
+      startCellPosition: {x: -4, y: -1, z: 0}
+      endPosition: {x: -3.5, y: 0.5, z: 0}
+      endCellPosition: {x: -4, y: 0, z: 0}
+      cost: 1
     - startPosition: {x: -3.5, y: -0.5, z: 0}
       startCellPosition: {x: -4, y: -1, z: 0}
       endPosition: {x: -2.5, y: -1.5, z: 0}
@@ -3161,6 +3211,11 @@ MonoBehaviour:
       startCellPosition: {x: -4, y: 0, z: 0}
       endPosition: {x: -4.5, y: 0.5, z: 0}
       endCellPosition: {x: -5, y: 0, z: 0}
+      cost: 1
+    - startPosition: {x: -3.5, y: 0.5, z: 0}
+      startCellPosition: {x: -4, y: 0, z: 0}
+      endPosition: {x: -3.5, y: -0.5, z: 0}
+      endCellPosition: {x: -4, y: -1, z: 0}
       cost: 1
     - startPosition: {x: -3.5, y: 0.5, z: 0}
       startCellPosition: {x: -4, y: 0, z: 0}
@@ -3223,6 +3278,11 @@ MonoBehaviour:
     neighbors:
     - startPosition: {x: -2.5, y: -3.5, z: 0}
       startCellPosition: {x: -3, y: -4, z: 0}
+      endPosition: {x: -3.5, y: -3.5, z: 0}
+      endCellPosition: {x: -4, y: -4, z: 0}
+      cost: 1
+    - startPosition: {x: -2.5, y: -3.5, z: 0}
+      startCellPosition: {x: -3, y: -4, z: 0}
       endPosition: {x: -3.5, y: -2.5, z: 0}
       endCellPosition: {x: -4, y: -3, z: 0}
       cost: 1.4142135
@@ -3256,9 +3316,19 @@ MonoBehaviour:
     neighbors:
     - startPosition: {x: -2.5, y: -2.5, z: 0}
       startCellPosition: {x: -3, y: -3, z: 0}
+      endPosition: {x: -3.5, y: -3.5, z: 0}
+      endCellPosition: {x: -4, y: -4, z: 0}
+      cost: 1.4142135
+    - startPosition: {x: -2.5, y: -2.5, z: 0}
+      startCellPosition: {x: -3, y: -3, z: 0}
       endPosition: {x: -3.5, y: -2.5, z: 0}
       endCellPosition: {x: -4, y: -3, z: 0}
       cost: 1
+    - startPosition: {x: -2.5, y: -2.5, z: 0}
+      startCellPosition: {x: -3, y: -3, z: 0}
+      endPosition: {x: -3.5, y: -1.5, z: 0}
+      endCellPosition: {x: -4, y: -2, z: 0}
+      cost: 1.4142135
     - startPosition: {x: -2.5, y: -2.5, z: 0}
       startCellPosition: {x: -3, y: -3, z: 0}
       endPosition: {x: -2.5, y: -3.5, z: 0}
@@ -3294,6 +3364,16 @@ MonoBehaviour:
       cost: 1.4142135
     - startPosition: {x: -2.5, y: -1.5, z: 0}
       startCellPosition: {x: -3, y: -2, z: 0}
+      endPosition: {x: -3.5, y: -1.5, z: 0}
+      endCellPosition: {x: -4, y: -2, z: 0}
+      cost: 1
+    - startPosition: {x: -2.5, y: -1.5, z: 0}
+      startCellPosition: {x: -3, y: -2, z: 0}
+      endPosition: {x: -3.5, y: -0.5, z: 0}
+      endCellPosition: {x: -4, y: -1, z: 0}
+      cost: 1.4142135
+    - startPosition: {x: -2.5, y: -1.5, z: 0}
+      startCellPosition: {x: -3, y: -2, z: 0}
       endPosition: {x: -2.5, y: -2.5, z: 0}
       endCellPosition: {x: -3, y: -3, z: 0}
       cost: 1
@@ -3322,6 +3402,21 @@ MonoBehaviour:
     neighbors:
     - startPosition: {x: -2.5, y: -0.5, z: 0}
       startCellPosition: {x: -3, y: -1, z: 0}
+      endPosition: {x: -3.5, y: -1.5, z: 0}
+      endCellPosition: {x: -4, y: -2, z: 0}
+      cost: 1.4142135
+    - startPosition: {x: -2.5, y: -0.5, z: 0}
+      startCellPosition: {x: -3, y: -1, z: 0}
+      endPosition: {x: -3.5, y: -0.5, z: 0}
+      endCellPosition: {x: -4, y: -1, z: 0}
+      cost: 1
+    - startPosition: {x: -2.5, y: -0.5, z: 0}
+      startCellPosition: {x: -3, y: -1, z: 0}
+      endPosition: {x: -3.5, y: 0.5, z: 0}
+      endCellPosition: {x: -4, y: 0, z: 0}
+      cost: 1.4142135
+    - startPosition: {x: -2.5, y: -0.5, z: 0}
+      startCellPosition: {x: -3, y: -1, z: 0}
       endPosition: {x: -2.5, y: -1.5, z: 0}
       endCellPosition: {x: -3, y: -2, z: 0}
       cost: 1
@@ -3348,6 +3443,16 @@ MonoBehaviour:
   - worldPosition: {x: -2.5, y: 0.5, z: 0}
     cellPosition: {x: -3, y: 0, z: 0}
     neighbors:
+    - startPosition: {x: -2.5, y: 0.5, z: 0}
+      startCellPosition: {x: -3, y: 0, z: 0}
+      endPosition: {x: -3.5, y: -0.5, z: 0}
+      endCellPosition: {x: -4, y: -1, z: 0}
+      cost: 1.4142135
+    - startPosition: {x: -2.5, y: 0.5, z: 0}
+      startCellPosition: {x: -3, y: 0, z: 0}
+      endPosition: {x: -3.5, y: 0.5, z: 0}
+      endCellPosition: {x: -4, y: 0, z: 0}
+      cost: 1
     - startPosition: {x: -2.5, y: 0.5, z: 0}
       startCellPosition: {x: -3, y: 0, z: 0}
       endPosition: {x: -2.5, y: -0.5, z: 0}

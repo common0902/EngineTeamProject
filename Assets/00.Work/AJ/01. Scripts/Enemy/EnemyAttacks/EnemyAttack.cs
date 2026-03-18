@@ -21,14 +21,13 @@ public class EnemyAttack : MonoBehaviour
     {
         _enemyAnimator = GetComponentInChildren<EnemyAnimator>();
         _enemy = GetComponent<Enemy>();
-
     }
 
     private void Start()
     {
         InitializeAttackBehavior();
-        
-        _enemyAnimator.OnAttackTrigger += Attack;
+
+        _enemyAnimator.OnAttackTrigger += () => Attack() ;
         _enemyAnimator.OnAttackEndTrigger += OnAttackEnd;
         if (_enemy.enemySO.enemyType == EnemyType.Assassin)
         {
