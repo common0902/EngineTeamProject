@@ -18,8 +18,7 @@ public class NormalRoom : Room
 
     public override void OnEnemyDied()
     {
-        base.OnEnemyDied();
-        SoundManager.Instance.StopSound("BattleBGM");
+        base.OnEnemyDied(); // base가 activeBGM 중지
         SoundManager.Instance.PlaySound("MainGameBGM");
     }
 }

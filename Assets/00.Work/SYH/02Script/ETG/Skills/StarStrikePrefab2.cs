@@ -1,4 +1,4 @@
-using _00.Work.SYH._02Script.ETG;
+﻿using _00.Work.SYH._02Script.ETG;
 using UnityEngine;
 
 public class StarStrikePrefab2 : SkillPrefab, IPoolable
@@ -12,8 +12,8 @@ public class StarStrikePrefab2 : SkillPrefab, IPoolable
     {
         if (transform.position.y <= _tarPos)
         {
-            SkillUtility.WideAreaDamage(_damage + Player.Instance.PlayerStatusCompo.Mana / 5f, 15, SkillUtility.GetEnemyLayer());
             SkillUtility.WideAreaDamage(_damage + Player.Instance.PlayerStatusCompo.Mana / 5f, 15, SkillUtility.GetEnemyLayer(), Debuffs.Slow, 2.5f, 0.5f);
+            Player.Instance.PlayerStatusCompo.Mana = 0;
             PoolManager.Instance.Push(GetComponent<IPoolable>());
         }
         else
