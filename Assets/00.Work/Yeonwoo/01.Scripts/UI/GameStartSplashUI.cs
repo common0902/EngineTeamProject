@@ -64,6 +64,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
 
         private void OnMapSetComplete()
         {
+            RoomManager.Instance.OnSetComplete -= OnMapSetComplete;
             ShowCurrentStage();
         }
 
@@ -95,6 +96,7 @@ namespace _00.Work.Yeonwoo._01.Scripts.UI
         private IEnumerator HideAfterSeconds(float t)
         {
             yield return new WaitForSeconds(t);
+            RoomManager.Instance.OnSetComplete += OnMapSetComplete;
             // UI가 더 이상 보여질 필요가 없으면 비활성화
         }
     }

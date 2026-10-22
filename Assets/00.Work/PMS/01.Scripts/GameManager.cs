@@ -32,13 +32,10 @@ public class GameManager : MonoSingleton<GameManager>
     }
     private void Start()
     {
-        print(444);
         RoomManager.Instance.OnInPortal += () =>
         {
-            print(222);
             if(CurrentStage != 1 || CurrentWorld !=1)
             {
-                print(333);
                 Destroy(_prefab);
             }
         };
